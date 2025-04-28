@@ -40,7 +40,7 @@
 
 ## <a name="introduction"></a>1.0 Introduction
 
-On February 4-5, 2016, the Bangladesh Bank was hit by a cyberattack that attempted to steal $951 million through the SWIFT payment system, succeeding in transferring $101 million and ultimately losing $81 million. Attributed to North Korea’s Lazarus Group, this heist exposed vulnerabilities in global financial networks and marked a shift toward nation-state-driven cybercrime. Drawing on forensic insights from Kaspersky Lab and other various reports, this article examines the attack’s execution, technical artifacts, attribution, and lessons as of March 26, 2025.
+On February 4-5, 2016, the Bangladesh Bank was hit by a cyberattack that attempted to steal $951 million through the SWIFT payment system, succeeding in transferring $101 million and ultimately losing $81 million. Attributed to North Korea’s Lazarus Group, this heist exposed vulnerabilities in global financial networks and marked a shift toward nation-state-driven cybercrime. Drawing on forensic insights from Kaspersky Lab and other various reports, this article examines the attack’s execution, technical artifacts, attribution, and lessons.
 
 ## <a name="background"></a>2.0 Background
 
