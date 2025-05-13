@@ -4,4 +4,4 @@
 
 # TOOLS
 
-* [Shodan](./shodan-for-newbies)
+* [Shodan for Newbies](./shodan)
