@@ -25,3 +25,19 @@ Shodan’s web interface is straightforward:
 - **Maps:** Visualize device locations geographically (requires a paid account).
 
 Browser plugins for Chrome and Firefox provide quick insights into a website’s exposed services, such as open ports and software versions.
+
+### 3. Shodan CLI
+
+For advanced users, Shodan offers a command-line interface (CLI). Install it using Python:
+
+![](assets/images/1.png)
+
+Initialize the CLI with your API key (found in your Shodan account):
+
+![](assets/images/2.png)
+
+You can now query searches using the Shodan CLI:
+
+![](assets/images/3.png)
+
+For example, the command `shodan search "port:22 country:IN"` should return devices with open SSH ports in India. However, the command failed with a 403 Forbidden error because Shodan’s free accounts have extremely limited API access, and my account currently has 0 query credits, as shown by `shodan info`.
