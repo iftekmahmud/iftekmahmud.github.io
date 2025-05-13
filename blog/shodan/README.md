@@ -1,6 +1,6 @@
 # Shodan for Security Researchers
 
-As security researchers, we constantly seek tools that provide deep visibility into the attack surface of networks, devices, and services. Shodan, often dubbed “the search engine for hackers,” is a powerful reconnaissance tool that indexes internet-connected devices, offering unparalleled insights into exposed systems. Unlike traditional search engines like Google, which focus on web content, Shodan scans ports and collects service banners to reveal metadata about devices, from webcams to industrial control systems (ICS). This guide provides a detailed, technical introduction to Shodan for beginner to intermediate security researchers, covering its functionality, search syntax, and practical use cases.
+As security researchers, we constantly seek tools that provide deep visibility into the attack surface of networks, devices, and services. Shodan, often dubbed "the search engine for hackers," is a powerful reconnaissance tool that indexes internet-connected devices, offering unparalleled insights into exposed systems. Unlike traditional search engines like Google, which focus on web content, Shodan scans ports and collects service banners to reveal metadata about devices, from webcams to industrial control systems (ICS). This guide provides a detailed, technical introduction to Shodan for beginner to intermediate security researchers, covering its functionality, search syntax, and practical use cases.
 
 ## What is Shodan?
 
@@ -41,3 +41,23 @@ You can now query searches using the Shodan CLI:
 ![](assets/images/3.png)
 
 For example, the command `shodan search "port:22 country:IN"` should return devices with open SSH ports in India. However, the command failed with a 403 Forbidden error because Shodan’s free accounts have extremely limited API access, and my account currently has 0 query credits, as shown by `shodan info`.
+
+The CLI is ideal for scripting and automation but requires familiarity with command-line workflows.
+
+## Shodan Search Syntax and Filters
+
+Shodan’s power lies in its query syntax, which allows precise searches using filters. By default, Shodan searches the data property of banners, which contains service-specific metadata (e.g., HTTP headers, FTP welcome messages).
+
+### Basic Search Syntax
+
+- **Simple Queries:** Enter a keyword like `webcam` to find devices with "webcam" in their banners.
+
+![](assets/images/4.png)
+
+This returns IP addresses, ports, and banners for webcams worldwide.
+
+- **Quoted Phrases:** Use quotes for exact matches:
+
+![](assets/images/5.png)
+
+Finds devices running Nginx version 1.14.0.
