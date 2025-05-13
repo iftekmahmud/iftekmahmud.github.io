@@ -162,6 +162,8 @@ Finds devices with port 80 open, excluding Windows systems.
 
 Finds open MongoDB instances, which may lack authentication.
 
+- **Vulnerable RDP Services:**
+
 ![](assets/images/11.png)
 
 Identifies Windows systems vulnerable to BlueKeep.
