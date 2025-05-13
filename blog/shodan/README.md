@@ -236,7 +236,7 @@ Shodan is a cornerstone tool for security researchers, offering unmatched visibi
 
 Happy hunting, and stay vigilant.
 
-## Resources:
+### Resources:
 
 - Shodan Official Website: shodan.io
 - Awesome Shodan Queries: github.com/jakejarvis/awesome-shodan-queries
