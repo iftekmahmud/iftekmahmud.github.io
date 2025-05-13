@@ -1,4 +1,7 @@
-# POSTS
+# INCIDENT ANALYSIS
 
 * [Bangladesh Bank Heist](./bangladesh-bank-heist)
-* [Shodan](./shodan)
+
+# TOOLS
+
+* [Shodan](./shodan-for-newbies)
