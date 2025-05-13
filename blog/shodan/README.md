@@ -142,8 +142,6 @@ Combine filters for precision. Example:
 
 This finds Apache web servers running on Linux with port 80 open in the US.
 
-### Advanced Queries
-
 - **Negative Filters:** Exclude results using a minus sign.
 
 ![](assets/images/7.png)
@@ -158,3 +156,63 @@ Finds devices with port 80 open, excluding Windows systems.
 
 ![](assets/images/9.png)
 
+- **Exposed Databases:**
+
+![](assets/images/10.png)
+
+Finds open MongoDB instances, which may lack authentication.
+
+![](assets/images/11.png)
+
+Identifies Windows systems vulnerable to BlueKeep.
+
+- **Default Credentials:**
+
+![](assets/images/12.png)
+
+Finds Telnet services with default credentials (e.g., admin:123456).
+
+- **IoT Devices:**
+
+![](assets/images/13.png)
+
+Targets Moxa Nport devices with authentication disabled.
+
+**Industrial Control Systems:**
+
+## Use Cases for Security Researchers
+
+### 1. Asset Discovery
+
+Organizations often lose track of internet-facing assets. Shodan helps identify exposed devices:
+
+- Query: `org:"Your Organization" port:80,443`
+- Action: Verify if these assets are authorized and secure. Check for outdated software (e.g., Apache 2.2.x) or misconfigured services.
+
+### 2. Vulnerability Assessment
+
+Shodan can pinpoint systems running vulnerable software versions or exposed to known CVEs:
+
+- Query: `product:nginx version:1.14.0 vuln:CVE-2021-23017`
+- Action: Cross-reference results with vulnerability databases (e.g., NIST NVD) and prioritize patching.
+
+### 3. Reconnaissance for Penetration Testing
+
+During authorized pentests, Shodan aids in mapping the target’s attack surface:
+
+- Query: `hostname:target.com port:22,3389`
+- Action: Identify open ports and services (e.g., SSH, RDP) for further testing with tools like Nmap or Metasploit.
+
+### 4. Threat Intelligence
+
+Shodan reveals trends in exposed services, aiding proactive defense:
+
+- Query: `port:445 os:Windows`
+- Action: Monitor for SMB services vulnerable to exploits like EternalBlue (CVE-2017-0144).
+
+5. IoT Security Research
+
+With billions of IoT devices online, Shodan is critical for studying their security:
+
+- Query: `webcam city:"Tokyo"`
+- Action: Analyze exposed webcams for default credentials or outdated firmware.
