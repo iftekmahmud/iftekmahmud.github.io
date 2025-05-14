@@ -180,7 +180,79 @@ Finds Telnet services with default credentials (e.g., admin:123456).
 
 Targets Moxa Nport devices with authentication disabled.
 
-**Industrial Control Systems:**
+## Advanced Queries
+
+### 1. Outdated SSH Servers with Known Vulnerabilities
+
+![](assets/images/14.png)
+
+- **Query:** `port:22 product:OpenSSH version:7.4 country:IN`
+- **Purpose:** Targets SSH servers in India running OpenSSH 7.4, vulnerable to CVE-2016-10009 (key injection). This query is ideal for scoping a client’s infrastructure for outdated software.
+- **VAPT Use:** Cross-reference with NIST NVD to validate exploits, then use Nmap (nmap -sV -p 22 <IP>) to confirm versions during an authorized test.
+
+### 2. Misconfigured Web Servers with Directory Listings
+
+![](assets/images/15.png)
+
+- **Query:** `http.title:"Index of /" port:80,443 country:US -http.status:403`
+- **Purpose:** Identifies web servers in the US exposing directory listings, a common misconfiguration that may leak sensitive files.
+- **VAPT Use:** During a pentest, manually browse directories (with permission) to locate backups or configuration files, then recommend server hardening.
+
+### 3. Heartbleed-Vulnerable Apache Servers
+
+- **Query:** `vuln:CVE-2014-0160 product:Apache country:IN`
+- **Purpose:** Finds Apache servers potentially affected by the Heartbleed bug in India. Note that Shodan’s vuln filter may include unverified results.
+- **VAPT Use:** Validate with a Heartbleed scanner (e.g., testssl.sh) on authorized IPs to confirm exploitability.
+
+### 4. Unauthenticated MongoDB Instances
+
+![](assets/images/16.png)
+
+- **Query:** `port:27017 product:MongoDB -authentication country:US`
+- **Purpose:** Locates MongoDB databases in the US without authentication, a frequent misconfiguration leading to data exposure.
+- **VAPT Use:** Assess database accessibility (with consent) and report to clients for immediate remediation.
+
+### 5. Exposed Industrial Control Systems (ICS)
+
+- **Query:** `port:102 product:Siemens country:EU`
+- **Purpose:** Targets Siemens PLCs (port 102, S7 protocol) in Europe, often found in critical infrastructure.
+- **VAPT Use:** Identify misconfigured ICS for reporting to asset owners, avoiding interaction due to high-risk implications.
+
+### 6. Devices with Default Telnet Credentials
+
+![](assets/images/17.png)
+
+- **Query:** `port:23 "Login incorrect" country:CN`
+- **Purpose:** Finds Telnet servers in China with default credentials attempted, indicating unchanged factory settings.
+- **VAPT Use:** Pinpoint IoT devices for clients, testing default credentials (with permission) to simulate real-world attacks.
+
+### 7. Vulnerable RouterOS Devices
+
+- **Query:** `port:8291 product:RouterOS version:"6.29" country:BR`
+- **Purpose:** Identifies MikroTik RouterOS devices in Brazil on port 8291 (WinBox), vulnerable to CVE-2018-14847.
+- **VAPT Use:** Scope network perimeters for outdated routers, validating with Metasploit modules if authorized.
+
+### 8. Exposed Jenkins Servers
+
+![](assets/images/18.png)
+
+- **Query:** `http.component:Jenkins port:8080 country:JP`
+- **Purpose:** Locates Jenkins CI/CD servers in Japan, often misconfigured to expose version details.
+- **VAPT Use:** Check for unauthenticated access or known CVEs (e.g., CVE-2018-1000861) during application pentests.
+
+### 9. Publicly Accessible Docker API
+
+![](assets/images/19.png)
+
+- **Query:** `port:2375 product:Docker country:AU`
+- **Purpose:** Targets Docker API endpoints in Australia without TLS, allowing container manipulation.
+- **VAPT Use:** Assess cloud environments for misconfigurations, testing access (with consent) to recommend security fixes.
+
+### 9. Newly Exposed Devices by Date
+
+- **Query:** `port:80 country:CA after:2025-04-01`
+- **Purpose:** Finds web servers in Canada exposed after April 1, 2025, detecting recent misconfigurations.
+- **VAPT Use:** Monitor for new attack surfaces in ongoing client engagements.
 
 ## Use Cases for Security Researchers
 
