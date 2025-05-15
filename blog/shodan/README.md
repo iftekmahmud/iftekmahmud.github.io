@@ -10,12 +10,12 @@ Developed by John Matherly in 2009, Shodan is a search engine that continuously 
 
 By querying Shodan, you can:
 
-- **Discover Uncharted Assets:** Organizations often overlook internet-facing devices like misconfigured servers, IoT devices, or legacy systems. A query like `port:22 product:OpenSSH country:IN` can uncover SSH servers in India that a client didn’t know were exposed, expanding your attack surface analysis.
+- **Discover Uncharted Assets:** Organizations often overlook internet-facing devices like misconfigured servers, IoT devices, or legacy systems. A query like `port:22 product:OpenSSH country:IN` can uncover SSH servers in India that a client didn't know were exposed, expanding your attack surface analysis.
 - **Identify Configuration Weaknesses:** Banners often expose software versions or default settings (e.g., `http.title:"Index of /"` for directory listings), highlighting misconfigurations ripe for exploitation.
 - **Pinpoint Vulnerabilities:** With filters like `vuln:CVE-2014-0160`, Shodan flags systems potentially affected by known exploits, such as Heartbleed, allowing you to prioritize testing efforts.
 - **Monitor Emerging Threats:** Queries like `port:80 country:CA after:2025-04-01` track newly exposed web servers, enabling proactive defense against recent misconfigurations.
 
-This reconnaissance lays the groundwork for a comprehensive penetration testing engagement, providing a starting point to assess a target’s security posture before active testing begins.
+This reconnaissance lays the groundwork for a comprehensive penetration testing engagement, providing a starting point to assess a target's security posture before active testing begins.
 
 Note: Unauthorized access to devices found via Shodan is illegal and unethical. This guide focuses on legitimate, ethical use cases for penetration testing, asset management, and threat intelligence.
 
@@ -23,11 +23,11 @@ Note: Unauthorized access to devices found via Shodan is illegal and unethical. 
 
 ### 1. Creating an Account
 
-To begin, navigate to shodan.io and create an account. Free accounts are limited to 50 search results and basic functionality, while paid subscriptions unlock advanced filters, API access, and higher result limits. For researchers, a paid account is recommended to leverage Shodan’s full potential.
+To begin, navigate to shodan.io and create an account. Free accounts are limited to 50 search results and basic functionality, while paid subscriptions unlock advanced filters, API access, and higher result limits. For researchers, a paid account is recommended to leverage Shodan's full potential.
 
 ### 2. Understanding the Interface
 
-Shodan’s web interface is straightforward:
+Shodan's web interface is straightforward:
 
 - **Search Bar:** Enter queries to find devices or services.
 - **Filters Sidebar:** Refine results by country, port, organization, etc.
@@ -35,7 +35,7 @@ Shodan’s web interface is straightforward:
 - **Shodan Monitor:** Set up alerts for new devices matching your criteria.
 - **Maps:** Visualize device locations geographically (requires a paid account).
 
-Browser plugins for Chrome and Firefox provide quick insights into a website’s exposed services, such as open ports and software versions.
+Browser plugins for Chrome and Firefox provide quick insights into a website's exposed services, such as open ports and software versions.
 
 ### 3. Shodan CLI
 
@@ -51,13 +51,13 @@ You can now query searches using the Shodan CLI:
 
 ![](assets/images/3.png)
 
-For example, the command `shodan search "port:22 country:IN"` should return devices with open SSH ports in India. However, the command failed with a 403 Forbidden error because Shodan’s free accounts have extremely limited API access, and my account currently has 0 query credits, as shown by `shodan info`.
+For example, the command `shodan search "port:22 country:IN"` should return devices with open SSH ports in India. However, the command failed with a 403 Forbidden error because Shodan's free accounts have extremely limited API access, and my account currently has 0 query credits, as shown by `shodan info`.
 
 The CLI is ideal for scripting and automation but requires familiarity with command-line workflows.
 
 ## Shodan Search Syntax and Filters
 
-Shodan’s power lies in its query syntax, which allows precise searches using filters. By default, Shodan searches the data property of banners, which contains service-specific metadata (e.g., HTTP headers, FTP welcome messages).
+Shodan's power lies in its query syntax, which allows precise searches using filters. By default, Shodan searches the data property of banners, which contains service-specific metadata (e.g., HTTP headers, FTP welcome messages).
 
 ### Basic Search Syntax
 
@@ -183,7 +183,7 @@ Identifies Windows systems vulnerable to BlueKeep.
 
 ![](assets/images/12.png)
 
-Finds Telnet services with default credentials (e.g., admin:123456).
+Finds Telnet services with default credentials (e.g., `admin:123456`).
 
 - **IoT Devices:**
 
@@ -198,7 +198,7 @@ Targets Moxa Nport devices with authentication disabled.
 ![](assets/images/14.png)
 
 - **Query:** `port:22 product:OpenSSH version:7.4 country:IN`
-- **Purpose:** Targets SSH servers in India running OpenSSH 7.4, vulnerable to CVE-2016-10009 (key injection). This query is ideal for scoping a client’s infrastructure for outdated software.
+- **Purpose:** Targets SSH servers in India running OpenSSH 7.4, vulnerable to CVE-2016-10009 (key injection). This query is ideal for scoping a client's infrastructure for outdated software.
 - **VAPT Use:** Cross-reference with NIST NVD to validate exploits, then use Nmap (nmap -sV -p 22 <IP>) to confirm versions during an authorized test.
 
 ### 2. Misconfigured Web Servers with Directory Listings
@@ -212,8 +212,8 @@ Targets Moxa Nport devices with authentication disabled.
 ### 3. Heartbleed-Vulnerable Apache Servers
 
 - **Query:** `vuln:CVE-2014-0160 product:Apache country:IN`
-- **Purpose:** Finds Apache servers potentially affected by the Heartbleed bug in India. Note that Shodan’s vuln filter may include unverified results.
-- **VAPT Use:** Validate with a Heartbleed scanner (e.g., testssl.sh) on authorized IPs to confirm exploitability.
+- **Purpose:** Finds Apache servers potentially affected by the Heartbleed bug in India. Note that Shodan's vuln filter may include unverified results.
+- **VAPT Use:** Validate with a Heartbleed scanner (e.g., `testssl.sh`) on authorized IPs to confirm exploitability.
 
 ### 4. Unauthenticated MongoDB Instances
 
@@ -296,7 +296,29 @@ Below are advanced queries specifically designed to identify CCTVs and target co
 - **CCTVs with Default Credentials in Banners:** `"default password" webcam`
   - **Purpose:** Finds cameras with banners indicating default credentials, a common misconfiguration.
   - **Use Case:** Identify high-risk devices for reporting to clients or securing your own systems.
+
+## Technical Steps to View a Feed (For Authorized Use Only)
+
+If you have explicit permission (e.g., during a pentest or for your own camera), here's how you might access a feed:
+
+- Copy the IP and Port: From Shodan results (e.g., `192.0.2.1:554`).
+- Use a Media Player for RTSP:
+  - Open VLC Media Player.
+  - Go to Media → Open Network Stream.
+  - Enter the RTSP URL: `rtsp://192.0.2.1:554/`.
+  - If unauthenticated, the feed may play. If it prompts for credentials, you'd need them (and permission to use them).
  
+![](assets/images/vlc-network-stream.png)
+
+## Secure Your Own CCTVs Against Shodan Indexing
+
+To prevent your own cameras from appearing in Shodan, apply these best practices:
+
+- **Enable Authentication:** Set strong, unique passwords (not `admin:12345`).
+- **Use Firewalls:** Block public access to camera ports (e.g., `554`, `80`) using a firewall.
+- **VPN or NAT:** Place cameras behind a VPN or NAT to avoid direct internet exposure.
+- **Disable UPnP:** Universal Plug and Play can expose devices unintentionally.
+- **Check Exposure:** Search Shodan for your IP or organization (e.g., net:YOUR_IP) to confirm your cameras aren't indexed.
 
 ## Use Cases for Security Researchers
 
@@ -316,7 +338,7 @@ Shodan can pinpoint systems running vulnerable software versions or exposed to k
 
 ### 3. Reconnaissance for Penetration Testing
 
-During authorized pentests, Shodan aids in mapping the target’s attack surface:
+During authorized pentests, Shodan aids in mapping the target's attack surface:
 
 - Query: `hostname:target.com port:22,3389`
 - Action: Identify open ports and services (e.g., SSH, RDP) for further testing with tools like Nmap or Metasploit.
@@ -340,26 +362,31 @@ With billions of IoT devices online, Shodan is critical for studying their secur
 The metadata extracted from Shodan — IPs, ports, banners, locations, and screenshots — serves as a springboard for actionable steps in a penetration testing workflow. You can integrate and exploit this data ethically and effectively during an authorized engagement:
 
 **1. Initial Reconnaissance and Asset Mapping**
-- **Action:** Use a query like `product:Hikvision org:"Client Name"` to identify a client’s exposed CCTV systems.
-- **Utilization:** Compile a list of IPs and cross-reference with the client’s asset inventory. This reveals unauthorized or forgotten devices, such as a Hikvision camera streaming publicly due to a misconfigured firewall.
+
+- **Action:** Use a query like `product:Hikvision org:"Client Name"` to identify a client's exposed CCTV systems.
+- **Utilization:** Compile a list of IPs and cross-reference with the client's asset inventory. This reveals unauthorized or forgotten devices, such as a Hikvision camera streaming publicly due to a misconfigured firewall.
 - **Next Step:** Share this with the client to update their asset management, ensuring all systems are accounted for in the VAPT scope.
 
 **2. Vulnerability Assessment**
+
 - **Action:** Apply `port:27017 product:MongoDB -authentication country:US` to find unauthenticated MongoDB instances.
 - **Utilization:** Note the IPs and banners, then validate with a tool like Nmap (`nmap -sV -p 27017 <IP>`) to confirm the lack of authentication. Check banner versions against vulnerability databases (e.g., NIST NVD) for CVEs like CVE-2015-7882 (MongoDB remote code execution).
 - **Next Step:** Document potential vulnerabilities in a report, recommending patches or access controls, and test exploitation (if authorized) to assess impact.
 
 **3. Penetration Testing**
+
 - **Action:** Target `port:8291 product:RouterOS version:"6.29" country:BR` to locate vulnerable MikroTik routers.
 - **Utilization:** Extract IP addresses and use Metasploit (use `exploit/windows/http/mikrotik_routeros_cmd`) to simulate CVE-2018-14847 exploitation, confirming remote code execution potential. Cross-check with banner data to ensure version accuracy.
 - **Next Step:** If successful, document the exploit path and suggest firmware updates or network segmentation to mitigate risks.
 
 **4. Threat Intelligence and Reporting**
+
 - **Action:** Run `port:23 "Login incorrect" country:CN` to detect Telnet devices with default credentials.
-- **Utilization:** Analyze the prevalence of such devices to build a threat profile for a client’s region. Manually copy IPs and banners (due to the free account’s export limitation) into a spreadsheet for tracking.
+- **Utilization:** Analyze the prevalence of such devices to build a threat profile for a client's region. Manually copy IPs and banners (due to the free account's export limitation) into a spreadsheet for tracking.
 - **Next Step:** Include this in a penetration testing report, highlighting IoT exposure risks and recommending credential changes or Telnet disabling, supported by real-world attack examples (e.g., Mirai botnet).
 
 **5. Continuous Monitoring**
+
 - **Action:** Set up a saved search for `port:80 country:CA after:2025-04-01` to monitor new web servers.
 - **Utilization:** Periodically revisit the query to detect newly exposed systems, using location and organization data to correlate with client networks.
 - **Next Step:** Alert the client to investigate these systems, integrating findings into ongoing security posture reviews.
@@ -379,7 +406,7 @@ The metadata extracted from Shodan — IPs, ports, banners, locations, and scree
 - **Exploitation Phase:** Leverage Shodan IPs for controlled penetration testing (e.g., Metasploit, Nmap) to simulate attacks, ensuring all actions are within scope.
 - **Reporting Phase:** Document Shodan findings—IPs, banners, potential CVEs—in a detailed report, offering remediation strategies like patching or reconfiguration.
 
-## Tools to Complement Shodan Data
+## Tools to Complement Shodan Findings
 
 - **Nmap:** Validate ports and versions (e.g., `nmap -sV -p 22 <IP>`).
 - **Metasploit:** Test exploits on identified vulnerabilities (e.g., SSH or RouterOS modules).
@@ -390,13 +417,13 @@ The metadata extracted from Shodan — IPs, ports, banners, locations, and scree
 
 - **Misinterpreting Banners:** Banners can be spoofed or outdated. Verify findings with active scanning (if authorized).
 - **Overloading Queries:** Complex queries may exceed free account limits. Upgrade or simplify searches.
-- **Ignoring Context:** A device listed on Shodan isn’t necessarily vulnerable. Check for authentication or firewalls.
+- **Ignoring Context:** A device listed on Shodan isn't necessarily vulnerable. Check for authentication or firewalls.
 
 ## Ethical and Legal Considerations
 
 - **Do Not Access Unauthorized Systems:** Querying Shodan is legal, but attempting to log in to devices (even with default credentials) without permission is illegal.
 - **Obtain Authorization:** For pentesting, ensure you have explicit client consent.
-- **Secure Your Own Assets:** Use Shodan to audit your organization’s exposure (e.g., search for org:"Your Company" "default password").
+- **Secure Your Own Assets:** Use Shodan to audit your organization's exposure (e.g., search for org:"Your Company" "default password").
 - **Report Vulnerabilities Responsibly:** If you discover exposed systems, notify the owner or follow responsible disclosure protocols.
   
 ## Final Thoughts
