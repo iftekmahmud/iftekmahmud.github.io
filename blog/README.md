@@ -4,4 +4,4 @@
 
 # TOOLS
 
-* [Shodan for Newbies](./shodan)
+* [Shodan OSINT Tactics](./shodan)
