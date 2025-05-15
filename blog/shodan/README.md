@@ -290,7 +290,7 @@ Below are advanced queries specifically designed to identify CCTVs and target co
   - **Use Case:** Assess if Hikvision devices in a target network (with authorization) are vulnerable to known exploits (e.g., CVE-2017-7921).
 
 - **Geographically Specific Search (e.g., Melbourne, Australia):** `webcamxp geo:-37.81,144.96`
-  - **Purpose:** Narrows results to WebcamXP cameras at specific coordinates (here, Melbourne, Australia). Use **geo:latitude,longitude** for precision.
+  - **Purpose:** Narrows results to WebcamXP cameras at specific coordinates (here, Melbourne, Australia). Use `geo:latitude,longitude` for precision.
   - **Use Case:** In a scoped pentest, you might target a specific region to reduce noise in results.
 
 - **CCTVs with Default Credentials in Banners:** `"default password" webcam`
