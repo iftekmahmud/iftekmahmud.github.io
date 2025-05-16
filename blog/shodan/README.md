@@ -269,33 +269,35 @@ Targets Moxa Nport devices with authentication disabled.
 
 Below are advanced queries specifically designed to identify CCTVs and target common CCTV software, protocols, and misconfigurations.
 
-- **General Search for Webcams/CCTVs:** `webcam`
-  - **Purpose:** A broad query to find devices with "webcam" in their banner, often including CCTVs.
-  - **Use Case:** Identify a wide range of cameras to understand global exposure trends.
+### *General Search for Webcams/CCTVs: `webcam`
+- **Purpose:** A broad query to find devices with "webcam" in their banner, often including CCTVs.
+- **Use Case:** Identify a wide range of cameras to understand global exposure trends.
 
-- **CCTVs with Screenshots (Preview Images):** `has_screenshot:true webcam`
-  - **Purpose:** Finds devices Shodan has captured screenshots from, often RTSP-based cameras (port 554). Screenshots indicate potentially accessible feeds.
-  - **Use Case:** In VAPT, this helps identify cameras that might stream without authentication, though accessing the feed requires permission.
+### CCTVs with Screenshots (Preview Images): `has_screenshot:true webcam`
+- **Purpose:** Finds devices Shodan has captured screenshots from, often RTSP-based cameras (port 554). Screenshots indicate potentially accessible feeds.
+- **Use Case:** In VAPT, this helps identify cameras that might stream without authentication, though accessing the feed requires permission.
 
-- **RTSP Protocol (Common for CCTV Streaming):** `port:554 has_screenshot:true`
-  - **Purpose:** Targets devices using RTSP (port 554), a protocol for live video streaming, often used by CCTVs. The `has_screenshot:true` filter shows devices with preview images.
-  - **Use Case:** Useful for finding cameras that might be streaming publicly, though free accounts can't directly access feeds.
+### RTSP Protocol (Common for CCTV Streaming): `port:554 has_screenshot:true`
+- **Purpose:** Targets devices using RTSP (port 554), a protocol for live video streaming, often used by CCTVs. The `has_screenshot:true` filter shows devices with preview images.
+- **Use Case:** Useful for finding cameras that might be streaming publicly, though free accounts can't directly access feeds.
+ 
+  ![](assets/images/20.png)
 
-- **Specific CCTV Software (e.g., WebcamXP):** `server:webcamxp`
-  - **Purpose:** Targets WebcamXP, a popular software for IP cameras on Windows. Many such cameras are misconfigured with default credentials.
-  - **Use Case:** During pentesting, you might check if a client's cameras are running outdated or insecure software.
+### Specific CCTV Software (e.g., WebcamXP): `server:webcamxp`
+- **Purpose:** Targets WebcamXP, a popular software for IP cameras on Windows. Many such cameras are misconfigured with default credentials.
+- **Use Case:** During pentesting, you might check if a client's cameras are running outdated or insecure software.
 
-- **Hikvision IP Cameras (Common in Surveillance):** `product:Hikvision`
-  - **Purpose:** Identifies Hikvision cameras, a widely used brand often found in corporate and public surveillance systems.
-  - **Use Case:** Assess if Hikvision devices in a target network (with authorization) are vulnerable to known exploits (e.g., CVE-2017-7921).
+### Hikvision IP Cameras (Common in Surveillance): `product:Hikvision`
+- **Purpose:** Identifies Hikvision cameras, a widely used brand often found in corporate and public surveillance systems.
+- **Use Case:** Assess if Hikvision devices in a target network (with authorization) are vulnerable to known exploits (e.g., CVE-2017-7921).
 
-- **Geographically Specific Search (e.g., Melbourne, Australia):** `webcamxp geo:-37.81,144.96`
-  - **Purpose:** Narrows results to WebcamXP cameras at specific coordinates (here, Melbourne, Australia). Use `geo:latitude,longitude` for precision.
-  - **Use Case:** In a scoped pentest, you might target a specific region to reduce noise in results.
+### Geographically Specific Search (e.g., Melbourne, Australia): `webcamxp geo:-37.81,144.96`
+- **Purpose:** Narrows results to WebcamXP cameras at specific coordinates (here, Melbourne, Australia). Use `geo:latitude,longitude` for precision.
+- **Use Case:** In a scoped pentest, you might target a specific region to reduce noise in results.
 
-- **CCTVs with Default Credentials in Banners:** `"default password" webcam`
-  - **Purpose:** Finds cameras with banners indicating default credentials, a common misconfiguration.
-  - **Use Case:** Identify high-risk devices for reporting to clients or securing your own systems.
+### CCTVs with Default Credentials in Banners: `"default password" webcam`
+- **Purpose:** Finds cameras with banners indicating default credentials, a common misconfiguration.
+- **Use Case:** Identify high-risk devices for reporting to clients or securing your own systems.
 
 ## Technical Steps to View a Feed (For Authorized Use Only)
 
