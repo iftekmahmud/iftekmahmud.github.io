@@ -269,33 +269,33 @@ Targets Moxa Nport devices with authentication disabled.
 
 Below are advanced queries specifically designed to identify CCTVs and target common CCTV software, protocols, and misconfigurations.
 
-### *General Search for Webcams/CCTVs: `webcam`
+### 1. General Search for Webcams/CCTVs: `webcam`
 - **Purpose:** A broad query to find devices with "webcam" in their banner, often including CCTVs.
 - **Use Case:** Identify a wide range of cameras to understand global exposure trends.
 
-### CCTVs with Screenshots (Preview Images): `has_screenshot:true webcam`
+### 2. CCTVs with Screenshots (Preview Images): `has_screenshot:true webcam`
 - **Purpose:** Finds devices Shodan has captured screenshots from, often RTSP-based cameras (port 554). Screenshots indicate potentially accessible feeds.
 - **Use Case:** In VAPT, this helps identify cameras that might stream without authentication, though accessing the feed requires permission.
 
-### RTSP Protocol (Common for CCTV Streaming): `port:554 has_screenshot:true`
+### 3. RTSP Protocol (Common for CCTV Streaming): `port:554 has_screenshot:true`
 - **Purpose:** Targets devices using RTSP (port 554), a protocol for live video streaming, often used by CCTVs. The `has_screenshot:true` filter shows devices with preview images.
 - **Use Case:** Useful for finding cameras that might be streaming publicly, though free accounts can't directly access feeds.
  
   ![](assets/images/20.png)
 
-### Specific CCTV Software (e.g., WebcamXP): `server:webcamxp`
+### 4. Specific CCTV Software (e.g., WebcamXP): `server:webcamxp`
 - **Purpose:** Targets WebcamXP, a popular software for IP cameras on Windows. Many such cameras are misconfigured with default credentials.
 - **Use Case:** During pentesting, you might check if a client's cameras are running outdated or insecure software.
 
-### Hikvision IP Cameras (Common in Surveillance): `product:Hikvision`
+### 5. Hikvision IP Cameras (Common in Surveillance): `product:Hikvision`
 - **Purpose:** Identifies Hikvision cameras, a widely used brand often found in corporate and public surveillance systems.
 - **Use Case:** Assess if Hikvision devices in a target network (with authorization) are vulnerable to known exploits (e.g., CVE-2017-7921).
 
-### Geographically Specific Search (e.g., Melbourne, Australia): `webcamxp geo:-37.81,144.96`
+### 6. Geographically Specific Search (e.g., Melbourne, Australia): `webcamxp geo:-37.81,144.96`
 - **Purpose:** Narrows results to WebcamXP cameras at specific coordinates (here, Melbourne, Australia). Use `geo:latitude,longitude` for precision.
 - **Use Case:** In a scoped pentest, you might target a specific region to reduce noise in results.
 
-### CCTVs with Default Credentials in Banners: `"default password" webcam`
+### 7. CCTVs with Default Credentials in Banners: `"default password" webcam`
 - **Purpose:** Finds cameras with banners indicating default credentials, a common misconfiguration.
 - **Use Case:** Identify high-risk devices for reporting to clients or securing your own systems.
 
@@ -363,31 +363,31 @@ With billions of IoT devices online, Shodan is critical for studying their secur
 
 The metadata extracted from Shodan — IPs, ports, banners, locations, and screenshots — serves as a springboard for actionable steps in a penetration testing workflow. You can integrate and exploit this data ethically and effectively during an authorized engagement:
 
-**1. Initial Reconnaissance and Asset Mapping**
+### 1. Initial Reconnaissance and Asset Mapping
 
 - **Action:** Use a query like `product:Hikvision org:"Client Name"` to identify a client's exposed CCTV systems.
 - **Utilization:** Compile a list of IPs and cross-reference with the client's asset inventory. This reveals unauthorized or forgotten devices, such as a Hikvision camera streaming publicly due to a misconfigured firewall.
 - **Next Step:** Share this with the client to update their asset management, ensuring all systems are accounted for in the VAPT scope.
 
-**2. Vulnerability Assessment**
+### 2. Vulnerability Assessment
 
 - **Action:** Apply `port:27017 product:MongoDB -authentication country:US` to find unauthenticated MongoDB instances.
 - **Utilization:** Note the IPs and banners, then validate with a tool like Nmap (`nmap -sV -p 27017 <IP>`) to confirm the lack of authentication. Check banner versions against vulnerability databases (e.g., NIST NVD) for CVEs like CVE-2015-7882 (MongoDB remote code execution).
 - **Next Step:** Document potential vulnerabilities in a report, recommending patches or access controls, and test exploitation (if authorized) to assess impact.
 
-**3. Penetration Testing**
+### 3. Penetration Testing
 
 - **Action:** Target `port:8291 product:RouterOS version:"6.29" country:BR` to locate vulnerable MikroTik routers.
 - **Utilization:** Extract IP addresses and use Metasploit (use `exploit/windows/http/mikrotik_routeros_cmd`) to simulate CVE-2018-14847 exploitation, confirming remote code execution potential. Cross-check with banner data to ensure version accuracy.
 - **Next Step:** If successful, document the exploit path and suggest firmware updates or network segmentation to mitigate risks.
 
-**4. Threat Intelligence and Reporting**
+### 4. Threat Intelligence and Reporting
 
 - **Action:** Run `port:23 "Login incorrect" country:CN` to detect Telnet devices with default credentials.
 - **Utilization:** Analyze the prevalence of such devices to build a threat profile for a client's region. Manually copy IPs and banners (due to the free account's export limitation) into a spreadsheet for tracking.
 - **Next Step:** Include this in a penetration testing report, highlighting IoT exposure risks and recommending credential changes or Telnet disabling, supported by real-world attack examples (e.g., Mirai botnet).
 
-**5. Continuous Monitoring**
+### 5. Continuous Monitoring
 
 - **Action:** Set up a saved search for `port:80 country:CA after:2025-04-01` to monitor new web servers.
 - **Utilization:** Periodically revisit the query to detect newly exposed systems, using location and organization data to correlate with client networks.
