@@ -100,7 +100,7 @@ city:"New York"
 - **hostname:** Match a specific hostname.
 
 ```
-hostname:nasa.gov
+hostname:megacorpone.com
 ```
 ![](assets/images/21.png)
 
