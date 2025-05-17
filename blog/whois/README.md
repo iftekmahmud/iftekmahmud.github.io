@@ -10,7 +10,15 @@ At its core, WHOIS is a reconnaissance tool that helps gather publicly available
 
 - **Use Case:** Identifying the registrant, administrative, and technical contacts for a domain.
 - **Real-Life Application:** During a pentest, knowing who owns a domain can reveal key personnel, such as IT administrators or security directors, who might be targeted in social engineering attacks. For example, querying `whois megacorpone.com -h <whois-server-ip>` might reveal a contact like "Alan Grofield, IT and Security Director," providing a potential target for phishing or pretexting.
+
+![](assets/images/1.png)
+![](assets/images/2.png)
+![](assets/images/3.png)
+
 - **Tool Usage:** Use the `whois` command-line tool in Kali Linux or online WHOIS lookup services like `whois.domaintools.com` for quick queries.
+
+![](assets/images/4.png)
+
 - **Caveats:** Many organizations use privacy protection services (e.g., WhoisGuard) to mask registrant details, which may limit the data available. However, even anonymized data can reveal the registrar or hosting provider, which can be useful for further investigation.
 
 ### 2. Identifying Name Servers
