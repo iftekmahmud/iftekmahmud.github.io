@@ -46,11 +46,8 @@ As a pentester progresses, WHOIS data becomes a building block for deeper reconn
 - **Use Case:** Performing reverse lookups to identify domains associated with a specific registrant or organization.
 - **Real-Life Application:** If you identify a registrant (e.g., "MegaCorpOne" or "Alan Grofield"), a reverse WHOIS lookup can reveal other domains registered by the same entity. This is particularly useful for identifying related infrastructure, such as staging servers, test environments, or forgotten subdomains that may be less secure. For example, a reverse WHOIS query might uncover `test.megacorpone.com`, which could be a poorly secured development server.
 - **Tool Usage:** Tools like DomainTools or ViewDNS.info offer reverse WHOIS capabilities. On Kali, you can script queries to WHOIS servers or use APIs from services like WhoisXMLAPI for bulk lookups.
-- **Example Command:**
-```
-whois -h whois.radb.net -- '-i origin AS12345'
-```
-This queries for all domains or IPs associated with a specific autonomous system (AS).
+
+![](assets/images/7.png)
 
 ### 2. IP Address and Network Range Enumeration
 
