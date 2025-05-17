@@ -53,6 +53,9 @@ As a pentester progresses, WHOIS data becomes a building block for deeper reconn
 
 - **Use Case:** Performing reverse WHOIS lookups on IP addresses to identify the hosting provider and network range.
 - **Real-Life Application:** Querying an IP (e.g., `whois 38.100.193.70 -h <whois-server>`) might reveal the hosting provider (e.g., PSINet, Inc.) and the network range (e.g., `38.0.0.0/8`). This information helps map the target’s infrastructure, identifying cloud providers or data centers that may have known vulnerabilities or misconfigurations. For instance, if the IP is hosted on AWS, you might explore AWS-specific attack vectors like misconfigured S3 buckets.
+
+![](assets/images/8.png)
+
 - **Tool Usage:** Use whois for IP lookups, supplemented by tools like `nslookup` or `dnsdumpster` to map related IPs and domains.
 - **Caveats:** IP WHOIS data may be less granular due to large network ranges owned by ISPs or cloud providers.
 
@@ -61,6 +64,8 @@ As a pentester progresses, WHOIS data becomes a building block for deeper reconn
 - **Use Case:** Analyzing historical WHOIS records to identify changes in ownership or infrastructure.
 - **Real-Life Application:** Historical WHOIS data can reveal when a domain changed registrars, name servers, or contact details, which might indicate a recent migration or acquisition. Such changes can introduce vulnerabilities, such as outdated configurations or temporary lapses in security. For example, a domain that recently switched name servers might have misconfigured DNS records.
 - **Tool Usage:** Services like Whoisology or DomainTools provide historical WHOIS data. Manual queries over time or scripted monitoring can also track changes.
+
+![](assets/images/9.png)
 
 ## Advanced Exploitation Strategies
 
