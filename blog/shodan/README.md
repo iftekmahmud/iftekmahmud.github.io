@@ -97,6 +97,25 @@ country:US
 city:"New York"
 ```
 
+- **hostname:** Match a specific hostname.
+
+```
+hostname:nasa.gov
+```
+![](assets/images/21.png)
+
+Shodan meticulously compiles a wealth of data, including IP addresses, running services, and detailed banner information, all gathered passively to avoid any direct interaction with the target’s web infrastructure. This non-intrusive approach provides us with a critical snapshot of our target’s internet footprint, offering a foundational view of its exposed attack surface.
+
+For instance, in this scenario Shodan identifies four servers hosting SSH services. We can drill down into these findings by selecting "SSH" under the "Top Ports" section in the left pane.
+
+![](assets/images/22.png)
+
+Based on Shodan’s results, we know exactly which version of OpenSSH is running on each server. If we click on an IP address, we can retrieve a summary of the host.
+
+![](assets/images/23.png)
+
+On this page, we can thoroughly examine the ports, services, and technologies operational on the server, gaining a clear understanding of its exposed components. Shodan further enhances our reconnaissance by highlighting any published vulnerabilities associated with these identified services or technologies on the same host, such as CVEs linked to specific software versions. This intelligence is crucial for prioritizing our approach as we transition to active testing, enabling us to focus on the most critical weaknesses in our pentesting engagement.
+
 - **os:** Filter by operating system.
 
 ```
@@ -137,12 +156,6 @@ before:2023-01-01
 
 ```
 asn:AS15169
-```
-
-- **hostname:** Match a specific hostname.
-
-```
-hostname:nasa.gov
 ```
 
 ### Combining Filters
