@@ -14,6 +14,7 @@ At its core, WHOIS is a reconnaissance tool that helps gather publicly available
 ![](assets/images/1.png)
 ![](assets/images/2.png)
 ![](assets/images/3.png)
+![](assets/images/5.png)
 
 - **Tool Usage:** Use the `whois` command-line tool in Kali Linux or online WHOIS lookup services like `whois.domaintools.com` for quick queries.
 
@@ -24,6 +25,9 @@ At its core, WHOIS is a reconnaissance tool that helps gather publicly available
 ### 2. Identifying Name Servers
 
 - **Use Case:** Discovering the name servers associated with a domain.
+
+![](assets/images/6.png)
+
 - **Real-Life Application:** Name servers (e.g., `NS1.MEGACORPONE.COM`, `NS2.MEGACORPONE.COM`) indicate where a domain’s DNS is hosted. This can guide further DNS enumeration (e.g., using `dig` or `nslookup`) to identify additional subdomains or misconfigured DNS records that could be exploited, such as zone transfer vulnerabilities.
 - **Tool Usage:** Run `whois <domain> -h <whois-server>` to extract name server details and add them to your reconnaissance notes for subsequent DNS-focused attacks.
 
