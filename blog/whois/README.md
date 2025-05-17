@@ -103,5 +103,6 @@ For advanced pentesters, WHOIS data is a springboard for strategic attacks, leve
 - **Monitor for Changes:** Set up alerts for WHOIS record changes using services like DomainTools to detect infrastructure updates during long-term engagements.
 - **Handle Rate Limits:** Some WHOIS servers impose query limits. Use proxy rotation or API-based services to avoid being blocked.
 
-Conclusion
-WHOIS is a versatile tool in penetration testing, offering insights from basic domain reconnaissance to advanced infrastructure mapping and social engineering. For beginners, it provides a low-effort way to gather initial intelligence. For intermediate and advanced pen testers, it serves as a foundation for correlating data, identifying vulnerabilities, and crafting targeted attacks. By integrating WHOIS with other OSINT and enumeration tools, security researchers can uncover critical details about a target’s digital footprint, making it an indispensable part of any VAPT engagement.
+## Conclusion
+
+WHOIS is a versatile tool in penetration testing, offering insights from basic domain reconnaissance to advanced infrastructure mapping and social engineering. For beginners, it provides a low-effort way to gather initial intelligence. For intermediate and advanced pentesters, it serves as a foundation for correlating data, identifying vulnerabilities, and crafting targeted attacks. By integrating WHOIS with other OSINT and enumeration tools, security researchers can uncover critical details about a target’s digital footprint, making it an indispensable part of any VAPT engagement.
