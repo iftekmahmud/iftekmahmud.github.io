@@ -28,8 +28,6 @@ This query returns all indexed pages for `example.com`. For a penetration test, 
 
 The `filetype:` (or `ext:`) operator filters results to specific file extensions, such as `pdf`, `txt`, or `php`. This is particularly useful for finding exposed configuration files or sensitive documents.
 
-Example:
-
 ```
 site:example.com filetype:pdf
 ```
@@ -43,3 +41,23 @@ We received an interesting result. Our query found the robots.txt file, containi
 ![](assets/images/3.png)
 
 The robots.txt file instructs web crawlers, such as Google’s search engine crawler, to allow or disallow specific resources. In this case, it revealed a specific PHP page (/nanities.php) that was otherwise hidden from the regular search, despite being listed as allowed by the policy.
+
+### 3. The `inurl:` Operator
+
+The `inurl:` operator searches for specific strings within URLs. This is ideal for identifying login pages, admin panels, or specific scripts.
+
+```
+site:example.com inurl:login
+```
+
+This query finds pages on example.com with “login” in the URL, potentially revealing authentication portals.
+
+### 4. The `intitle:` Operator
+
+The `intitle:` operator searches for pages with specific words in their titles. This is useful for finding directory listings or specific page types.
+
+```
+intitle:"index of" site:example.com
+```
+
+This query looks for directory listings on `example.com`, which may expose files or directories not intended for public access.
