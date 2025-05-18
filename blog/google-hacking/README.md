@@ -114,13 +114,13 @@ For advanced practitioners, the Google Hacking Database (GHDB), maintained by Ex
 
 ![](assets/images/8.png)
 
-GHDB Query for Exposed Webcams
+### GHDB Query for Exposed Webcams
 
 ```
 intitle:"webcamXP" inurl:8080
 ```
 
-![](assets/images/8.png)
+![](assets/images/9.png)
 
 This query finds webcams running webcamXP software, often misconfigured and accessible without authentication.
 
