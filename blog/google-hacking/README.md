@@ -22,6 +22,8 @@ site:example.com
 
 This query returns all indexed pages for `example.com`. For a penetration test, this helps you understand the target’s web footprint, including subdomains or forgotten microsites.
 
+![](assets/images/1.png)
+
 ### 2. The `filetype:` Operator
 
 The `filetype:` (or `ext:`) operator filters results to specific file extensions, such as `pdf`, `txt`, or `php`. This is particularly useful for finding exposed configuration files or sensitive documents.
@@ -33,3 +35,11 @@ site:example.com filetype:pdf
 ```
 
 This query finds all PDF files indexed on `example.com`. PDFs often contain sensitive information like employee handbooks, network diagrams, or financial reports.
+
+![](assets/images/2.png)
+
+We received an interesting result. Our query found the robots.txt file, containing the following content.
+
+![](assets/images/3.png)
+
+The robots.txt file instructs web crawlers, such as Google’s search engine crawler, to allow or disallow specific resources. In this case, it revealed a specific PHP page (/nanities.php) that was otherwise hidden from the regular search, despite being listed as allowed by the policy.
