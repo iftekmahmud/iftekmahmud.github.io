@@ -102,8 +102,32 @@ This query targets subdomains of `example.com` with admin-related terms in the U
 site:example.com intitle:"index of" "parent directory"
 ```
 
-This query finds directory listings that include "parent directory" links, indicating open directories without index pages.
-
 ![](assets/images/6.png)
 
+This query finds directory listings that include "parent directory" links, indicating open directories without index pages.
 
+![](assets/images/7.png)
+
+## Leveraging the Google Hacking Database (GHDB)
+
+For advanced practitioners, the Google Hacking Database (GHDB), maintained by Exploit-DB, is a treasure trove of pre-built dorks. These queries are designed to uncover specific vulnerabilities, such as exposed cameras, IoT devices, or error messages leaking sensitive information.
+
+![](assets/images/8.png)
+
+GHDB Query for Exposed Webcams
+
+```
+intitle:"webcamXP" inurl:8080
+```
+
+![](assets/images/8.png)
+
+This query finds webcams running webcamXP software, often misconfigured and accessible without authentication.
+
+## Iterative Refinement
+
+Advanced Google Hacking involves iteratively refining queries based on initial results. For example:
+
+- Start with `site:example.com filetype:txt` to find text files.
+- Analyze results for interesting files (e.g., `robots.txt` or `sitemap.xml`).
+- Refine with `site:example.com inurl:backup filetype:sql` to target specific assets like database backups.
