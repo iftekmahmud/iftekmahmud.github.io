@@ -62,6 +62,8 @@ intitle:"index of" site:example.com
 
 This query looks for directory listings on `example.com`, which may expose files or directories not intended for public access.
 
+![](assets/images/5.png)
+
 ### 5. The Exclusion Operator (`-`)
 
 The `-` operator excludes specific terms from results, helping to filter out noise.
@@ -73,3 +75,35 @@ site:example.com -filetype:html
 This query returns non-HTML pages on `example.com`, such as configuration files or scripts.
 
 ![](assets/images/4.png)
+
+## Combining Operators
+
+Once you’re comfortable with basic operators, combining them unlocks more powerful queries. The goal is to narrow results to the most relevant and potentially exploitable assets.
+
+### Finding Exposed Configuration Files
+
+```
+site:example.com filetype:conf inurl:config
+```
+
+This query searches for configuration files (e.g., `.conf` files) with "config" in the URL. These files often contain sensitive settings like database credentials or API tokens.
+
+### Discovering Exposed Admin Panels
+
+```
+site:*.example.com inurl:(admin | login | dashboard) -inurl:(signup | register)
+```
+
+This query targets subdomains of `example.com` with admin-related terms in the URL, excluding signup or registration pages to reduce false positives.
+
+### Uncovering Directory Listings
+
+```
+site:example.com intitle:"index of" "parent directory"
+```
+
+This query finds directory listings that include "parent directory" links, indicating open directories without index pages.
+
+![](assets/images/6.png)
+
+
