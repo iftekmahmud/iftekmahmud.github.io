@@ -61,3 +61,15 @@ intitle:"index of" site:example.com
 ```
 
 This query looks for directory listings on `example.com`, which may expose files or directories not intended for public access.
+
+### 5. The Exclusion Operator (`-`)
+
+The `-` operator excludes specific terms from results, helping to filter out noise.
+
+```
+site:example.com -filetype:html
+```
+
+This query returns non-HTML pages on `example.com`, such as configuration files or scripts.
+
+![](assets/images/4.png)
