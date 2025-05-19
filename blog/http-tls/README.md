@@ -69,7 +69,7 @@ SSL/TLS secures data in transit, and its configuration is a cornerstone of serve
 ### Running an SSL/TLS Scan
 
 1. **Access SSL Labs:** Go to ssllabs.com/ssltest.
-2. **Input the Target:** Enter www.megacorpone.com and run the scan.
+2. **Input the Target:** Enter `www.megacorpone.com` and run the scan.
 3. **Analyze the Report:** The tool assigns a grade (A+ to F) based on protocol support, cipher suites, and vulnerabilities.
 
 For example, a server supporting TLS 1.0 and weak ciphers like `TLS_DHE_RSA_WITH_AES_256_CBC_SHA` might receive a B or C grade, indicating outdated practices.
@@ -87,7 +87,7 @@ If the scan reveals support for TLS 1.0 or 1.1, the server is using legacy proto
 For advanced researchers, dive into the Qualys report details:
 
 - **Cipher Suite Analysis:** Cross-reference supported suites with resources like the Mozilla SSL Configuration Generator to identify outdated or insecure ciphers.
-- **Certificate Chain Issues:** Verify the certificate chain for missing intermediates or weak signatures (e.g., SHA-1). Use tools like openssl to manually inspect certificates:
+- **Certificate Chain Issues:** Verify the certificate chain for missing intermediates or weak signatures (e.g., SHA-1). Use tools like `openssl` to manually inspect certificates:
 
 ![](assets/images/4.png)
 
