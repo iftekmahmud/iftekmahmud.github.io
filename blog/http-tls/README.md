@@ -21,18 +21,26 @@ HTTP security headers are server responses included in HTTP replies to instruct 
 - **Referrer-Policy:** Controls how much referrer information is sent with requests, protecting user privacy.
 - **Permissions-Policy:** Restricts access to powerful browser features like geolocation or camera.
 
-Using Security Headers for Analysis
+## Using Security Headers for Analysis
+
 The Security Headers tool scans a target website and assigns a grade (A to F) based on the presence and configuration of these headers. Let's walk through a practical example.
-Beginner Steps: Scanning a Website
 
-Visit Security Headers: Navigate to securityheaders.com.
-Enter the Target URL: For this example, let's use www.example.com.
-Review the Results: The tool provides a grade and details missing or misconfigured headers.
+### Scanning a Website
 
-For instance, if www.example.com lacks Content-Security-Policy and X-Frame-Options, it might receive a low grade (e.g., D or F). This suggests the server is not hardened against common attacks, potentially indicating broader security weaknesses.
-Intermediate Insights: Interpreting Results
-A missing Content-Security-Policy could allow attackers to inject malicious scripts, while the absence of X-Frame-Options might enable clickjacking attacks. These findings don't necessarily indicate exploitable vulnerabilities but suggest that developers may not follow server hardening best practices, as outlined in resources like NIST SP 800-123. You can use this information to hypothesize about the organization's overall security maturity.
-Advanced Techniques: Manual Header Inspection
+1. **Visit Security Headers:** Navigate to securityheaders.com.
+2. **Enter the Target URL:** For this example, let's use `www.megacorpone.com`.
+3. **Review the Results:** The tool provides a grade and details missing or misconfigured headers.
+
+![](assets/images/1.png)
+
+For instance, if `www.megacorpone.com` lacks `Content-Security-Policy` and `X-Frame-Options`, it might receive a low grade (e.g., D or F). This suggests the server is not hardened against common attacks, potentially indicating broader security weaknesses.
+
+## Interpreting Results
+
+A missing `Content-Security-Policy` could allow attackers to inject malicious scripts, while the absence of `X-Frame-Options` might enable clickjacking attacks. These findings don't necessarily indicate exploitable vulnerabilities but suggest that developers may not follow server hardening best practices, as outlined in resources like NIST SP 800-123. You can use this information to hypothesize about the organization's overall security maturity.
+
+## Advanced Manual Header Inspection Techniques
+
 For deeper analysis, manually inspect headers using browser developer tools or curl:
 curl -I https://www.example.com
 
@@ -42,7 +50,8 @@ Content-Type: text/html; charset=UTF-8
 X-Frame-Options: DENY
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-If critical headers are missing, consider whether the site is vulnerable to specific attacks. For example, without X-Frame-Options, test for clickjacking by embedding the site in an iframe locally. Advanced researchers can also check for header misconfigurations, such as overly permissive CSP directives (e.g., script-src 'unsafe-inline').
+If critical headers are missing, consider whether the site is vulnerable to specific attacks. For example, without `X-Frame-Options`, test for clickjacking by embedding the site in an iframe locally. Advanced researchers can also check for header misconfigurations, such as overly permissive CSP directives (e.g., `script-src 'unsafe-inline'`).
+
 Evaluating SSL/TLS Configurations
 SSL/TLS secures data in transit, and its configuration is a cornerstone of server security. Misconfigured SSL/TLS settings can expose websites to attacks like POODLE or Heartbleed. The Qualys SSL Labs SSL Server Test is a powerful tool for assessing a server's SSL/TLS setup against industry best practices.
 Key SSL/TLS Components to Analyze
