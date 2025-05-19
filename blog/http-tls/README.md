@@ -35,7 +35,7 @@ For instance, if `www.megacorpone.com` lacks `Content-Security-Policy` and `X-Fr
 
 ![](assets/images/1.png)
 
-Using Security Headers, suppose we find:
+Using Security Headers, we find:
 
 - Missing `Content-Security-Policy` and `X-Frame-Options`.
 
@@ -76,7 +76,7 @@ For example, a server supporting TLS 1.0 and weak ciphers like `TLS_DHE_RSA_WITH
 
 ![](assets/images/3.png)
 
-A Qualys SSL Labs scan reveal no major vulnerabilities like Heartbleed.
+The Qualys SSL Labs scan reveals no major vulnerabilities like Heartbleed.
 
 ### Understanding Weaknesses
 
