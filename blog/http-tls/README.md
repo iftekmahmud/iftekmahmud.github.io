@@ -82,12 +82,13 @@ The Qualys SSL Labs scan reveals no major vulnerabilities like Heartbleed.
 
 If the scan reveals support for TLS 1.0 or 1.1, the server is using legacy protocols with known vulnerabilities. For instance, TLS 1.0 is susceptible to attacks like BEAST. Similarly, cipher suites using SHA-1 or CBC mode are considered insecure due to cryptographic weaknesses. These findings suggest the organization may not regularly update its SSL/TLS configurations, a red flag for security researchers.
 
-## Advanced Deep-Dive AnalysisTechniques
+## Advanced Deep-Dive Analysis Techniques
 
 For advanced researchers, dive into the Qualys report details:
 
 - **Cipher Suite Analysis:** Cross-reference supported suites with resources like the Mozilla SSL Configuration Generator to identify outdated or insecure ciphers.
-- **Certificate Chain Issues:** Verify the certificate chain for missing intermediates or weak signatures (e.g., SHA-1). Use tools like `openssl` to manually inspect certificates:
+- **Certificate Chain Issues:** Verify the certificate chain for missing intermediates or weak signatures (e.g., SHA-1).
+- Use tools like `openssl` to manually inspect certificates:
 
 ![](assets/images/4.png)
 
