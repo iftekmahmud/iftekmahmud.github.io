@@ -204,6 +204,8 @@ Once the scan completes, Nessus provides a detailed results dashboard for analyz
   - **Description:** Explains the vulnerability (e.g., outdated Canonical Ubuntu Linux version).
   - **Risk Information:** Includes Risk Factor and CVSS score.
   - **Solution:** Provides mitigation strategies, such as upgrading to a version of Canonical Ubuntu Linux that is currently supported.
+  - **References:** Links to CVE entries or vendor advisories.
+  - **Exploit Status:** Indicates if exploits are available, which is common for Metasploitable vulnerabilities.
 
 3. **VPR (Vulnerability Priority Rating) Top Threats:**
 
@@ -272,13 +274,21 @@ Metasploitable 2’s default credentials simplify authenticated scanning, but en
 ### Analyzing Authenticated Scan Results
 
 - Navigate to the **Vulnerabilities** tab after the scan completes.
+
+![](assets/images/28.png)
+
 - Disable grouped results for clarity:
   - Click the settings wheel and select **Disable Groups**.
+
+![](assets/images/29.png)
+
 - Review findings, such as vulnerabilities from the **Ubuntu Local Security Checks** plugin family, which may identify outdated software like Samba or vsftpd on Metasploitable 2.
 - Each finding includes:
   - **Severity:** E.g., High, Medium.
   - **Description:** Details the vulnerability and affected software version.
   - **Patch Information:** Specifies the patch or update required.
+
+![](assets/images/30.png)
 
 **Note:** Authenticated scans generate system noise (e.g., log entries). In a lab like Metasploitable 2, this is not an issue, but coordinate with system owners in production environments.
 
