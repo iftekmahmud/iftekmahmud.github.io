@@ -32,7 +32,7 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 - Visit the Tenable downloads page.
 - Select **Linux - Debian - amd64** as the platform and download the `.deb` installer (e.g., Nessus-10.8.4-debian10_amd64.deb).
 
-[](assets/images/1.png)
+![](assets/images/1.png)
 
 - Copy the provided SHA256 checksum for verification.
 
