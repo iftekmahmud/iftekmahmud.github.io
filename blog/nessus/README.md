@@ -336,14 +336,15 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
 ![](assets/images/35.png)
 
 - To find the Plugin ID, click on the plugin name (e.g., **"GNU Bash Environment Variable Handling Code Injection (Shellshock)"**) to open its detailed view.
+
+![](assets/images/39.png)
+
 - In the detailed view, you’ll see:
   - **Plugin Name:** GNU Bash Environment Variable Handling Code Injection (Shellshock).
   - **Plugin ID:** 77829 (confirmed for this version).
   - **Description:** Details the Shellshock vulnerability affecting Bash.
   - **Solution:** Apply the patch for CVE-2014-6271.
   - **Type:** remote, indicating a non-authenticated check.
-
-![](assets/images/39.png)
 
 6. **Launch the Scan**
 
@@ -353,11 +354,16 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
 
 - After the scan completes, navigate to the **Vulnerabilities** tab.
 - Check for a **CRITICAL** severity finding confirming CVE-2014-6271, associated with Plugin ID 77829.
+
+![](assets/images/38.png)
+
 - The plugin output includes evidence of an active exploitation attempt:
 
-![](assets/images/40.png)
+![](assets/images/37.png)
 
 ### Analysis of the Output
+
+![](assets/images/40.png)
 
 - "Nessus was able to set the TERM environment variable used in an SSH connection to: `() { :;}; /usr/bin/id > /tmp/nessus.1747917619`"
   - This is a crafted environment variable that exploits the Shellshock vulnerability. The `() { :;};` syntax is a malicious function definition, followed by a command (`/usr/bin/id > /tmp/nessus.1747917619`) that executes the `id` command and redirects its output to a file (`/tmp/nessus.1747917619`). 
