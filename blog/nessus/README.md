@@ -269,48 +269,20 @@ Metasploitable 2’s default credentials simplify authenticated scanning, but en
 
 - Click the arrow next to **Save** and select **Launch**.
 
+### Analyzing Authenticated Scan Results
 
-Analyzing Authenticated Scan Results
+- Navigate to the **Vulnerabilities** tab after the scan completes.
+- Disable grouped results for clarity:
+  - Click the settings wheel and select **Disable Groups**.
+- Review findings, such as vulnerabilities from the **Ubuntu Local Security Checks** plugin family, which may identify outdated software like Samba or vsftpd on Metasploitable 2.
+- Each finding includes:
+  - **Severity:** E.g., High, Medium.
+  - **Description:** Details the vulnerability and affected software version.
+  - **Patch Information:** Specifies the patch or update required.
 
-
-
-
-
-Navigate to the Vulnerabilities tab after the scan completes.
-
-
-
-Disable grouped results for clarity:
-
-
+**Note:** Authenticated scans generate system noise (e.g., log entries). In a lab like Metasploitable 2, this is not an issue, but coordinate with system owners in production environments.
 
 
-
-Click the settings wheel and select Disable Groups.
-
-
-
-Review findings, such as vulnerabilities from the Ubuntu Local Security Checks plugin family, which may identify outdated software like Samba or vsftpd on Metasploitable 2.
-
-
-
-Each finding includes:
-
-
-
-
-
-Severity: E.g., High, Medium.
-
-
-
-Description: Details the vulnerability and affected software version.
-
-
-
-Patch Information: Specifies the patch or update required.
-
-Security Note: Authenticated scans generate system noise (e.g., log entries). In a lab like Metasploitable 2, this is not an issue, but coordinate with system owners in production environments.
 7. Working with Nessus Plugins
 For advanced users, Nessus’s plugin system allows precise vulnerability detection. Let’s configure a scan to check for CVE-2021-3156, a privilege escalation vulnerability in sudo, using the Advanced Dynamic Scan template.
 Step-by-Step Plugin Configuration
