@@ -134,33 +134,49 @@ Let’s perform an unauthenticated vulnerability scan on Metasploitable 2 using 
 - From the **Scans** tab, click **New Scan**.
 - Select **Basic Network Scan**.
 
+![](assets/images/12.png)
+
 2. **Configure Basic Settings:**
 
 - **Name:** Enter a descriptive name, e.g., `Metasploitable Scan`.
 - **Targets:** Specify the IP address of your Metasploitable 2 VM (e.g., `192.168.19.128`). Nessus supports single IPs, ranges, or FQDNs.
 
+![](assets/images/13.png)
+
 3. **Customize Discovery Settings:**
 
 - Navigate to the **Discovery** tab and select **Custom** from the dropdown.
+
+![](assets/images/14.png)
+
 - In the **Port Scanning** section, set **Port scan range** to **80,443** to focus on web ports, as Metasploitable 2 hosts vulnerable web services like Apache.
+
+![](assets/images/15.png)
+
 - Enable **Consider unscanned ports as closed** to treat all other ports as closed.
+
+![](assets/images/15.png)
+
 - Disable **Host Discovery** by toggling **Ping the remote host** to **Off**, since you’ve confirmed the VM is live.
 
+![](assets/images/16.png)
 
-Review Other Settings:
+4. **Review Other Settings:**
 
-The Assessment, Report, and Advanced tabs contain default settings suitable for most scans. For now, leave them unchanged.
-Note that this scan is unauthenticated (no credentials provided), which may limit visibility into system-level vulnerabilities.
+- The **Assessment**, **Report**, and **Advanced** tabs contain default settings suitable for most scans. For now, leave them unchanged.
+- Note that this scan is unauthenticated (no credentials provided), which may limit visibility into system-level vulnerabilities.
 
+5. **Launch the Scan:**
 
-Launch the Scan:
+- Click the arrow next to **Save** and select **Launch**.
 
-Click the arrow next to Save and select Launch.
-The scan status will appear as Running in the My Scans dashboard. You can pause or stop it if needed.
+![](assets/images/17.png)
 
+- The scan status will appear as **Running** in the **My Scans** dashboard. You can pause or stop it if needed.
 
+![](assets/images/18.png)
 
-Security Note: Unauthenticated scans generate significant network traffic and may be detected by intrusion detection systems. Use them cautiously in production environments.
+**Note:** Unauthenticated scans generate significant network traffic and may be detected by intrusion detection systems. In a lab like Metasploitable 2, this is not a concern, but exercise caution in production environments.
 
 5. Analyzing Scan Results
 Once the scan completes, Nessus provides a detailed results dashboard for analysis.
