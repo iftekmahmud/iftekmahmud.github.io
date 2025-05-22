@@ -217,7 +217,7 @@ The History tab logs all scans run with this configuration, useful for tracking 
 
 ### Generating a Report
 
-![](assets/images/23.png)
+![](assets/images/24.png)
 
 - From the results dashboard, click Report.
 - Select the Detailed Vulnerabilities By Host template and choose PDF as the format.
@@ -236,10 +236,14 @@ AAuthenticated scans provide deeper insights by accessing Metasploitable 2’s i
 
 - Click **New Scan** and select **Credentialed Patch Audit**. This template focuses on local security checks, ideal for authenticated scans.
 
+![](assets/images/25.png)
+
 2. **Configure Basic Settings:**
 
 - **Name:** `Metasploitable Authenticated Scan`.
 - **Target:** Enter the IP address of Metasploitable 2 (e.g., `192.168.19.128`).
+
+![](assets/images/26.png)
 
 3. **Add Credentials:**
 
@@ -251,6 +255,8 @@ AAuthenticated scans provide deeper insights by accessing Metasploitable 2’s i
   - Elevate privileges with: `sudo`
   - Sudo user: `root`
   - Sudo password: `msfadmin`
+
+![](assets/images/27.png)
 
 Metasploitable 2’s default credentials simplify authenticated scanning, but ensure they match your VM’s configuration.
 
