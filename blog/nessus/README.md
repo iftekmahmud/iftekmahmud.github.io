@@ -178,25 +178,33 @@ Let’s perform an unauthenticated vulnerability scan on Metasploitable 2 using 
 
 **Note:** Unauthenticated scans generate significant network traffic and may be detected by intrusion detection systems. In a lab like Metasploitable 2, this is not a concern, but exercise caution in production environments.
 
-5. Analyzing Scan Results
-Once the scan completes, Nessus provides a detailed results dashboard for analysis.
-Navigating the Results
+## 6. Analyzing Scan Results
 
-Hosts Page:
+OOnce the scan completes, Nessus provides a detailed results dashboard for analyzing Metasploitable 2’s vulnerabilities.
 
-Click on the scan in the My Scans list to view the Hosts page.
-This page lists all scanned hosts with a visual representation of vulnerabilities by severity (Critical, High, Medium, Low, Info).
-Example: For host 192.168.50.124, you might see three findings under MIXED severity.
+![](assets/images/19.png)
 
+### Navigating the Results
 
-Vulnerabilities Page:
+1. **Hosts Page:**
 
-Click on a host to view its vulnerabilities. For instance, selecting 192.168.50.124 may reveal grouped findings like Apache Httpd (Multiple Issues).
-Drill down into a finding (e.g., Apache 2.4.49 < 2.4.51 Path Traversal Vulnerability) for details, including:
-Description: Explains the vulnerability.
-Risk Information: Includes CVSS score and VPR (Vulnerability Priority Rating).
-References: Links to CVE entries or vendor advisories.
-Exploit Status: Indicates if exploits are available.
+- Click on the scan in the **My Scans** list to view the **Hosts** page.
+- This page lists the Metasploitable 2 host (e.g., `192.168.19.128`) with a visual representation of vulnerabilities by severity (Critical, High, Medium, Low, Info).
+- You might see multiple findings due to Metasploitable’s outdated Apache and other services.
+
+![](assets/images/19.png)
+
+2. **Vulnerabilities Page:**
+
+- Click on the Metasploitable IP to view its vulnerabilities. You may find grouped findings like **Apache Httpd (Multiple Issues)** in the Web Servers family.
+
+![](assets/images/20.png)
+
+- Drill down into a finding (e.g., Apache 2.2.8 Vulnerable Version) for details, including:
+  - Description: Explains the vulnerability (e.g., outdated Apache version).
+  - Risk Information: Includes CVSS score and VPR (Vulnerability Priority Rating).
+  - References: Links to CVE entries or vendor advisories.
+  - Exploit Status: Indicates if exploits are available, which is common for Metasploitable vulnerabilities.
 
 
 
