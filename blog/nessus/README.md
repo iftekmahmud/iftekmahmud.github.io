@@ -294,21 +294,27 @@ Metasploitable 2’s default credentials simplify authenticated scanning, but en
 
 ## 8. Working with Nessus Plugins
 
-For advanced users, Nessus’s plugin system allows precise vulnerability detection. Let’s configure a scan to check for CVE-2014-6271 (Shellshock), a known vulnerability in Bash on Metasploitable 2.
+For advanced users, Nessus’s plugin system allows precise vulnerability detection. Let’s configure a scan to check for **CVE-2014-6271** (Shellshock), a known vulnerability in Bash on Metasploitable 2.
 
 ### Plugin Configuration
 
 1. **Create a New Scan:**
-- Click New Scan and select Advanced Dynamic Scan.
+- Click **New Scan** and select **Advanced Dynamic Scan**.
+
+![](assets/images/31.png)
 
 2. **Configure Basic Settings:**
 
 - Name: **Shellshock Scan**.
 - Target: **192.168.19.128** (Metasploitable 2).
 
+![](assets/images/32.png)
+
 3. **Add Credentials:**
 
 - Use the same SSH credentials (`msfadmin:msfadmin`) as in the authenticated scan.
+
+![](assets/images/33.png)
 
 4. **Configure Dynamic Plugin Filter:**
 
@@ -317,28 +323,49 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
   - **Left Dropdown:** Select **CVE**.
   - **Middle Dropdown:** Choose **is equal to**.
   - **Right Dropdown:** Enter **CVE-2014-6271**.
+
+![](assets/images/34.png)
+
 - Click **Preview Plugins** to list matching plugins (this may take a few minutes).
-- Add a second filter for precision:
-  - Click the **plus** button to add a new filter.
-  - **Left Dropdown:** Select **Plugin Family**.
-  - **Right Dropdown:** Choose **CGI abuses**.
-- Click **Preview Plugins** again to refine the list.
 
 5. **Review Plugin Details:**
 
-- Select the CGI abuses plugin family from the dropdown.
-- Click on the plugin (e.g., Plugin ID for Shellshock) for details, including affected Bash versions and remediation steps.
+- Select the **CGI abuses** plugin family from the dropdown.
+- The preview list will show plugins matching your filters, such as **"GNU Bash Environment Variable Handling Code Injection (Shellshock)"** in the **CGI abuses** family.
 
-6. **Launch the Scan:**
-- Click the arrow next to Save and select Launch.
+![](assets/images/35.png)
+
+- To find the Plugin ID, click on the plugin name (e.g., **"GNU Bash Environment Variable Handling Code Injection (Shellshock)"**) to open its detailed view.
+- In the detailed view, you’ll see:
+  - **Plugin Name:** GNU Bash Environment Variable Handling Code Injection (Shellshock).
+  - **Plugin ID:** 77829 (confirmed for this version).
+  - **Description:** Details the Shellshock vulnerability affecting Bash.
+  - **Solution:** Apply the patch for CVE-2014-6271.
+  - **Type:** remote, indicating a non-authenticated check.
+
+![](assets/images/39.png)
+
+6. **Launch the Scan**
+
+![](assets/images/36.png)
 
 7. **Analyze Results:**
 
 - After the scan completes, navigate to the **Vulnerabilities** tab.
-- Check for a **CRITICAL** severity finding confirming CVE-2014-6271.
-- Review the plugin output, which may note that Nessus detected the vulnerability based on version checks without attempting exploitation.
+- Check for a **CRITICAL** severity finding confirming CVE-2014-6271, associated with Plugin ID 77829.
+- The plugin output may include evidence of an active exploitation attempt, such as:
+
+![](assets/images/40.png)
+
+- This indicates Nessus actively exploited the vulnerability by injecting a malicious environment variable and executing the `id` command, confirming Metasploitable 2’s susceptibility to Shellshock.
+
+**Note:** This active test goes beyond version checks, providing definitive proof of exploitability.
 
 **Advanced Tip:** Combine multiple filters (e.g., CVE and Plugin Family) to reduce scan time and focus on specific vulnerabilities. Manually verify critical findings, as Metasploitable 2’s vulnerabilities are often exploitable with tools like Metasploit.
+
+
+
+
 
 
 
