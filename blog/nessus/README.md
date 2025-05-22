@@ -67,24 +67,20 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 
 ![](assets/images/6.png)
 
+5. **Access the Nessus Web Interface:**
 
-Access the Nessus Web Interface:
+- Open a browser and navigate to `https://127.0.0.1:8834`.
+- You’ll encounter a certificate warning due to Nessus using a self-signed certificate. Click **Advanced** and **Accept the Risk and Continue**.
 
-Open a browser and navigate to https://127.0.0.1:8834.
-You’ll encounter a certificate warning due to Nessus using a self-signed certificate. Click Advanced and Accept the Risk and Continue.
+6. **Activate Nessus:**
 
+- Select **Nessus Essentials** and click **Continue**.
+- Register with your email to receive an activation code.
+- Enter the activation code to proceed.
+- Create a local Nessus user account (e.g., username: `admin`, with a strong password).
+- Nessus will download and compile plugins, which may take several minutes.
 
-Activate Nessus:
-
-Select Nessus Essentials and click Continue.
-Register with your email to receive an activation code.
-Enter the activation code to proceed.
-Create a local Nessus user account (e.g., username: admin, with a strong password).
-Nessus will download and compile plugins, which may take several minutes.
-
-
-
-Pro Tip: Always verify the installer’s checksum to prevent installing compromised software. If you encounter issues, ensure your Kali VM has sufficient resources and an active internet connection.
+**Pro Tip:** Always verify the installer’s checksum to prevent installing compromised software. If you encounter issues, ensure your Kali VM has sufficient resources and an active internet connection.
 
 3. Understanding Nessus Components
 Before diving into scanning, let’s explore Nessus’s core components, which are critical for effective use.
