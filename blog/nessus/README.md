@@ -180,7 +180,7 @@ Let’s perform an unauthenticated vulnerability scan on Metasploitable 2 using 
 
 ## 6. Analyzing Scan Results
 
-OOnce the scan completes, Nessus provides a detailed results dashboard for analyzing Metasploitable 2’s vulnerabilities.
+Once the scan completes, Nessus provides a detailed results dashboard for analyzing Metasploitable 2’s vulnerabilities.
 
 ![](assets/images/19.png)
 
@@ -226,66 +226,85 @@ The History tab logs all scans run with this configuration, useful for tracking 
 
 **Pro Tip:** Regularly review the Audit Trail feature to understand plugin behavior and reduce false negatives, especially in complex environments.
 
-6. Performing an Authenticated Vulnerability Scan
-Authenticated scans provide deeper insights by accessing system internals, reducing false positives, and identifying issues like missing patches or outdated software. Let’s configure an authenticated scan against a Linux target named DESKTOP.
-Step-by-Step Configuration
+## 7. Performing an Authenticated Vulnerability Scan
 
-Create a New Scan:
+AAuthenticated scans provide deeper insights by accessing Metasploitable 2’s internals, reducing false positives, and identifying issues like missing patches or outdated software.
 
-Click New Scan and select Credentialed Patch Audit. This template focuses on local security checks, ideal for authenticated scans.
+### Configuration
 
+1. **Create a New Scan:**
 
-Configure Basic Settings:
+- Click **New Scan** and select **Credentialed Patch Audit**. This template focuses on local security checks, ideal for authenticated scans.
 
-Name: Authenticated Scan - DESKTOP.
-Target: Enter the IP address of DESKTOP (e.g., 192.168.50.128).
+2. **Configure Basic Settings:**
 
+- **Name:** `Metasploitable Authenticated Scan`.
+- **Target:** Enter the IP address of Metasploitable 2 (e.g., `192.168.19.128`).
 
-Add Credentials:
+3. **Add Credentials:**
 
-Navigate to the Credentials tab and select SSH under the Host category.
-Set Authentication method to password.
-Enter:
-Username: offsec
-Password: lab
-Elevate privileges with: sudo
-Sudo user: root
-Sudo password: lab
+- Navigate to the **Credentials** tab and select **SSH** under the **Host** category.
+- Set **Authentication method** to **password**.
+- Enter:
+  - Username: `msfadmin`
+  - Password: `msfadmin`
+  - Elevate privileges with: `sudo`
+  - Sudo user: `root`
+  - Sudo password: `msfadmin`
 
+Metasploitable 2’s default credentials simplify authenticated scanning, but ensure they match your VM’s configuration.
 
-For Windows targets, use SMB or WMI credentials, ensuring compatibility with the target’s configuration.
+4. **Consider Environmental Factors:**
 
+- Metasploitable 2 lacks antivirus or strict firewalls, so no additional configuration is needed.
+- In real-world scenarios, ensure no firewall blocks the scanner and check for antivirus interference.
 
-Consider Environmental Factors:
+5. **Launch the Scan:**
 
-Ensure no firewall blocks the scanner’s connection.
-Check for antivirus (AV) interference. Add an exception for Nessus or temporarily disable AV, if possible.
-For Windows, configure User Account Control (UAC) to allow Nessus or disable it temporarily (consult Tenable’s documentation).
-
-
-Launch the Scan:
-
-Click the arrow next to Save and select Launch.
-
+- Click the arrow next to **Save** and select **Launch**.
 
 
 Analyzing Authenticated Scan Results
 
+
+
+
+
 Navigate to the Vulnerabilities tab after the scan completes.
+
+
+
 Disable grouped results for clarity:
+
+
+
+
+
 Click the settings wheel and select Disable Groups.
 
 
-Review findings, such as vulnerabilities from the Ubuntu Local Security Checks plugin family, which may identify outdated software like Firefox or cURL.
+
+Review findings, such as vulnerabilities from the Ubuntu Local Security Checks plugin family, which may identify outdated software like Samba or vsftpd on Metasploitable 2.
+
+
+
 Each finding includes:
+
+
+
+
+
 Severity: E.g., High, Medium.
+
+
+
 Description: Details the vulnerability and affected software version.
+
+
+
 Patch Information: Specifies the patch or update required.
 
-
-
-Security Note: Authenticated scans generate significant system and network noise (e.g., log entries, AV alerts). Use them judiciously and ensure proper permissions in real-world engagements.
-
+Security Note: Authenticated scans generate system noise (e.g., log entries). In a lab like Metasploitable 2, this is not an issue, but coordinate with system owners in production environments.
 7. Working with Nessus Plugins
 For advanced users, Nessus’s plugin system allows precise vulnerability detection. Let’s configure a scan to check for CVE-2021-3156, a privilege escalation vulnerability in sudo, using the Advanced Dynamic Scan template.
 Step-by-Step Plugin Configuration
