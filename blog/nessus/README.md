@@ -31,6 +31,9 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 
 - Visit the Tenable downloads page.
 - Select **Linux - Debian - amd64** as the platform and download the `.deb` installer (e.g., Nessus-10.8.4-debian10_amd64.deb).
+
+![](assets/images/1.png)
+
 - Copy the provided SHA256 checksum for verification.
 
 2. **Verify the Installer:**
@@ -38,30 +41,31 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 - Navigate to the download directory.
 - Create a checksum file with the copied SHA256 value and the filename:
 
-![](assets/images/1.png)
+![](assets/images/2.png)
 
 - Verify the checksum
 
-![](assets/images/2.png)
+![](assets/images/3.png)
 
 - Expected output: `Nessus-10.8.4-debian10_amd64.deb: OK`. If the checksum does not match, re-download the installer to ensure integrity.
 
-Install Nessus:
+3. **Install Nessus:**
 
-Install the .deb package using apt:sudo apt install ./Nessus-10.5.0-debian10_amd64.deb
+- Install the `.deb` package using `apt`:
 
+![](assets/images/4.png)
 
-The installation process will unpack and configure Nessus core components.
+- The installation process will unpack and configure Nessus core components.
 
+4. **Start the Nessus Service:**
 
-Start the Nessus Service:
+- Start the `nessusd` service
 
-Start the nessusd service:sudo systemctl start nessusd.service
+![](assets/images/5.png)
 
+- Verify the service is running
 
-Verify the service is running:sudo systemctl status nessusd.service
-
-
+![](assets/images/6.png)
 
 
 Access the Nessus Web Interface:
