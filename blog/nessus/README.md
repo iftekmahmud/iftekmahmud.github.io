@@ -36,7 +36,7 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 
 - Copy the provided SHA256 checksum for verification.
 
-2. **Verify the Installer:**
+**2. Verify the Installer:**
 
 - Navigate to the download directory.
 - Create a checksum file with the copied SHA256 value and the filename:
@@ -411,7 +411,7 @@ rm /tmp/nessus.1747917619
 
 ## 10. Conclusion
 
-Nessus is a versatile and powerful tool for vulnerability scanning, suitable for both beginners and advanced security researchers. By using Metasploitable 2 as your lab environment, we’ve learned how to:
+Nessus is a versatile and powerful tool for vulnerability scanning, suitable for both beginners and advanced security researchers. By using Metasploitable 2 as our lab environment, we’ve learned how to:
 
 - Install and configure Nessus on Kali Linux.
 - Set up Metasploitable 2 as a vulnerable target.
