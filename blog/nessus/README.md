@@ -82,7 +82,12 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 
 **Pro Tip:** Always verify the installer’s checksum to prevent installing compromised software. If you encounter issues, ensure your Kali VM has sufficient resources and an active internet connection.
 
-3. Understanding Nessus Components
+## 3. Setting Up Metasploitable 2
+
+For installing Metasploitable 2 in the VM, check ![Building a Safe Hacking Lab with Metasploitable 2](https://iftekmahmud.github.io/blog/metasploitable-2/).
+
+## 4. Understanding Nessus Components
+
 Before diving into scanning, let’s explore Nessus’s core components, which are critical for effective use.
 Nessus Dashboard
 Upon logging in, the Nessus dashboard displays two main tabs in the Essentials version:
