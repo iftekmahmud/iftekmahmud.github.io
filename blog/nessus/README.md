@@ -196,34 +196,24 @@ OOnce the scan completes, Nessus provides a detailed results dashboard for analy
 
 2. **Vulnerabilities Page:**
 
-- Click on the Metasploitable IP to view its vulnerabilities. You may find grouped findings like **Apache Httpd (Multiple Issues)** in the Web Servers family.
+- Click on the Metasploitable IP to view its vulnerabilities. You may find grouped findings like **HTTP (Multiple Issues)** in the Web Servers family.
 
 ![](assets/images/20.png)
 
-- Drill down into a finding (e.g., Apache 2.2.8 Vulnerable Version) for details, including:
-  - Description: Explains the vulnerability (e.g., outdated Apache version).
-  - Risk Information: Includes CVSS score and VPR (Vulnerability Priority Rating).
-  - References: Links to CVE entries or vendor advisories.
-  - Exploit Status: Indicates if exploits are available, which is common for Metasploitable vulnerabilities.
+- Drill down into a finding (e.g., **Canonical Ubuntu Linux SEoL (8.04.x)**) for details, including:
+  - **Description:** Explains the vulnerability (e.g., outdated Canonical Ubuntu Linux version).
+  - **Risk Information:** Includes Risk Factor and CVSS score.
+  - **Solution:** Provides mitigation strategies, such as upgrading to a version of Canonical Ubuntu Linux that is currently supported.
 
+3. **VPR (Vulnerability Priority Rating) Top Threats:**
 
+Navigate to the VPR Top Threats tab (if available) to see a prioritized list of the top vulnerabilities on Metasploitable 2, based on Tenable’s Vulnerability Priority Rating.
 
-
-VPR Top Threats:
-
-Navigate to the VPR Top Threats tab (if available) to see a prioritized list of the top vulnerabilities across all scanned hosts, based on Tenable’s Vulnerability Priority Rating.
-
-
-Remediations:
-
-The Remediations tab provides mitigation strategies, such as upgrading Apache to version 2.4.51 for the path traversal vulnerability.
-
-
-History:
+5. **History:**
 
 The History tab logs all scans run with this configuration, useful for tracking changes over time.
 
-
+![](assets/images/23.png)
 
 Generating a Report
 
