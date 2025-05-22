@@ -361,8 +361,26 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
 
 **Note:** This active test goes beyond version checks, providing definitive proof of exploitability.
 
-**Advanced Tip:** Combine multiple filters (e.g., CVE and Plugin Family) to reduce scan time and focus on specific vulnerabilities. Manually verify critical findings, as Metasploitable 2’s vulnerabilities are often exploitable with tools like Metasploit.
+**Advanced Tip:** Combine multiple filters (e.g., CVE and Plugin Family) to reduce scan time and focus on specific vulnerabilities. If the Plugin ID differs in your instance, verify it in the detailed view or check Tenable’s plugin database at https://www.tenable.com/plugins using "Shellshock" or "CVE-2014-6271". Manually verify critical findings with tools like Metasploit, as Metasploitable 2’s Shellshock vulnerability is exploitable (e.g., using the `bash_payload` module).
 
+### Additional Notes
+
+- **Active vs. Passive Detection:** The output confirms that Nessus uses an active exploitation technique for Shellshock when possible, likely leveraging the SSH connection to Metasploitable 2 (authenticated scan). This is more conclusive than a version check, which only infers vulnerability based on software versions.
+- **Security Implications:** The successful execution of arbitrary code (via id) highlights the severity of Shellshock on Metasploitable 2. In a real-world scenario, this could allow a remote attacker to gain full system access.
+- **Cleanup:** Nessus’s attempt to remove the temporary file (/tmp/nessus.1747917619) shows its effort to mitigate any residual impact, though you should manually verify the file’s removal on Metasploitable 2 if needed:
+
+```
+ls /tmp/nessus.1747917619
+```
+
+If it still exists, delete it with:
+
+```
+rm /tmp/nessus.1747917619
+```
+
+- **Validate the Exploit:** You can use Metasploit to confirm the vulnerability. Start Metasploit on Kali Linux, use the `exploit/multi/bash/shellshock` module, and target Metasploitable 2’s IP (192.168.19.128) with the default SSH credentials (`msfadmin:msfadmin`).
+- **Review Other Vulnerabilities:** Since Metasploitable 2 has many vulnerabilities, explore other plugins (e.g., for Samba or Apache) to broaden your scan results.
 
 
 
