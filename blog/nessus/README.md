@@ -94,7 +94,7 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 
 ## 3. Setting Up Metasploitable 2
 
-For installing Metasploitable 2 in the VM, check ![Building a Safe Hacking Lab with Metasploitable 2](https://iftekmahmud.github.io/blog/metasploitable-2/).
+For installing Metasploitable 2 in the VM, check [Building a Safe Hacking Lab with Metasploitable 2](https://iftekmahmud.github.io/blog/metasploitable-2/).
 
 ## 4. Understanding Nessus Components
 
