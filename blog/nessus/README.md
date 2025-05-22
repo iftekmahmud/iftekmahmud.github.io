@@ -292,66 +292,56 @@ Metasploitable 2’s default credentials simplify authenticated scanning, but en
 
 **Note:** Authenticated scans generate system noise (e.g., log entries). In a lab like Metasploitable 2, this is not an issue, but coordinate with system owners in production environments.
 
+## 8. Working with Nessus Plugins
 
-7. Working with Nessus Plugins
-For advanced users, Nessus’s plugin system allows precise vulnerability detection. Let’s configure a scan to check for CVE-2021-3156, a privilege escalation vulnerability in sudo, using the Advanced Dynamic Scan template.
-Step-by-Step Plugin Configuration
+For advanced users, Nessus’s plugin system allows precise vulnerability detection. Let’s configure a scan to check for CVE-2014-6271 (Shellshock), a known vulnerability in Bash on Metasploitable 2.
 
-Create a New Scan:
+### Plugin Configuration
 
-Click New Scan and select Advanced Dynamic Scan.
+1. **Create a New Scan:**
+- Click New Scan and select Advanced Dynamic Scan.
 
+2. **Configure Basic Settings:**
 
-Configure Basic Settings:
+- Name: **Shellshock Scan**.
+- Target: **192.168.19.128** (Metasploitable 2).
 
-Name: CVE-2021-3156 Scan.
-Target: 192.168.50.128 (DESKTOP).
+3. **Add Credentials:**
 
+- Use the same SSH credentials (`msfadmin:msfadmin`) as in the authenticated scan.
 
-Add Credentials:
+4. **Configure Dynamic Plugin Filter:**
 
-Use the same SSH and sudo credentials as in the authenticated scan.
+- Navigate to the **Dynamic Plugins** tab.
+- Add a filter:
+  - **Left Dropdown:** Select **CVE**.
+  - **Middle Dropdown:** Choose **is equal to**.
+  - **Right Dropdown:** Enter **CVE-2014-6271**.
+- Click **Preview Plugins** to list matching plugins (this may take a few minutes).
+- Add a second filter for precision:
+  - Click the **plus** button to add a new filter.
+  - **Left Dropdown:** Select **Plugin Family**.
+  - **Right Dropdown:** Choose **CGI abuses**.
+- Click **Preview Plugins** again to refine the list.
 
+5. **Review Plugin Details:**
 
-Configure Dynamic Plugin Filter:
+- Select the CGI abuses plugin family from the dropdown.
+- Click on the plugin (e.g., Plugin ID for Shellshock) for details, including affected Bash versions and remediation steps.
 
-Navigate to the Dynamic Plugins tab.
-Add a filter:
-Left Dropdown: Select CVE.
-Middle Dropdown: Choose is equal to.
-Right Dropdown: Enter CVE-2021-3156.
+6. **Launch the Scan:**
+- Click the arrow next to Save and select Launch.
 
+7. **Analyze Results:**
 
-Click Preview Plugins to list matching plugins (this may take a few minutes).
-Add a second filter for precision:
-Click the plus button to add a new filter.
-Left Dropdown: Select Plugin Family.
-Right Dropdown: Choose Ubuntu Local Security Checks.
+- After the scan completes, navigate to the **Vulnerabilities** tab.
+- Check for a **CRITICAL** severity finding confirming CVE-2014-6271.
+- Review the plugin output, which may note that Nessus detected the vulnerability based on version checks without attempting exploitation.
 
-
-Click Preview Plugins again to refine the list.
-
-
-Review Plugin Details:
-
-Select the Ubuntu Local Security Checks plugin family from the dropdown.
-Click on the plugin (e.g., Plugin ID 145463) for details, including affected Ubuntu versions and patch information.
-
-
-Launch the Scan:
-
-Click the arrow next to Save and select Launch.
-
-
-Analyze Results:
-
-After the scan completes, navigate to the Vulnerabilities tab.
-Check for a HIGH severity finding confirming CVE-2021-3156.
-Review the plugin output, which may note that Nessus detected the vulnerability based on version checks without attempting exploitation.
+**Advanced Tip:** Combine multiple filters (e.g., CVE and Plugin Family) to reduce scan time and focus on specific vulnerabilities. Manually verify critical findings, as Metasploitable 2’s vulnerabilities are often exploitable with tools like Metasploit.
 
 
 
-Advanced Tip: Combine multiple filters (e.g., CVE and Plugin Family) to reduce scan time and focus on specific vulnerabilities. Always verify critical findings manually, as Nessus may rely on version checks rather than active exploitation.
 
 8. Best Practices and Considerations
 
