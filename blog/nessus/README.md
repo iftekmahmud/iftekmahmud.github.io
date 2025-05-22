@@ -136,16 +136,15 @@ Let’s perform an unauthenticated vulnerability scan on Metasploitable 2 using 
 
 2. **Configure Basic Settings:**
 
-Name: Enter a descriptive name, e.g., Basic Vulnerability Scan.
-Targets: Specify the IP addresses to scan (e.g., 192.168.50.124,192.168.50.125,192.168.50.126,192.168.50.127 for machines named POULTRY, JENKINS, WK01, and SAMBA). Nessus supports single IPs, ranges, or FQDNs.
+- **Name:** Enter a descriptive name, e.g., `Metasploitable Scan`.
+- **Targets:** Specify the IP address of your Metasploitable 2 VM (e.g., `192.168.19.128`). Nessus supports single IPs, ranges, or FQDNs.
 
+3. **Customize Discovery Settings:**
 
-Customize Discovery Settings:
-
-Navigate to the Discovery tab and select Custom from the dropdown.
-In the Port Scanning section, set Port scan range to 80,443 to focus on web ports.
-Enable Consider unscanned ports as closed to treat all other ports as closed.
-Disable Host Discovery by toggling Ping the remote host to Off, assuming you know the hosts are live to reduce scan time.
+- Navigate to the **Discovery** tab and select **Custom** from the dropdown.
+- In the **Port Scanning** section, set **Port scan range** to **80,443** to focus on web ports, as Metasploitable 2 hosts vulnerable web services like Apache.
+- Enable **Consider unscanned ports as closed** to treat all other ports as closed.
+- Disable **Host Discovery** by toggling **Ping the remote host** to **Off**, since you’ve confirmed the VM is live.
 
 
 Review Other Settings:
