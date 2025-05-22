@@ -72,13 +72,23 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 - Open a browser and navigate to `https://127.0.0.1:8834`.
 - You’ll encounter a certificate warning due to Nessus using a self-signed certificate. Click **Advanced** and **Accept the Risk and Continue**.
 
+![](assets/images/7.png)
+
 6. **Activate Nessus:**
 
 - Select **Nessus Essentials** and click **Continue**.
+
+![](assets/images/8.png)
+
 - Register with your email to receive an activation code.
 - Enter the activation code to proceed.
 - Create a local Nessus user account (e.g., username: `admin`, with a strong password).
+
+![](assets/images/9.png)
+
 - Nessus will download and compile plugins, which may take several minutes.
+
+![](assets/images/10.png)
 
 **Pro Tip:** Always verify the installer’s checksum to prevent installing compromised software. If you encounter issues, ensure your Kali VM has sufficient resources and an active internet connection.
 
@@ -113,18 +123,18 @@ The **About** menu in the Settings tab provides details on your license and the 
 
 Plugins are the heart of Nessus, written in NASL to detect specific vulnerabilities. Each plugin belongs to a **plugin family** (e.g., Web Servers, Ubuntu Local Security Checks) and checks for vulnerabilities in a particular context. Nessus Essentials automatically enables relevant plugins based on the selected template, but advanced users can customize plugin selection.
 
-4. Configuring and Performing a Vulnerability Scan
+## 5. Configuring and Performing a Vulnerability Scan
 
-Let’s perform an unauthenticated vulnerability scan using the Basic Network Scan template, which is ideal for beginners due to its preconfigured settings.
-Step-by-Step Configuration
+Let’s perform an unauthenticated vulnerability scan on Metasploitable 2 using the **Basic Network Scan** template, which is ideal for beginners due to its preconfigured settings.
 
-Create a New Scan:
+### Configuration
 
-From the Scans tab, click New Scan.
-Select Basic Network Scan.
+1. **Create a New Scan:**
 
+- From the **Scans** tab, click **New Scan**.
+- Select **Basic Network Scan**.
 
-Configure Basic Settings:
+2. **Configure Basic Settings:**
 
 Name: Enter a descriptive name, e.g., Basic Vulnerability Scan.
 Targets: Specify the IP addresses to scan (e.g., 192.168.50.124,192.168.50.125,192.168.50.126,192.168.50.127 for machines named POULTRY, JENKINS, WK01, and SAMBA). Nessus supports single IPs, ranges, or FQDNs.
