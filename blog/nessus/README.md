@@ -215,14 +215,16 @@ The History tab logs all scans run with this configuration, useful for tracking 
 
 ![](assets/images/23.png)
 
-Generating a Report
+### Generating a Report
 
-From the results dashboard, click Report.
-Select the Detailed Vulnerabilities By Host template and choose PDF as the format.
-Click Generate Report to download a comprehensive PDF summarizing findings for each host.
-For a high-level overview, use the Complete List of Vulnerabilities by Host template.
+![](assets/images/23.png)
 
-Pro Tip: Regularly review the Audit Trail feature to understand plugin behavior and reduce false negatives, especially in complex environments.
+- From the results dashboard, click Report.
+- Select the Detailed Vulnerabilities By Host template and choose PDF as the format.
+- Click Generate Report to download a comprehensive PDF summarizing findings for each host.
+- For a high-level overview, use the Complete List of Vulnerabilities by Host template.
+
+**Pro Tip:** Regularly review the Audit Trail feature to understand plugin behavior and reduce false negatives, especially in complex environments.
 
 6. Performing an Authenticated Vulnerability Scan
 Authenticated scans provide deeper insights by accessing system internals, reducing false positives, and identifying issues like missing patches or outdated software. Let’s configure an authenticated scan against a Linux target named DESKTOP.
