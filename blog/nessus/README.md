@@ -89,27 +89,32 @@ For installing Metasploitable 2 in the VM, check ![Building a Safe Hacking Lab w
 ## 4. Understanding Nessus Components
 
 Before diving into scanning, let’s explore Nessus’s core components, which are critical for effective use.
-Nessus Dashboard
+
+### Nessus Dashboard
+
 Upon logging in, the Nessus dashboard displays two main tabs in the Essentials version:
 
-Scans: Where you create, manage, and view scan results.
-Settings: For configuring global settings, such as SMTP for email notifications or advanced performance options.
+- **Scans:** Where you create, manage, and view scan results.
+- **Settings:** For configuring global settings, such as SMTP for email notifications or advanced performance options.
 
-The About menu in the Settings tab provides details on your license and the number of remaining hosts you can scan (16 IPs for Essentials).
-Policies and Templates
+![](assets/images/11.png)
 
-Policies: Predefined configurations for scans, which can be saved as templates for reuse.
-Templates: Nessus offers templates grouped into three categories:
-Discovery: Includes Host Discovery for identifying live hosts and open ports.
-Vulnerabilities: Templates like Basic Network Scan (preconfigured for broad scans), Advanced Scan (fully customizable), and Advanced Dynamic Scan (uses dynamic plugin filters).
-Compliance: Available in the Professional version for compliance checks.
+The **About** menu in the Settings tab provides details on your license and the number of remaining hosts you can scan (16 IPs for Essentials).
 
+### Policies and Templates
 
+- **Policies:** Predefined configurations for scans, which can be saved as templates for reuse.
+- **Templates:** Nessus offers templates grouped into three categories:
+  - **Discovery:** Includes **Host Discovery** for identifying live hosts and open ports.
+  - **Vulnerabilities:** Templates like **Basic Network Scan** (preconfigured for broad scans), **Advanced Scan** (fully customizable), and **Advanced Dynamic Scan** (uses dynamic plugin filters).
+  - **Compliance:** Available in the Professional version for compliance checks.
 
-Plugins
-Plugins are the heart of Nessus, written in NASL to detect specific vulnerabilities. Each plugin belongs to a plugin family (e.g., Web Servers, Ubuntu Local Security Checks) and checks for vulnerabilities in a particular context. Nessus Essentials automatically enables relevant plugins based on the selected template, but advanced users can customize plugin selection.
+### Plugins
+
+Plugins are the heart of Nessus, written in NASL to detect specific vulnerabilities. Each plugin belongs to a **plugin family** (e.g., Web Servers, Ubuntu Local Security Checks) and checks for vulnerabilities in a particular context. Nessus Essentials automatically enables relevant plugins based on the selected template, but advanced users can customize plugin selection.
 
 4. Configuring and Performing a Vulnerability Scan
+
 Let’s perform an unauthenticated vulnerability scan using the Basic Network Scan template, which is ideal for beginners due to its preconfigured settings.
 Step-by-Step Configuration
 
