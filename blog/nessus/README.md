@@ -353,11 +353,22 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
 
 - After the scan completes, navigate to the **Vulnerabilities** tab.
 - Check for a **CRITICAL** severity finding confirming CVE-2014-6271, associated with Plugin ID 77829.
-- The plugin output may include evidence of an active exploitation attempt, such as:
+- The plugin output includes evidence of an active exploitation attempt:
 
 ![](assets/images/40.png)
 
-- This indicates Nessus actively exploited the vulnerability by injecting a malicious environment variable and executing the `id` command, confirming Metasploitable 2’s susceptibility to Shellshock.
+### Analysis of the Output
+
+- "Nessus was able to set the TERM environment variable used in an SSH connection to: `() { :;}; /usr/bin/id > /tmp/nessus.1747917619`"
+  - This is a crafted environment variable that exploits the Shellshock vulnerability. The `() { :;};` syntax is a malicious function definition, followed by a command (`/usr/bin/id > /tmp/nessus.1747917619`) that executes the `id` command and redirects its output to a file (`/tmp/nessus.1747917619`). 
+
+- "and read the output from the file: `uid=1000(msfadmin) gid=1000(msfadmin) groups=4(adm),20(dialout),24(cdrom),25(floppy),29(audio),30(dip),44(video),46(plugdev),107(fuse),111(lpadmin),112(admin),119(sambashare),1000(msfadmin)`"
+  - This shows the successful execution of the `id` command, which returned the user and group information of the `msfadmin` account on Metasploitable 2. This output confirms that the arbitrary code injection worked, indicating the system is vulnerable to Shellshock.
+
+- "Note: Nessus has attempted to remove the file /tmp/nessus.1747917619"
+  - Nessus cleaned up the temporary file it created during the test, which is a standard security practice to minimize impact.
+
+This indicates Nessus actively exploited the vulnerability by injecting a malicious environment variable via an SSH connection and verifying the execution of the `id` command, confirming Metasploitable 2’s susceptibility to Shellshock.
 
 **Note:** This active test goes beyond version checks, providing definitive proof of exploitability.
 
@@ -379,7 +390,7 @@ If it still exists, delete it with:
 rm /tmp/nessus.1747917619
 ```
 
-- **Validate the Exploit:** You can use Metasploit to confirm the vulnerability. Start Metasploit on Kali Linux, use the `exploit/multi/bash/shellshock` module, and target Metasploitable 2’s IP (192.168.19.128) with the default SSH credentials (`msfadmin:msfadmin`).
+- **Validate the Exploit:** You can use Metasploit to confirm the vulnerability. Start Metasploit on Kali Linux, use the `exploit/multi/bash/shellshock` module, and target Metasploitable 2’s IP (`192.168.19.128`) with the default SSH credentials (`msfadmin:msfadmin`).
 - **Review Other Vulnerabilities:** Since Metasploitable 2 has many vulnerabilities, explore other plugins (e.g., for Samba or Apache) to broaden your scan results.
 
 ### 8. Best Practices and Considerations
