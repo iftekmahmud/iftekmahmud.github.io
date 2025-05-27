@@ -32,32 +32,37 @@ VMware requires specific settings to pass USB devices to the VM, ensuring Kali c
    
 4. Click **OK** to save.
 
-Add a USB Controller to the VM
+### Add a USB Controller to the VM
 
-Right-click your Kali Linux VM in the VMware library (left pane) and select Settings.
-In the Virtual Machine Settings window, ensure a USB Controller is present in the hardware list.
-If absent, click Add, select USB Controller, and click Finish.
+1. Right-click your Kali Linux VM in the VMware library (left pane) and select **Settings**.
+2. In the Virtual Machine Settings window, ensure a **USB Controller** is present in the hardware list.
+  - If absent, click **Add**, select **USB Controller**, and click **Finish**.
+3. Set the USB Controller to **USB 2.0** or **USB 3.0** (matching your host’s port). Most USB Wi-Fi adapters should work with either.
+4. Check the box **"Show all USB input devices"** under the Connections section to make the adapter visible.
 
+![](assets/images/3.png)
 
-Set the USB Controller to USB 2.0 or USB 3.0 (matching your host's port). Most USB Wi-Fi adapters should work with either.
-Check the box "Show all USB input devices" under the Connections section to make the adapter visible.
-Click OK to save.
+5. Click **OK** to save.
 
-Step 3: Connect the Adapter to the VM
+## Connect the Adapter to the VM
+
 Now that VMware is configured, let's pass the adapter to Kali Linux.
 
-Power On the Kali VM: Start your Kali Linux virtual machine and log in (default credentials are often kali/kali for a fresh install).
-Connect the Adapter:
-In VMware, go to VM > Removable Devices.
-Look for the adapter in the list. It might appear as a chipset name (e.g., "Realtek 802.11n" or "MediaTek 802.11n WLAN").
-Click the adapter name and select Connect (Disconnect from Host).
-Confirm the pop-up to disconnect the adapter from the host and connect it to the VM.
+1. **Power On the Kali VM:** Start your Kali Linux virtual machine and log in (default credentials are often `kali/kali` for a fresh install).
 
+2. **Connect the Adapter:**
+  - In VMware, go to **VM > Removable Devices**.
+  - Look for the adapter in the list. It might appear as a chipset name (e.g., "Realtek 802.11n" or "MediaTek 802.11n WLAN").
+  - Click the adapter name and select **Connect (Disconnect from Host)**.
+  - Confirm the pop-up to disconnect the adapter from the host and connect it to the VM.
 
+![](assets/images/4.png)
 
 If the adapter isn't listed, ensure it's recognized by the host (re-plug if needed). You may also need to install VMware Tools in the VM to improve device detection:
-sudo apt update && sudo apt install open-vm-tools
 
+```
+sudo apt update && sudo apt install open-vm-tools
+```
 Step 4: Verify the Adapter in Kali Linux
 Let's confirm the adapter is accessible in Kali and ready for pentesting.
 
