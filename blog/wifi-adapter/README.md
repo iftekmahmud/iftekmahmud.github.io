@@ -16,7 +16,7 @@ Before configuring VMware, ensure your setup is ready:
 - **Kali Linux VM:** Ensure your Kali Linux VM is powered off to avoid conflicts during configuration. If you haven't set up Kali, download it from kali.org and install it in VMware.
 - **Insert the Adapter:** Plug your USB Wi-Fi adapter into your host machine. Verify it's detected:
   - **On Windows:** Open Device Manager and look for a device under "Network adapters" or "Other devices" (e.g., a chipset like Realtek or MediaTek).
-  - **On Linux/macOS:** Run lsusb in a terminal to confirm (e.g., Bus 001 Device 002: ID [VendorID:ProductID]).
+  - **On Linux/macOS:** Run `lsusb` in a terminal to confirm (e.g., `Bus 001 Device 002: ID [VendorID:ProductID]`).
 
 ### 2. Configuring VMware USB Settings
 
@@ -27,10 +27,9 @@ VMware requires specific settings to pass USB devices to the VM, ensuring Kali c
 1. Open VMware Workstation and navigate to **Edit > Preferences**.
 2. In the Preferences window, select the **USB** tab.
 3. Under "Connections," set the option to **"Ask me what to do"** when a new USB device is detected. This allows you to manually connect the adapter to the VM.
+4. Click **OK** to save.
 
 ![](assets/images/2.png)
-   
-4. Click **OK** to save.
 
 ### Adding a USB Controller to the VM
 
@@ -39,10 +38,9 @@ VMware requires specific settings to pass USB devices to the VM, ensuring Kali c
   - If absent, click **Add**, select **USB Controller**, and click **Finish**.
 3. Set the USB Controller to **USB 2.0** or **USB 3.0** (matching your host’s port). Most USB Wi-Fi adapters should work with either.
 4. Check the box **"Show all USB input devices"** under the Connections section to make the adapter visible.
+5. Click **OK** to save.
 
 ![](assets/images/3.png)
-
-5. Click **OK** to save.
 
 ## 3. Connecting the Adapter to the VM
 
@@ -73,13 +71,13 @@ Let's confirm the adapter is accessible in Kali and ready for pentesting.
 
 ![](assets/images/5.png)
 
-  - Look for an entry corresponding to your adapter (e.g., a chipset like Realtek or MediaTek). If it's plug-and-play, it should appear.
+Look for an entry corresponding to your adapter (e.g., a chipset like Realtek or MediaTek). If it's plug-and-play, it should appear.
 
   - Run:
 
 ![](assets/images/6.png)
 
-  - You should see a wireless interface (e.g., `wlan0`). If it's listed, the adapter is detected.
+You should see a wireless interface (e.g., `wlan0`). If it's listed, the adapter is detected.
 
 2. **Enable the Interface:**
 
@@ -103,9 +101,9 @@ Let's ensure the adapter supports the features needed for wireless pentesting.
 
 - Verify the new interface (e.g., `wlan0`):
 
-- Look for "Mode: Monitor" to confirm. If monitor mode fails, your adapter may not support it—double-check its chipset compatibility with Kali Linux.
-
 ![](assets/images/8.png)
+
+Look for "Mode: Monitor" to confirm. If monitor mode fails, your adapter may not support it—double-check its chipset compatibility with Kali Linux.
 
 2. **Scan for Networks:**
 
