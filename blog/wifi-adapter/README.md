@@ -119,17 +119,20 @@ You should see a list of networks with their BSSIDs, ESSIDs, channels, and encry
 
 If you encounter issues, here are some common fixes:
 
-- **Adapter Not Detected:** Ensure it's disconnected from the host (check Removable Devices). Reboot the VM or re-plug the adapter. If it persists, install drivers for the chipse.
+- **Adapter Not Detected:** Ensure it's disconnected from the host (check Removable Devices). Reboot the VM or re-plug the adapter. If it persists, install drivers for the chipset.
 - **Monitor Mode Fails:** Not all adapters support monitor mode in a VM environment. Test on a native Kali install (via live USB) to isolate the issue. Popular chipsets like Atheros AR9271 or Ralink RT3070 are known to work well.
 - **VMware Tools:** If detection fails, ensure VMware Tools is installed (as shown earlier).
 
-Bonus: Exploring Additional Capabilities
-Some USB Wi-Fi adapters also support Bluetooth, which can be used for Bluetooth pentesting. To check if your adapter has this feature, run:
-hciconfig
+## Exploring Bluetooth Capabilities
 
-If a device (e.g., hci0) is listed, you can use tools like hcitool or bettercap to scan for Bluetooth devices—a topic for a future blog!
-Ethical Considerations
-Always practice on networks you own or have explicit permission to test. Unauthorized pentesting is illegal and unethical. Set up a lab with a spare router to hone your skills safely.
-What's Next?
-With the adapter connected, you're ready to start wireless pentesting. Try capturing a WPA handshake using airodump-ng and aireplay-ng, then crack it with aircrack-ng using a wordlist like /usr/share/wordlists/rockyou.txt. As a security researcher, I recommend exploring resources like TryHackMe's Wi-Fi hacking rooms or following pentesting communities on X for the latest tips.
-If you run into issues or want to dive into more advanced wireless attacks, feel free to reach out. Stay ethical, keep learning, and happy hacking!
+Some USB Wi-Fi adapters also support Bluetooth, which can be used for Bluetooth pentesting. To check if your adapter has this feature, run:
+
+![](assets/images/10.png)
+
+If a device (e.g., `hci0`) is listed, you can use tools like `hcitool` or `bettercap` to scan for Bluetooth devices.
+
+## What's Next?
+
+With the adapter connected, you're ready to start wireless pentesting. Try capturing a WPA handshake using `airodump-ng` and `aireplay-ng`, then crack it with `aircrack-ng` using a wordlist like `/usr/share/wordlists/rockyou.txt`. If you run into issues or want to dive into more advanced wireless attacks, feel free to reach out. Keep learning, and happy hacking!
+
+**Note:** Always practice on networks you own or have explicit permission to test. Unauthorized pentesting is illegal and unethical. Set up a lab with a spare router to hone your skills safely.
