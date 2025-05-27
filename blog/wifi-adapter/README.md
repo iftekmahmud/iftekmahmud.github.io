@@ -86,14 +86,13 @@ If the interface isn't active, bring it up:
 ```
 sudo ip link set wlan0 up
 ```
-
-  - Re-run `iwconfig` to confirm the interface is active.
+- Re-run `iwconfig` to confirm the interface is active.
 
 ## 5. Test for Wireless Pentesting
 
 Let's ensure the adapter supports the features needed for wireless pentesting.
 
-1. **Enable Monitor Mode:**
+**1. Enable Monitor Mode:**
 
 - Use `airmon-ng` to switch the adapter to monitor mode (essential for capturing packets):
   
@@ -105,7 +104,7 @@ Let's ensure the adapter supports the features needed for wireless pentesting.
 
 Look for "Mode: Monitor" to confirm. If monitor mode fails, your adapter may not support it—double-check its chipset compatibility with Kali Linux.
 
-2. **Scan for Networks:**
+**2. Scan for Networks:**
 
 - Use `airodump-ng` to scan for nearby Wi-Fi networks:
 
