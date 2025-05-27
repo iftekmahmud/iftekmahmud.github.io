@@ -65,7 +65,7 @@ sudo apt update && sudo apt install open-vm-tools
 
 Let's confirm the adapter is accessible in Kali and ready for pentesting.
 
-1. **Check Detection:**
+**1. Check Detection:**
 
   - Open a terminal in Kali and run:
 
@@ -79,7 +79,7 @@ Look for an entry corresponding to your adapter (e.g., a chipset like Realtek or
 
 You should see a wireless interface (e.g., `wlan0`). If it's listed, the adapter is detected.
 
-2. **Enable the Interface:**
+**2. Enable the Interface:**
 
 If the interface isn't active, bring it up:
 
