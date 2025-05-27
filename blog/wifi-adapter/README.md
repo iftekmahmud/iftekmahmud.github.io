@@ -130,6 +130,8 @@ If a device (e.g., `hci0`) is listed, you can use tools like `hcitool` or `bette
 
 ## What's Next?
 
-With the adapter connected, you're ready to start wireless pentesting. Try capturing a WPA handshake using `airodump-ng` and `aireplay-ng`, then crack it with `aircrack-ng` using a wordlist like `/usr/share/wordlists/rockyou.txt`. If you run into issues or want to dive into more advanced wireless attacks, feel free to reach out. Keep learning, and happy hacking!
+With the adapter connected, you're ready to start wireless pentesting. Try capturing a WPA handshake using `airodump-ng` and `aireplay-ng`, then crack it with `aircrack-ng` using a wordlist like `/usr/share/wordlists/rockyou.txt`. If you run into issues or want to dive into more advanced wireless attacks, feel free to reach out.
 
 **Note:** Always practice on networks you own or have explicit permission to test. Unauthorized pentesting is illegal and unethical. Set up a lab with a spare router to hone your skills safely.
+
+Keep learning, and happy hacking!
