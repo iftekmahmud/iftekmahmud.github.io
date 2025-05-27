@@ -77,7 +77,7 @@ Let's confirm the adapter is accessible in Kali and ready for pentesting.
 
   - Run:
 
-![](assets/images/5.png)
+![](assets/images/6.png)
 
   - You should see a wireless interface (e.g., `wlan0`). If it's listed, the adapter is detected.
 
@@ -91,35 +91,37 @@ sudo ip link set wlan0 up
 
   - Re-run `iwconfig` to confirm the interface is active.
 
+## 5. Test for Wireless Pentesting
 
-
-Step 5: Test for Wireless Pentesting
 Let's ensure the adapter supports the features needed for wireless pentesting.
 
-Enable Monitor Mode:
+1. **Enable Monitor Mode:**
 
-Use airmon-ng to switch the adapter to monitor mode (essential for capturing packets):sudo airmon-ng start wlan0
+- Use `airmon-ng` to switch the adapter to monitor mode (essential for capturing packets):
+  
+![](assets/images/7.png)
 
+- Verify the new interface (e.g., `wlan0`):
 
-Verify the new interface (e.g., wlan0mon):iwconfig
+- Look for "Mode: Monitor" to confirm. If monitor mode fails, your adapter may not support it—double-check its chipset compatibility with Kali Linux.
 
-Look for "Mode: Monitor" to confirm. If monitor mode fails, your adapter may not support it—double-check its chipset compatibility with Kali Linux.
+![](assets/images/8.png)
 
+2. **Scan for Networks:**
 
-Scan for Networks:
+- Use `airodump-ng` to scan for nearby Wi-Fi networks:
 
-Use airodump-ng to scan for nearby Wi-Fi networks:sudo airodump-ng wlan0mon
+![](assets/images/9.png)
 
 You should see a list of networks with their BSSIDs, ESSIDs, channels, and encryption types (e.g., WPA2). This confirms the adapter is ready for pentesting tasks like capturing handshakes.
 
+## 6. Troubleshooting Tips
 
-
-Step 6: Troubleshooting Tips
 If you encounter issues, here are some common fixes:
 
-Adapter Not Detected: Ensure it's disconnected from the host (check Removable Devices). Reboot the VM or re-plug the adapter. If it persists, install drivers for the chipset (e.g., sudo apt install realtek-rtl8188eus-dkms for Realtek chipsets).
-Monitor Mode Fails: Not all adapters support monitor mode in a VM environment. Test on a native Kali install (via live USB) to isolate the issue. Popular chipsets like Atheros AR9271 or Ralink RT3070 are known to work well.
-VMware Tools: If detection fails, ensure VMware Tools is installed (as shown earlier).
+- **Adapter Not Detected:** Ensure it's disconnected from the host (check Removable Devices). Reboot the VM or re-plug the adapter. If it persists, install drivers for the chipse.
+- **Monitor Mode Fails:** Not all adapters support monitor mode in a VM environment. Test on a native Kali install (via live USB) to isolate the issue. Popular chipsets like Atheros AR9271 or Ralink RT3070 are known to work well.
+- **VMware Tools:** If detection fails, ensure VMware Tools is installed (as shown earlier).
 
 Bonus: Exploring Additional Capabilities
 Some USB Wi-Fi adapters also support Bluetooth, which can be used for Bluetooth pentesting. To check if your adapter has this feature, run:
