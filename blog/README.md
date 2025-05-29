@@ -11,3 +11,4 @@
 * [Building a Safe Hacking Lab with Metasploitable 2](./metasploitable-2)
 * [Nessus for Advanced Penetration Testing](./nessus)
 * [Setting Up a USB Wi-Fi Adapter for Wireless Pentesting in Kali Linux on VMware](./wifi-adapter)
+* [Wireless Pentesting with Kali Linux](./wireless-pentesting)
