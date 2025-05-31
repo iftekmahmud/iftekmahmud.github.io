@@ -30,7 +30,7 @@ VMware requires specific settings to pass USB devices to the VM, ensuring Kali c
 4. Click **OK** to save.
 
 <div style="text-align: center;">
-  <img src="assets/images/2.png" width="500" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/2.png" width="450" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
 </div>
 
 ### Adding a USB Controller to the VM
