@@ -31,6 +31,15 @@ VMware requires specific settings to pass USB devices to the VM, ensuring Kali c
 
 ![](assets/images/2.png)
 
+<div style="text-align: center;">
+  <img src="assets/images/2.png"width="500">
+</div>
+
+<div style="text-align: center;">
+  <img src="assets/images/2.png"width="500"height="auto">
+</div>
+
+
 ### Adding a USB Controller to the VM
 
 1. Right-click your Kali Linux VM in the VMware library (left pane) and select **Settings**.
