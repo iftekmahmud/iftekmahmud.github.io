@@ -33,7 +33,9 @@ The Security Headers tool scans a target website and assigns a grade (A to F) ba
 
 For instance, if `www.megacorpone.com` lacks `Content-Security-Policy` and `X-Frame-Options`, it might receive a low grade (e.g., D or F). This suggests the server is not hardened against common attacks, potentially indicating broader security weaknesses.
 
-![](assets/images/1.png)
+<div style="text-align: center;">
+  <img src="assets/images/1.png" width="900" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 Using Security Headers, we find:
 
@@ -76,7 +78,9 @@ SSL/TLS secures data in transit, and its configuration is a cornerstone of serve
 
 For example, a server supporting TLS 1.0 and weak ciphers like `TLS_DHE_RSA_WITH_AES_256_CBC_SHA` might receive a B or C grade, indicating outdated practices.
 
-![](assets/images/3.png)
+<div style="text-align: center;">
+  <img src="assets/images/3.png" width="900" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 The Qualys SSL Labs scan reveals no major vulnerabilities like Heartbleed.
 
@@ -92,7 +96,9 @@ For advanced researchers, dive into the Qualys report details:
 - **Certificate Chain Issues:** Verify the certificate chain for missing intermediates or weak signatures (e.g., SHA-1).
 - Use tools like `openssl` to manually inspect certificates:
 
-![](assets/images/4.png)
+<div style="text-align: center;">
+  <img src="assets/images/4.png" width="650" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 - **Vulnerability Testing:** If the scan flags vulnerabilities like Heartbleed, attempt to replicate them in a controlled environment (with permission). For example, use Metasploit's `auxiliary/scanner/ssl/heartbleed` module to test for Heartbleed exposure.
 
