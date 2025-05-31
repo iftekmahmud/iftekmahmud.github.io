@@ -29,7 +29,9 @@ VMware requires specific settings to pass USB devices to the VM, ensuring Kali c
 3. Under "Connections," set the option to **"Ask me what to do"** when a new USB device is detected. This allows you to manually connect the adapter to the VM.
 4. Click **OK** to save.
 
-![](assets/images/2.png)
+<div style="text-align: center;">
+  <img src="assets/images/2.png" width="500" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 ### Adding a USB Controller to the VM
 
@@ -40,7 +42,9 @@ VMware requires specific settings to pass USB devices to the VM, ensuring Kali c
 4. Check the box **"Show all USB input devices"** under the Connections section to make the adapter visible.
 5. Click **OK** to save.
 
-![](assets/images/3.png)
+<div style="text-align: center;">
+  <img src="assets/images/3.png" width="500" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 ## 3. Connecting the Adapter to the VM
 
@@ -54,7 +58,9 @@ Now that VMware is configured, let's pass the adapter to Kali Linux.
   - Click the adapter name and select **Connect (Disconnect from Host)**.
   - Confirm the pop-up to disconnect the adapter from the host and connect it to the VM.
 
-![](assets/images/4.png)
+<div style="text-align: center;">
+  <img src="assets/images/4.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 If the adapter isn't listed, ensure it's recognized by the host (re-plug if needed). You may also need to install VMware Tools in the VM to improve device detection:
 
@@ -69,13 +75,17 @@ Let's confirm the adapter is accessible in Kali and ready for pentesting.
 
   - Open a terminal in Kali and run:
 
-![](assets/images/5.png)
+<div style="text-align: center;">
+  <img src="assets/images/5.png" width="800" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 Look for an entry corresponding to your adapter (e.g., a chipset like Realtek or MediaTek). If it's plug-and-play, it should appear.
 
   - Run:
 
-![](assets/images/6.png)
+<div style="text-align: center;">
+  <img src="assets/images/6.png" width="600" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 You should see a wireless interface (e.g., `wlan0`). If it's listed, the adapter is detected.
 
@@ -96,11 +106,15 @@ Let's ensure the adapter supports the features needed for wireless pentesting.
 
 - Use `airmon-ng` to switch the adapter to monitor mode (essential for capturing packets):
   
-![](assets/images/7.png)
+<div style="text-align: center;">
+  <img src="assets/images/7.png" width="650" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 - Verify the new interface (e.g., `wlan0`):
 
-![](assets/images/8.png)
+<div style="text-align: center;">
+  <img src="assets/images/8.png" width="600" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 Look for "Mode: Monitor" to confirm. If monitor mode fails, your adapter may not support it—double-check its chipset compatibility with Kali Linux.
 
@@ -108,7 +122,9 @@ Look for "Mode: Monitor" to confirm. If monitor mode fails, your adapter may not
 
 - Use `airodump-ng` to scan for nearby Wi-Fi networks:
 
-![](assets/images/9.png)
+<div style="text-align: center;">
+  <img src="assets/images/9.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 You should see a list of networks with their BSSIDs, ESSIDs, channels, and encryption types (e.g., WPA2). This confirms the adapter is ready for pentesting tasks like capturing handshakes.
 
@@ -124,7 +140,9 @@ If you encounter issues, here are some common fixes:
 
 Some USB Wi-Fi adapters also support Bluetooth, which can be used for Bluetooth pentesting. To check if your adapter has this feature, run:
 
-![](assets/images/10.png)
+<div style="text-align: center;">
+  <img src="assets/images/10.png" width="600" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 If a device (e.g., `hci0`) is listed, you can use tools like `hcitool` or `bettercap` to scan for Bluetooth devices.
 
