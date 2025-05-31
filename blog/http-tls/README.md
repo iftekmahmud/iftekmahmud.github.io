@@ -52,22 +52,6 @@ For deeper analysis, manually inspect headers using browser developer tools or `
 ![](assets/images/2.png)
 
 <div style="text-align: center;">
-  <img src="assets/images/2.png"width="500">
-</div>
-
-<div style="text-align: center;">
-  <img src="assets/images/2.png"width="500"height="auto">
-</div>
-
-<p style="text-align: center;">
-  <img src="assets/images/2.png" width="500">
-</p>
-
-<div style="display: flex; justify-content: center;">
-  <img src="assets/images/2.png" alt="Image description" width="500" height="auto">
-</div>
-
-<div style="text-align: center;">
   <img src="assets/images/2.png" alt="Image description" width="500" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
 </div>
 
