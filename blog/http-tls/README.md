@@ -49,10 +49,8 @@ A missing `Content-Security-Policy` could allow attackers to inject malicious sc
 
 For deeper analysis, manually inspect headers using browser developer tools or `curl`:
 
-![](assets/images/2.png)
-
 <div style="text-align: center;">
-  <img src="assets/images/2.png" alt="Image description" width="500" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/2.png" width="400" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
 </div>
 
 If critical headers are missing, consider whether the site is vulnerable to specific attacks. For example, without `X-Frame-Options`, test for clickjacking by embedding the site in an iframe locally. Advanced researchers can also check for header misconfigurations, such as overly permissive CSP directives (e.g., `script-src 'unsafe-inline'`).
