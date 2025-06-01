@@ -6,6 +6,11 @@ As a security researcher, I often guide beginners in wireless penetration testin
 
 For wireless pentesting, your Wi-Fi adapter must support **monitor mode** (to capture packets) and **packet injection** (to send custom packets, like deauthentication frames). Most built-in laptop Wi-Fi cards lack these capabilities, so a USB Wi-Fi adapter with a compatible chipset (e.g., Atheros AR9271, Ralink RT3070) is essential. Running Kali Linux in a VMware virtual machine adds complexity, as we need to pass the USB device from the host to the VM to enable these features. This guide applies to any USB Wi-Fi adapter that supports these modes, so let's break down the process.
 
+<div style="text-align: center;">
+  <img src="assets/images/Atheros_AR9271.png" alt="Atheros AR9271 Wi-Fi Adapter" width="400" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <p style="text-align: center;">Atheros AR9271</p>
+</div>
+
 ## Connecting the Adapter
 
 ### 1. Preparing Your Environment
