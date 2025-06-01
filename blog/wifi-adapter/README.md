@@ -7,9 +7,10 @@ As a security researcher, I often guide beginners in wireless penetration testin
 For wireless pentesting, your Wi-Fi adapter must support **monitor mode** (to capture packets) and **packet injection** (to send custom packets, like deauthentication frames). Most built-in laptop Wi-Fi cards lack these capabilities, so a USB Wi-Fi adapter with a compatible chipset (e.g., Atheros AR9271, Ralink RT3070) is essential. Running Kali Linux in a VMware virtual machine adds complexity, as we need to pass the USB device from the host to the VM to enable these features. This guide applies to any USB Wi-Fi adapter that supports these modes, so let's break down the process.
 
 <div style="text-align: center;">
-  <img src="assets/images/Atheros_AR9271.png" alt="Atheros AR9271 Wi-Fi Adapter" width="400" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/Atheros_AR9271.png" width="400">
   <p style="text-align: center;">Atheros AR9271</p>
 </div>
+
 
 ## Connecting the Adapter
 
@@ -35,7 +36,7 @@ VMware requires specific settings to pass USB devices to the VM, ensuring Kali c
 4. Click **OK** to save.
 
 <div style="text-align: center;">
-  <img src="assets/images/2.png" width="450" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/2.png" width="450">
 </div>
 
 ### Adding a USB Controller to the VM
@@ -48,7 +49,7 @@ VMware requires specific settings to pass USB devices to the VM, ensuring Kali c
 5. Click **OK** to save.
 
 <div style="text-align: center;">
-  <img src="assets/images/3.png" width="500" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/3.png" width="500">
 </div>
 
 ## 3. Connecting the Adapter to the VM
@@ -64,7 +65,7 @@ Now that VMware is configured, let's pass the adapter to Kali Linux.
   - Confirm the pop-up to disconnect the adapter from the host and connect it to the VM.
 
 <div style="text-align: center;">
-  <img src="assets/images/4.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/4.png" width="700">
 </div>
 
 If the adapter isn't listed, ensure it's recognized by the host (re-plug if needed). You may also need to install VMware Tools in the VM to improve device detection:
@@ -81,7 +82,7 @@ Let's confirm the adapter is accessible in Kali and ready for pentesting.
   - Open a terminal in Kali and run:
 
 <div style="text-align: center;">
-  <img src="assets/images/5.png" width="800" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/5.png" width="800">
 </div>
 
 Look for an entry corresponding to your adapter (e.g., a chipset like Realtek or MediaTek). If it's plug-and-play, it should appear.
@@ -89,7 +90,7 @@ Look for an entry corresponding to your adapter (e.g., a chipset like Realtek or
   - Run:
 
 <div style="text-align: center;">
-  <img src="assets/images/6.png" width="600" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/6.png" width="600">
 </div>
 
 You should see a wireless interface (e.g., `wlan0`). If it's listed, the adapter is detected.
@@ -110,15 +111,15 @@ Let's ensure the adapter supports the features needed for wireless pentesting.
 **1. Enable Monitor Mode:**
 
 - Use `airmon-ng` to switch the adapter to monitor mode (essential for capturing packets):
-  
+
 <div style="text-align: center;">
-  <img src="assets/images/7.png" width="650" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/7.png" width="650">
 </div>
 
 - Verify the new interface (e.g., `wlan0`):
-
+  
 <div style="text-align: center;">
-  <img src="assets/images/8.png" width="600" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/8.png" width="600">
 </div>
 
 Look for "Mode: Monitor" to confirm. If monitor mode fails, your adapter may not support it—double-check its chipset compatibility with Kali Linux.
@@ -128,7 +129,7 @@ Look for "Mode: Monitor" to confirm. If monitor mode fails, your adapter may not
 - Use `airodump-ng` to scan for nearby Wi-Fi networks:
 
 <div style="text-align: center;">
-  <img src="assets/images/9.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/9.png" width="700">
 </div>
 
 You should see a list of networks with their BSSIDs, ESSIDs, channels, and encryption types (e.g., WPA2). This confirms the adapter is ready for pentesting tasks like capturing handshakes.
@@ -146,7 +147,7 @@ If you encounter issues, here are some common fixes:
 Some USB Wi-Fi adapters also support Bluetooth, which can be used for Bluetooth pentesting. To check if your adapter has this feature, run:
 
 <div style="text-align: center;">
-  <img src="assets/images/10.png" width="600" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/10.png" width="600">
 </div>
 
 If a device (e.g., `hci0`) is listed, you can use tools like `hcitool` or `bettercap` to scan for Bluetooth devices.
