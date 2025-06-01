@@ -37,13 +37,13 @@ site:example.com filetype:pdf
 This query finds all PDF files indexed on `example.com`. PDFs often contain sensitive information like employee handbooks, network diagrams, or financial reports.
 
 <div style="text-align: center;">
-  <img src="assets/images/2.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/2.png" width="700">
 </div>
 
 We received an interesting result. Our query found the robots.txt file, containing the following content.
 
 <div style="text-align: center;">
-  <img src="assets/images/3.png" width="450" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/3.png" width="450">
 </div>
 
 The robots.txt file instructs web crawlers, such as Google’s search engine crawler, to allow or disallow specific resources. In this case, it revealed a specific PHP page (/nanities.php) that was otherwise hidden from the regular search, despite being listed as allowed by the policy.
@@ -69,7 +69,7 @@ intitle:"index of" site:example.com
 This query looks for directory listings on `example.com`, which may expose files or directories not intended for public access.
 
 <div style="text-align: center;">
-  <img src="assets/images/5.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/5.png" width="700">
 </div>
 
 ### 5. The Exclusion Operator (`-`)
@@ -83,7 +83,7 @@ site:example.com -filetype:html
 This query returns non-HTML pages on `example.com`, such as configuration files or scripts.
 
 <div style="text-align: center;">
-  <img src="assets/images/4.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/4.png" width="700">
 </div>
 
 ## Combining Operators
@@ -113,13 +113,13 @@ site:example.com intitle:"index of" "parent directory"
 ```
 
 <div style="text-align: center;">
-  <img src="assets/images/6.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/6.png" width="700">
 </div>
 
 This query finds directory listings that include "parent directory" links, indicating open directories without index pages.
 
 <div style="text-align: center;">
-  <img src="assets/images/7.png" width="450" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/7.png" width="450">
 </div>
 
 ## Leveraging the Google Hacking Database (GHDB)
@@ -127,7 +127,7 @@ This query finds directory listings that include "parent directory" links, indic
 For advanced practitioners, the Google Hacking Database (GHDB), maintained by Exploit-DB, is a treasure trove of pre-built dorks. These queries are designed to uncover specific vulnerabilities, such as exposed cameras, IoT devices, or error messages leaking sensitive information.
 
 <div style="text-align: center;">
-  <img src="assets/images/8.png" alt="Image description" width="900">
+  <img src="assets/images/8.png" width="900">
 </div>
 
 ### GHDB Query for Exposed Webcams
@@ -137,7 +137,7 @@ intitle:"webcamXP" inurl:8080
 ```
 
 <div style="text-align: center;">
-  <img src="assets/images/9.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/9.png" width="700">
 </div>
 
 This query finds webcams running webcamXP software, often misconfigured and accessible without authentication.
