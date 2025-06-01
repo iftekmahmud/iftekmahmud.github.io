@@ -26,6 +26,10 @@ This query returns all indexed pages for `example.com`. For a penetration test, 
   <img src="assets/images/1.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
 </div>
 
+<div style="text-align: center;">
+  <img src="assets/images/1.png" alt="Image description" width="700">
+</div>
+
 ### 2. The `filetype:` Operator
 
 The `filetype:` (or `ext:`) operator filters results to specific file extensions, such as `pdf`, `txt`, or `php`. This is particularly useful for finding exposed configuration files or sensitive documents.
