@@ -8,7 +8,7 @@ For wireless pentesting, your Wi-Fi adapter must support **monitor mode** (to ca
 
 <div style="text-align: center;">
   <img src="assets/images/Atheros_AR9271.png" width="370">
-  <p style="text-align: center; margin-top: 2 px;">Atheros AR9271 Wi-Fi Adapter</p>
+  <p style="text-align: center; margin-top: -7px;">Atheros AR9271 Wi-Fi Adapter</p>
 </div>
 
 ## Connecting the Adapter
