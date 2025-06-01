@@ -23,11 +23,7 @@ site:example.com
 This query returns all indexed pages for `example.com`. For a penetration test, this helps you understand the target’s web footprint, including subdomains or forgotten microsites.
 
 <div style="text-align: center;">
-  <img src="assets/images/1.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
-</div>
-
-<div style="text-align: center;">
-  <img src="assets/images/1.png" alt="Image description" width="700">
+  <img src="assets/images/1.png" width="700">
 </div>
 
 ### 2. The `filetype:` Operator
