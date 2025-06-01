@@ -126,8 +126,8 @@ This query finds directory listings that include "parent directory" links, indic
 
 For advanced practitioners, the Google Hacking Database (GHDB), maintained by Exploit-DB, is a treasure trove of pre-built dorks. These queries are designed to uncover specific vulnerabilities, such as exposed cameras, IoT devices, or error messages leaking sensitive information.
 
-<div style="text-align: center;">
-  <img src="assets/images/8.png" width="900" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+<div style="display: flex; justify-content: center;">
+  <img src="assets/images/8.png" alt="Image description" width="900" height="auto">
 </div>
 
 ### GHDB Query for Exposed Webcams
@@ -137,7 +137,7 @@ intitle:"webcamXP" inurl:8080
 ```
 
 <div style="text-align: center;">
-  <img src="assets/images/6.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/9.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
 </div>
 
 This query finds webcams running webcamXP software, often misconfigured and accessible without authentication.
