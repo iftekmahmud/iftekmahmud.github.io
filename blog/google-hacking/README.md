@@ -22,7 +22,9 @@ site:example.com
 
 This query returns all indexed pages for `example.com`. For a penetration test, this helps you understand the target’s web footprint, including subdomains or forgotten microsites.
 
-![](assets/images/1.png)
+<div style="text-align: center;">
+  <img src="assets/images/1.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 ### 2. The `filetype:` Operator
 
@@ -34,11 +36,15 @@ site:example.com filetype:pdf
 
 This query finds all PDF files indexed on `example.com`. PDFs often contain sensitive information like employee handbooks, network diagrams, or financial reports.
 
-![](assets/images/2.png)
+<div style="text-align: center;">
+  <img src="assets/images/2.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 We received an interesting result. Our query found the robots.txt file, containing the following content.
 
-![](assets/images/3.png)
+<div style="text-align: center;">
+  <img src="assets/images/3.png" width="450" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 The robots.txt file instructs web crawlers, such as Google’s search engine crawler, to allow or disallow specific resources. In this case, it revealed a specific PHP page (/nanities.php) that was otherwise hidden from the regular search, despite being listed as allowed by the policy.
 
@@ -62,7 +68,9 @@ intitle:"index of" site:example.com
 
 This query looks for directory listings on `example.com`, which may expose files or directories not intended for public access.
 
-![](assets/images/5.png)
+<div style="text-align: center;">
+  <img src="assets/images/5.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 ### 5. The Exclusion Operator (`-`)
 
@@ -74,7 +82,9 @@ site:example.com -filetype:html
 
 This query returns non-HTML pages on `example.com`, such as configuration files or scripts.
 
-![](assets/images/4.png)
+<div style="text-align: center;">
+  <img src="assets/images/4.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 ## Combining Operators
 
@@ -102,17 +112,23 @@ This query targets subdomains of `example.com` with admin-related terms in the U
 site:example.com intitle:"index of" "parent directory"
 ```
 
-![](assets/images/6.png)
+<div style="text-align: center;">
+  <img src="assets/images/6.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 This query finds directory listings that include "parent directory" links, indicating open directories without index pages.
 
-![](assets/images/7.png)
+<div style="text-align: center;">
+  <img src="assets/images/7.png" width="450" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 ## Leveraging the Google Hacking Database (GHDB)
 
 For advanced practitioners, the Google Hacking Database (GHDB), maintained by Exploit-DB, is a treasure trove of pre-built dorks. These queries are designed to uncover specific vulnerabilities, such as exposed cameras, IoT devices, or error messages leaking sensitive information.
 
-![](assets/images/8.png)
+<div style="text-align: center;">
+  <img src="assets/images/8.png" width="900" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 ### GHDB Query for Exposed Webcams
 
@@ -120,7 +136,9 @@ For advanced practitioners, the Google Hacking Database (GHDB), maintained by Ex
 intitle:"webcamXP" inurl:8080
 ```
 
-![](assets/images/9.png)
+<div style="text-align: center;">
+  <img src="assets/images/6.png" width="700" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+</div>
 
 This query finds webcams running webcamXP software, often misconfigured and accessible without authentication.
 
