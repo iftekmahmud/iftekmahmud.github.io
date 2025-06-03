@@ -2,7 +2,7 @@
 
 Man-in-the-Middle (MITM) attacks are a significant threat in wireless networks, allowing attackers to intercept and manipulate communication between clients and access points (APs). One potent method involves creating a rogue access point, a malicious Wi-Fi network designed to lure unsuspecting users. In this blog, I'll provide a detailed, practical guide to understanding and executing a rogue AP-based MITM attack, aimed at both beginners and advanced security enthusiasts. We'll focus on using Kali Linux and tools like `airbase-ng` to demonstrate the attack, while emphasizing legal boundaries.
 
-**Disclaimer:** This guide is for educational purposes only. Performing MITM attacks on networks or devices without explicit permission is illegal. Always conduct security research in controlled, authorized environments.
+**Disclaimer:** This guide is for educational purposes only. Performing MITM attacks on networks or devices without explicit permission is illegal. Always conduct security research in controlled and authorized environments.
 
 ## What is a Rogue Access Point MITM Attack?
 
@@ -29,9 +29,7 @@ To capture and manipulate wireless traffic, your Wi-Fi adapter must be in _monit
 1. Connect your external Wi-Fi adapter to your Kali Linux machine.
 
 2. Verify the adapter is recognized:
-```
-iwconfig
-```
+
 <div style="text-align: center;">
   <img src="assets/images/1.png" width="450">
 </div>
@@ -40,64 +38,104 @@ Look for your adapter's interface name (e.g., `wlan0`).
 
 3. Enable monitor mode:
 
-```
-sudo airmon-ng start wlan0
-```
 <div style="text-align: center;">
   <img src="assets/images/2.png" width="450">
 </div>
 
 This creates a new interface (e.g., `wlan0`). Confirm with `iwconfig`.
 
+<div style="text-align: center;">
+  <img src="assets/images/3.png" width="450">
+</div>
+
 ## 2. Create the Rogue Access Point
 
 Using `airbase-ng` from the Aircrack-ng suite, we'll create a rogue AP with a customized SSID to mimic a legitimate network.
 
-Launch the rogue AP:
+1. Launch the rogue AP on a free channel (avoid your Wi-Fi’s channel):
 
-```
-sudo airbase-ng -e "FreeWiFi" -c 6 -P wlan0
-```
+<div style="text-align: center;">
+  <img src="assets/images/4.png" width="450">
+</div>
 
 - `e "FreeWiFi"`: Sets the SSID to "FreeWiFi" (choose a name that blends with the environment).
-- `c 6`: Specifies the channel (e.g., channel 6; match the target AP's channel for realism).
+- `c 11`: Specifies the channel (e.g., channel 6; match the target AP's channel for realism).
 - `P`: Enables the AP to respond to all probe requests, increasing the likelihood of client connections.
 - `wlan0`: The monitor-mode interface.
 
-This command creates a virtual AP interface (e.g., at0).
+This command creates a virtual AP interface (e.g., `at0`). Confirm with `iwconfig`.
 
-Monitor the AP activity in the terminal. You'll see clients attempting to connect, as shown in Figure 7.26 (conceptual representation of the rogue AP setup).
+<div style="text-align: center;">
+  <img src="assets/images/at0.png" width="450">
+</div>
 
+2. Monitor the AP activity in the terminal. You'll see clients attempting to connect:
 
-Step 3: Configure Network Routing
-To intercept traffic, you need to route client traffic through your Kali machine.
+<div style="text-align: center;">
+  <img src="assets/images/5.png" width="450">
+</div>
 
-Enable IP forwarding:
-sudo sysctl -w net.ipv4.ip_forward=1
+## 3. Configure Network Routing
 
+To intercept traffic, you need to route client traffic through your Kali machine and assign IPs to clients.
 
-Set up the virtual AP interface (at0) with an IP address:
-sudo ifconfig at0 up 192.168.1.1 netmask 255.255.255.0
+1. Enable IP forwarding:
 
+<div style="text-align: center;">
+  <img src="assets/images/6.png" width="450">
+</div>
 
-Configure a DHCP server to assign IP addresses to connecting clients. Install and configure dnsmasq:
-sudo apt-get install dnsmasq
+This allows traffic to pass between the rogue AP and your machine.
 
-Create a configuration file (/etc/dnsmasq.conf):
+2. Set up the virtual AP interface (at0) with an IP address:
+
+<div style="text-align: center;">
+  <img src="assets/images/7.png" width="450">
+</div>
+
+This assigns a static IP to `at0`, acting as the gateway for clients.
+
+3. Configure a DHCP server to assign IP addresses to connecting clients.
+
+- Install and configure `dnsmasq`:
+
+<div style="text-align: center;">
+  <img src="assets/images/8.png" width="450">
+</div>
+
+- Create a configuration file (`/etc/dnsmasq.conf`):
+
+```bash
+sudo gedit /etc/dnsmasq.conf
+```
+Add:
+
+```plain
 interface=at0
 dhcp-range=192.168.1.2,192.168.1.100,12h
+```
+  - `interface=at0`: Tells `dnsmasq` to use the virtual AP.
+  - `dhcp-range`: Defines the IP range (`192.168.1.2` to `192.168.1.100`) and lease time (12 hours) for clients.
+  - Save and exit.
 
-Start dnsmasq:
-sudo dnsmasq -C /etc/dnsmasq.conf
+<div style="text-align: center;">
+  <img src="assets/images/9.png" width="450">
+</div>
 
+- Start `dnsmasq`:
 
-Set up NAT to allow clients internet access (optional, to make the rogue AP convincing):
-sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+<div style="text-align: center;">
+  <img src="assets/images/10.png" width="450">
+</div>
 
-
+- Set up NAT to allow clients internet access (optional, to make the rogue AP convincing):
 
 Step 4: Intercept and Analyze Traffic
 Once clients connect to your rogue AP (as depicted in Figure 7.27), their traffic routes through your Kali machine. Use tools like Wireshark or tcpdump to capture and analyze packets.
+
+```bash
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+```
 
 Start Wireshark:
 sudo wireshark &
