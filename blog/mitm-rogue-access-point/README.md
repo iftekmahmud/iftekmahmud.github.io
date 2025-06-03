@@ -1,48 +1,54 @@
-Understanding and Executing Man-in-the-Middle Attacks with Rogue Access Points
-By [Your Name], Security Researcher
-Man-in-the-Middle (MITM) attacks are a significant threat in wireless networks, allowing attackers to intercept and manipulate communication between clients and access points (APs). One potent method involves creating a rogue access point—a malicious Wi-Fi network designed to lure unsuspecting users. This blog provides a detailed, practical guide to understanding and executing a rogue AP-based MITM attack, aimed at both beginners and advanced security enthusiasts. We’ll focus on using Kali Linux and tools like airbase-ng to demonstrate the attack, while emphasizing ethical considerations and legal boundaries.
+# Executing Man-in-the-Middle Attacks with Rogue Access Points
 
-Disclaimer: This guide is for educational purposes only. Performing MITM attacks on networks or devices without explicit permission is illegal and unethical. Always conduct security research in controlled, authorized environments.
+Man-in-the-Middle (MITM) attacks are a significant threat in wireless networks, allowing attackers to intercept and manipulate communication between clients and access points (APs). One potent method involves creating a rogue access point, a malicious Wi-Fi network designed to lure unsuspecting users. In this blog, I'll provide a detailed, practical guide to understanding and executing a rogue AP-based MITM attack, aimed at both beginners and advanced security enthusiasts. We'll focus on using Kali Linux and tools like `airbase-ng` to demonstrate the attack, while emphasizing legal boundaries.
 
-What is a Rogue Access Point MITM Attack?
+**Disclaimer:** This guide is for educational purposes only. Performing MITM attacks on networks or devices without explicit permission is illegal. Always conduct security research in controlled, authorized environments.
+
+## What is a Rogue Access Point MITM Attack?
+
 A rogue access point is a malicious Wi-Fi network set up by an attacker to mimic a legitimate AP. By enticing users to connect, the attacker can intercept traffic, modify data, or launch further attacks like phishing or session hijacking. This technique is particularly effective in public Wi-Fi environments, where users may not verify the authenticity of networks.
-MITM attacks via rogue APs exploit the trust users place in Wi-Fi networks. Other related techniques include ARP spoofing, Evil Twin attacks, Wi-Fi Pineapple, and DNS spoofing, each with unique mechanisms for intercepting traffic. This blog focuses on the rogue AP method, as it’s accessible yet powerful for demonstrating MITM concepts.
-Prerequisites
-To follow this guide, you’ll need:
 
-A Kali Linux machine (physical or virtual).
-An external Wi-Fi adapter (e.g., TP-Link WN722N) that supports monitor mode.
-Basic familiarity with Linux terminal commands.
-Tools from the Aircrack-ng suite (airbase-ng, airodump-ng, etc.).
-A controlled lab environment with explicit permission to test.
+MITM attacks via rogue APs exploit the trust users place in Wi-Fi networks. Other related techniques include ARP spoofing, Evil Twin attacks, Wi-Fi Pineapple, and DNS spoofing, each with unique mechanisms for intercepting traffic. This blog focuses on the rogue AP method, as it's accessible yet powerful for demonstrating MITM concepts.
 
-Step-by-Step Guide to Creating a Rogue AP for MITM
-Step 1: Set Up Your Wi-Fi Adapter in Monitor Mode
-To capture and manipulate wireless traffic, your Wi-Fi adapter must be in monitor mode, which allows it to listen to all wireless packets, not just those destined for your device.
+## Prerequisites
 
-Connect your external Wi-Fi adapter (e.g., TP-Link WN722N) to your Kali Linux machine.
+To follow this guide, you'll need:
+
+- A Kali Linux machine (physical or virtual).
+- An external Wi-Fi adapter that supports monitor mode.
+- Basic familiarity with Linux terminal commands.
+- Tools from the Aircrack-ng suite (`airbase-ng`, `airodump-ng`, etc.).
+- A controlled lab environment with explicit permission to test.
+
+## Creating a Rogue AP for MITM
+
+### 1. Set Up Your Wi-Fi Adapter in Monitor Mode
+
+To capture and manipulate wireless traffic, your Wi-Fi adapter must be in _monitor_ mode, which allows it to listen to all wireless packets, not just those destined for your device.
+
+Connect your external Wi-Fi adapter to your Kali Linux machine.
 Verify the adapter is recognized:iwconfig
 
-Look for your adapter’s interface name (e.g., wlan0).
+Look for your adapter's interface name (e.g., wlan0).
 Enable monitor mode:sudo airmon-ng start wlan0
 
 This creates a new interface (e.g., wlan0mon). Confirm with iwconfig.
 
 Step 2: Create the Rogue Access Point
-Using airbase-ng from the Aircrack-ng suite, we’ll create a rogue AP with a customized SSID to mimic a legitimate network.
+Using airbase-ng from the Aircrack-ng suite, we'll create a rogue AP with a customized SSID to mimic a legitimate network.
 
 Launch the rogue AP:
 sudo airbase-ng -e "FreeWiFi" -c 6 -P wlan0mon
 
 
 -e "FreeWiFi": Sets the SSID to “FreeWiFi” (choose a name that blends with the environment).
--c 6: Specifies the channel (e.g., channel 6; match the target AP’s channel for realism).
+-c 6: Specifies the channel (e.g., channel 6; match the target AP's channel for realism).
 -P: Enables the AP to respond to all probe requests, increasing the likelihood of client connections.
 wlan0mon: The monitor-mode interface.
 
 This command creates a virtual AP interface (e.g., at0).
 
-Monitor the AP activity in the terminal. You’ll see clients attempting to connect, as shown in Figure 7.26 (conceptual representation of the rogue AP setup).
+Monitor the AP activity in the terminal. You'll see clients attempting to connect, as shown in Figure 7.26 (conceptual representation of the rogue AP setup).
 
 
 Step 3: Configure Network Routing
