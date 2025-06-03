@@ -137,10 +137,29 @@ Once clients connect to your rogue AP (as depicted in Figure 7.27), their traffi
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 ```
 
-Start Wireshark:
-sudo wireshark &
+## 4. Intercept and Analyze Traffic
 
-Select the at0 interface and filter for protocols like HTTP, DNS, or TLS to inspect traffic.
+Clients connecting to "FreeWiFi" route through your Kali machine. Analyze their traffic.
+
+1. Start Wireshark:
+
+```bash
+sudo wireshark &
+```
+
+2. Select the `at0` interface and filter for protocols like HTTP, DNS, or TLS to inspect traffic.
+
+<div style="text-align: center;">
+  <img src="assets/images/11.png" width="450">
+</div>
+
+<div style="text-align: center;">
+  <img src="assets/images/12.png" width="450">
+</div>
+
+<div style="text-align: center;">
+  <img src="assets/images/13.png" width="450">
+</div>
 
 For advanced attacks, you can:
 
