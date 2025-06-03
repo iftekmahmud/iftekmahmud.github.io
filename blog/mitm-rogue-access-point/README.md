@@ -62,7 +62,7 @@ This creates a new interface (e.g., `wlan0`). Confirm with `iwconfig`.
 
 Using `airbase-ng` from the Aircrack-ng suite, we'll create a rogue AP with a customized SSID to mimic a legitimate network.
 
-1. Launch the rogue AP on a free channel (avoid your Wi-Fi’s channel):
+1. Launch the rogue AP:
 
 <div style="text-align: center;">
   <img src="assets/images/4.png" width="450">
