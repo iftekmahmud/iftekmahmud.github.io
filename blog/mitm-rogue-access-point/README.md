@@ -26,25 +26,43 @@ To follow this guide, you'll need:
 
 To capture and manipulate wireless traffic, your Wi-Fi adapter must be in _monitor_ mode, which allows it to listen to all wireless packets, not just those destined for your device.
 
-Connect your external Wi-Fi adapter to your Kali Linux machine.
-Verify the adapter is recognized:iwconfig
+1. Connect your external Wi-Fi adapter to your Kali Linux machine.
 
-Look for your adapter's interface name (e.g., wlan0).
-Enable monitor mode:sudo airmon-ng start wlan0
+2. Verify the adapter is recognized:
+```
+iwconfig
+```
+<div style="text-align: center;">
+  <img src="assets/images/1.png" width="450">
+</div>
 
-This creates a new interface (e.g., wlan0mon). Confirm with iwconfig.
+Look for your adapter's interface name (e.g., `wlan0`).
 
-Step 2: Create the Rogue Access Point
-Using airbase-ng from the Aircrack-ng suite, we'll create a rogue AP with a customized SSID to mimic a legitimate network.
+3. Enable monitor mode:
+
+```
+sudo airmon-ng start wlan0
+```
+<div style="text-align: center;">
+  <img src="assets/images/2.png" width="450">
+</div>
+
+This creates a new interface (e.g., `wlan0`). Confirm with `iwconfig`.
+
+## 2. Create the Rogue Access Point
+
+Using `airbase-ng` from the Aircrack-ng suite, we'll create a rogue AP with a customized SSID to mimic a legitimate network.
 
 Launch the rogue AP:
-sudo airbase-ng -e "FreeWiFi" -c 6 -P wlan0mon
 
+```
+sudo airbase-ng -e "FreeWiFi" -c 6 -P wlan0
+```
 
--e "FreeWiFi": Sets the SSID to “FreeWiFi” (choose a name that blends with the environment).
--c 6: Specifies the channel (e.g., channel 6; match the target AP's channel for realism).
--P: Enables the AP to respond to all probe requests, increasing the likelihood of client connections.
-wlan0mon: The monitor-mode interface.
+- `e "FreeWiFi"`: Sets the SSID to "FreeWiFi" (choose a name that blends with the environment).
+- `c 6`: Specifies the channel (e.g., channel 6; match the target AP's channel for realism).
+- `P`: Enables the AP to respond to all probe requests, increasing the likelihood of client connections.
+- `wlan0`: The monitor-mode interface.
 
 This command creates a virtual AP interface (e.g., at0).
 
