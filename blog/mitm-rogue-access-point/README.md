@@ -20,6 +20,16 @@ To follow this guide, you'll need:
 - Tools from the Aircrack-ng suite (`airbase-ng`, `airodump-ng`, etc.).
 - A controlled lab environment with explicit permission to test.
 
+## Key Concepts for Beginners
+
+Before diving in, let’s clarify some terms:
+
+- **Virtual AP (Access Point):** A software-simulated Wi-Fi network (e.g., `at0` interface) created by tools like `airbase-ng`. It mimics a real AP without requiring dedicated hardware.
+- **DHCP Server:** A service that automatically assigns IP addresses to devices connecting to the network, ensuring they can communicate.
+- **DNSmasq:** A lightweight tool that acts as both a DHCP and DNS server, simplifying network configuration for the rogue AP.
+- **Why Configure a Server?:** Configuring a DHCP server (via `dnsmasq`) ensures connected clients get IP settings, making the rogue AP functional and convincing.
+- **Configuration File:** A text file (e.g., `/etc/dnsmasq.conf`) that defines how `dnsmasq` assigns IPs and handles DNS requests.
+
 ## Creating a Rogue AP for MITM
 
 ### 1. Set Up Your Wi-Fi Adapter in Monitor Mode
