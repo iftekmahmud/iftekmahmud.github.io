@@ -193,5 +193,46 @@ For a convincing AP, allow clients to access the internet via NAT.
 
    - Clients should now get internet access if NAT is correctly configured.
 
+## 6. Connect and Test
 
-   
+1. Connect a Device:
+
+   - On your test device (e.g., phone or laptop), scan for Wi-Fi networks and connect to "SecureFreeWiFi" using the password `yourpassword123`.
+
+   - Check the assigned IP:
+
+      <div style="text-align: center;">
+      <img src="assets/images/12.png" width="450">
+      </div>
+
+   - Look for the client’s IP in the 192.168.1.x range.
+
+2. Verify Traffic:
+
+   - Use Wireshark to monitor traffic on `wlan0`:
+
+      <div style="text-align: center;">
+      <img src="assets/images/13.png" width="450">
+      </div>
+
+   - Filter for HTTP, DNS, or TLS to analyze client activity.
+
+## 7. Clean Up
+
+After testing, dismantle the AP to avoid interference:
+
+- Stop `hostapd`.
+
+- Stop `dnsmasq` (`Ctrl+C` if in debug mode, or `sudo killall dnsmasq`).
+
+- Disable IP forwarding:
+
+   <div style="text-align: center;">
+   <img src="assets/images/17.png" width="450">
+   </div>
+
+- Reset `wlan0`:
+
+   <div style="text-align: center;">
+   <img src="assets/images/18.png" width="450">
+   </div>
