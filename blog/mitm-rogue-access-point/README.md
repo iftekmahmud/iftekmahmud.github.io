@@ -161,6 +161,7 @@ Once clients connect to your rogue AP, their traffic routes through your Kali ma
 ```bash
 sudo wireshark &
 ```
+
 2. Select the `at0` interface and filter for protocols like HTTP, DNS, or TLS to inspect traffic.
 <div style="text-align: center;">
   <img src="assets/images/11.png" width="500">
