@@ -200,9 +200,7 @@ Let’s perform an unauthenticated vulnerability scan on Metasploitable 2 using 
 - The **Assessment**, **Report**, and **Advanced** tabs contain default settings suitable for most scans. For now, leave them unchanged.
 - Note that this scan is unauthenticated (no credentials provided), which may limit visibility into system-level vulnerabilities.
 
-**5. Launch the Scan:**
-
-- Click **Launch** next to **Configure**.
+**5. Launch the Scan**
 
 <div style="text-align: center;">
   <img src="assets/images/17.png" width="1000">
