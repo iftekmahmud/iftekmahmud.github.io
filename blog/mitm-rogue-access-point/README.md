@@ -158,12 +158,10 @@ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 Once clients connect to your rogue AP, their traffic routes through your Kali machine. Use tools like Wireshark or tcpdump to capture and analyze packets.
 
 1. Start Wireshark:
-
 ```bash
 sudo wireshark &
 ```
 2. Select the `at0` interface and filter for protocols like HTTP, DNS, or TLS to inspect traffic.
-
 <div style="text-align: center;">
   <img src="assets/images/11.png" width="500">
 </div>
