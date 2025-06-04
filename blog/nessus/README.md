@@ -233,7 +233,7 @@ Once the scan completes, Nessus provides a detailed results dashboard for analyz
 - You might see multiple findings due to Metasploitable’s outdated Apache and other services.
 
 <div style="text-align: center;">
-  <img src="assets/images/19.png" width="1000">
+  <img src="assets/images/20.png" width="1000">
 </div>
 
 **2. Vulnerabilities Page:**
@@ -241,7 +241,7 @@ Once the scan completes, Nessus provides a detailed results dashboard for analyz
 - Click on the Metasploitable IP to view its vulnerabilities. You may find grouped findings like **HTTP (Multiple Issues)** in the Web Servers family.
 
 <div style="text-align: center;">
-  <img src="assets/images/20.png" width="1000">
+  <img src="assets/images/21.png" width="1000">
 </div>
 
 - Drill down into a finding (e.g., **Canonical Ubuntu Linux SEoL (8.04.x)**) for details, including:
