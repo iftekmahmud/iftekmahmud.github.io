@@ -22,66 +22,77 @@ To follow this guide, ensure you have:
 
 Before creating the AP, ensure your Wi-Fi adapter is ready and supports the necessary modes.
 
-### 1. Connect the Adapter:
+1. Connect the Adapter:
 
-- Plug your external Wi-Fi adapter into your Kali Linux machine.
+   - Plug your external Wi-Fi adapter into your Kali Linux machine.
 
-### 2. Verify Adapter Recognition:
+2. Verify Adapter Recognition:
 
-- Check the available interfaces:
+   - Check the available interfaces:
 
-   <div style="text-align: center;">
-     <img src="assets/images/1.png" width="450">
-   </div>
+      <div style="text-align: center;">
+        <img src="assets/images/1.png" width="450">
+      </div>
 
-- If `wlan0` isn't listed, troubleshoot with `lsusb` or `dmesg | grep wlan` to confirm detection.
+   - If `wlan0` isn't listed, troubleshoot with `lsusb` or `dmesg | grep wlan` to confirm detection.
+
+3. If it shows `Mode:Monitor` (e.g., `wlan0`), switch it back to managed mode:
+
+   ```
+   sudo airmon-ng stop wlan0
+   sudo ifconfig wlan0 down
+   sudo ifconfig wlan0 up
+   ```
+
+    - Confirm it’s in managed mode with iwconfig again.
 
 ## 2. Install and Configure `hostapd`
 
 `hostapd` is pre-installed on Kali Linux, but let's ensure it's set up correctly.
 
-### 1. Install `hostapd` (if needed):
+1. Install `hostapd` (if needed):
 
-- Update and install:
+   - Update and install:
 
-  ```bash
-  sudo apt-get update
-  sudo apt-get install hostapd
-  ```
+     ```bash
+     sudo apt-get update
+     sudo apt-get install hostapd
+     ```
 
-### 2. Create a Configuration File:
+2. Create a Configuration File:
 
-1. Open a new configuration file:
+   1. Open a new configuration file:
 
-  ```bash
-  sudo nano /etc/hostapd/hostapd.conf
-  ```
-2. Add the following, customizing as needed:
+      ```bash
+      sudo nano /etc/hostapd/hostapd.conf
+      ```
 
-  ```bash
-  interface=wlan0
-  ssid=SecureFreeWiFi
-  channel=11
-  hw_mode=g
-  wpa=2
-  wpa_passphrase=yourpassword123
-  wpa_key_mgmt=WPA-PSK
-  wpa_pairwise=CCMP
-  rsn_pairwise=CCMP
-  ```
-   - `interface=wlan0`: The Wi-Fi interface to use.
-   - `ssid=SecureFreeWiFi`: The network name (choose something convincing).
-   - `channel=11`: A non-overlapping channel (scan with `airodump-ng wlan0` to pick a less congested one).
-   - `wpa=2`: Enables WPA2 encryption.
-   - `wpa_passphrase=yourpassword123`: The password clients will use (at least 8 characters).
-   - `wpa_key_mgmt=WPA-PSK`: Uses Pre-Shared Key authentication.
-   - `wpa_pairwise=CCMP` and `rsn_pairwise=CCMP`: Use AES encryption (stronger than TKIP).
+   2. Add the following, customizing as needed:
 
-<div style="text-align: center;">
-<img src="assets/images/2.png" width="450">
-</div> 
+      ```bash
+      interface=wlan0
+      ssid=SecureFreeWiFi
+      channel=11
+      hw_mode=g
+      wpa=2
+      wpa_passphrase=yourpassword123
+      wpa_key_mgmt=WPA-PSK
+      wpa_pairwise=CCMP
+      rsn_pairwise=CCMP
+      ```
+      - `interface=wlan0`: The Wi-Fi interface to use.
+      - `ssid=SecureFreeWiFi`: The network name (choose something convincing).
+      - `channel=11`: A non-overlapping channel (scan with `airodump-ng wlan0` to pick a less congested one).
+      - `wpa=2`: Enables WPA2 encryption.
+      - `wpa_passphrase=yourpassword123`: The password clients will use (at least 8 characters).
+      - `wpa_key_mgmt=WPA-PSK`: Uses Pre-Shared Key authentication.
+      - `wpa_pairwise=CCMP` and `rsn_pairwise=CCMP`: Use AES encryption (stronger than TKIP).
 
-3. Save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
+   <div style="text-align: center;">
+   <img src="assets/images/2.png" width="450">
+   </div> 
+
+   3. Save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
   
 ### 3. Start the Encrypted AP
 
