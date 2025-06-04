@@ -39,20 +39,24 @@ To capture and manipulate wireless traffic, your Wi-Fi adapter must be in _monit
 1. Connect your external Wi-Fi adapter to your Kali Linux machine.
 
 2. Verify the adapter is recognized:
-  <div style="text-align: center;">
-    <img src="assets/images/1.png" width="550">
-  </div>
-  Look for your adapter's interface name (e.g., `wlan0`).
+
+   <div style="text-align: center;">
+     <img src="/blog/mitm-rogue-access-point/assets/images/1.png" width="550">
+   </div>
+
+   Look for your adapter's interface name (e.g., `wlan0`).
 
 3. Enable monitor mode:
-  <div style="text-align: center;">
-    <img src="assets/images/2.png" width="550">
-  </div>
-  This creates a new interface (e.g., `wlan0`). Confirm with `iwconfig`.
 
-  <div style="text-align: center;">
-    <img src="assets/images/3.png" width="550">
-  </div>
+   <div style="text-align: center;">
+     <img src="/blog/mitm-rogue-access-point/assets/images/2.png" width="550">
+   </div>
+
+   This creates a new interface (e.g., `wlan0`). Confirm with `iwconfig`.
+
+   <div style="text-align: center;">
+     <img src="/blog/mitm-rogue-access-point/assets/images/3.png" width="550">
+   </div>
 
 ## 2. Create the Rogue Access Point
 
