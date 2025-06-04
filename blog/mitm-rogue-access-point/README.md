@@ -22,7 +22,7 @@ To follow this guide, you'll need:
 
 ## Key Concepts for Beginners
 
-Before diving in, let’s clarify some terms:
+Before diving in, let's clarify some terms:
 
 - **Virtual AP (Access Point):** A software-simulated Wi-Fi network (e.g., `at0` interface) created by tools like `airbase-ng`. It mimics a real AP without requiring dedicated hardware.
 - **DHCP Server:** A service that automatically assigns IP addresses to devices connecting to the network, ensuring they can communicate.
@@ -171,7 +171,7 @@ To intercept traffic, you need to route client traffic through your Kali machine
    sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
    ```
 
-   Note: Internet access makes the AP more convincing, as modern devices (e.g., Android) often disconnect if they can’t verify connectivity (e.g., by pinging `connectivitycheck.gstatic.com`).
+   Note: Internet access makes the AP more convincing, as modern devices (e.g., Android) often disconnect if they can't verify connectivity (e.g., by pinging `connectivitycheck.gstatic.com`).
 
 ## 4. Intercept and Analyze Traffic
 
@@ -227,7 +227,7 @@ After testing, dismantle the rogue AP and restore your system:
 
 ## Troubleshooting Common Issues
 
-### Clients Can’t Get an IP:
+### Clients Can't Get an IP:
 
 - Ensure `dnsmasq` is running after `at0` is created:
 
@@ -253,27 +253,49 @@ Imagine an attacker is setting up "FreeWiFi" to trick people into connecting to 
 
 ### Option 1: Just Capture Data Without Internet
 
-Sometimes, the attacker doesn’t care about giving you internet. They might just want to capture your device’s info (like your phone’s MAC address or what websites you try to visit) or trick you into entering a password on a fake login page. For example, if you try to open a website and it shows a fake login screen (a phishing attack), the attacker can steal your username and password without needing real internet.
+Sometimes, the attacker doesn't care about giving you internet. They might just want to capture your device's info (like your phone's MAC address or what websites you try to visit) or trick you into entering a password on a fake login page. For example, if you try to open a website and it shows a fake login screen (a phishing attack), the attacker can steal your username and password without needing real internet.
 
-In this case, setting up NAT (which lets traffic go out to the internet) isn’t necessary. The attacker can still use tools like Wireshark to see what your device sends, even if it fails because there’s no internet.
+In this case, setting up NAT (which lets traffic go out to the internet) isn't necessary. The attacker can still use tools like Wireshark to see what your device sends, even if it fails because there's no internet.
 
 ### Option 2: Make It Look Real with Internet
 
 If the attacker wants to make "FreeWiFi" super convincing, they might give you internet access. This keeps you connected longer because you can browse websites, check emails, or stream videos. The longer you stay connected, the more chances the attacker has to watch your traffic or launch other attacks (like stealing cookies or redirecting you to fake sites).
 
-Setting up NAT makes this happen by letting your device’s traffic go through the attacker's Kali machine to the internet. But this takes extra work (configuring rules, ensuring your VM has internet), so it’s optional. Only do it if you want that extra realism.
+Setting up NAT makes this happen by letting your device's traffic go through the attacker's Kali machine to the internet. But this takes extra work (configuring rules, ensuring your VM has internet), so it's optional. Only do it if you want that extra realism.
 
 ## Can You Intercept Traffic in Wireshark Without Internet?
 
-Wireshark captures all the network traffic going through the attacker's Kali machine on the `at0` interface (the rogue AP). But if there’s no internet, your phone won’t send much traffic to intercept:
+Wireshark captures all the network traffic going through the attacker's Kali machine on the `at0` interface (the rogue AP). But if there's no internet, your phone won't send much traffic to intercept:
 
-- When you connect to "FreeWiFi" and there’s no internet, your phone might try to load a website (e.g., google.com), but it fails. Wireshark will only see those failed attempts (like DNS requests or HTTP errors), not the full website data.
+When you connect to "FreeWiFi" and there's no internet, your phone might try to load a website (e.g., google.com), but it fails. Wireshark will only see those failed attempts (like DNS requests or HTTP errors), not the full website data.
 
-- Without internet, you can’t browse, stream, or use apps that need online access, so there’s less traffic to analyze.
+Without internet, you can't browse, stream, or use apps that need online access, so there's less traffic to analyze.
 
-- If you set up NAT and give internet access, your phone will send more traffic—visiting websites, checking emails, etc. Wireshark can then see all that data (e.g., usernames, passwords in plain text if not HTTPS, or cookies). This gives the attacker more to work with.
+If you set up NAT and give internet access, your phone will send more traffic—visiting websites, checking emails, etc. Wireshark can then see all that data (e.g., usernames, passwords in plain text if not HTTPS, or cookies). This gives the attacker more to work with.
 
-- You can still intercept some traffic without internet, like local network requests or if you trick the user with a fake page. But for real-world MITM attacks (e.g., stealing login details from a website), internet access is key to lure the user into action.
+You can still intercept some traffic without internet, like local network requests or if you trick the user with a fake page. But for real-world MITM attacks (e.g., stealing login details from a website), internet access is key to lure the user into action.
+
+## What's the Purpose of `dnsmasq` If There's No Internet?
+
+`dnsmasq` is like a helper that gives your phone an IP address when it connects to "FreeWiFi." Think of it as a librarian handing out library card numbers (IP addresses) so everyone in the network knows who's who.
+
+It also acts as a DNS server, which translates website names (e.g., g`oogle.com`) into IP addresses your phone can understand.
+
+When your phone connects to the rogue AP, it asks for an IP address using DHCP. Without `dnsmasq`, your phone wouldn't get one, and it would say "Couldn't get IP address" and disconnect. `dnsmasq` makes the network look real by assigning IPs (e.g., `192.168.1.2` to `192.168.1.100`).
+
+Even without internet, this lets your phone "talk" on the local network (e.g., send requests to the rogue AP), which Wireshark can capture.
+
+**Without Internet:**
+
+If there's no internet, getting an IP won't let you visit websites. Your phone might try to load `google.com`, but since there's no NAT to route traffic out, it fails. `dnsmasq` still works, it gives the IP, but the lack of internet limits what you can do.
+
+The purpose here is to keep the connection alive long enough for the attacker to capture initial data or trick you (e.g., with a fake login page). Without `dnsmasq`, the connection wouldn't even start.
+
+**With Internet (NAT):** 
+
+If you add NAT, `dnsmasq` works with it to give your phone an IP and let traffic go to the internet. Now you can browse, and `dnsmasq` helps resolve domain names (e.g., via `8.8.8.8`), making the experience seamless.
+
+So, `dnsmasq` is like the foundation of the rogue AP, it gets your phone connected and ready. Without internet, it's limited, but it's still essential for the network to function at all.
 
 ## Advanced Related MITM Techniques
 
