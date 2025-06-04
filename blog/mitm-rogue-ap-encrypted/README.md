@@ -51,12 +51,12 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
 
 ### 2. Create a Configuration File:
 
-- Open a new configuration file:
+1. Open a new configuration file:
 
   ```bash
   sudo nano /etc/hostapd/hostapd.conf
   ```
-- Add the following, customizing as needed:
+2. Add the following, customizing as needed:
 
   ```bash
   interface=wlan0
@@ -81,20 +81,117 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
 <img src="assets/images/2.png" width="450">
 </div> 
 
-- Save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
+3. Save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
   
 ### 3. Start the Encrypted AP
 
 Now, launch the AP with the configured settings.
 
-- Bring Up the Interface:
+1. Bring Up the Interface:
 
    - Ensure `wlan0` is up:
 
-   <div style="text-align: center;">
-   <img src="assets/images/3.png" width="450">
-   </div> 
+      <div style="text-align: center;">
+      <img src="assets/images/3.png" width="450">
+      </div> 
 
-- Launch `hostapd`:
+2. Launch `hostapd`:
 
-      
+   - Start the AP and check for output indicating the AP is running, e.g.:
+
+      <div style="text-align: center;">
+      <img src="assets/images/4.png" width="450">
+      </div>
+
+   - If it fails, check for errors (e.g., “Could not set channel” or “interface not found”) and revisit adapter compatibility.
+ 
+### 4. Configure Network Settings
+
+To make the AP functional, assign an IP and set up a DHCP server.
+
+1. Assign an IP to the AP Interface:
+
+   - Set a static IP for `wlan0`:
+
+      <div style="text-align: center;">
+      <img src="assets/images/5.png" width="450">
+      </div>
+
+2. Install and Configure `dnsmasq`:
+
+   - Install if not present:
+
+      ```
+      sudo apt-get install dnsmasq
+      ```
+
+   - Edit the configuration:
+
+      ```
+      sudo nano /etc/dnsmasq.conf
+      ```
+
+   - Add:
+ 
+      ```
+      interface=wlan0
+      dhcp-range=192.168.1.2,192.168.1.100,12h
+      ```
+
+      - `interface=wlan0`: Uses the AP interface.
+      - `dhcp-range`: IP range for clients (`192.168.1.2` to `192.168.1.100`) with a 12-hour lease.
+
+      <div style="text-align: center;">
+      <img src="assets/images/6.png" width="450">
+      </div>
+    
+   - Save and exit.
+ 
+3. Start `dnsmasq`:
+
+   - Launch the DHCP server:
+
+      <div style="text-align: center;">
+      <img src="assets/images/7.png" width="450">
+      </div>
+
+   - **Note:** The `-d` flag runs it in debug mode; remove it for background operation after testing.
+  
+## 5. Enable Internet Access (Optional)
+
+For a convincing AP, allow clients to access the internet via NAT.
+
+1. Enable IP Forwarding:
+
+   - Allow traffic routing:
+  
+      <div style="text-align: center;">
+      <img src="assets/images/8.png" width="450">
+      </div>
+
+2. Set Up NAT:
+
+   - Forward traffic to your internet interface (e.g., `eth0`):
+  
+      <div style="text-align: center;">
+      <img src="assets/images/9.png" width="450">
+      </div>
+
+   - Verify with:
+
+      <div style="text-align: center;">
+      <img src="assets/images/10.png" width="450">
+      </div>
+
+3. Test Connectivity:
+
+   - From your Kali machine, ping an external address:
+
+      <div style="text-align: center;">
+      <img src="assets/images/11.png" width="450">
+      </div>
+
+   - Clients should now get internet access if NAT is correctly configured.
+
+
+   
