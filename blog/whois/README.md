@@ -16,21 +16,21 @@ At its core, WHOIS is a reconnaissance tool that helps gather publicly available
 </div>
 
 <div style="text-align: center;">
-  <img src="assets/images/2.png" width="450">
+  <img src="assets/images/2.png" width="300">
 </div>
 
 <div style="text-align: center;">
-  <img src="assets/images/3.png" width="450">
+  <img src="assets/images/3.png" width="270">
 </div>
 
 <div style="text-align: center;">
-  <img src="assets/images/5.png" width="450">
+  <img src="assets/images/5.png" width="250">
 </div>
 
 - **Tool Usage:** Use the `whois` command-line tool in Kali Linux or online WHOIS lookup services like `whois.domaintools.com` for quick queries.
 
 <div style="text-align: center;">
-  <img src="assets/images/4.png" width="450">
+  <img src="assets/images/4.png" width="800">
 </div>
 
 - **Caveats:** Many organizations use privacy protection services (e.g., WhoisGuard) to mask registrant details, which may limit the data available. However, even anonymized data can reveal the registrar or hosting provider, which can be useful for further investigation.
@@ -39,7 +39,9 @@ At its core, WHOIS is a reconnaissance tool that helps gather publicly available
 
 - **Use Case:** Discovering the name servers associated with a domain.
 
-![](assets/images/6.png)
+<div style="text-align: center;">
+  <img src="assets/images/6.png" width="250">
+</div>
 
 - **Real-Life Application:** Name servers (e.g., `NS1.MEGACORPONE.COM`, `NS2.MEGACORPONE.COM`) indicate where a domain's DNS is hosted. This can guide further DNS enumeration (e.g., using `dig` or `nslookup`) to identify additional subdomains or misconfigured DNS records that could be exploited, such as zone transfer vulnerabilities.
 - **Tool Usage:** Run `whois <domain> -h <whois-server>` to extract name server details and add them to your reconnaissance notes for subsequent DNS-focused attacks.
@@ -60,14 +62,18 @@ As a pentester progresses, WHOIS data becomes a building block for deeper reconn
 - **Real-Life Application:** If you identify a registrant (e.g., "MegaCorpOne" or "Alan Grofield"), a reverse WHOIS lookup can reveal other domains registered by the same entity. This is particularly useful for identifying related infrastructure, such as staging servers, test environments, or forgotten subdomains that may be less secure. For example, a reverse WHOIS query might uncover `test.megacorpone.com`, which could be a poorly secured development server.
 - **Tool Usage:** Tools like DomainTools or ViewDNS.info offer reverse WHOIS capabilities. On Kali, you can script queries to WHOIS servers or use APIs from services like WhoisXMLAPI for bulk lookups.
 
-![](assets/images/7.png)
+<div style="text-align: center;">
+  <img src="assets/images/7.png" width="800">
+</div>
 
 ### 2. IP Address and Network Range Enumeration
 
 - **Use Case:** Performing reverse WHOIS lookups on IP addresses to identify the hosting provider and network range.
 - **Real-Life Application:** Querying an IP (e.g., `whois 38.100.193.70 -h <whois-server>`) might reveal the hosting provider (e.g., PSINet, Inc.) and the network range (e.g., `38.0.0.0/8`). This information helps map the target's infrastructure, identifying cloud providers or data centers that may have known vulnerabilities or misconfigurations. For instance, if the IP is hosted on AWS, you might explore AWS-specific attack vectors like misconfigured S3 buckets.
 
-![](assets/images/8.png)
+<div style="text-align: center;">
+  <img src="assets/images/8.png" width="670">
+</div>
 
 - **Tool Usage:** Use whois for IP lookups, supplemented by tools like `nslookup` or `dnsdumpster` to map related IPs and domains.
 - **Caveats:** IP WHOIS data may be less granular due to large network ranges owned by ISPs or cloud providers.
@@ -78,7 +84,9 @@ As a pentester progresses, WHOIS data becomes a building block for deeper reconn
 - **Real-Life Application:** Historical WHOIS data can reveal when a domain changed registrars, name servers, or contact details, which might indicate a recent migration or acquisition. Such changes can introduce vulnerabilities, such as outdated configurations or temporary lapses in security. For example, a domain that recently switched name servers might have misconfigured DNS records.
 - **Tool Usage:** Services like Whoisology or DomainTools provide historical WHOIS data. Manual queries over time or scripted monitoring can also track changes.
 
-![](assets/images/9.png)
+<div style="text-align: center;">
+  <img src="assets/images/9.png" width="800">
+</div>
 
 ## Advanced Exploitation Strategies
 
