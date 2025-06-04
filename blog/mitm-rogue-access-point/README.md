@@ -197,29 +197,3 @@ After testing, dismantle the rogue AP and restore your system:
 <div style="text-align: center;">
   <img src="assets/images/16.png" width="600">
 </div>
-
-## Advanced Techniques and Mitigations
-
-### Related MITM Techniques
-
-- **SSL Stripping:** Downgrade HTTPS connections to HTTP (use `sslstrip`).
-- **Evil Twin Attack:** A variant where the rogue AP mimics a specific legitimate AP, often combined with de-authentication attacks to force clients to connect.
-- **Wi-Fi Pineapple:** A hardware device that automates rogue AP and MITM attacks.
-- **ARP Spoofing:** Manipulates ARP tables to intercept traffic on wired or wireless networks.
-- **DNS Spoofing:** Redirect clients to malicious sites by altering DNS responses (use tools like `dnsspoof`).
-- **Session Hijacking:** Steal cookies or tokens using tools like `ettercap`.
-
-## Mitigations
-
-To protect against rogue AP attacks:
-
-- **Use VPNs:** Encrypt traffic to prevent interception.
-- **Verify SSIDs:** Avoid connecting to unverified or suspiciously named networks.
-- **Enable WPA3:** Modern encryption protocols make rogue APs harder to exploit.
-- **Monitor Network Activity:** Use intrusion detection systems to spot unauthorized APs.
-
-## Conclusion
-
-Rogue access point-based MITM attacks are a powerful demonstration of wireless network vulnerabilities. By setting up a rogue AP with tools like `airbase-ng`, security researchers can study how attackers intercept and manipulate traffic. However, this knowledge must be used responsibly. For beginners, mastering these steps builds a foundation in wireless security testing, while advanced users can explore related techniques like DNS spoofing or session hijacking to deepen their expertise.
-
-Stay curious, and keep securing the digital world.
