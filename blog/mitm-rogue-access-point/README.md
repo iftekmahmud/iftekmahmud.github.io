@@ -247,6 +247,34 @@ After testing, dismantle the rogue AP and restore your system:
 - Verify NAT rules: `sudo iptables -t nat -L -v -n`.
 - Test connectivity from Kali: `ping 8.8.8.8` and `ping google.com`.
 
+## Why Is Setting Up NAT (Internet Access) Optional?
+
+Imagine an attacker is setting up "FreeWiFi" to trick people into connecting to it. The goal of a rogue AP can be different depending on what the attacker wants to do:
+
+### Option 1: Just Capture Data Without Internet
+
+Sometimes, the attacker doesn’t care about giving you internet. They might just want to capture your device’s info (like your phone’s MAC address or what websites you try to visit) or trick you into entering a password on a fake login page. For example, if you try to open a website and it shows a fake login screen (a phishing attack), the attacker can steal your username and password without needing real internet.
+
+In this case, setting up NAT (which lets traffic go out to the internet) isn’t necessary. The attacker can still use tools like Wireshark to see what your device sends, even if it fails because there’s no internet.
+
+### Option 2: Make It Look Real with Internet
+
+If the attacker wants to make "FreeWiFi" super convincing, they might give you internet access. This keeps you connected longer because you can browse websites, check emails, or stream videos. The longer you stay connected, the more chances the attacker has to watch your traffic or launch other attacks (like stealing cookies or redirecting you to fake sites).
+
+Setting up NAT makes this happen by letting your device’s traffic go through the attacker's Kali machine to the internet. But this takes extra work (configuring rules, ensuring your VM has internet), so it’s optional. Only do it if you want that extra realism.
+
+## Can You Intercept Traffic in Wireshark Without Internet?
+
+Wireshark captures all the network traffic going through the attacker's Kali machine on the `at0` interface (the rogue AP). But if there’s no internet, your phone won’t send much traffic to intercept:
+
+- When you connect to "FreeWiFi" and there’s no internet, your phone might try to load a website (e.g., google.com), but it fails. Wireshark will only see those failed attempts (like DNS requests or HTTP errors), not the full website data.
+
+- Without internet, you can’t browse, stream, or use apps that need online access, so there’s less traffic to analyze.
+
+- If you set up NAT and give internet access, your phone will send more traffic—visiting websites, checking emails, etc. Wireshark can then see all that data (e.g., usernames, passwords in plain text if not HTTPS, or cookies). This gives the attacker more to work with.
+
+- You can still intercept some traffic without internet, like local network requests or if you trick the user with a fake page. But for real-world MITM attacks (e.g., stealing login details from a website), internet access is key to lure the user into action.
+
 ## Advanced Related MITM Techniques
 
 - **SSL Stripping:** Downgrade HTTPS connections to HTTP (use `sslstrip`).
