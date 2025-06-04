@@ -202,7 +202,7 @@ Let’s perform an unauthenticated vulnerability scan on Metasploitable 2 using 
 
 **5. Launch the Scan:**
 
-- Click the arrow next to **Save** and select **Launch**.
+- Click **Launch** next to **Configure**.
 
 <div style="text-align: center;">
   <img src="assets/images/17.png" width="1000">
@@ -323,7 +323,7 @@ Metasploitable 2’s default credentials simplify authenticated scanning, but en
 
 **5. Launch the Scan:**
 
-- Click the arrow next to **Save** and select **Launch**.
+- Click **Launch** next to **Configure**.
 
 ### Analyzing Authenticated Scan Results
 
