@@ -4,7 +4,9 @@ As security researchers, we constantly seek tools that provide deep visibility i
 
 ## What is Shodan?
 
-![](assets/images/shodan-dashboard.png)
+<div style="text-align: center;">
+  <img src="assets/images/shodan-dashboard.png" width="1000">
+</div>
 
 Developed by John Matherly in 2009, Shodan is a search engine that continuously scans the internet, cataloging devices and services by collecting service banners — metadata returned by servers and devices when queried. These banners include details like software versions, open ports, and device types. Shodan primarily targets protocols such as HTTP (ports 80, 443), FTP (port 21), SSH (port 22), Telnet (port 23), SNMP (port 161), SIP (port 5060), and RTSP (port 554), among others, covering over 200 services.
 
@@ -41,15 +43,21 @@ Browser plugins for Chrome and Firefox provide quick insights into a website's e
 
 For advanced users, Shodan offers a command-line interface (CLI). Install it using Python:
 
-![](assets/images/1.png)
+<div style="text-align: center;">
+  <img src="assets/images/1.png" width="650">
+</div>
 
 Initialize the CLI with your API key (found in your Shodan account):
 
-![](assets/images/2.png)
+<div style="text-align: center;">
+  <img src="assets/images/2.png" width="400">
+</div>
 
 You can now query searches using the Shodan CLI:
 
-![](assets/images/3.png)
+<div style="text-align: center;">
+  <img src="assets/images/3.png" width="350">
+</div>
 
 For example, the command `shodan search "port:22 country:IN"` should return devices with open SSH ports in India. However, the command failed with a 403 Forbidden error because Shodan's free accounts have extremely limited API access, and my account currently has 0 query credits, as shown by `shodan info`.
 
@@ -63,13 +71,17 @@ Shodan's power lies in its query syntax, which allows precise searches using fil
 
 - **Simple Queries:** Enter a keyword like `webcam` to find devices with "webcam" in their banners.
 
-![](assets/images/4.png)
+<div style="text-align: center;">
+  <img src="assets/images/4.png" width="900">
+</div>
 
 This returns IP addresses, ports, and banners for webcams worldwide.
 
 - **Quoted Phrases:** Use quotes for exact matches:
 
-![](assets/images/5.png)
+<div style="text-align: center;">
+  <img src="assets/images/5.png" width="900">
+</div>
 
 Finds devices running Nginx version 1.14.0.
 
@@ -102,17 +114,23 @@ city:"New York"
 ```
 hostname:megacorpone.com
 ```
-![](assets/images/21.png)
+<div style="text-align: center;">
+  <img src="assets/images/21.png" width="900">
+</div>
 
 Shodan meticulously compiles a wealth of data, including IP addresses, running services, and detailed banner information, all gathered passively to avoid any direct interaction with the target’s web infrastructure. This non-intrusive approach provides us with a critical snapshot of our target’s internet footprint, offering a foundational view of its exposed attack surface.
 
 For instance, in this scenario Shodan identifies four servers hosting SSH services. We can drill down into these findings by selecting "SSH" under the "Top Ports" section in the left pane.
 
-![](assets/images/22.png)
+<div style="text-align: center;">
+  <img src="assets/images/22.png" width="900">
+</div>
 
 Based on Shodan’s results, we know exactly which version of OpenSSH is running on each server. If we click on an IP address, we can retrieve a summary of the host.
 
-![](assets/images/23.png)
+<div style="text-align: center;">
+  <img src="assets/images/23.png" width="900">
+</div>
 
 On this page, we can thoroughly examine the ports, services, and technologies operational on the server, gaining a clear understanding of its exposed components. Shodan further enhances our reconnaissance by highlighting any published vulnerabilities associated with these identified services or technologies on the same host, such as CVEs linked to specific software versions. This intelligence is crucial for prioritizing our approach as we transition to active testing, enabling us to focus on the most critical weaknesses in our pentesting engagement.
 
@@ -162,45 +180,61 @@ asn:AS15169
 
 Combine filters for precision. Example:
 
-![](assets/images/6.png)
+<div style="text-align: center;">
+  <img src="assets/images/6.png" width="900">
+</div>
 
 This finds Apache web servers running on Linux with port 80 open in the US.
 
 - **Negative Filters:** Exclude results using a minus sign.
 
-![](assets/images/7.png)
+<div style="text-align: center;">
+  <img src="assets/images/7.png" width="900">
+</div>
 
 Finds devices with port 80 open, excluding Windows systems.
 
 - **Multiple Ports:** Use commas for multiple ports.
 
-![](assets/images/8.png)
+<div style="text-align: center;">
+  <img src="assets/images/8.png" width="900">
+</div>
 
 - **Wildcard Hostnames:** Use partial matches.
 
-![](assets/images/9.png)
+<div style="text-align: center;">
+  <img src="assets/images/9.png" width="900">
+</div>
 
 - **Exposed Databases:**
 
-![](assets/images/10.png)
+<div style="text-align: center;">
+  <img src="assets/images/10.png" width="900">
+</div>
 
 Finds open MongoDB instances, which may lack authentication.
 
 - **Vulnerable RDP Services:**
 
-![](assets/images/11.png)
+<div style="text-align: center;">
+  <img src="assets/images/11.png" width="900">
+</div>
 
 Identifies Windows systems vulnerable to BlueKeep.
 
 - **Default Credentials:**
 
-![](assets/images/12.png)
+<div style="text-align: center;">
+  <img src="assets/images/12.png" width="900">
+</div>
 
 Finds Telnet services with default credentials (e.g., `admin:123456`).
 
 - **IoT Devices:**
 
-![](assets/images/13.png)
+<div style="text-align: center;">
+  <img src="assets/images/13.png" width="900">
+</div>
 
 Targets Moxa Nport devices with authentication disabled.
 
@@ -208,7 +242,9 @@ Targets Moxa Nport devices with authentication disabled.
 
 ### 1. Outdated SSH Servers with Known Vulnerabilities
 
-![](assets/images/14.png)
+<div style="text-align: center;">
+  <img src="assets/images/14.png" width="900">
+</div>
 
 - **Query:** `port:22 product:OpenSSH version:7.4 country:IN`
 - **Purpose:** Targets SSH servers in India running OpenSSH 7.4, vulnerable to CVE-2016-10009 (key injection). This query is ideal for scoping a client's infrastructure for outdated software.
@@ -216,7 +252,9 @@ Targets Moxa Nport devices with authentication disabled.
 
 ### 2. Misconfigured Web Servers with Directory Listings
 
-![](assets/images/15.png)
+<div style="text-align: center;">
+  <img src="assets/images/15.png" width="900">
+</div>
 
 - **Query:** `http.title:"Index of /" port:80,443 country:US -http.status:403`
 - **Purpose:** Identifies web servers in the US exposing directory listings, a common misconfiguration that may leak sensitive files.
@@ -230,7 +268,9 @@ Targets Moxa Nport devices with authentication disabled.
 
 ### 4. Unauthenticated MongoDB Instances
 
-![](assets/images/16.png)
+<div style="text-align: center;">
+  <img src="assets/images/16.png" width="900">
+</div>
 
 - **Query:** `port:27017 product:MongoDB -authentication country:US`
 - **Purpose:** Locates MongoDB databases in the US without authentication, a frequent misconfiguration leading to data exposure.
@@ -244,7 +284,9 @@ Targets Moxa Nport devices with authentication disabled.
 
 ### 6. Devices with Default Telnet Credentials
 
-![](assets/images/17.png)
+<div style="text-align: center;">
+  <img src="assets/images/17.png" width="900">
+</div>
 
 - **Query:** `port:23 "Login incorrect" country:CN`
 - **Purpose:** Finds Telnet servers in China with default credentials attempted, indicating unchanged factory settings.
@@ -258,7 +300,9 @@ Targets Moxa Nport devices with authentication disabled.
 
 ### 8. Exposed Jenkins Servers
 
-![](assets/images/18.png)
+<div style="text-align: center;">
+  <img src="assets/images/18.png" width="900">
+</div>
 
 - **Query:** `http.component:Jenkins port:8080 country:JP`
 - **Purpose:** Locates Jenkins CI/CD servers in Japan, often misconfigured to expose version details.
@@ -266,7 +310,9 @@ Targets Moxa Nport devices with authentication disabled.
 
 ### 9. Publicly Accessible Docker API
 
-![](assets/images/19.png)
+<div style="text-align: center;">
+  <img src="assets/images/19.png" width="900">
+</div>
 
 - **Query:** `port:2375 product:Docker country:AU`
 - **Purpose:** Targets Docker API endpoints in Australia without TLS, allowing container manipulation.
@@ -294,7 +340,9 @@ Below are advanced queries specifically designed to identify CCTVs and target co
 - **Purpose:** Targets devices using RTSP (port 554), a protocol for live video streaming, often used by CCTVs. The `has_screenshot:true` filter shows devices with preview images.
 - **Use Case:** Useful for finding cameras that might be streaming publicly, though free accounts can't directly access feeds.
  
-  ![](assets/images/20.png)
+<div style="text-align: center;">
+  <img src="assets/images/20.png" width="900">
+</div> 
 
 ### 4. Specific CCTV Software (e.g., WebcamXP): `server:webcamxp`
 - **Purpose:** Targets WebcamXP, a popular software for IP cameras on Windows. Many such cameras are misconfigured with default credentials.
@@ -323,7 +371,9 @@ If you have explicit permission (e.g., during a pentest or for your own camera),
   - Enter the RTSP URL: `rtsp://192.0.2.1:554/`.
   - If unauthenticated, the feed may play. If it prompts for credentials, you'd need them (and permission to use them).
  
-![](assets/images/vlc-network-stream.png)
+<div style="text-align: center;">
+  <img src="assets/images/vlc-network-stream.png" width="400">
+</div>
 
 ## Secure Your Own CCTVs Against Shodan Indexing
 
