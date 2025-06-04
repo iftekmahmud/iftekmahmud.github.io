@@ -1,8 +1,8 @@
 # Creating Encrypted Access Points in Wireless Man-in-the-Middle Attacks
 
-As a security researcher, I often explore wireless network vulnerabilities to understand how attackers exploit them and how we can defend against such threats. One powerful technique involves setting up a rogue access point (AP) to simulate man-in-the-middle (MITM) attacks. While tools like `airbase-ng` from the Aircrack-ng suite are excellent for creating unencrypted APs, modern devices—particularly those running Android 10 and above—reject open networks due to enhanced security features. This is where `hostapd` shines, offering the ability to create an encrypted AP with WPA2 or WPA3 protocols. In this blog, I’ll provide a practical, hands-on guide to setting up an encrypted AP using `hostapd` on Kali Linux, tailored for ethical security testing in controlled environments.
+As a security researcher, I often explore wireless network vulnerabilities to understand how attackers exploit them and how we can defend against such threats. One powerful technique involves setting up a rogue access point (AP) to simulate man-in-the-middle (MITM) attacks. While tools like `airbase-ng` from the Aircrack-ng suite are excellent for creating unencrypted APs, modern devices, particularly those running Android 10 and above, reject open networks due to enhanced security features. This is where `hostapd` shines, offering the ability to create an encrypted AP with WPA2 or WPA3 protocols. In this blog, I’ll provide a practical, hands-on guide to setting up an encrypted AP using `hostapd` on Kali Linux, tailored for security testing in controlled environments.
 
-**Disclaimer:** This guide is for educational purposes only. Creating and using rogue APs on networks or devices without explicit permission is illegal and unethical. Conduct all experiments in a lab environment with devices you own or have authorization to test.
+**Disclaimer:** This guide is for educational purposes only. Creating and using rogue APs on networks or devices without explicit permission is illegal. Conduct all experiments in a lab environment with devices you own or have authorization to test.
 
 ## Why Use an Encrypted AP?
 
@@ -13,21 +13,70 @@ Modern operating systems, such as Android and iOS, enforce strict Wi-Fi security
 To follow this guide, ensure you have:
 
 - A Kali Linux machine (physical or virtual, e.g., in VMware).
-- A Wi-Fi adapter that supports Access Point (AP) mode (e.g., TP-Link WN722N with Atheros AR9271 chipset). Verify compatibility with `iw list | grep -A 10 "Supported interface modes"`.
+- A Wi-Fi adapter that supports Access Point (AP) mode. Verify compatibility with `iw list | grep -A 10 "Supported interface modes"`.
 - Basic Linux terminal skills.
 - Administrative (root) access on Kali Linux.
 - A controlled lab environment with devices you own or have permission to test.
 
-## Step-by-Step Guide
-
-### 1. Prepare Your Wi-Fi Adapter
+## 1. Prepare Your Wi-Fi Adapter
 
 Before creating the AP, ensure your Wi-Fi adapter is ready and supports the necessary modes.
 
 1. **Connect the Adapter**:
+
    - Plug your external Wi-Fi adapter into your Kali Linux machine.
 
 2. **Verify Adapter Recognition**:
+
    - Check the available interfaces:
+
+   <div style="text-align: center;">
+     <img src="assets/images/1.png" width="450">
+   </div>
+
+   - If `wlan0` isn’t listed, troubleshoot with `lsusb` or `dmesg | grep wlan` to confirm detection.
+
+## 2. Install and Configure `hostapd`
+
+`hostapd` is pre-installed on Kali Linux, but let’s ensure it’s set up correctly.
+
+1. Install `hostapd` (if needed):
+
+   - Update and install:
+
      ```bash
-     iwconfig
+     sudo apt-get update
+     sudo apt-get install hostapd
+     ```
+
+2. Create a Configuration File:
+
+   - Open a new configuration file:
+
+     ```bash
+     sudo nano /etc/hostapd/hostapd.conf
+     ```
+   - Add the following, customizing as needed:
+
+     ```bash
+     interface=wlan0
+     ssid=SecureFreeWiFi
+     channel=11
+     hw_mode=g
+     wpa=2
+     wpa_passphrase=yourpassword123
+     wpa_key_mgmt=WPA-PSK
+     wpa_pairwise=CCMP
+     rsn_pairwise=CCMP
+     ```
+      - `interface=wlan0`: The Wi-Fi interface to use.
+      - `ssid=SecureFreeWiFi`: The network name (choose something convincing).
+      - `channel=11`: A non-overlapping channel (scan with `airodump-ng wlan0` to pick a less congested one).
+      - `wpa=2`: Enables WPA2 encryption.
+      - `wpa_passphrase=yourpassword123`: The password clients will use (at least 8 characters).
+      - `wpa_key_mgmt=WPA-PSK`: Uses Pre-Shared Key authentication.
+      - `wpa_pairwise=CCMP` and `rsn_pairwise=CCMP`: Use AES encryption (stronger than TKIP).
+
+   <div style="text-align: center;">
+   <img src="assets/images/2.png" width="450">
+   </div> 
