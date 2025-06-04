@@ -323,9 +323,7 @@ Metasploitable 2’s default credentials simplify authenticated scanning, but en
 - Metasploitable 2 lacks antivirus or strict firewalls, so no additional configuration is needed.
 - In real-world scenarios, ensure no firewall blocks the scanner and check for antivirus interference.
 
-**5. Launch the Scan:**
-
-- Click **Launch** next to **Configure**.
+**5. Launch the Scan**
 
 ### Analyzing Authenticated Scan Results
 
@@ -410,7 +408,7 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
 - To find the Plugin ID, click on the plugin name (e.g., **"GNU Bash Environment Variable Handling Code Injection (Shellshock)"**) to open its detailed view.
 
 <div style="text-align: center;">
-  <img src="assets/images/39.png" width="1000">
+  <img src="assets/images/39.png" width="600">
 </div>
 
 - In the detailed view, you’ll see:
