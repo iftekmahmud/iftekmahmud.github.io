@@ -34,7 +34,7 @@ The Security Headers tool scans a target website and assigns a grade (A to F) ba
 For instance, if `www.megacorpone.com` lacks `Content-Security-Policy` and `X-Frame-Options`, it might receive a low grade (e.g., D or F). This suggests the server is not hardened against common attacks, potentially indicating broader security weaknesses.
 
 <div style="text-align: center;">
-  <img src="assets/images/1.png" width="900" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/1.png" width="900">
 </div>
 
 Using Security Headers, we find:
@@ -52,7 +52,7 @@ A missing `Content-Security-Policy` could allow attackers to inject malicious sc
 For deeper analysis, manually inspect headers using browser developer tools or `curl`:
 
 <div style="text-align: center;">
-  <img src="assets/images/2.png" width="400" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/2.png" width="400">
 </div>
 
 If critical headers are missing, consider whether the site is vulnerable to specific attacks. For example, without `X-Frame-Options`, test for clickjacking by embedding the site in an iframe locally. Advanced researchers can also check for header misconfigurations, such as overly permissive CSP directives (e.g., `script-src 'unsafe-inline'`).
@@ -79,7 +79,7 @@ SSL/TLS secures data in transit, and its configuration is a cornerstone of serve
 For example, a server supporting TLS 1.0 and weak ciphers like `TLS_DHE_RSA_WITH_AES_256_CBC_SHA` might receive a B or C grade, indicating outdated practices.
 
 <div style="text-align: center;">
-  <img src="assets/images/3.png" width="900" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/3.png" width="900">
 </div>
 
 The Qualys SSL Labs scan reveals no major vulnerabilities like Heartbleed.
@@ -97,7 +97,7 @@ For advanced researchers, dive into the Qualys report details:
 - Use tools like `openssl` to manually inspect certificates:
 
 <div style="text-align: center;">
-  <img src="assets/images/4.png" width="650" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="assets/images/4.png" width="650">
 </div>
 
 - **Vulnerability Testing:** If the scan flags vulnerabilities like Heartbleed, attempt to replicate them in a controlled environment (with permission). For example, use Metasploit's `auxiliary/scanner/ssl/heartbleed` module to test for Heartbleed exposure.
