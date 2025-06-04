@@ -267,7 +267,7 @@ Setting up NAT makes this happen by letting your device's traffic go through the
 
 Wireshark captures all the network traffic going through the attacker's Kali machine on the `at0` interface (the rogue AP). But if there's no internet, your phone won't send much traffic to intercept.
 
-When you connect to "FreeWiFi" and there's no internet, your phone might try to load a website (e.g., google.com), but it fails. Wireshark will only see those failed attempts (like DNS requests or HTTP errors), not the full website data.
+When you connect to "FreeWiFi" and there's no internet, your phone might try to load a website (e.g., `google.com`), but it fails. Wireshark will only see those failed attempts (like DNS requests or HTTP errors), not the full website data.
 
 Without internet, you can't browse, stream, or use apps that need online access, so there's less traffic to analyze.
 
@@ -277,9 +277,9 @@ You can still intercept some traffic without internet, like local network reques
 
 ## What's the Purpose of `dnsmasq` If There's No Internet?
 
-`dnsmasq` is like a helper that gives your phone an IP address when it connects to "FreeWiFi." Think of it as a librarian handing out library card numbers (IP addresses) so everyone in the network knows who's who.
+`dnsmasq` is like a helper that gives your phone an IP address when it connects to "FreeWiFi". Think of it as a librarian handing out library card numbers (IP addresses) so everyone in the network knows who's who.
 
-It also acts as a DNS server, which translates website names (e.g., g`oogle.com`) into IP addresses your phone can understand.
+It also acts as a DNS server, which translates website names (e.g., `google.com`) into IP addresses your phone can understand.
 
 When your phone connects to the rogue AP, it asks for an IP address using DHCP. Without `dnsmasq`, your phone wouldn't get one, and it would say "Couldn't get IP address" and disconnect. `dnsmasq` makes the network look real by assigning IPs (e.g., `192.168.1.2` to `192.168.1.100`).
 
