@@ -142,6 +142,11 @@ dhcp-range=192.168.1.2,192.168.1.100,12h
   <img src="assets/images/10.png" width="700">
 </div>
 
+<div style="text-align: center;">
+  <img src="assets/images/wifi-rogue-ap-phone.png" width="280">
+  <p style="text-align: center; margin-top: -5px;">Rogue AP Created and Publicly Accessible</p>
+</div>
+
 - Set up NAT to allow clients internet access (optional, to make the rogue AP convincing):
 
 ```bash
