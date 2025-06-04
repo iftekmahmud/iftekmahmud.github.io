@@ -1,12 +1,12 @@
 # Creating Encrypted Access Points in Wireless Man-in-the-Middle Attacks
 
-As a security researcher, I often explore wireless network vulnerabilities to understand how attackers exploit them and how we can defend against such threats. One powerful technique involves setting up a rogue access point (AP) to simulate man-in-the-middle (MITM) attacks. While tools like `airbase-ng` from the Aircrack-ng suite are excellent for creating unencrypted APs, modern devices, particularly those running Android 10 and above, reject open networks due to enhanced security features. This is where `hostapd` shines, offering the ability to create an encrypted AP with WPA2 or WPA3 protocols. In this blog, I’ll provide a practical, hands-on guide to setting up an encrypted AP using `hostapd` on Kali Linux, tailored for security testing in controlled environments.
+As a security researcher, I often explore wireless network vulnerabilities to understand how attackers exploit them and how we can defend against such threats. One powerful technique involves setting up a rogue access point (AP) to simulate man-in-the-middle (MITM) attacks. While tools like `airbase-ng` from the Aircrack-ng suite are excellent for creating unencrypted APs, modern devices, particularly those running Android 10 and above, reject open networks due to enhanced security features. This is where `hostapd` shines, offering the ability to create an encrypted AP with WPA2 or WPA3 protocols. In this blog, I'll provide a practical, hands-on guide to setting up an encrypted AP using `hostapd` on Kali Linux, tailored for security testing in controlled environments.
 
 **Disclaimer:** This guide is for educational purposes only. Creating and using rogue APs on networks or devices without explicit permission is illegal. Conduct all experiments in a lab environment with devices you own or have authorization to test.
 
 ## Why Use an Encrypted AP?
 
-Modern operating systems, such as Android and iOS, enforce strict Wi-Fi security policies. Unencrypted APs (like those created by `airbase-ng`) are often flagged as insecure, leading to connection refusals or warnings like “No Internet.” An encrypted AP, secured with WPA2 or WPA3, mimics legitimate networks more convincingly, allowing you to test client behavior, intercept encrypted traffic (with proper tools), or simulate advanced MITM scenarios. `hostapd` is the go-to tool for this, as it supports robust encryption and is well-integrated with Kali Linux.
+Modern operating systems, such as Android and iOS, enforce strict Wi-Fi security policies. Unencrypted APs (like those created by `airbase-ng`) are often flagged as insecure, leading to connection refusals or warnings like "No Internet." An encrypted AP, secured with WPA2 or WPA3, mimics legitimate networks more convincingly, allowing you to test client behavior, intercept encrypted traffic (with proper tools), or simulate advanced MITM scenarios. `hostapd` is the go-to tool for this, as it supports robust encryption and is well-integrated with Kali Linux.
 
 ## Prerequisites
 
@@ -34,11 +34,11 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
      <img src="assets/images/1.png" width="450">
    </div>
 
-- If `wlan0` isn’t listed, troubleshoot with `lsusb` or `dmesg | grep wlan` to confirm detection.
+- If `wlan0` isn't listed, troubleshoot with `lsusb` or `dmesg | grep wlan` to confirm detection.
 
 ## 2. Install and Configure `hostapd`
 
-`hostapd` is pre-installed on Kali Linux, but let’s ensure it’s set up correctly.
+`hostapd` is pre-installed on Kali Linux, but let's ensure it's set up correctly.
 
 ### 1. Install `hostapd` (if needed):
 
@@ -103,7 +103,7 @@ Now, launch the AP with the configured settings.
       <img src="assets/images/4.png" width="450">
       </div>
 
-   - If it fails, check for errors (e.g., “Could not set channel” or “interface not found”) and revisit adapter compatibility.
+   - If it fails, check for errors (e.g., "Could not set channel" or "interface not found") and revisit adapter compatibility.
  
 ### 4. Configure Network Settings
 
@@ -205,7 +205,7 @@ For a convincing AP, allow clients to access the internet via NAT.
       <img src="assets/images/12.png" width="450">
       </div>
 
-   - Look for the client’s IP in the 192.168.1.x range.
+   - Look for the client's IP in the 192.168.1.x range.
 
 2. Verify Traffic:
 
@@ -243,7 +243,7 @@ After testing, dismantle the AP to avoid interference:
    - Check adapter compatibility with `iw list`.
    - Ensure no conflicting processes (e.g., `NetworkManager`) with `sudo airmon-ng check kill`.
 
-- **Clients Can’t Connect:**
+- **Clients Can't Connect:**
    - Verify the password and channel. Test with a different channel (e.g., 1 or 6).
    - Ensure `dnsmasq` is running after `wlan0` is up.
 
@@ -256,7 +256,7 @@ After testing, dismantle the AP to avoid interference:
 As a security researcher, you can extend this setup:
 
 - MITM Testing: Use `sslstrip` or `dnsspoof` to manipulate traffic after clients connect.
-- Evil Twin Simulation: Mimic a specific AP’s SSID and use deauthentication attacks (`aireplay-ng`) to force connections.
+- Evil Twin Simulation: Mimic a specific AP's SSID and use deauthentication attacks (`aireplay-ng`) to force connections.
 - Penetration Testing: Test client vulnerability to encrypted MITM in a controlled lab.
 
 ## Mitigations
