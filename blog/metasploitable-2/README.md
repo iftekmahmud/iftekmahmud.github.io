@@ -20,15 +20,17 @@ Metasploitable 2, developed by Rapid7, is a deliberately vulnerable Ubuntu-based
 - Boot the Metasploitable 2 VM. Log in with default credentials: `msfadmin:msfadmin`.
 - Find the VM’s IP address by running:
 
-```
+```bash
 ifconfig
 ```
 - From your Kali Linux VM, ping the Metasploitable IP to confirm connectivity:
 
-```
+```bash
 ping -c 3 <metasploitable-ip>
 ```
 
-![](assets/images/1.png)
+<div style="text-align: center;">
+  <img src="assets/images/1.png" width="550">
+</div>
 
 **Note:** Never expose Metasploitable 2 to the internet, as its vulnerabilities can be easily exploited.
