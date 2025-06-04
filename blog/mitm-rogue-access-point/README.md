@@ -62,14 +62,24 @@ To capture and manipulate wireless traffic, your Wi-Fi adapter must be in _monit
 
 Using `airbase-ng` from the Aircrack-ng suite, we'll create a rogue AP with a customized SSID to mimic a legitimate network.
 
-1. Launch the rogue AP:
+1. Select a Channel:
+
+   - Before launching the AP, scan for nearby networks to choose a less congested channel (e.g., 1, 6, or 11, which are non-overlapping in the 2.4 GHz band). Use `airodump-ng`:
+  
+   ```
+   sudo airodump-ng wlan0
+   ```
+
+   Note the channel with the least interference (e.g., channel 11 if fewer APs are using it).
+   
+2. Launch the rogue AP:
 
    <div style="text-align: center;">
      <img src="assets/images/4.png" width="600">
    </div>
    
    - `e "FreeWiFi"`: Sets the SSID to "FreeWiFi" (choose a name that blends with the environment).
-   - `c 11`: Specifies the channel.
+   - `c 11`: Specifies the channel (we'll be using 11 in our case).
    - `P`: Enables the AP to respond to all probe requests, increasing the likelihood of client connections.
    - `wlan0`: The monitor-mode interface.
 
@@ -83,11 +93,17 @@ Using `airbase-ng` from the Aircrack-ng suite, we'll create a rogue AP with a cu
      <img src="assets/images/iwconfig_at0.png" width="550">
    </div>
 
-2. Monitor the AP activity in the terminal. You'll see clients attempting to connect:
+3. Monitor the AP activity in the terminal. You'll see clients attempting to connect:
 
    <div style="text-align: center;">
      <img src="assets/images/5.png" width="650">
    </div>
+
+   **Warning:** Modern Android devices (Android 10 and above) may reject unencrypted APs like this one due to security features. If your device fails to connect, try:
+
+   - Using an older device for testing (e.g., Android 9 or earlier).
+   - Disabling Wi-Fi security checks in your device.
+   - Alternatively, use `hostapd` to create an encrypted AP.
 
 ## 3. Configure Network Routing
 
@@ -155,6 +171,8 @@ To intercept traffic, you need to route client traffic through your Kali machine
    sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
    ```
 
+   Note: Internet access makes the AP more convincing, as modern devices (e.g., Android) often disconnect if they can’t verify connectivity (e.g., by pinging `connectivitycheck.gstatic.com`).
+
 ## 4. Intercept and Analyze Traffic
 
 Once clients connect to your rogue AP, their traffic routes through your Kali machine. Use tools like Wireshark or tcpdump to capture and analyze packets.
@@ -179,6 +197,12 @@ Once clients connect to your rogue AP, their traffic routes through your Kali ma
      <img src="assets/images/13.png" width="750">
    </div>
 
+   **Note for Advanced Users:** To increase client connections, combine this with a deauthentication attack using aireplay-ng to force nearby clients to disconnect from legitimate APs and connect to yours:
+
+   ```
+   sudo aireplay-ng --deauth 10 -a <target-AP-MAC> wlan0
+   ```
+
 ## 5. Clean Up
 
 After testing, dismantle the rogue AP and restore your system:
@@ -201,6 +225,28 @@ After testing, dismantle the rogue AP and restore your system:
      <img src="assets/images/16.png" width="600">
    </div>
 
+## Troubleshooting Common Issues
+
+### Clients Can’t Get an IP:
+
+- Ensure `dnsmasq` is running after `at0` is created:
+
+   ```
+   sudo dnsmasq -C /etc/dnsmasq.conf -d
+   ```
+
+- Check for errors like `interface at0 does not currently exist`.
+
+### Clients Disconnect Frequently:
+
+- Check for driver issues: `dmesg | grep wlan0`.
+- Try a different channel (e.g., 1 or 6) if interference is high.
+
+### No Internet Access:
+
+- Verify NAT rules: `sudo iptables -t nat -L -v -n`.
+- Test connectivity from Kali: `ping 8.8.8.8` and `ping google.com`.
+
 ## Advanced Related MITM Techniques
 
 - **SSL Stripping:** Downgrade HTTPS connections to HTTP (use `sslstrip`).
@@ -215,9 +261,9 @@ After testing, dismantle the rogue AP and restore your system:
 To protect against rogue AP attacks:
 
 - **Use VPNs:** Encrypt traffic to prevent interception.
-- **Verify SSIDs:** Avoid connecting to unverified or suspiciously named networks.
+- **Verify SSIDs:** Avoid connecting to unverified or suspiciously named networks (e.g., "FreeWiFi" in unexpected locations).
 - **Enable WPA3:** Modern encryption protocols make rogue APs harder to exploit.
-- **Monitor Network Activity:** Use intrusion detection systems to spot unauthorized APs.
+- **Monitor Network Activity:** Use intrusion detection systems (e.g., Kismet) to spot unauthorized APs.
 
 ## Conclusion
 
