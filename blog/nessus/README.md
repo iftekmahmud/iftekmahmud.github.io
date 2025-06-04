@@ -248,6 +248,10 @@ Once the scan completes, Nessus provides a detailed results dashboard for analyz
   - **Solution:** Provides mitigation strategies, such as upgrading to a version of Canonical Ubuntu Linux that is currently supported.
   - **References:** Links to CVE entries or vendor advisories.
   - **Exploit Status:** Indicates if exploits are available, which is common for Metasploitable vulnerabilities.
+ 
+<div style="text-align: center;">
+  <img src="assets/images/22.png" width="1000">
+</div>
 
 **3. VPR (Vulnerability Priority Rating) Top Threats:**
 
