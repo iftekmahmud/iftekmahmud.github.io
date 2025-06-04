@@ -177,42 +177,47 @@ DNS Spoofing: Redirect clients to malicious sites by altering DNS responses (use
 SSL Stripping: Downgrade HTTPS connections to HTTP (use sslstrip).
 Session Hijacking: Steal cookies or tokens using tools like ettercap.
 
+## 5. Clean Up
 
-
-Step 5: Clean Up
 After testing, dismantle the rogue AP and restore your system:
 
-Stop airbase-ng (Ctrl+C in the terminal).
-Disable monitor mode:sudo airmon-ng stop wlan0mon
+- Stop `airbase-ng`.
 
+- Disable monitor mode:
 
-Stop dnsmasq and reset IP forwarding:sudo killall dnsmasq
-sudo sysctl -w net.ipv4.ip_forward=0
+<div style="text-align: center;">
+  <img src="assets/images/14.png" width="450">
+</div>
 
+- Stop `dnsmasq` and reset IP forwarding:
 
+<div style="text-align: center;">
+  <img src="assets/images/15.png" width="450">
 
-Ethical and Legal Considerations
+<div style="text-align: center;">
+  <img src="assets/images/16.png" width="450">
+</div>
 
-Permission is Mandatory: Conducting MITM attacks without explicit consent is illegal under laws like the U.S. Computer Fraud and Abuse Act or the UK Computer Misuse Act.
-Controlled Environment: Test only in lab settings or on networks you own or have permission to analyze.
-Responsible Disclosure: If you identify vulnerabilities during authorized testing, report them to the network owner following responsible disclosure practices.
+## Advanced Techniques and Mitigations
 
-Advanced Techniques and Mitigations
-Related MITM Techniques
+### Related MITM Techniques
 
-Evil Twin Attack: A variant where the rogue AP mimics a specific legitimate AP, often combined with de-authentication attacks to force clients to connect.
-Wi-Fi Pineapple: A hardware device that automates rogue AP and MITM attacks.
-ARP Spoofing: Manipulates ARP tables to intercept traffic on wired or wireless networks.
-DNS Spoofing: Redirects DNS queries to malicious servers.
+- **Evil Twin Attack:** A variant where the rogue AP mimics a specific legitimate AP, often combined with de-authentication attacks to force clients to connect.
+- **Wi-Fi Pineapple:** A hardware device that automates rogue AP and MITM attacks.
+- **ARP Spoofing:** Manipulates ARP tables to intercept traffic on wired or wireless networks.
+- **DNS Spoofing:** Redirects DNS queries to malicious servers.
 
-Mitigations
+## Mitigations
+
 To protect against rogue AP attacks:
 
-Use VPNs: Encrypt traffic to prevent interception.
-Verify SSIDs: Avoid connecting to unverified or suspiciously named networks.
-Enable WPA3: Modern encryption protocols make rogue APs harder to exploit.
-Monitor Network Activity: Use intrusion detection systems to spot unauthorized APs.
+- **Use VPNs:** Encrypt traffic to prevent interception.
+- **Verify SSIDs:** Avoid connecting to unverified or suspiciously named networks.
+- **Enable WPA3:** Modern encryption protocols make rogue APs harder to exploit.
+- **Monitor Network Activity:** Use intrusion detection systems to spot unauthorized APs.
 
-Conclusion
-Rogue access point-based MITM attacks are a powerful demonstration of wireless network vulnerabilities. By setting up a rogue AP with tools like airbase-ng, security researchers can study how attackers intercept and manipulate traffic. However, this knowledge must be used responsibly, within legal and ethical boundaries. For beginners, mastering these steps builds a foundation in wireless security testing, while advanced users can explore related techniques like DNS spoofing or session hijacking to deepen their expertise.
-Stay curious, stay ethical, and keep securing the digital world.
+## Conclusion
+
+Rogue access point-based MITM attacks are a powerful demonstration of wireless network vulnerabilities. By setting up a rogue AP with tools like `airbase-ng`, security researchers can study how attackers intercept and manipulate traffic. However, this knowledge must be used responsibly. For beginners, mastering these steps builds a foundation in wireless security testing, while advanced users can explore related techniques like DNS spoofing or session hijacking to deepen their expertise.
+
+Stay curious, and keep securing the digital world.
