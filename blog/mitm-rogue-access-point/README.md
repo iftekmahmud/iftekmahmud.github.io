@@ -39,7 +39,6 @@ To capture and manipulate wireless traffic, your Wi-Fi adapter must be in _monit
 1. Connect your external Wi-Fi adapter to your Kali Linux machine.
 
 2. Verify the adapter is recognized:
-
 <div style="text-align: center;">
   <img src="assets/images/1.png" width="550">
 </div>
@@ -47,7 +46,6 @@ To capture and manipulate wireless traffic, your Wi-Fi adapter must be in _monit
 Look for your adapter's interface name (e.g., `wlan0`).
 
 3. Enable monitor mode:
-
 <div style="text-align: center;">
   <img src="assets/images/2.png" width="550">
 </div>
