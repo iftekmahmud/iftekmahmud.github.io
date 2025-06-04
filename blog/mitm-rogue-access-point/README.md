@@ -197,7 +197,7 @@ Once clients connect to your rogue AP, their traffic routes through your Kali ma
      <img src="assets/images/13.png" width="750">
    </div>
 
-   **Note for Advanced Users:** To increase client connections, combine this with a deauthentication attack using aireplay-ng to force nearby clients to disconnect from legitimate APs and connect to yours:
+   **Note for Advanced Users:** To increase client connections, combine this with a deauthentication attack using `aireplay-ng` to force nearby clients to disconnect from legitimate APs and connect to yours:
 
    ```
    sudo aireplay-ng --deauth 10 -a <target-AP-MAC> wlan0
