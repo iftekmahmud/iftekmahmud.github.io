@@ -101,7 +101,7 @@ To intercept traffic, you need to route client traffic through your Kali machine
 
 This allows traffic to pass between the rogue AP and your machine.
 
-2. Set up the virtual AP interface (at0) with an IP address:
+2. Set up the virtual AP interface (`at0`) with an IP address:
 
 <div style="text-align: center;">
   <img src="assets/images/7.png" width="550">
