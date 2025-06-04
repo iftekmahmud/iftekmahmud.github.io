@@ -32,7 +32,9 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 - Visit the Tenable downloads page.
 - Select **Linux - Debian - amd64** as the platform and download the `.deb` installer (e.g., Nessus-10.8.4-debian10_amd64.deb).
 
-![](assets/images/1.png)
+<div style="text-align: center;">
+  <img src="assets/images/1.png" width="1000">
+</div>
 
 - Copy the provided SHA256 checksum for verification.
 
@@ -41,11 +43,15 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 - Navigate to the download directory.
 - Create a checksum file with the copied SHA256 value and the filename:
 
-![](assets/images/2.png)
+<div style="text-align: center;">
+  <img src="assets/images/2.png" width="700">
+</div>
 
 - Verify the checksum
 
-![](assets/images/3.png)
+<div style="text-align: center;">
+  <img src="assets/images/3.png" width="500">
+</div>
 
 - Expected output: `Nessus-10.8.4-debian10_amd64.deb: OK`. If the checksum does not match, re-download the installer to ensure integrity.
 
@@ -53,7 +59,9 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 
 - Install the `.deb` package using `apt`:
 
-![](assets/images/4.png)
+<div style="text-align: center;">
+  <img src="assets/images/4.png" width="600">
+</div>
 
 - The installation process will unpack and configure Nessus core components.
 
@@ -61,34 +69,46 @@ This guide assumes you are using a Kali Linux virtual machine (VM) to run Nessus
 
 - Start the `nessusd` service
 
-![](assets/images/5.png)
+<div style="text-align: center;">
+  <img src="assets/images/5.png" width="450">
+</div>
 
 - Verify the service is running
 
-![](assets/images/6.png)
+<div style="text-align: center;">
+  <img src="assets/images/6.png" width="640">
+</div>
 
 **5. Access the Nessus Web Interface:**
 
 - Open a browser and navigate to `https://127.0.0.1:8834`.
 - You’ll encounter a certificate warning due to Nessus using a self-signed certificate. Click **Advanced** and **Accept the Risk and Continue**.
 
-![](assets/images/7.png)
+<div style="text-align: center;">
+  <img src="assets/images/7.png" width="950">
+</div>
 
 **6. Activate Nessus:**
 
 - Select **Nessus Essentials** and click **Continue**.
 
-![](assets/images/8.png)
+<div style="text-align: center;">
+  <img src="assets/images/8.png" width="350">
+</div>
 
 - Register with your email to receive an activation code.
 - Enter the activation code to proceed.
 - Create a local Nessus user account (e.g., username: `admin`, with a strong password).
 
-![](assets/images/9.png)
+<div style="text-align: center;">
+  <img src="assets/images/9.png" width="350">
+</div>
 
 - Nessus will download and compile plugins, which may take several minutes.
 
-![](assets/images/10.png)
+<div style="text-align: center;">
+  <img src="assets/images/10.png" width="350">
+</div>
 
 **Pro Tip:** Always verify the installer’s checksum to prevent installing compromised software. If you encounter issues, ensure your Kali VM has sufficient resources and an active internet connection.
 
@@ -107,7 +127,9 @@ Upon logging in, the Nessus dashboard displays two main tabs in the Essentials v
 - **Scans:** Where you create, manage, and view scan results.
 - **Settings:** For configuring global settings, such as SMTP for email notifications or advanced performance options.
 
-![](assets/images/11.png)
+<div style="text-align: center;">
+  <img src="assets/images/11.png" width="1000">
+</div>
 
 The **About** menu in the Settings tab provides details on your license and the number of remaining hosts you can scan (16 IPs for Essentials).
 
@@ -134,32 +156,44 @@ Let’s perform an unauthenticated vulnerability scan on Metasploitable 2 using 
 - From the **Scans** tab, click **New Scan**.
 - Select **Basic Network Scan**.
 
-![](assets/images/12.png)
+<div style="text-align: center;">
+  <img src="assets/images/12.png" width="1000">
+</div>
 
 **2. Configure Basic Settings:**
 
 - **Name:** Enter a descriptive name, e.g., `Metasploitable Scan`.
 - **Targets:** Specify the IP address of your Metasploitable 2 VM (e.g., `192.168.19.128`). Nessus supports single IPs, ranges, or FQDNs.
 
-![](assets/images/13.png)
+<div style="text-align: center;">
+  <img src="assets/images/13.png" width="1000">
+</div>
 
 **3. Customize Discovery Settings:**
 
 - Navigate to the **Discovery** tab and select **Custom** from the dropdown.
 
-![](assets/images/14.png)
+<div style="text-align: center;">
+  <img src="assets/images/14.png" width="1000">
+</div>
 
 - In the **Port Scanning** section, set **Port scan range** to **80,443** to focus on web ports, as Metasploitable 2 hosts vulnerable web services like Apache.
 
-![](assets/images/15.png)
+<div style="text-align: center;">
+  <img src="assets/images/15.png" width="1000">
+</div>
 
 - Enable **Consider unscanned ports as closed** to treat all other ports as closed.
 
-![](assets/images/15.png)
+<div style="text-align: center;">
+  <img src="assets/images/15.png" width="1000">
+</div>
 
 - Disable **Host Discovery** by toggling **Ping the remote host** to **Off**, since you’ve confirmed the VM is live.
 
-![](assets/images/16.png)
+<div style="text-align: center;">
+  <img src="assets/images/16.png" width="1000">
+</div>
 
 **4. Review Other Settings:**
 
@@ -170,11 +204,15 @@ Let’s perform an unauthenticated vulnerability scan on Metasploitable 2 using 
 
 - Click the arrow next to **Save** and select **Launch**.
 
-![](assets/images/17.png)
+<div style="text-align: center;">
+  <img src="assets/images/17.png" width="1000">
+</div>
 
 - The scan status will appear as **Running** in the **My Scans** dashboard. You can pause or stop it if needed.
 
-![](assets/images/18.png)
+<div style="text-align: center;">
+  <img src="assets/images/18.png" width="1000">
+</div>
 
 **Note:** Unauthenticated scans generate significant network traffic and may be detected by intrusion detection systems. In a lab like Metasploitable 2, this is not a concern, but exercise caution in production environments.
 
@@ -182,7 +220,9 @@ Let’s perform an unauthenticated vulnerability scan on Metasploitable 2 using 
 
 Once the scan completes, Nessus provides a detailed results dashboard for analyzing Metasploitable 2’s vulnerabilities.
 
-![](assets/images/19.png)
+<div style="text-align: center;">
+  <img src="assets/images/19.png" width="1000">
+</div>
 
 ### Navigating the Results
 
@@ -192,13 +232,17 @@ Once the scan completes, Nessus provides a detailed results dashboard for analyz
 - This page lists the Metasploitable 2 host (e.g., `192.168.19.128`) with a visual representation of vulnerabilities by severity (Critical, High, Medium, Low, Info).
 - You might see multiple findings due to Metasploitable’s outdated Apache and other services.
 
-![](assets/images/19.png)
+<div style="text-align: center;">
+  <img src="assets/images/19.png" width="1000">
+</div>
 
 **2. Vulnerabilities Page:**
 
 - Click on the Metasploitable IP to view its vulnerabilities. You may find grouped findings like **HTTP (Multiple Issues)** in the Web Servers family.
 
-![](assets/images/20.png)
+<div style="text-align: center;">
+  <img src="assets/images/20.png" width="1000">
+</div>
 
 - Drill down into a finding (e.g., **Canonical Ubuntu Linux SEoL (8.04.x)**) for details, including:
   - **Description:** Explains the vulnerability (e.g., outdated Canonical Ubuntu Linux version).
@@ -215,11 +259,15 @@ Navigate to the VPR Top Threats tab (if available) to see a prioritized list of 
 
 The History tab logs all scans run with this configuration, useful for tracking changes over time.
 
-![](assets/images/23.png)
+<div style="text-align: center;">
+  <img src="assets/images/23.png" width="1000">
+</div>
 
 ### Generating a Report
 
-![](assets/images/24.png)
+<div style="text-align: center;">
+  <img src="assets/images/24.png" width="1000">
+</div>
 
 - From the results dashboard, click Report.
 - Select the Detailed Vulnerabilities By Host template and choose PDF as the format.
@@ -238,14 +286,18 @@ Authenticated scans provide deeper insights by accessing Metasploitable 2’s in
 
 - Click **New Scan** and select **Credentialed Patch Audit**. This template focuses on local security checks, ideal for authenticated scans.
 
-![](assets/images/25.png)
+<div style="text-align: center;">
+  <img src="assets/images/25.png" width="1000">
+</div>
 
 **2. Configure Basic Settings:**
 
 - **Name:** `Metasploitable Authenticated Scan`.
 - **Target:** Enter the IP address of Metasploitable 2 (e.g., `192.168.19.128`).
 
-![](assets/images/26.png)
+<div style="text-align: center;">
+  <img src="assets/images/26.png" width="1000">
+</div>
 
 **3. Add Credentials:**
 
@@ -258,7 +310,9 @@ Authenticated scans provide deeper insights by accessing Metasploitable 2’s in
   - Sudo user: `root`
   - Sudo password: `msfadmin`
 
-![](assets/images/27.png)
+<div style="text-align: center;">
+  <img src="assets/images/27.png" width="1000">
+</div>
 
 Metasploitable 2’s default credentials simplify authenticated scanning, but ensure they match your VM’s configuration.
 
@@ -275,12 +329,16 @@ Metasploitable 2’s default credentials simplify authenticated scanning, but en
 
 - Navigate to the **Vulnerabilities** tab after the scan completes.
 
-![](assets/images/28.png)
+<div style="text-align: center;">
+  <img src="assets/images/28.png" width="1000">
+</div>
 
 - Disable grouped results for clarity:
   - Click the settings wheel and select **Disable Groups**.
 
-![](assets/images/29.png)
+<div style="text-align: center;">
+  <img src="assets/images/29.png" width="1000">
+</div>
 
 - Review findings, such as vulnerabilities from the **Ubuntu Local Security Checks** plugin family, which may identify outdated software like Samba or vsftpd on Metasploitable 2.
 - Each finding includes:
@@ -288,7 +346,9 @@ Metasploitable 2’s default credentials simplify authenticated scanning, but en
   - **Description:** Details the vulnerability and affected software version.
   - **Patch Information:** Specifies the patch or update required.
 
-![](assets/images/30.png)
+<div style="text-align: center;">
+  <img src="assets/images/30.png" width="1000">
+</div>
 
 **Note:** Authenticated scans generate system noise (e.g., log entries). In a lab like Metasploitable 2, this is not an issue, but coordinate with system owners in production environments.
 
@@ -301,20 +361,26 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
 **1. Create a New Scan:**
 - Click **New Scan** and select **Advanced Dynamic Scan**.
 
-![](assets/images/31.png)
+<div style="text-align: center;">
+  <img src="assets/images/31.png" width="1000">
+</div>
 
 **2. Configure Basic Settings:**
 
 - Name: **Shellshock Scan**.
 - Target: **192.168.19.128** (Metasploitable 2).
 
-![](assets/images/32.png)
+<div style="text-align: center;">
+  <img src="assets/images/32.png" width="1000">
+</div>
 
 **3. Add Credentials:**
 
 - Use the same SSH credentials (`msfadmin:msfadmin`) as in the authenticated scan.
 
-![](assets/images/33.png)
+<div style="text-align: center;">
+  <img src="assets/images/33.png" width="1000">
+</div>
 
 **4. Configure Dynamic Plugin Filter:**
 
@@ -324,7 +390,9 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
   - **Middle Dropdown:** Choose **is equal to**.
   - **Right Dropdown:** Enter **CVE-2014-6271**.
 
-![](assets/images/34.png)
+<div style="text-align: center;">
+  <img src="assets/images/34.png" width="1000">
+</div>
 
 - Click **Preview Plugins** to list matching plugins (this may take a few minutes).
 
@@ -333,11 +401,15 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
 - Select the **CGI abuses** plugin family from the dropdown.
 - The preview list will show plugins matching your filters, such as **"GNU Bash Environment Variable Handling Code Injection (Shellshock)"** in the **CGI abuses** family.
 
-![](assets/images/35.png)
+<div style="text-align: center;">
+  <img src="assets/images/35.png" width="1000">
+</div>
 
 - To find the Plugin ID, click on the plugin name (e.g., **"GNU Bash Environment Variable Handling Code Injection (Shellshock)"**) to open its detailed view.
 
-![](assets/images/39.png)
+<div style="text-align: center;">
+  <img src="assets/images/39.png" width="1000">
+</div>
 
 - In the detailed view, you’ll see:
   - **Plugin Name:** GNU Bash Environment Variable Handling Code Injection (Shellshock).
@@ -348,22 +420,30 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
 
 **6. Launch the Scan**
 
-![](assets/images/36.png)
+<div style="text-align: center;">
+  <img src="assets/images/36.png" width="1000">
+</div>
 
 **7. Analyze Results:**
 
 - After the scan completes, navigate to the **Vulnerabilities** tab.
 - Check for a **CRITICAL** severity finding confirming CVE-2014-6271, associated with Plugin ID 77829.
 
-![](assets/images/38.png)
+<div style="text-align: center;">
+  <img src="assets/images/38.png" width="1000">
+</div>
 
 - The plugin output includes evidence of an active exploitation attempt:
 
-![](assets/images/37.png)
+<div style="text-align: center;">
+  <img src="assets/images/37.png" width="1000">
+</div>
 
 ### Analysis of the Output
 
-![](assets/images/40.png)
+<div style="text-align: center;">
+  <img src="assets/images/40.png" width="1000">
+</div>
 
 - "Nessus was able to set the TERM environment variable used in an SSH connection to: `() { :;}; /usr/bin/id > /tmp/nessus.1747917619`"
   - This is a crafted environment variable that exploits the Shellshock vulnerability. The `() { :;};` syntax is a malicious function definition, followed by a command (`/usr/bin/id > /tmp/nessus.1747917619`) that executes the `id` command and redirects its output to a file (`/tmp/nessus.1747917619`). 
