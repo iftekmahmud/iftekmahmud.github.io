@@ -271,7 +271,7 @@ When you connect to "FreeWiFi" and there's no internet, your phone might try to 
 
 Without internet, you can't browse, stream, or use apps that need online access, so there's less traffic to analyze.
 
-If you set up NAT and give internet access, your phone will send more traffic—visiting websites, checking emails, etc. Wireshark can then see all that data (e.g., usernames, passwords in plain text if not HTTPS, or cookies). This gives the attacker more to work with.
+If you set up NAT and give internet access, your phone will send more traffic, such as visiting websites, checking emails, etc. Wireshark can then see all that data (e.g., usernames, passwords in plain text if not HTTPS, or cookies). This gives the attacker more to work with.
 
 You can still intercept some traffic without internet, like local network requests or if you trick the user with a fake page. But for real-world MITM attacks (e.g., stealing login details from a website), internet access is key to lure the user into action.
 
