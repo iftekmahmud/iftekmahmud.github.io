@@ -12,4 +12,4 @@
 * [Nessus for Advanced Penetration Testing](./nessus)
 * [Setting Up a USB Wi-Fi Adapter for Wireless Pentesting in Kali Linux on VMware](./wifi-adapter)
 * [Wireless Pentesting with Kali Linux](./wireless-pentesting)
-* [Executing Man-in-the-Middle Attacks with Rogue Access Points](./mitm-rogue-access-points)
+* [Executing Man-in-the-Middle Attacks with Rogue Access Points](./mitm-rogue-access-point)
