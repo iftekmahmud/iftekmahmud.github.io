@@ -201,9 +201,7 @@ After testing, dismantle the rogue AP and restore your system:
      <img src="assets/images/16.png" width="600">
    </div>
 
-## Advanced Techniques and Mitigations
-
-### Related MITM Techniques
+## Advanced Related MITM Techniques
 
 - **SSL Stripping:** Downgrade HTTPS connections to HTTP (use `sslstrip`).
 - **Evil Twin Attack:** A variant where the rogue AP mimics a specific legitimate AP, often combined with de-authentication attacks to force clients to connect.
