@@ -41,7 +41,7 @@ To capture and manipulate wireless traffic, your Wi-Fi adapter must be in _monit
 2. Verify the adapter is recognized:
 
 <div style="text-align: center;">
-  <img src="assets/images/1.png" width="450">
+  <img src="assets/images/1.png" width="550">
 </div>
 
 Look for your adapter's interface name (e.g., `wlan0`).
@@ -49,13 +49,13 @@ Look for your adapter's interface name (e.g., `wlan0`).
 3. Enable monitor mode:
 
 <div style="text-align: center;">
-  <img src="assets/images/2.png" width="450">
+  <img src="assets/images/2.png" width="550">
 </div>
 
 This creates a new interface (e.g., `wlan0`). Confirm with `iwconfig`.
 
 <div style="text-align: center;">
-  <img src="assets/images/3.png" width="450">
+  <img src="assets/images/3.png" width="550">
 </div>
 
 ## 2. Create the Rogue Access Point
@@ -65,7 +65,7 @@ Using `airbase-ng` from the Aircrack-ng suite, we'll create a rogue AP with a cu
 1. Launch the rogue AP:
 
 <div style="text-align: center;">
-  <img src="assets/images/4.png" width="450">
+  <img src="assets/images/4.png" width="600">
 </div>
 
 - `e "FreeWiFi"`: Sets the SSID to "FreeWiFi" (choose a name that blends with the environment).
@@ -73,16 +73,20 @@ Using `airbase-ng` from the Aircrack-ng suite, we'll create a rogue AP with a cu
 - `P`: Enables the AP to respond to all probe requests, increasing the likelihood of client connections.
 - `wlan0`: The monitor-mode interface.
 
-This command creates a virtual AP interface (e.g., `at0`). Confirm with `iwconfig`.
+This command creates a virtual AP interface (e.g., `at0`). Confirm with `iwconfig` and `ifconfig`.
 
 <div style="text-align: center;">
-  <img src="assets/images/at0.png" width="450">
+  <img src="assets/images/ifcongi_at0.png" width="550">
+</div>
+
+<div style="text-align: center;">
+  <img src="assets/images/iwconfig_at0.png" width="550">
 </div>
 
 2. Monitor the AP activity in the terminal. You'll see clients attempting to connect:
 
 <div style="text-align: center;">
-  <img src="assets/images/5.png" width="450">
+  <img src="assets/images/5.png" width="650">
 </div>
 
 ## 3. Configure Network Routing
@@ -92,7 +96,7 @@ To intercept traffic, you need to route client traffic through your Kali machine
 1. Enable IP forwarding:
 
 <div style="text-align: center;">
-  <img src="assets/images/6.png" width="450">
+  <img src="assets/images/6.png" width="600">
 </div>
 
 This allows traffic to pass between the rogue AP and your machine.
@@ -100,7 +104,7 @@ This allows traffic to pass between the rogue AP and your machine.
 2. Set up the virtual AP interface (at0) with an IP address:
 
 <div style="text-align: center;">
-  <img src="assets/images/7.png" width="450">
+  <img src="assets/images/7.png" width="550">
 </div>
 
 This assigns a static IP to `at0`, acting as the gateway for clients.
@@ -110,7 +114,7 @@ This assigns a static IP to `at0`, acting as the gateway for clients.
 - Install and configure `dnsmasq`:
 
 <div style="text-align: center;">
-  <img src="assets/images/8.png" width="450">
+  <img src="assets/images/8.png" width="600">
 </div>
 
 - Create a configuration file (`/etc/dnsmasq.conf`):
@@ -129,19 +133,16 @@ dhcp-range=192.168.1.2,192.168.1.100,12h
   - Save and exit.
 
 <div style="text-align: center;">
-  <img src="assets/images/9.png" width="450">
+  <img src="assets/images/9.png" width="700">
 </div>
 
 - Start `dnsmasq`:
 
 <div style="text-align: center;">
-  <img src="assets/images/10.png" width="450">
+  <img src="assets/images/10.png" width="700">
 </div>
 
 - Set up NAT to allow clients internet access (optional, to make the rogue AP convincing):
-
-Step 4: Intercept and Analyze Traffic
-Once clients connect to your rogue AP (as depicted in Figure 7.27), their traffic routes through your Kali machine. Use tools like Wireshark or tcpdump to capture and analyze packets.
 
 ```bash
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
@@ -149,7 +150,7 @@ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 ## 4. Intercept and Analyze Traffic
 
-Clients connecting to "FreeWiFi" route through your Kali machine. Analyze their traffic.
+Once clients connect to your rogue AP, their traffic routes through your Kali machine. Use tools like Wireshark or tcpdump to capture and analyze packets.
 
 1. Start Wireshark:
 
@@ -160,22 +161,16 @@ sudo wireshark &
 2. Select the `at0` interface and filter for protocols like HTTP, DNS, or TLS to inspect traffic.
 
 <div style="text-align: center;">
-  <img src="assets/images/11.png" width="450">
+  <img src="assets/images/11.png" width="500">
 </div>
 
 <div style="text-align: center;">
-  <img src="assets/images/12.png" width="450">
+  <img src="assets/images/12.png" width="750">
 </div>
 
 <div style="text-align: center;">
-  <img src="assets/images/13.png" width="450">
+  <img src="assets/images/13.png" width="750">
 </div>
-
-For advanced attacks, you can:
-
-DNS Spoofing: Redirect clients to malicious sites by altering DNS responses (use tools like dnsspoof).
-SSL Stripping: Downgrade HTTPS connections to HTTP (use sslstrip).
-Session Hijacking: Steal cookies or tokens using tools like ettercap.
 
 ## 5. Clean Up
 
@@ -186,26 +181,28 @@ After testing, dismantle the rogue AP and restore your system:
 - Disable monitor mode:
 
 <div style="text-align: center;">
-  <img src="assets/images/14.png" width="450">
+  <img src="assets/images/14.png" width="550">
 </div>
 
 - Stop `dnsmasq` and reset IP forwarding:
 
 <div style="text-align: center;">
-  <img src="assets/images/15.png" width="450">
+  <img src="assets/images/15.png" width="600">
 
 <div style="text-align: center;">
-  <img src="assets/images/16.png" width="450">
+  <img src="assets/images/16.png" width="600">
 </div>
 
 ## Advanced Techniques and Mitigations
 
 ### Related MITM Techniques
 
+- **SSL Stripping:** Downgrade HTTPS connections to HTTP (use `sslstrip`).
 - **Evil Twin Attack:** A variant where the rogue AP mimics a specific legitimate AP, often combined with de-authentication attacks to force clients to connect.
 - **Wi-Fi Pineapple:** A hardware device that automates rogue AP and MITM attacks.
 - **ARP Spoofing:** Manipulates ARP tables to intercept traffic on wired or wireless networks.
-- **DNS Spoofing:** Redirects DNS queries to malicious servers.
+- **DNS Spoofing:** Redirect clients to malicious sites by altering DNS responses (use tools like `dnsspoof`).
+- **Session Hijacking:** Steal cookies or tokens using tools like `ettercap`.
 
 ## Mitigations
 
