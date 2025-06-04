@@ -69,7 +69,7 @@ Using `airbase-ng` from the Aircrack-ng suite, we'll create a rogue AP with a cu
    </div>
    
    - `e "FreeWiFi"`: Sets the SSID to "FreeWiFi" (choose a name that blends with the environment).
-   - `c 11`: Specifies the channel (e.g., channel 6; match the target AP's channel for realism).
+   - `c 11`: Specifies the channel.
    - `P`: Enables the AP to respond to all probe requests, increasing the likelihood of client connections.
    - `wlan0`: The monitor-mode interface.
 
@@ -160,22 +160,24 @@ To intercept traffic, you need to route client traffic through your Kali machine
 Once clients connect to your rogue AP, their traffic routes through your Kali machine. Use tools like Wireshark or tcpdump to capture and analyze packets.
 
 1. Start Wireshark:
-```bash
-sudo wireshark &
-```
+
+   ```bash
+   sudo wireshark &
+   ```
 
 2. Select the `at0` interface and filter for protocols like HTTP, DNS, or TLS to inspect traffic.
-<div style="text-align: center;">
-  <img src="assets/images/11.png" width="500">
-</div>
 
-<div style="text-align: center;">
-  <img src="assets/images/12.png" width="750">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/11.png" width="500">
+   </div>
 
-<div style="text-align: center;">
-  <img src="assets/images/13.png" width="750">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/12.png" width="750">
+   </div>
+
+   <div style="text-align: center;">
+     <img src="assets/images/13.png" width="750">
+   </div>
 
 ## 5. Clean Up
 
@@ -185,19 +187,19 @@ After testing, dismantle the rogue AP and restore your system:
 
 - Disable monitor mode:
 
-<div style="text-align: center;">
-  <img src="assets/images/14.png" width="550">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/14.png" width="550">
+   </div>
 
 - Stop `dnsmasq` and reset IP forwarding:
 
-<div style="text-align: center;">
-  <img src="assets/images/15.png" width="600">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/15.png" width="600">
+   </div>
 
-<div style="text-align: center;">
-  <img src="assets/images/16.png" width="600">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/16.png" width="600">
+   </div>
 
 ## Advanced Techniques and Mitigations
 
