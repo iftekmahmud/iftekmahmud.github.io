@@ -42,14 +42,12 @@ To capture and manipulate wireless traffic, your Wi-Fi adapter must be in _monit
   <div style="text-align: center;">
     <img src="assets/images/1.png" width="550">
   </div>
-
   Look for your adapter's interface name (e.g., `wlan0`).
 
 3. Enable monitor mode:
   <div style="text-align: center;">
     <img src="assets/images/2.png" width="550">
   </div>
-  
   This creates a new interface (e.g., `wlan0`). Confirm with `iwconfig`.
 
   <div style="text-align: center;">
