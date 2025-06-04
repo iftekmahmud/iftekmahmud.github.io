@@ -265,7 +265,7 @@ Setting up NAT makes this happen by letting your device's traffic go through the
 
 ## Can You Intercept Traffic in Wireshark Without Internet?
 
-Wireshark captures all the network traffic going through the attacker's Kali machine on the `at0` interface (the rogue AP). But if there's no internet, your phone won't send much traffic to intercept:
+Wireshark captures all the network traffic going through the attacker's Kali machine on the `at0` interface (the rogue AP). But if there's no internet, your phone won't send much traffic to intercept.
 
 When you connect to "FreeWiFi" and there's no internet, your phone might try to load a website (e.g., google.com), but it fails. Wireshark will only see those failed attempts (like DNS requests or HTTP errors), not the full website data.
 
