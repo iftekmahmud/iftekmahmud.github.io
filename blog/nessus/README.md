@@ -430,7 +430,7 @@ For advanced users, Nessus’s plugin system allows precise vulnerability detect
 - Check for a **CRITICAL** severity finding confirming CVE-2014-6271, associated with Plugin ID 77829.
 
 <div style="text-align: center;">
-  <img src="assets/images/38.png" width="1000">
+  <img src="assets/images/38.png" width="300">
 </div>
 
 - The plugin output includes evidence of an active exploitation attempt:
