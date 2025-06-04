@@ -64,30 +64,30 @@ Using `airbase-ng` from the Aircrack-ng suite, we'll create a rogue AP with a cu
 
 1. Launch the rogue AP:
 
-<div style="text-align: center;">
-  <img src="assets/images/4.png" width="600">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/4.png" width="600">
+   </div>
+   
+   - `e "FreeWiFi"`: Sets the SSID to "FreeWiFi" (choose a name that blends with the environment).
+   - `c 11`: Specifies the channel (e.g., channel 6; match the target AP's channel for realism).
+   - `P`: Enables the AP to respond to all probe requests, increasing the likelihood of client connections.
+   - `wlan0`: The monitor-mode interface.
 
-- `e "FreeWiFi"`: Sets the SSID to "FreeWiFi" (choose a name that blends with the environment).
-- `c 11`: Specifies the channel (e.g., channel 6; match the target AP's channel for realism).
-- `P`: Enables the AP to respond to all probe requests, increasing the likelihood of client connections.
-- `wlan0`: The monitor-mode interface.
+   This command creates a virtual AP interface (e.g., `at0`). Confirm with `iwconfig` and `ifconfig`.
 
-This command creates a virtual AP interface (e.g., `at0`). Confirm with `iwconfig` and `ifconfig`.
+   <div style="text-align: center;">
+     <img src="assets/images/ifcongi_at0.png" width="550">
+   </div>
 
-<div style="text-align: center;">
-  <img src="assets/images/ifcongi_at0.png" width="550">
-</div>
-
-<div style="text-align: center;">
-  <img src="assets/images/iwconfig_at0.png" width="550">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/iwconfig_at0.png" width="550">
+   </div>
 
 2. Monitor the AP activity in the terminal. You'll see clients attempting to connect:
 
-<div style="text-align: center;">
-  <img src="assets/images/5.png" width="650">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/5.png" width="650">
+   </div>
 
 ## 3. Configure Network Routing
 
@@ -95,63 +95,65 @@ To intercept traffic, you need to route client traffic through your Kali machine
 
 1. Enable IP forwarding:
 
-<div style="text-align: center;">
-  <img src="assets/images/6.png" width="600">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/6.png" width="600">
+   </div>
 
-This allows traffic to pass between the rogue AP and your machine.
+   This allows traffic to pass between the rogue AP and your machine.
 
 2. Set up the virtual AP interface (`at0`) with an IP address:
 
-<div style="text-align: center;">
-  <img src="assets/images/7.png" width="550">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/7.png" width="550">
+   </div>
 
-This assigns a static IP to `at0`, acting as the gateway for clients.
+   This assigns a static IP to `at0`, acting as the gateway for clients.
 
 3. Configure a DHCP server to assign IP addresses to connecting clients.
 
-- Install and configure `dnsmasq`:
+   - Install and configure `dnsmasq`:
+   
+   <div style="text-align: center;">
+     <img src="assets/images/8.png" width="600">
+   </div>
 
-<div style="text-align: center;">
-  <img src="assets/images/8.png" width="600">
-</div>
+   - Create a configuration file (`/etc/dnsmasq.conf`):
 
-- Create a configuration file (`/etc/dnsmasq.conf`):
+   ```bash
+   sudo gedit /etc/dnsmasq.conf
+   ```
 
-```bash
-sudo gedit /etc/dnsmasq.conf
-```
-Add:
+   Add:
 
-```plain
-interface=at0
-dhcp-range=192.168.1.2,192.168.1.100,12h
-```
-  - `interface=at0`: Tells `dnsmasq` to use the virtual AP.
-  - `dhcp-range`: Defines the IP range (`192.168.1.2` to `192.168.1.100`) and lease time (12 hours) for clients.
-  - Save and exit.
+   ```plain
+   interface=at0
+   dhcp-range=192.168.1.2,192.168.1.100,12h
+   ```
+   
+     - `interface=at0`: Tells `dnsmasq` to use the virtual AP.
+     - `dhcp-range`: Defines the IP range (`192.168.1.2` to `192.168.1.100`) and lease time (12 hours) for clients.
+     - Save and exit.
 
-<div style="text-align: center;">
-  <img src="assets/images/9.png" width="700">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/9.png" width="700">
+   </div>
 
-- Start `dnsmasq`:
+   - Start `dnsmasq`:
 
-<div style="text-align: center;">
-  <img src="assets/images/10.png" width="700">
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/10.png" width="700">
+   </div>
 
-<div style="text-align: center;">
-  <img src="assets/images/wifi-rogue-ap-phone.png" width="280">
-  <p style="text-align: center; margin-top: -5px;">Rogue AP Created and Publicly Accessible</p>
-</div>
+   <div style="text-align: center;">
+     <img src="assets/images/wifi-rogue-ap-phone.png" width="280">
+     <p style="text-align: center; margin-top: -5px;">Rogue AP Created and Publicly Accessible</p>
+   </div>
 
-- Set up NAT to allow clients internet access (optional, to make the rogue AP convincing):
+   - Set up NAT to allow clients internet access (optional, to make the rogue AP convincing):
 
-```bash
-sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-```
+   ```bash
+   sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+   ```
 
 ## 4. Intercept and Analyze Traffic
 
