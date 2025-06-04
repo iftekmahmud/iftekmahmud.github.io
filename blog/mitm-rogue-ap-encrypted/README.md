@@ -61,13 +61,13 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
 
 2. Create a Configuration File:
 
-   1. Open a new configuration file:
+   - Open a new configuration file:
 
       ```bash
       sudo nano /etc/hostapd/hostapd.conf
       ```
 
-   2. Add the following, customizing as needed:
+   - Add the following, customizing as needed:
 
       ```bash
       interface=wlan0
@@ -92,7 +92,7 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
    <img src="assets/images/2.png" width="450">
    </div> 
 
-   3. Save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
+   - Save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
   
 ### 3. Start the Encrypted AP
 
