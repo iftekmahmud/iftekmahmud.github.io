@@ -44,7 +44,7 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
    sudo ifconfig wlan0 up
    ```
 
-   - Confirm it’s in managed mode with `iwconfig` again.
+   - Confirm it's in managed mode with `iwconfig` again.
 
 ## 2. Install and Configure `hostapd`
 
@@ -172,13 +172,33 @@ For a convincing AP, allow clients to access the internet via NAT.
       <img src="assets/images/9.png" width="700">
       </div>
 
+   The goal here is to forward the victim's internet traffic (from a device like a phone connected to the AP) through the attacker's machine to the internet, while hiding the victim's real IP address. This process is called NAT (Network Address Translation), and `MASQUERADE` makes the traffic look like it's coming from the attacker's machine.
+
+   The attacker sets a rule that says, "Take all traffic coming from the IP range 192.168.1.0/24 (the network the attacker created for the rogue AP) and send it to the internet through my internet connection (`eth0`), while hiding the victim's IP address."
+
+   The `-s 192.168.1.0/24` part means this rule only applies to traffic from the victim's device, which gets an IP like 192.168.1.3 from the attacker's `dnsmasq` setup.
+
+   When the victim connects to rogue AP "SecureFreeWiFi" and tries to visit a website (e.g., google.com), their phone sends the request to the attacker's Kali machine (because the attacker controls the AP).
+
+   This rule forwards the victim's request to the internet via `eth0`, making it look like the request came from the attacker's machine. The website's response comes back to the attacker, who then sends it to the victim.
+
+   In other words, this command only forwards traffic from the victim's device (on the 192.168.1.x network), leaving other traffic on the attacker's machine untouched. It's perfect for the attacker's goal of intercepting the victim's traffic while giving the victim internet access.
+
    - Verify with:
 
       <div style="text-align: center;">
       <img src="assets/images/10.png" width="650">
       </div>
 
-3. Test Connectivity:
+   `iptables` acts like a traffic cop with different checkpoints (chains) to control network traffic. The `-t nat` focuses on NAT rules, which the attacker uses to forward the victim’s internet traffic from the rogue AP to the outside world.
+
+    `24 packets, 6350 bytes` on the `MASQUERADE` rule means some traffic from the victim's device (in the 192.168.1.0/24 range, in our case, 192.168.1.36) has reached this point where the attacker's Kali machine tries to forward it to the internet via `eth0`.
+
+   The `MASQUERADE` rule hides the victim's IP and forwards the traffic, but the internet access depends on the traffic completing a round trip, going out to the internet and coming back to the victim. If the victim can't browse consistently, it suggests the return traffic might not be making it back.
+
+   Note that the `24 packets` only show traffic hitting the rule, not whether it successfully reached the internet or got a response. For example, if the victim opened a webpage and it loaded briefly, that's the outgoing traffic (the `24 packets`). But if it disconnected, the return traffic (e.g., the webpage data) might be lost, meaning the internet connection isn't stable.
+
+4. Test Connectivity:
 
    - From your Kali machine, ping an external address:
 
