@@ -207,12 +207,12 @@ For a convincing AP, allow clients to access the internet via NAT.
       </div>
 
       <div style="text-align: center;">
-      <img src="assets/images/16.png" width="500">
+      <img src="assets/images/16.png" width="600">
       </div>
 
       <div style="text-align: center;">
       <img src="assets/images/wifi_encrypted_rogue_ap.png" width="300">
-      <p style="text-align: center; margin-top: -10px; line-height: 1;">Encrypted Rogue WiFi Created and Publicly Accessible</p>
+      <p style="text-align: center; margin-top: -5px;">Encrypted Rogue WiFi Created and Publicly Accessible</p>
       </div>
 
 2. Verify Traffic:
