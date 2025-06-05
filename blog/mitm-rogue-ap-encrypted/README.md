@@ -176,7 +176,7 @@ For a convincing AP, allow clients to access the internet via NAT.
 
    The attacker sets a rule that says, "Take all traffic coming from the IP range 192.168.1.0/24 (the network the attacker created for the rogue AP) and send it to the internet through my internet connection (`eth0`), while hiding the victim's IP address."
 
-   The `-s 192.168.1.0/24` part means this rule only applies to traffic from the victim's device, which gets an IP like 192.168.1.3 from the attacker's `dnsmasq` setup.
+   The `-s 192.168.1.0/24` part means this rule only applies to traffic from the victim's device, which gets an IP like 192.168.1.36 from the attacker's `dnsmasq` setup.
 
    When the victim connects to rogue AP "SecureFreeWiFi" and tries to visit a website (e.g., google.com), their phone sends the request to the attacker's Kali machine (because the attacker controls the AP).
 
