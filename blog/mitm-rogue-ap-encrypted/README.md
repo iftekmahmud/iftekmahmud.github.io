@@ -200,7 +200,20 @@ For a convincing AP, allow clients to access the internet via NAT.
       <img src="assets/images/12.png" width="550">
       </div>
 
-   - Look for the client's IP in the 192.168.1.x range.
+   - Look for the client's IP in the 192.168.1.x range (in our case it's 192.68.1.36).
+
+      <div style="text-align: center;">
+      <img src="assets/images/15.png" width="600">
+      </div>
+
+      <div style="text-align: center;">
+      <img src="assets/images/16.png" width="500">
+      </div>
+
+      <div style="text-align: center;">
+      <img src="assets/images/wifi_encrypted_rogue_ap.png" width="300">
+      <p style="text-align: center; margin-top: -10px; line-height: 1;">Encrypted Rogue WiFi Created and Publicly Accessible</p>
+      </div>
 
 2. Verify Traffic:
 
