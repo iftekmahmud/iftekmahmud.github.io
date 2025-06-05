@@ -44,7 +44,7 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
    sudo ifconfig wlan0 up
    ```
 
-    - Confirm it’s in managed mode with iwconfig again.
+    - Confirm it’s in managed mode with `iwconfig` again.
 
 ## 2. Install and Configure `hostapd`
 
