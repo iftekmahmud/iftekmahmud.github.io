@@ -31,7 +31,7 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
    - Check the available interfaces:
 
       <div style="text-align: center;">
-        <img src="assets/images/1.png" width="450">
+        <img src="assets/images/1.png" width="600">
       </div>
 
    - If `wlan0` isn't listed, troubleshoot with `lsusb` or `dmesg | grep wlan` to confirm detection.
@@ -44,7 +44,7 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
    sudo ifconfig wlan0 up
    ```
 
-    - Confirm it’s in managed mode with `iwconfig` again.
+   - Confirm it’s in managed mode with `iwconfig` again.
 
 ## 2. Install and Configure `hostapd`
 
@@ -69,17 +69,10 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
 
    - Add the following, customizing as needed:
 
-      ```bash
-      interface=wlan0
-      ssid=SecureFreeWiFi
-      channel=11
-      hw_mode=g
-      wpa=2
-      wpa_passphrase=yourpassword123
-      wpa_key_mgmt=WPA-PSK
-      wpa_pairwise=CCMP
-      rsn_pairwise=CCMP
-      ```
+      <div style="text-align: center;">
+      <img src="assets/images/2.png" width="600">
+      </div> 
+      
       - `interface=wlan0`: The Wi-Fi interface to use.
       - `ssid=SecureFreeWiFi`: The network name (choose something convincing).
       - `channel=11`: A non-overlapping channel (scan with `airodump-ng wlan0` to pick a less congested one).
@@ -87,10 +80,6 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
       - `wpa_passphrase=yourpassword123`: The password clients will use (at least 8 characters).
       - `wpa_key_mgmt=WPA-PSK`: Uses Pre-Shared Key authentication.
       - `wpa_pairwise=CCMP` and `rsn_pairwise=CCMP`: Use AES encryption (stronger than TKIP).
-
-   <div style="text-align: center;">
-   <img src="assets/images/2.png" width="450">
-   </div> 
 
    - Save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
   
@@ -103,7 +92,7 @@ Now, launch the AP with the configured settings.
    - Ensure `wlan0` is up:
 
       <div style="text-align: center;">
-      <img src="assets/images/3.png" width="450">
+      <img src="assets/images/3.png" width="500">
       </div> 
 
 2. Launch `hostapd`:
@@ -111,7 +100,7 @@ Now, launch the AP with the configured settings.
    - Start the AP and check for output indicating the AP is running, e.g.:
 
       <div style="text-align: center;">
-      <img src="assets/images/4.png" width="450">
+      <img src="assets/images/4.png" width="580">
       </div>
 
    - If it fails, check for errors (e.g., "Could not set channel" or "interface not found") and revisit adapter compatibility.
@@ -125,7 +114,7 @@ To make the AP functional, assign an IP and set up a DHCP server.
    - Set a static IP for `wlan0`:
 
       <div style="text-align: center;">
-      <img src="assets/images/5.png" width="450">
+      <img src="assets/images/5.png" width="570">
       </div>
 
 2. Install and Configure `dnsmasq`:
@@ -144,18 +133,13 @@ To make the AP functional, assign an IP and set up a DHCP server.
 
    - Add:
  
-      ```
-      interface=wlan0
-      dhcp-range=192.168.1.2,192.168.1.100,12h
-      ```
+      <div style="text-align: center;">
+      <img src="assets/images/6.png" width="580">
+      </div>
 
       - `interface=wlan0`: Uses the AP interface.
       - `dhcp-range`: IP range for clients (`192.168.1.2` to `192.168.1.100`) with a 12-hour lease.
 
-      <div style="text-align: center;">
-      <img src="assets/images/6.png" width="450">
-      </div>
-    
    - Save and exit.
  
 3. Start `dnsmasq`:
@@ -163,7 +147,7 @@ To make the AP functional, assign an IP and set up a DHCP server.
    - Launch the DHCP server:
 
       <div style="text-align: center;">
-      <img src="assets/images/7.png" width="450">
+      <img src="assets/images/7.png" width="580">
       </div>
 
    - **Note:** The `-d` flag runs it in debug mode; remove it for background operation after testing.
@@ -177,7 +161,7 @@ For a convincing AP, allow clients to access the internet via NAT.
    - Allow traffic routing:
   
       <div style="text-align: center;">
-      <img src="assets/images/8.png" width="450">
+      <img src="assets/images/8.png" width="520">
       </div>
 
 2. Set Up NAT:
@@ -185,13 +169,13 @@ For a convincing AP, allow clients to access the internet via NAT.
    - Forward traffic to your internet interface (e.g., `eth0`):
   
       <div style="text-align: center;">
-      <img src="assets/images/9.png" width="450">
+      <img src="assets/images/9.png" width="700">
       </div>
 
    - Verify with:
 
       <div style="text-align: center;">
-      <img src="assets/images/10.png" width="450">
+      <img src="assets/images/10.png" width="650">
       </div>
 
 3. Test Connectivity:
@@ -199,7 +183,7 @@ For a convincing AP, allow clients to access the internet via NAT.
    - From your Kali machine, ping an external address:
 
       <div style="text-align: center;">
-      <img src="assets/images/11.png" width="450">
+      <img src="assets/images/11.png" width="730">
       </div>
 
    - Clients should now get internet access if NAT is correctly configured.
@@ -213,7 +197,7 @@ For a convincing AP, allow clients to access the internet via NAT.
    - Check the assigned IP:
 
       <div style="text-align: center;">
-      <img src="assets/images/12.png" width="450">
+      <img src="assets/images/12.png" width="550">
       </div>
 
    - Look for the client's IP in the 192.168.1.x range.
@@ -223,7 +207,11 @@ For a convincing AP, allow clients to access the internet via NAT.
    - Use Wireshark to monitor traffic on `wlan0`:
 
       <div style="text-align: center;">
-      <img src="assets/images/13.png" width="450">
+      <img src="assets/images/13.png" width="850">
+      </div>
+
+      <div style="text-align: center;">
+      <img src="assets/images/14.png" width="850">
       </div>
 
    - Filter for HTTP, DNS, or TLS to analyze client activity.
@@ -245,7 +233,7 @@ After testing, dismantle the AP to avoid interference:
 - Reset `wlan0`:
 
    <div style="text-align: center;">
-   <img src="assets/images/18.png" width="450">
+   <img src="assets/images/18.png" width="400">
    </div>
 
 ## Troubleshooting Common Issues
