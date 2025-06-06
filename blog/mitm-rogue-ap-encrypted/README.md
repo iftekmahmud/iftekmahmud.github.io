@@ -83,7 +83,7 @@ Before creating the AP, ensure your Wi-Fi adapter is ready and supports the nece
 
    - Save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
   
-### 3. Start the Encrypted AP
+## 3. Start the Encrypted AP
 
 Now, launch the AP with the configured settings.
 
@@ -105,7 +105,7 @@ Now, launch the AP with the configured settings.
 
    - If it fails, check for errors (e.g., "Could not set channel" or "interface not found") and revisit adapter compatibility.
  
-### 4. Configure Network Settings
+## 4. Configure Network Settings
 
 To make the AP functional, assign an IP and set up a DHCP server.
 
