@@ -107,7 +107,7 @@ Using `airbase-ng` from the Aircrack-ng suite, we'll create a rogue AP with a cu
 
    - Using an older device for testing (e.g., Android 9 or earlier).
    - Disabling Wi-Fi security checks in your device.
-   - Alternatively, use `hostapd` to create an encrypted AP.
+   - Alternatively, use `hostapd` to create an encrypted AP, with detailed steps available in the blog at [Creating Encrypted Rogue Access Points in Wireless Man-in-the-Middle Scenarios](https://iftekmahmud.github.io/blog/mitm-rogue-ap-encrypted/).
 
 ## 3. Configure Network Routing
 
