@@ -1,82 +1,109 @@
 # Detecting Hidden Wi-Fi Networks
 
-Wireless networks are ubiquitous, and their security is a critical concern for organizations and individuals alike. One common security measure is hiding a Wi-Fi network’s Service Set Identifier (SSID), which prevents the network name from appearing in standard scans. While this adds a layer of obscurity, it is not foolproof. Hidden SSIDs can still be detected using specialized tools and techniques, such as mdk3 and airodump-ng. This blog provides a detailed, practical guide for security researchers, from beginners to advanced practitioners, on detecting hidden SSIDs as part of a wireless network security audit. We will walk through the process step-by-step, explain the tools and techniques, and highlight ethical considerations and best practices.
+Wireless networks are ubiquitous, and their security is a critical concern for organizations and individuals alike. One common security measure is hiding a Wi-Fi network’s Service Set Identifier (SSID), which prevents the network name from appearing in standard scans. While this adds a layer of obscurity, it is not foolproof. Hidden SSIDs can still be detected using specialized tools and techniques, such as `mdk3` and `airodump-ng`. In this blog, we'll provide a detailed and practical guide for security researchers on detecting hidden SSIDs as part of a wireless network security audit.
 
-Disclaimer: The techniques described here are for educational purposes and authorized security testing only. Unauthorized access or interference with wireless networks is illegal and unethical. Always obtain explicit permission from the network owner before conducting any security assessments.
+**Disclaimer:** The techniques described here are for educational purposes and authorized security testing only. Unauthorized access or interference with wireless networks is illegal and unethical. Always obtain explicit permission from the network owner before conducting any security assessments.
 
-What is a Hidden SSID?
+## What is a Hidden SSID?
+
 A hidden SSID is a Wi-Fi network that does not broadcast its name, making it invisible to standard Wi-Fi scanning tools like those built into operating systems or mobile devices. When an SSID is hidden, devices cannot detect the network unless they already know its name and are configured to connect to it. This obscurity is often used as a basic security measure to deter casual attackers. However, hidden SSIDs are not truly secure, as they can be revealed by analyzing probe responses or using specialized tools to force the network to disclose its name.
-Detecting hidden SSIDs is a valuable skill for security researchers conducting wireless network audits. By identifying these networks, researchers can assess their configurations, encryption methods, and potential vulnerabilities. This guide focuses on using mdk3, a powerful tool for wireless network testing, to uncover hidden SSIDs through a controlled, ethical process.
-Prerequisites
-Before diving into the technical steps, ensure you have the following:
 
-A Linux-based system: Tools like mdk3 and airodump-ng are typically used on Linux distributions like Kali Linux or Parrot Security OS, which are designed for security testing.
-A compatible wireless adapter: The adapter must support monitor mode and packet injection. Popular choices include those with chipsets like Atheros AR9271 or Ralink RT3070 (e.g., Alfa Network AWUS036NHA).
-Administrative privileges: You’ll need root access to run the commands.
-Legal authorization: Ensure you have explicit permission to test the target network.
-Software tools: Install mdk3 and aircrack-ng (which includes airodump-ng).
+Detecting hidden SSIDs is a valuable skill for security researchers conducting wireless network audits. By identifying these networks, researchers can assess their configurations, encryption methods, and potential vulnerabilities. This guide focuses on using `mdk3`, a powerful tool for wireless network testing, to uncover hidden SSIDs through a controlled process.
 
-Step-by-Step Guide to Detecting Hidden SSIDs
-Step 1: Setting Up the Environment
-To begin, you need to install the necessary tools. We’ll use mdk3 for SSID detection and airodump-ng (part of the aircrack-ng suite) to scan for wireless networks.
+## Prerequisites
 
-Install mdk3:Open a terminal and run the following command to install mdk3:
-sudo apt update
-sudo apt install mdk3
+- **A Linux-based system:** Tools like `mdk3` and `airodump-ng` are typically used on Linux distributions like Kali Linux or Parrot Security OS, which are designed for security testing.
+- **A compatible wireless adapter:** The adapter must support monitor mode and packet injection. Popular choices include those with chipsets like Atheros AR9271 or Ralink RT3070 (e.g., Alfa Network AWUS036NHA).
+- **Administrative privileges:** You’ll need root access to run the commands.
+- **Legal authorization:** Ensure you have explicit permission to test the target network.
+- **Software tools:** Install `mdk3` and `aircrack-ng` (which includes `airodump-ng`).
 
-This command updates the package lists and installs mdk3. Verify the installation by checking the version:
-mdk3 --version
+## Detecting Hidden SSIDs
 
+### 1: Setting Up the Environment
 
-Install aircrack-ng (if not already installed):
-sudo apt install aircrack-ng
+To begin, you need to install the necessary tools. We’ll use `mdk3` for SSID detection and `airodump-ng` (part of the `aircrack-ng` suite) to scan for wireless networks.
 
-aircrack-ng includes airodump-ng, which we’ll use to scan for networks.
+1. **Install `mdk3`**:
 
-Prepare the Wireless Adapter:Ensure your wireless adapter is connected and supports monitor mode. Identify your wireless interface name (e.g., wlan0) using:
-iwconfig
+  ```
+  sudo apt update
+  sudo apt install mdk3
+  ```
 
-Enable monitor mode on the interface:
-sudo airmon-ng start wlan0
+  This command updates the package lists and installs mdk3. Verify the installation by checking the version:
 
-This command may create a new interface (e.g., wlan0mon). Use this interface name in subsequent steps.
+  ```
+  mdk3 --version
+  ```
 
+2. **Install `aircrack-ng`** (if not already installed):
 
-Step 2: Scanning for Wireless Networks
-To identify hidden SSIDs, you first need to locate the target network. airodump-ng is a powerful tool for scanning wireless networks and capturing relevant information, such as the Basic Service Set Identifier (BSSID, or MAC address), channel, and encryption type.
+  ```
+  sudo apt install aircrack-ng
+  ```
+
+  `aircrack-ng` includes `airodump-ng`, which we’ll use to scan for networks.
+
+3. **Prepare the Wireless Adapter**: Ensure your wireless adapter is connected and supports monitor mode. Identify your wireless interface name (e.g., `wlan0`) using:
+
+  <div style="text-align: center;">
+    <img src="assets/images/1.png" width="450">
+  </div>
+
+4. **Enable monitor mode on the interface:**
+
+  <div style="text-align: center;">
+    <img src="assets/images/2.png" width="450">
+  </div>
+
+  This command may create a new interface (e.g., `wlan0`). Use this interface name in subsequent steps.
+
+### 2. Scanning for Wireless Networks
+
+To identify hidden SSIDs, you first need to locate the target network. `airodump-ng` is a powerful tool for scanning wireless networks and capturing relevant information, such as the Basic Service Set Identifier (BSSID, or MAC address), channel, and encryption type.
+
 Run the following command to scan for available networks:
-sudo airodump-ng wlan0mon
 
-Output Analysis:The output will display a list of nearby wireless networks. Look for entries where the SSID field is blank or shows <hidden>. For example:
-BSSID              PWR  Beacons  #Data, #/s  CH  MB   ENC  CIPHER AUTH ESSID
-C4:E5:32:A1:E0:28  -50  100      10     0    11  54e  WPA2 CCMP   PSK  <hidden>
+```
+sudo airodump-ng wlan0
+```
+The output will display a list of nearby wireless networks. Look for entries where the SSID field is blank or shows `<hidden>`. 
+
+<div style="text-align: center;">
+  <img src="assets/images/3.png" width="450">
+</div>
 
 In this example:
 
-BSSID: C4:E5:32:A1:E0:28 is the MAC address of the access point.
-CH: The network operates on channel 11.
-ESSID: The SSID is hidden (<hidden>).
+- **BSSID**: `E8:65:D4:xx:xx:xx` is the MAC address of the access point.
+- **CH**: The network operates on channel 7.
+- **ESSID**: The SSID is blank (`<length: 7>`).
 
 Note the BSSID and channel number, as these will be used in the next step.
-Step 3: Using mdk3 to Uncover the Hidden SSID
-mdk3 is a versatile tool for testing wireless networks, including probing for hidden SSIDs. It can operate in bruteforce mode to force the access point to reveal its SSID by sending probe requests and analyzing responses.
-Run the following command to start mdk3 in bruteforce mode:
-sudo mdk3 wlan0mon p -b l -c 11 -t C4:E5:32:A1:E0:28
 
-Command Breakdown:
+### 3. Using `mdk3` to Uncover the Hidden SSID
 
-wlan0mon: The wireless interface in monitor mode.
-p: Activates bruteforce mode (ESSID probing).
--b l: Specifies the character set for bruteforcing (lowercase alphabets). Other options include:
-U: Uppercase alphabets
-N: Digits
-A: All printable characters
-C: Lowercase and uppercase alphabets
-M: Lowercase, uppercase, and numbers
+`mdk3` is a versatile tool for testing wireless networks, including probing for hidden SSIDs. It can operate in bruteforce mode to force the access point to reveal its SSID by sending probe requests and analyzing responses.
 
+Run the following command to start `mdk3` in bruteforce mode:
 
--c 11: Targets channel 11 (based on the airodump-ng output).
--t C4:E5:32:A1:E0:28: Specifies the BSSID of the target access point.
+<div style="text-align: center;">
+  <img src="assets/images/4.png" width="450">
+</div>
+
+**Command Breakdown:**
+
+- `wlan0`: The wireless interface in monitor mode.
+- `p`: Activates bruteforce mode (ESSID probing).
+- `b l`: Specifies the character set for bruteforcing (lowercase alphabets). Other options include:
+  - `U`: Uppercase alphabets
+  - `N`: Digits
+  - `A`: All printable characters
+  - `C`: Lowercase and uppercase alphabets
+- `M`: Lowercase, uppercase, and numbers
+- `c 7`: Targets channel 7 (based on the `airodump-ng` output).
+- `t E8:65:D4:xx:xx:xx`: Specifies the BSSID of the target access point.
 
 How It Works:mdk3 sends probe requests to the target access point, attempting to elicit a response that includes the hidden SSID. When the access point responds, the SSID is revealed and displayed in the terminal.
 Example Output:After running the command, you might see:
