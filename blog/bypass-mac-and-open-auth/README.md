@@ -33,91 +33,126 @@ Before proceeding, ensure you have the following:
 
 The process outlined below demonstrates how to bypass MAC address authentication by spoofing a whitelisted MAC address and exploiting open authentication’s lack of verification.
 
-Step 1: Gather Information About the Target Network
-To bypass MAC address authentication, you need the MAC address of an authorized client already connected to the network. Use tools like airodump-ng from the aircrack-ng suite to capture this information.
+### 1. Gather Information About the Target Network
 
-Start monitor mode on your wireless adapter (e.g., wlan0):
-sudo airmon-ng start wlan0
+To bypass MAC address authentication, you need the MAC address of an authorized client already connected to the network. Use tools like `airodump-ng` from the `aircrack-ng` suite to capture this information.
 
-This command places the wireless adapter in monitor mode, creating a virtual interface (e.g., wlan0mon) for capturing wireless packets.
+1. **Start monitor mode** on your wireless adapter (e.g., `wlan0`):
 
-Scan for nearby networks and identify the target network’s BSSID (AP MAC address) and a connected client’s MAC address:
-sudo airodump-ng wlan0mon
+    <div style="text-align: center;">
+      <img src="assets/images/1.png" width="450">
+    </div>
 
-Look for the target network’s SSID, BSSID, and channel. In the lower section of the output, note the MAC addresses of connected clients. Select one to spoof.
-Example Output:
-CH  6 ][ Elapsed: 4 s ][ 2025-06-10 15:08
+    This command places the wireless adapter in monitor mode, creating a virtual interface (e.g., `wlan0`) for capturing wireless packets.
 
-BSSID              PWR  Beacons  #Data, #/s  CH  MB   ENC  CIPHER AUTH ESSID
-00:14:22:33:44:55  -30      100     50    0   6  54e  OPEN        OPEN   TargetWiFi
+2. **Scan for nearby networks** and identify the target network’s BSSID (AP MAC address) and a connected client’s MAC address:
 
-BSSID              STATION            PWR   Rate    Lost  Frames  Probe
-00:14:22:33:44:55  AA:BB:CC:DD:EE:FF  -35   54-54     0     10
+    <div style="text-align: center;">
+      <img src="assets/images/1.png" width="450">
+    </div>
 
-In this example, AA:BB:CC:DD:EE:FF is a client MAC address to spoof.
+    Look for the target network’s SSID, BSSID, and channel. In the lower section of the output, note the MAC addresses of connected clients. Select one to spoof.
 
+    In our example, `62:94:92:xx:xx:xx` is the client MAC address we'll spoof.
 
-For Beginners: Use the --bssid and --channel options with airodump-ng to focus on the target network and reduce noise:
-sudo airodump-ng --bssid 00:14:22:33:44:55 --channel 6 wlan0mon
+    For Beginners: Use the `--bssid` and `--channel` options with `airodump-ng` to focus on the target network and reduce noise:
 
-Step 2: Stop the Monitoring Interface
+    ```
+    sudo airodump-ng --bssid E8:65:D4:xx:xx:xx --channel 6 wlan0
+    ```
+
+## 2. Stop the Monitoring Interface
+
 Once you’ve identified the client MAC address, stop the monitoring interface to prepare for MAC spoofing:
-sudo airmon-ng stop wlan0mon
 
-This command returns the adapter to managed mode (e.g., wlan0).
-Note: Ensure no other processes are using the wireless adapter before proceeding.
-Step 3: Disable Network Manager
+<div style="text-align: center;">
+  <img src="assets/images/3.png" width="450">
+</div>
+
+This command returns the adapter to managed mode (e.g., `wlan0`).
+
+**Note:** Ensure no other processes are using the wireless adapter before proceeding.
+
+## 3. Disable Network Manager
+
 The Network Manager service may interfere with manual interface configuration. Temporarily disable it:
-sudo systemctl stop NetworkManager
+
+<div style="text-align: center;">
+  <img src="assets/images/4.png" width="450">
+</div>
 
 This prevents conflicts when changing the MAC address or managing the wireless interface.
-For Advanced Practitioners: If you encounter issues with Network Manager restarting automatically, consider masking it temporarily:
-sudo systemctl mask NetworkManager
 
-Unmask it later with sudo systemctl unmask NetworkManager.
-Step 4: Take Down the Wireless Interface
+If you encounter issues with Network Manager restarting automatically, consider masking it temporarily:
+
+```
+sudo systemctl mask NetworkManager
+```
+
+Unmask it later with `sudo systemctl unmask NetworkManager`.
+
+## 4. Take Down the Wireless Interface
+
 Bring down the wireless interface to allow MAC address changes:
-sudo ifconfig wlan0 down
+
+<div style="text-align: center;">
+  <img src="assets/images/5.png" width="450">
+</div>
 
 This command ensures the interface is inactive, preventing errors during MAC address spoofing.
-Step 5: Spoof the MAC Address
-Use macchanger to change the MAC address of your wireless adapter to the whitelisted client’s MAC address:
-sudo macchanger -m AA:BB:CC:DD:EE:FF wlan0
 
-Replace AA:BB:CC:DD:EE:FF with the client MAC address identified in Step 1.
-Example Output:
-Current MAC:   00:11:22:33:44:55 (unknown)
-Permanent MAC: 00:11:22:33:44:55 (unknown)
-New MAC:       AA:BB:CC:DD:EE:FF (unknown)
+## 5. Spoof the MAC Address
+
+Use `macchanger` to change the MAC address of your wireless adapter to the whitelisted client’s MAC address:
+
+<div style="text-align: center;">
+  <img src="assets/images/6.png" width="450">
+</div>
 
 For Beginners: Verify the MAC address change with:
-macchanger -s wlan0
 
-For Advanced Practitioners: If the network uses additional security (e.g., captive portals), you may need to monitor HTTP traffic to bypass further restrictions. Tools like wireshark or tcpdump can help analyze post-authentication requirements.
-Step 6: Bring the Interface Back Up
+<div style="text-align: center;">
+  <img src="assets/images/7.png" width="450">
+</div>
+
+## 6. Bring the Interface Back Up
+
 Reactivate the wireless interface:
-sudo ifconfig wlan0 up
+
+<div style="text-align: center;">
+  <img src="assets/images/8.png" width="450">
+</div>
 
 This command brings the interface online with the spoofed MAC address.
-Step 7: Restore Network Manager
+
+## 7. Restore Network Manager
+
 Re-enable Network Manager to manage network connections:
-sudo systemctl start NetworkManager
+
+<div style="text-align: center;">
+  <img src="assets/images/9.png" width="450">
+</div>
 
 This restores normal network functionality, allowing you to attempt connection to the target network.
-Step 8: Connect to the Network
-With the spoofed MAC address, attempt to connect to the target network. Since the network uses open authentication, no credentials are required. Use the network manager GUI or a command-line tool like nmcli:
-nmcli device wifi connect "TargetWiFi" ifname wlan0
 
-Replace TargetWiFi with the target network’s SSID.
-Verification: Confirm connectivity with:
-ping 8.8.8.8
+## 8. Connect to the Network
+
+With the spoofed MAC address, attempt to connect to the target network. Since the network uses open authentication, no credentials are required. Use the network manager GUI or a command-line tool like `nmcli`:
+
+<div style="text-align: center;">
+  <img src="assets/images/10.png" width="450">
+</div>
+
+Confirm connectivity with:
+
+<div style="text-align: center;">
+  <img src="assets/images/11.png" width="450">
+</div>
 
 If pings are successful, the MAC address spoofing has bypassed the network’s authentication.
-For Advanced Practitioners: If the network employs additional security layers (e.g., a captive portal), use a tool like mitmproxy to intercept and analyze HTTP requests. This can help identify and bypass web-based authentication mechanisms.
 
 Risks and Ethical Considerations
 Bypassing MAC and open authentication introduces significant risks to network security:
-
 Untraceable Malicious Activities: Spoofed MAC addresses make it difficult to trace unauthorized devices, undermining accountability.
 Data Breaches: Unauthorized access can lead to sensitive data exposure.
 Network Vulnerabilities: Bypassing authentication allows attackers to exploit other weaknesses, such as unpatched systems or weak encryption.
