@@ -31,7 +31,7 @@ To begin, you need to install the necessary tools. We'll use `mdk3` for SSID det
     sudo apt install mdk3
     ```
   
-    This command updates the package lists and installs mdk3. Verify the installation by checking the version:
+    This command updates the package lists and installs `mdk3`. Verify the installation by checking the version:
   
     ```
     mdk3 --version
@@ -126,7 +126,7 @@ For advanced practitioners, consider the following to enhance your approach:
     Run:
 
     ```
-    sudo airodump-ng --bssid _<bssid>_ --channel _<channel>_ --write capture _<wireless-interface>_
+    sudo airodump-ng --bssid <bssid> --channel <channel> --write capture <wireless-interface>
     ```
 
     Analyze the capture file using tools like Wireshark to extract the SSID from probe responses.
