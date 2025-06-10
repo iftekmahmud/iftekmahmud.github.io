@@ -109,24 +109,9 @@ Run the following command to start `mdk3` in bruteforce mode:
 
 In this case, the hidden SSID is Bravo 6. This information can now be used for further analysis or testing (with authorization).
 
-### Note
+- Even with the SSID hidden, some access points may still respond to probe requests with the real SSID under certain conditions. When `mdk3` sends probes (e.g., "fikbaaa"), your target AP (e.g, BSSID `E8:65:D4:xx:xx:xx`) might reply with the real SSID (e.g., "Bravo 6") as part of its response, especially if it's configured to handle legacy clients or has a misconfiguration that leaks the SSID.
 
-I tested the hidden SSID detection technique on my own Wi-Fi network, named "Bravo 6," which included a mix of an uppercase letter, lowercase letters, a space, and the number 6. I hid the SSID using my router's settings and used the `mdk3` tool to uncover it. The `-b l` option told `mdk3` to guess only lowercase letters, and the output showed my last try as "fikbaaa", a 7-letter lowercase string. Yet, it correctly revealed "Bravo 6." 
-
-How did this happen?
-
-During the test, my phone was connected to "Bravo 6." When I hid the SSID, my phone kept sending probe requests to stay connected, broadcasting the full name "Bravo 6" over the air. `mdk3` picked up these probes, even though its own guesses (like "fikbaaa") didn't match. This shows that the tool doesn't just rely on its bruteforce attempts, it also listens for real SSID signals from connected devices. The "Last try was: fikbaaa" line just tracks the last guess sent before the detection, but the actual SSID came from my phone's activity.
-
-This raises an important point for anyone testing hidden SSIDs. If a device is already connected, it can reveal the SSID through its probes, making detection easier than expected. To test this further, I disconnected my phone and reran the command. Without the phone, mdk3 struggled to find "Bravo 6," suggesting my router wasn't leaking the SSID on its own. For a more robust approach, I switched to -b M (which includes uppercase, lowercase, and numbers) to better match "Bravo 6"'s composition, using sudo mdk3 wlan0mon p -b M -c 7 -t E8:65:D4:…. This confirmed the tool could still detect it with the right settings.
-
-Takeaway for You: If you're auditing a network, assume connected devices might expose a hidden SSID. Use airodump-ng to capture traffic (sudo airodump-ng wlan0mon --bssid <BSSID> -c <channel> -w capture) and analyze it with Wireshark to see where the SSID comes from—client probes or the AP itself. For bruteforcing, match the character set to the expected SSID (e.g., -b M for mixed cases and numbers) or use a wordlist with the suspected name. This real-world test highlights that hidden SSIDs aren't foolproof, especially with active clients, and tools like mdk3 can leverage that to your advantage.
-
-Step 4: Interpreting Results and Next Steps
-Once the SSID is revealed, you can:
-
-Document the findings: Record the SSID, BSSID, channel, and encryption type for your audit report.
-Assess security: Check the encryption (e.g., WPA2, WPA3) and test for vulnerabilities like weak passwords or misconfigurations.
-Report to stakeholders: If conducting an authorized audit, share the findings with the network owner, highlighting the risks of relying solely on hidden SSIDs for security.
+- The `-b l` option generated lowercase strings (e.g., "fikbaaa"), and while these didn't match "Bravo 6" (which has uppercase, lowercase, and a number), the act of probing might have prompted the target AP to disclose the SSID. Some APs are vulnerable to this if they don't properly filter probe responses.
 
 Advanced Techniques and Considerations
 For advanced practitioners, consider the following to enhance your approach:
