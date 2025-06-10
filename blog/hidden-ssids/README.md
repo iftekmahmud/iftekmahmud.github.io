@@ -117,11 +117,11 @@ In this case, the hidden SSID is Bravo 6. This information can now be used for f
 
 For advanced practitioners, consider the following to enhance your approach:
 
-1. **Optimizing `mdk3` Parameters:**
+1. Optimizing `mdk3` Parameters:
 
   - Combine with wordlists for faster results: `mdk3` supports custom wordlists with the `-f <file>` option to test common SSID names.
 
-2. **Passive Monitoring:** Instead of active probing, you can use `airodump-ng` to capture packets passively until a client connects to the hidden network, revealing the SSID.
+2. Passive Monitoring: Instead of active probing, you can use `airodump-ng` to capture packets passively until a client connects to the hidden network, revealing the SSID.
 
   Run:
 
@@ -131,7 +131,7 @@ For advanced practitioners, consider the following to enhance your approach:
 
   Analyze the capture file using tools like Wireshark to extract the SSID from probe responses.
 
-3. **Dealing with Countermeasures:** Some access points implement protections against SSID probing, such as ignoring probe requests from unknown devices. In such cases, advanced techniques like deauthentication attacks (with tools like `aireplay-ng`) may be needed to force clients to reconnect and reveal the SSID. Use with caution and only with explicit permission.
+3. Dealing with Countermeasures: Some access points implement protections against SSID probing, such as ignoring probe requests from unknown devices. In such cases, advanced techniques like deauthentication attacks (with tools like `aireplay-ng`) may be needed to force clients to reconnect and reveal the SSID. Use with caution and only with explicit permission.
 
 4. **Automation:** Script the process using Bash or Python to automate scanning, SSID detection, and reporting. For example, a Python script using the `scapy` library can parse packets and extract SSIDs programmatically.
 
