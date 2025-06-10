@@ -123,13 +123,13 @@ For advanced practitioners, consider the following to enhance your approach:
 
 2. **Passive Monitoring:** Instead of active probing, you can use `airodump-ng` to capture packets passively until a client connects to the hidden network, revealing the SSID.
 
-  Run:
+    Run:
 
-  ```
-  sudo airodump-ng --bssid C4:E5:32:A1:E0:28 --channel 11 --write capture wlan0mon
-  ```
+    ```
+    sudo airodump-ng --bssid C4:E5:32:A1:E0:28 --channel 11 --write capture wlan0mon
+    ```
 
-  Analyze the capture file using tools like Wireshark to extract the SSID from probe responses.
+    Analyze the capture file using tools like Wireshark to extract the SSID from probe responses.
 
 3. **Dealing with Countermeasures:** Some access points implement protections against SSID probing, such as ignoring probe requests from unknown devices. In such cases, advanced techniques like deauthentication attacks (with tools like `aireplay-ng`) may be needed to force clients to reconnect and reveal the SSID. Use with caution and only with explicit permission.
 
