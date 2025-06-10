@@ -48,13 +48,13 @@ To begin, you need to install the necessary tools. We'll use `mdk3` for SSID det
 3. **Prepare the Wireless Adapter**: Ensure your wireless adapter is connected and supports monitor mode. Identify your wireless interface name (e.g., `wlan0`) using:
 
   <div style="text-align: center;">
-    <img src="assets/images/1.png" width="450">
+    <img src="assets/images/1.png" width="520">
   </div>
 
 4. **Enable monitor mode on the interface:**
 
   <div style="text-align: center;">
-    <img src="assets/images/2.png" width="450">
+    <img src="assets/images/2.png" width="520">
   </div>
 
   This command may create a new interface (e.g., `wlan0`). Use this interface name in subsequent steps.
@@ -71,7 +71,7 @@ sudo airodump-ng wlan0
 The output will display a list of nearby wireless networks. Look for entries where the SSID field is blank or shows `<hidden>`. 
 
 <div style="text-align: center;">
-  <img src="assets/images/3.png" width="450">
+  <img src="assets/images/3.png" width="630">
 </div>
 
 In this example:
@@ -89,7 +89,7 @@ Note the BSSID and channel number, as these will be used in the next step.
 Run the following command to start `mdk3` in bruteforce mode:
 
 <div style="text-align: center;">
-  <img src="assets/images/4.png" width="450">
+  <img src="assets/images/4.png" width="420">
 </div>
 
 **Command Breakdown:**
