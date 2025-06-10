@@ -119,7 +119,7 @@ For advanced practitioners, consider the following to enhance your approach:
 
 1. **Optimizing `mdk3` Parameters:**
 
-  - Combine with wordlists for faster results: `mdk3` supports custom wordlists with the `-f <file>` option to test common SSID names.
+    - Combine with wordlists for faster results: `mdk3` supports custom wordlists with the `-f <file>` option to test common SSID names.
 
 2. **Passive Monitoring:** Instead of active probing, you can use `airodump-ng` to capture packets passively until a client connects to the hidden network, revealing the SSID.
 
