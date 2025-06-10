@@ -26,38 +26,38 @@ To begin, you need to install the necessary tools. We'll use `mdk3` for SSID det
 
 1. **Install `mdk3`**:
 
-  ```
-  sudo apt update
-  sudo apt install mdk3
-  ```
-
-  This command updates the package lists and installs mdk3. Verify the installation by checking the version:
-
-  ```
-  mdk3 --version
-  ```
+    ```
+    sudo apt update
+    sudo apt install mdk3
+    ```
+  
+    This command updates the package lists and installs mdk3. Verify the installation by checking the version:
+  
+    ```
+    mdk3 --version
+    ```
 
 2. **Install `aircrack-ng`** (if not already installed):
 
-  ```
-  sudo apt install aircrack-ng
-  ```
-
-  `aircrack-ng` includes `airodump-ng`, which we'll use to scan for networks.
+    ```
+    sudo apt install aircrack-ng
+    ```
+    
+    `aircrack-ng` includes `airodump-ng`, which we'll use to scan for networks.
 
 3. **Prepare the Wireless Adapter**: Ensure your wireless adapter is connected and supports monitor mode. Identify your wireless interface name (e.g., `wlan0`) using:
 
-  <div style="text-align: center;">
-    <img src="assets/images/1.png" width="520">
-  </div>
+    <div style="text-align: center;">
+      <img src="assets/images/1.png" width="520">
+    </div>
 
 4. **Enable monitor mode on the interface:**
 
-  <div style="text-align: center;">
-    <img src="assets/images/2.png" width="520">
-  </div>
+    <div style="text-align: center;">
+      <img src="assets/images/2.png" width="520">
+    </div>
 
-  This command may create a new interface (e.g., `wlan0`). Use this interface name in subsequent steps.
+    This command may create a new interface (e.g., `wlan0`). Use this interface name in subsequent steps.
 
 ### 2. Scanning for Wireless Networks
 
@@ -126,7 +126,7 @@ For advanced practitioners, consider the following to enhance your approach:
     Run:
 
     ```
-    sudo airodump-ng --bssid C4:E5:32:A1:E0:28 --channel 11 --write capture wlan0mon
+    sudo airodump-ng --bssid _<bssid>_ --channel _<channel>_ --write capture _<wireless-interface>_
     ```
 
     Analyze the capture file using tools like Wireshark to extract the SSID from probe responses.
