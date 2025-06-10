@@ -109,7 +109,7 @@ Run the following command to start `mdk3` in bruteforce mode:
 
 In this case, the hidden SSID is Bravo 6. This information can now be used for further analysis or testing (with authorization).
 
-- Even with the SSID hidden, some access points may still respond to probe requests with the real SSID under certain conditions. When `mdk3` sends probes (e.g., "fikbaaa"), your target AP (e.g, BSSID `E8:65:D4:xx:xx:xx`) might reply with the real SSID (e.g., "Bravo 6") as part of its response, especially if it's configured to handle legacy clients or has a misconfiguration that leaks the SSID.
+- When `mdk3` sends probes (e.g., "fikbaaa"), your target AP (e.g, BSSID `E8:65:D4:xx:xx:xx`) might reply with the real SSID (e.g., "Bravo 6") as part of its response, especially if it's configured to handle legacy clients or has a misconfiguration that leaks the SSID.
 
 - The `-b l` option generated lowercase strings (e.g., "fikbaaa"), and while these didn't match "Bravo 6" (which has uppercase, lowercase, and a number), the act of probing might have prompted the target AP to disclose the SSID. Some APs are vulnerable to this if they don't properly filter probe responses.
 
