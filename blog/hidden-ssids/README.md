@@ -97,11 +97,11 @@ Run the following command to start `mdk3` in bruteforce mode:
 - `wlan0`: The wireless interface in monitor mode.
 - `p`: Activates bruteforce mode (ESSID probing).
 - `b l`: Specifies the character set for bruteforcing (lowercase alphabets). Other options include:
-  - `U`: Uppercase alphabets
-  - `N`: Digits
-  - `A`: All printable characters
-  - `C`: Lowercase and uppercase alphabets
-- `M`: Lowercase, uppercase, and numbers
+  - `u`: Uppercase alphabets
+  - `n`: Digits
+  - `a`: All printable characters
+  - `c`: Lowercase and uppercase alphabets
+- `m`: Lowercase, uppercase, and numbers
 - `c 7`: Targets channel 7 (based on the `airodump-ng` output).
 - `t E8:65:D4:xx:xx:xx`: Specifies the BSSID of the target access point.
 
