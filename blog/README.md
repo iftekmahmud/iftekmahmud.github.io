@@ -16,3 +16,4 @@
 * [Creating Encrypted Rogue Access Points in Wireless Man-in-the-Middle Scenarios](./mitm-rogue-ap-encrypted)
 * [Detecting Hidden Wi-Fi Networks](./hidden-ssids)
 * [Bypassing MAC and Open Authentication in Wireless Networks](./bypass-mac-and-open-auth)
+* [Securing Wireless Networks from DoS Vulnerabilities](./wireless-dos)
