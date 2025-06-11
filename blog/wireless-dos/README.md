@@ -65,9 +65,9 @@ With the target identified, you can launch the attack using `aireplay-ng`, a too
   </div>
 
 - `aireplay-ng`: The tool for injecting frames.
-- `-deauth 1000`: Sends 1000 deauthentication packets to the target AP, disconnecting clients.
-- `a E8:65:D4:xx:xx:xx`: Specifies the target AP's MAC address.
-- `h 00:13:EF:xx:xx:xx`: Specifies the attacker's wireless adapter MAC address.
+- `--deauth 1000`: Sends 1000 deauthentication packets to the target AP, disconnecting clients.
+- `-a E8:65:D4:xx:xx:xx`: Specifies the target AP's MAC address.
+- `-h 00:13:EF:xx:xx:xx`: Specifies the attacker's wireless adapter MAC address.
 - `wlan0`: The interface in monitor mode.
 
 **Execution:**
