@@ -54,7 +54,7 @@ To perform a deauthentication attack, you need a wireless adapter capable of mon
         <img src="assets/images/3b.png" width="650">
       </div>
 
-    In my test, I noted my AP’s BSSID (`E8:65:D4:xx:xx:xx`) for my "Bravo 6" network, which I used for the target AP, while my adapter’s MAC address was `00:13:EF:xx:xx:xx`.
+    In my test, I noted my AP's BSSID (`E8:65:D4:xx:xx:xx`) for my "Bravo 6" network, which I used for the target AP, while my adapter's MAC address was `00:13:EF:xx:xx:xx`.
 
 ### 2. Launching the Deauthentication Attack
 
@@ -76,7 +76,7 @@ With the target identified, you can launch the attack using `aireplay-ng`, a too
 
 - In my test on the "Bravo 6" network, the attack was successful, and all devices connected to my Wi-Fi (laptop and phones) lost their connection while the attack was running.
 
-- The output showed continuous "Sending DeAuth" messages, confirming the attack’s effectiveness. 
+- The output showed continuous "Sending DeAuth" messages, confirming the attack's effectiveness. 
 
  <div style="text-align: center;">
     <img src="assets/images/5.png" width="100">
