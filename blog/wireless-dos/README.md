@@ -109,11 +109,9 @@ Defending against wireless DoS attacks requires a multi-layered approach.
 1. **Enable Management Frame Protection (MFP)**
 
     - MFP (IEEE 802.11w) encrypts and authenticates management frames, preventing spoofed deauthentication attacks.
-
     - Configure APs and clients to support MFP:
         - On enterprise-grade APs (e.g., Cisco, Aruba), enable 802.11w in the wireless settings.
         - Ensure client devices support MFP, as older devices may not.
-
     - Limitation: MFP is not universally supported, and enabling it may exclude legacy devices.
 
 2. **Traffic Filtering and Rate Limiting**
