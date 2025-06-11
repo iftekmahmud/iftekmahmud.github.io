@@ -16,7 +16,7 @@ These attacks exploit the IEEE 802.11 protocol's management frames, which are of
 
 Deauthentication attacks are a go-to for attackers due to their simplicity and effectiveness. By sending forged deauthentication frames, an attacker tricks an AP or client into believing the connection is terminated, forcing disconnection. Below, I outline the steps to execute such an attack using tools like `aireplay-ng` (for educational purposes only, in controlled environments with explicit permission).
 
-In my test, I targeted my own AP and used the same MAC address for both the target AP and my wireless adapter to simulate the attack on my "Bravo 6" network.
+In my test, I targeted my own AP and used the MAC address for my wireless adapter to simulate the attack on my "Bravo 6" network.
 
 ### 1. Setting Up the Environment
 
@@ -28,42 +28,46 @@ To perform a deauthentication attack, you need a wireless adapter capable of mon
 
     - Run the following commands to enable monitor mode:
 
-      <div style="text-align: center;">
-        <img src="assets/images/1.png" width="450">
-      </div>
+        <div style="text-align: center;">
+            <img src="assets/images/1.png" width="570">
+        </div>
 
-    This creates a virtual interface (e.g., `wlan0`) in monitor mode.
+        This creates a virtual interface (e.g., `wlan0`) in monitor mode.
 
     - Verify monitor mode:
 
-     <div style="text-align: center;">
-        <img src="assets/images/2.png" width="450">
-      </div>
+        <div style="text-align: center;">
+            <img src="assets/images/2.png" width="530">
+        </div>
 
 2. Identify the Target AP and Clients:
 
     Use `airodump-ng` to scan for nearby APs and their connected clients:
 
      <div style="text-align: center;">
-        <img src="assets/images/3.png" width="450">
+        <img src="assets/images/3.png" width="650">
       </div>
 
     This displays a list of APs, including their BSSID (MAC address), channel, and connected clients.
 
-    In my test, I noted my AP's BSSID (`E8:65:D4:xx:xx:xx`) for my "Bravo 6" network, which I used for both the target AP and my wireless adapter MAC address since I was testing on my own equipment.
+     <div style="text-align: center;">
+        <img src="assets/images/3b.png" width="650">
+      </div>
+
+    In my test, I noted my AP’s BSSID (`E8:65:D4:xx:xx:xx`) for my "Bravo 6" network, which I used for the target AP, while my adapter’s MAC address was `00:13:EF:xx:xx:xx`.
 
 ### 2. Launching the Deauthentication Attack
 
 With the target identified, you can launch the attack using `aireplay-ng`, a tool from the Aircrack-ng suite designed to inject frames into wireless networks.
 
  <div style="text-align: center;">
-    <img src="assets/images/4a.png" width="450">
+    <img src="assets/images/4.png" width="630">
   </div>
 
 - `aireplay-ng`: The tool for injecting frames.
 - `-deauth 1000`: Sends 1000 deauthentication packets to the target AP, disconnecting clients.
 - `a E8:65:D4:xx:xx:xx`: Specifies the target AP's MAC address.
-- `h E8:65:D4:xx:xx:xx`: Specifies the attacker's wireless adapter MAC address (in my test, the same as the AP's since I targeted my own adapter).
+- `h 00:13:EF:xx:xx:xx`: Specifies the attacker's wireless adapter MAC address.
 - `wlan0`: The interface in monitor mode.
 
 **Execution:**
@@ -72,8 +76,10 @@ With the target identified, you can launch the attack using `aireplay-ng`, a too
 
 - In my test on the "Bravo 6" network, the attack was successful, and all devices connected to my Wi-Fi (laptop and phones) lost their connection while the attack was running.
 
+- The output showed continuous "Sending DeAuth" messages, confirming the attack’s effectiveness. 
+
  <div style="text-align: center;">
-    <img src="assets/images/4b.png" width="450">
+    <img src="assets/images/5.png" width="100">
   </div>
 
 - Monitor the attack's impact using `airodump-ng` to observe the client list diminishing as devices are forcibly disconnected.
