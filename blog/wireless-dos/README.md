@@ -74,7 +74,7 @@ With the target identified, you can launch the attack using `aireplay-ng`, a too
 
 - Run the command to flood the AP with deauthentication frames. The AP interprets these as legitimate requests from clients to disconnect, causing clients to lose connectivity.
 
-- In my test on the "Bravo 6" network, the attack was successful, and all devices connected to my Wi-Fi (laptop and phones) lost their connection while the attack was running.
+- In my test on the "Bravo 6" network, the attack was successful, and all devices connected to my Wi-Fi lost their connection while the attack was running.
 
 - The output showed continuous "Sending DeAuth" messages, confirming the attack's effectiveness. 
 
