@@ -38,7 +38,7 @@ To bypass MAC address authentication, you need the MAC address of an authorized 
 1. **Start monitor mode** on your wireless adapter (e.g., `wlan0`):
 
     <div style="text-align: center;">
-      <img src="assets/images/1.png" width="450">
+      <img src="assets/images/1.png" width="570">
     </div>
 
     This command places the wireless adapter in monitor mode, creating a virtual interface (e.g., `wlan0`) for capturing wireless packets.
@@ -46,7 +46,7 @@ To bypass MAC address authentication, you need the MAC address of an authorized 
 2. **Scan for nearby networks** and identify the target network's BSSID (AP MAC address) and a connected client's MAC address:
 
     <div style="text-align: center;">
-      <img src="assets/images/1.png" width="450">
+      <img src="assets/images/2.png" width="630">
     </div>
 
     Look for the target network's SSID, BSSID, and channel. In the lower section of the output, note the MAC addresses of connected clients. Select one to spoof.
@@ -68,7 +68,7 @@ To bypass MAC address authentication, you need the MAC address of an authorized 
 Once you've identified the client MAC address, stop the monitoring interface to prepare for MAC spoofing:
 
 <div style="text-align: center;">
-  <img src="assets/images/3.png" width="450">
+  <img src="assets/images/3.png" width="730">
 </div>
 
 This command returns the adapter to managed mode (e.g., `wlan0`).
@@ -80,7 +80,7 @@ This command returns the adapter to managed mode (e.g., `wlan0`).
 The Network Manager service may interfere with manual interface configuration. Temporarily disable it:
 
 <div style="text-align: center;">
-  <img src="assets/images/4.png" width="450">
+  <img src="assets/images/4.png" width="580">
 </div>
 
 This prevents conflicts when changing the MAC address or managing the wireless interface.
@@ -98,7 +98,7 @@ Unmask it later with `sudo systemctl unmask NetworkManager`.
 Bring down the wireless interface to allow MAC address changes:
 
 <div style="text-align: center;">
-  <img src="assets/images/5.png" width="450">
+  <img src="assets/images/5.png" width="550">
 </div>
 
 This command ensures the interface is inactive, preventing errors during MAC address spoofing.
@@ -108,13 +108,13 @@ This command ensures the interface is inactive, preventing errors during MAC add
 Use `macchanger` to change the MAC address of your wireless adapter to the whitelisted client's MAC address:
 
 <div style="text-align: center;">
-  <img src="assets/images/6.png" width="450">
+  <img src="assets/images/6.png" width="570">
 </div>
 
 For Beginners: Verify the MAC address change with:
 
 <div style="text-align: center;">
-  <img src="assets/images/7.png" width="450">
+  <img src="assets/images/7.png" width="570">
 </div>
 
 ## 6. Bring the Interface Back Up
@@ -122,7 +122,7 @@ For Beginners: Verify the MAC address change with:
 Reactivate the wireless interface:
 
 <div style="text-align: center;">
-  <img src="assets/images/8.png" width="450">
+  <img src="assets/images/8.png" width="540">
 </div>
 
 This command brings the interface online with the spoofed MAC address.
@@ -132,7 +132,7 @@ This command brings the interface online with the spoofed MAC address.
 Re-enable Network Manager to manage network connections:
 
 <div style="text-align: center;">
-  <img src="assets/images/9.png" width="450">
+  <img src="assets/images/9.png" width="590">
 </div>
 
 This restores normal network functionality, allowing you to attempt connection to the target network.
@@ -142,13 +142,13 @@ This restores normal network functionality, allowing you to attempt connection t
 With the spoofed MAC address, attempt to connect to the target network. Since the network uses open authentication, no credentials are required. Use the network manager GUI or a command-line tool like `nmcli`:
 
 <div style="text-align: center;">
-  <img src="assets/images/10.png" width="450">
+  <img src="assets/images/10.png" width="830">
 </div>
 
 Confirm connectivity with:
 
 <div style="text-align: center;">
-  <img src="assets/images/11.png" width="450">
+  <img src="assets/images/11.png" width="830">
 </div>
 
 If pings are successful, the MAC address spoofing has bypassed the network's authentication.
