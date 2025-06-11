@@ -57,7 +57,7 @@ To bypass MAC address authentication, you need the MAC address of an authorized 
 
     - **Station/Client MAC Address** = MAC address of a device connected to that router. It identifies a specific device using the Wi-Fi. In our example, it's `62:94:92:xx:xx:xx`.
 
-    For Beginners: Use the `--bssid` and `--channel` options with `airodump-ng` to focus on the target network and reduce noise:
+    For Beginners, use the `--bssid` and `--channel` options with `airodump-ng` to focus on the target network and reduce noise:
 
     ```
     sudo airodump-ng --bssid E8:65:D4:xx:xx:xx --channel 6 wlan0
