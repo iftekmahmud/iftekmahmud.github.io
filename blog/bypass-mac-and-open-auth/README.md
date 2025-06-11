@@ -1,6 +1,6 @@
 # Bypassing MAC and Open Authentication in Wireless Networks
 
-As wireless networks have become ubiquitous, securing them against unauthorized access remains a critical concern for network administrators. Two common security mechanisms, **MAC address authentication** and **open authentication**, are often employed to restrict access to wireless networks. However, these methods are far from infallible and can be bypassed using readily available tools and techniques. In this blog, I aim to provide a detailed and practical guide to understanding and demonstrating the vulnerabilities of MAC and open authentication for anyone seeking to deepen their understanding of network vulnerabilities.
+As wireless networks have become ubiquitous, securing them against unauthorized access remains a critical concern for network administrators. Two common security mechanisms, **MAC address authentication** and **open authentication**, are often employed to restrict access to wireless networks. However, these methods are far from infallible and can be bypassed using readily available tools and techniques. In this blog, I aim to provide a detailed and practical guide to understanding and demonstrating the vulnerabilities of MAC and open authentication for anyone seeking to deepen their knowledge of network vulnerabilities.
 
 ## Understanding MAC and Open Authentication
 
