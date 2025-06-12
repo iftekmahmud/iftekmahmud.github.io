@@ -120,7 +120,7 @@ If the Reaver attack succeeds and you obtain the WPA/WPA2 passphrase, proceed wi
     sudo airmon-ng stop wlan0mon
     ```
 
-    If the attack fails, as in this case, troubleshoot by checking signal strength with `airodump-ng`, testing adapter injection with `aireplay-ng --test <wireless-interface>`, or switching to alternative tools like `bully` with adjusted parameters (e.g., -bruteforce --retries=5). Persistent issues may indicate a need for better hardware or a different attack vector.
+    If the attack fails, as in this case, troubleshoot by checking signal strength with `airodump-ng`, testing adapter injection with `aireplay-ng --test <wireless-interface>`, or switching to alternative tools like `bully` with adjusted parameters (e.g., `-bruteforce --retries=5`). Persistent issues may indicate a need for better hardware or a different attack vector.
 
 ## Challenges and Limitations
 
