@@ -28,17 +28,17 @@ Before executing a Reaver attack, ensure you have the following:
 Ensure your wireless adapter is configured for monitor mode, which allows it to capture and inject packets.
 
 <div style="text-align: center;">
-  <img src="assets/images/1.png" width="480">
+  <img src="assets/images/1.png" width="580">
 </div>
 
 <div style="text-align: center;">
-  <img src="assets/images/2.png" width="480">
+  <img src="assets/images/2.png" width="580">
 </div>
 
 This creates a monitor interface (e.g., `wlan0`). Confirm the interface is in monitor mode:
 
 <div style="text-align: center;">
-  <img src="assets/images/3.png" width="490">
+  <img src="assets/images/3.png" width="550">
 </div>
 
 ## 2. Identify the Target Router
@@ -46,13 +46,13 @@ This creates a monitor interface (e.g., `wlan0`). Confirm the interface is in mo
 Use `airodump-ng` to scan for nearby wireless networks and identify the target router’s BSSID (MAC address), channel, and WPS status.
 
 <div style="text-align: center;">
-  <img src="assets/images/4.png" width="530">
+  <img src="assets/images/4.png" width="630">
 </div>
 
 Look for the target network in the output. Note the BSSID (e.g., `E8:65:D4:xx:xx:xx`), channel (e.g., `6`), and whether WPS is enabled (indicated in the `WPS` column). To focus on the target, run a targeted scan:
 
 <div style="text-align: center;">
-  <img src="assets/images/5.png" width="550">
+  <img src="assets/images/5.png" width="650">
 </div>
 
 ## 3. Verify WPS Vulnerability
@@ -60,7 +60,7 @@ Look for the target network in the output. Note the BSSID (e.g., `E8:65:D4:xx:xx
 Use `wash` to confirm that the target router has WPS enabled and is not locked (some routers lock WPS after repeated failed attempts).
 
 <div style="text-align: center;">
-  <img src="assets/images/6.png" width="500">
+  <img src="assets/images/6.png" width="600">
 </div>
 
 In the output, check the `WPS Locked` column. If it says `No`, the router is vulnerable. If `Yes`, Reaver may still work, but success is less likely due to rate-limiting.
@@ -70,7 +70,7 @@ In the output, check the `WPS Locked` column. If it says `No`, the router is vul
 Execute Reaver to brute-force the WPS PIN. The following command targets the router’s BSSID and channel, with verbose output (`-vv`) and the Pixie-Dust attack (`-K 1`) for faster PIN recovery on supported routers:
 
 <div style="text-align: center;">
-  <img src="assets/images/7.png" width="580">
+  <img src="assets/images/7.png" width="700">
 </div>
 
 `-i`: Specifies the monitor interface.
