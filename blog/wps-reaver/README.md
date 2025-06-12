@@ -77,34 +77,72 @@ Execute Reaver to brute-force the WPS PIN. The following command targets the rou
 
 Reaver will begin guessing PINs, displaying progress and any errors. If successful, it will output the WPS PIN and the WPA/WPA2 passphrase.
 
-## 5. Connect to the Network
+The process stalled with repeated "Receive timeout occurred" warnings error. Several factors could contribute to this failure:
 
-Using the recovered passphrase, connect to the network via your wireless manager or command line:
+- **Signal or Adapter Issues:** The consistent timeouts suggest potential weaknesses in signal strength or adapter performance, possibly exacerbated by interference on channel 6.
+- **Firmware Resistance:** The router’s RealtekS firmware, likely updated or configured with partial WPS protections, rejected the Pixie-Dust attack (-K 1) and standard handshake attempts.
+- **Channel Mismatch or Congestion:** Although the channel was correctly set to 6, congestion or a misdetection of the active channel could have disrupted packet exchange.
+- **Tool Limitations:** Reaver’s default settings and the Pixie-Dust approach may not align with this router’s WPS implementation, as evidenced by the lack of progress.
 
-# Example using nmcli
-nmcli device wifi connect "Target_SSID" password "Recovered_Passphrase"
+Even with adjustments, the attack did not succeed. However, in other cases, Reaver can execute successfully against vulnerable routers, especially those with older firmware or unpatched WPS implementations. Success depends on optimal signal conditions, a compatible adapter, and a router without advanced defenses.
 
-You now have access to the wireless network, simulating a successful attack.
-Challenges and Limitations
+## 5. Next Steps After a Successful Attack
 
-Time-Consuming: Brute-forcing the WPS PIN can take hours or days, depending on the router’s response time and PIN complexity.
-Rate-Limiting: Some routers lock WPS after multiple failed attempts, requiring you to wait or adjust Reaver’s timing parameters (e.g., --delay or --lock-delay).
-False Positives: Not all routers with WPS enabled are vulnerable. Firmware updates or custom configurations may mitigate the attack.
-Interference: Other wireless devices or networks can disrupt the attack, requiring a stable environment.
+### Connect to the Network
 
-To improve success, experiment with Reaver’s advanced options, such as --pin to specify a starting PIN or --no-nacks to ignore negative acknowledgments.
-Defending Against Reaver Attacks
-Network administrators must proactively secure their wireless networks to mitigate Reaver and similar attacks. Here are evidence-based recommendations:
+If the Reaver attack succeeds and you obtain the WPA/WPA2 passphrase, proceed with the following steps:
 
-Disable WPS: The most effective defense is to disable WPS in the router’s admin panel. Log in to the router (typically via 192.168.0.1 or 192.168.1.1), navigate to the wireless settings, and turn off WPS. Note that some routers may not fully disable WPS despite the setting—verify with wash.
+1. **Verify Access:**
 
-Use a Strong Passphrase: While Reaver bypasses the passphrase, a strong WPA2/WPA3 passphrase (at least 16 characters, mixing letters, numbers, and symbols) protects against secondary attacks if WPS is compromised.
+    Connect to the network using the recovered passphrase to confirm access:
 
-Update Firmware: Manufacturers often release firmware updates to patch WPS vulnerabilities or implement rate-limiting. Regularly check the router’s admin panel or manufacturer’s website for updates.
+    ```
+    nmcli device wifi connect "<wifi>" password "<recovered_passphrase>"
+    ```
 
-Monitor for Suspicious Activity: Use intrusion detection systems (IDS) or network monitoring tools to detect repeated WPS authentication attempts, which may indicate a Reaver attack.
+    You now have access to the wireless network, simulating a successful attack. Test connectivity to internal resources or the internet to assess the breach’s scope.
 
-Segment Networks: Isolate critical devices on a separate VLAN or guest network to limit the impact of a breach.
+2. **Document Findings:** Record the BSSID, channel, PIN, passphrase, and attack duration for your report. Note any router defenses encountered (e.g., rate-limiting).
 
-Replace Vulnerable Hardware: If the router does not support disabling WPS or receiving firmware updates, consider upgrading to a modern, secure model.
+3. **Escalate Privileges** (if Authorized): If penetration testing, attempt to access the router’s admin panel or connected devices using default credentials or further exploits.
 
+4. **Mitigation Testing:** Recommend and test defenses, such as disabling WPS or updating firmware, to prevent future attacks.
+
+5. **Cleanup:**
+
+    Disconnect from the network and disable monitor mode:
+
+    ```
+    sudo airmon-ng stop wlan0mon
+    ```
+
+    If the attack fails, as in this case, troubleshoot by checking signal strength with `airodump-ng`, testing adapter injection with `aireplay-ng --test <wireless-interface>`, or switching to alternative tools like `bully` with adjusted parameters (e.g., -bruteforce --retries=5). Persistent issues may indicate a need for better hardware or a different attack vector.
+
+## Challenges and Limitations
+
+- **Time-Consuming:** Brute-forcing the WPS PIN can take hours or days, depending on the router’s response time and PIN complexity.
+- **Rate-Limiting:** Some routers lock WPS after multiple failed attempts, requiring you to wait or adjust Reaver’s timing parameters (e.g., `--delay` or `--lock-delay`).
+- **False Positives:** Not all routers with WPS enabled are vulnerable. Firmware updates or custom configurations may mitigate the attack.
+- **Interference:** Other wireless devices or networks can disrupt the attack, requiring a stable environment.
+
+To improve success, experiment with Reaver’s advanced options, such as `--pin` to specify a starting PIN or `--no-nacks` to ignore negative acknowledgments.
+
+## Defending Against Reaver Attacks
+
+Network administrators must proactively secure their wireless networks to mitigate Reaver and similar attacks.
+
+- **Disable WPS:** The most effective defense is to disable WPS in the router’s admin panel. Log in to the router (typically via `192.168.0.1` or `192.168.1.1`), navigate to the wireless settings, and turn off WPS. Note that some routers may not fully disable WPS despite the setting. Verify with `wash`.
+
+- **Use a Strong Passphrase:** While Reaver bypasses the passphrase, a strong WPA2/WPA3 passphrase (at least 16 characters, mixing letters, numbers, and symbols) protects against secondary attacks if WPS is compromised.
+
+- **Update Firmware:** Manufacturers often release firmware updates to patch WPS vulnerabilities or implement rate-limiting. Regularly check the router’s admin panel or manufacturer’s website for updates.
+
+- **Monitor for Suspicious Activity:** Use intrusion detection systems (IDS) or network monitoring tools to detect repeated WPS authentication attempts, which may indicate a Reaver attack.
+
+- **Segment Networks:** Isolate critical devices on a separate VLAN or guest network to limit the impact of a breach.
+
+- **Replace Vulnerable Hardware:** If the router does not support disabling WPS or receiving firmware updates, consider upgrading to a modern, secure model.
+
+## Conclusion
+
+In this test, the attack’s failure highlights the challenges posed by modern router defenses and environmental factors, yet it also demonstrates that success is achievable with the right conditions and configurations. To deepen your knowledge, experiment with Reaver in a controlled lab environment, explore other wireless attack tools (e.g., `Aircrack-ng`, `Bully`), and stay updated on emerging vulnerabilities. Wireless security is a dynamic field. Staying ahead requires continuous learning and vigilance.
