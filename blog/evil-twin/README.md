@@ -55,7 +55,7 @@ This attack is particularly effective in public spaces like cafes, airports, or 
 1. **Enable Monitor Mode**:
 
    <div style="text-align: center;">
-     <img src="assets/images/1.png" width="450">
+     <img src="assets/images/1.png" width="570">
    </div>
    
    This puts the Wi-Fi adapter into monitor mode, creating an interface like `wlan0`.
@@ -63,7 +63,7 @@ This attack is particularly effective in public spaces like cafes, airports, or 
 2. **Scan for Target Networks**:
 
    <div style="text-align: center;">
-     <img src="assets/images/2.png" width="450">
+     <img src="assets/images/2.png" width="620">
    </div>
    
    Identify the target network's SSID, BSSID (MAC address), and channel.
@@ -73,17 +73,17 @@ This attack is particularly effective in public spaces like cafes, airports, or 
    Configure the `hostapd.conf` file:
 
    <div style="text-align: center;">
-     <img src="assets/images/3a.png" width="450">
+     <img src="assets/images/3a.png" width="530">
    </div>
 
    <div style="text-align: center;">
-     <img src="assets/images/3b.png" width="450">
+     <img src="assets/images/3b.png" width="630">
    </div>
    
    Launch the rogue AP:
 
    <div style="text-align: center;">
-     <img src="assets/images/5.png" width="450">
+     <img src="assets/images/5.png" width="550">
    </div>
 
 4. **Set Up DHCP and DNS**:
@@ -91,19 +91,19 @@ This attack is particularly effective in public spaces like cafes, airports, or 
    Configure `dnsmasq.conf` to assign IP addresses to connected clients:
 
    <div style="text-align: center;">
-     <img src="assets/images/4a.png" width="450">
+     <img src="assets/images/4a.png" width="550">
    </div>
 
    Start `dnsmasq`:
 
    <div style="text-align: center;">
-     <img src="assets/images/4b.png" width="450">
+     <img src="assets/images/4b.png" width="650">
    </div>
 
 5. **Optional: Deauthentication Attack**:
 
    <div style="text-align: center;">
-     <img src="assets/images/7.png" width="450">
+     <img src="assets/images/7.png" width="570">
    </div>
 
 6. **Capture Traffic**:
@@ -111,7 +111,7 @@ This attack is particularly effective in public spaces like cafes, airports, or 
    Use `Wireshark` to monitor traffic on the `wlan0` interface, filtering for HTTP or other protocols of interest.
 
    <div style="text-align: center;">
-     <img src="assets/images/8.png" width="450">
+     <img src="assets/images/8.png" width="800">
    </div>
 
 7. **Optional: Phishing Portal**:
