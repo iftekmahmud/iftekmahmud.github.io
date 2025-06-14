@@ -83,7 +83,7 @@ This attack is particularly effective in public spaces like cafes, airports, or 
    Launch the rogue AP:
 
    <div style="text-align: center;">
-     <img src="assets/images/5.png" width="550">
+     <img src="assets/images/5.png" width="530">
    </div>
 
 4. **Set Up DHCP and DNS**:
@@ -122,11 +122,11 @@ This attack is particularly effective in public spaces like cafes, airports, or 
 When executed correctly, the rogue AP will appear as "Bravo 6" in the victim's Wi-Fi list. Upon connection, the attacker can see all unencrypted traffic or redirect users to a phishing page.
 
 <div style="text-align: center;">
-  <img src="assets/images/3c.png" width="740">
+  <img src="assets/images/3c.png" width="610">
 </div>
 
 <div style="text-align: center;">
-  <img src="assets/images/4c.png" width="585">
+  <img src="assets/images/4c.png" width="595">
 </div>
 
 <div style="text-align: center;">
