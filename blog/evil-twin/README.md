@@ -84,7 +84,7 @@ To set up a rogue access point that mimics a legitimate network (an Evil Twin), 
      <img src="assets/images/3b.png" width="630">
    </div>
 
-   `hostapd.conf` file tells `hostapd` how to set up and manage the rogue AP.
+   The `hostapd.conf` file tells `hostapd` how to set up and manage the rogue AP.
 
    - `interface=wlan0`
    This line specifies which Wi-Fi interface on your computer will act as the rogue AP. In this case, `wlan0` is the name of your wireless network adapter (e.g., the Wi-Fi card). Think of it as choosing which "radio" your computer will use to broadcast the fake network. You need to ensure `wlan0` is available and not in use by another program.
@@ -130,7 +130,7 @@ To set up a rogue access point that mimics a legitimate network (an Evil Twin), 
      <img src="assets/images/4b.png" width="650">
    </div>
 
-   `dnsmasq.conf` file configures `dnsmasq` to act as a DHCP server, assigning IP addresses to devices that connect to your rogue AP.
+   The `dnsmasq.conf` file configures `dnsmasq` to act as a DHCP server, assigning IP addresses to devices that connect to your rogue AP.
 
    - `interface=wlan0`
    Similar to the `hostapd.conf` setting, this tells dnsmasq to use `wlan0` to handle network traffic. It’s the same "radio" used by `hostapd`, ensuring the rogue AP and DHCP server work together.
@@ -146,7 +146,7 @@ To set up a rogue access point that mimics a legitimate network (an Evil Twin), 
      <img src="assets/images/6.png" width="620">
    </div>
 
-7. **Optional: Deauthentication Attack**:
+7. **Deauthentication Attack (Optional)**:
 
    <div style="text-align: center;">
      <img src="assets/images/7.png" width="570">
@@ -231,30 +231,6 @@ For security professionals, understanding the nuances of Evil Twin attacks opens
 - **Layer 2 Attacks**: Combine Evil Twin with ARP spoofing or DNS poisoning for more sophisticated MITM attacks.
 - **Automated Detection**: Develop scripts to monitor Wi-Fi channels for anomalies, such as sudden SSID duplicates or signal strength spikes, using tools like `Scapy` or `PyShark`.
 - **Forensic Analysis**: After detecting a rogue AP, preserve packet captures and logs for legal action. Tools like `tcpdump` or `Wireshark` can help reconstruct the attack timeline.
-
-### Example: Automated Rogue AP Detection Script
-Below is a Python script using `Scapy` to detect potential Evil Twin APs by identifying duplicate SSIDs on different MAC addresses:
-
-
-from scapy.all import *
-import time
-
-def detect_evil_twin(pkt):
-    if pkt.haslayer(Dot11Beacon):
-        ssid = pkt[Dot11Beacon].info.decode()
-        bssid = pkt[Dot11].addr2
-        if ssid in ssid_list:
-            if bssid not in ssid_list[ssid]:
-                print(f"Potential Evil Twin detected! SSID: {ssid}, New BSSID: {bssid}")
-                ssid_list[ssid].append(bssid)
-        else:
-            ssid_list[ssid] = [bssid]
-
-ssid_list = {}
-sniff(iface="wlan0mon", prn=detect_evil_twin, timeout=60)
-
-
-This script monitors beacon frames for 60 seconds and alerts if the same SSID appears with a new MAC address, indicating a possible rogue AP.
 
 ## Real-World Implications
 
