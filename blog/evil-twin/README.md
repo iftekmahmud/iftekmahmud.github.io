@@ -122,15 +122,16 @@ This attack is particularly effective in public spaces like cafes, airports, or 
 When executed correctly, the rogue AP will appear as "Bravo 6" in the victim's Wi-Fi list. Upon connection, the attacker can see all unencrypted traffic or redirect users to a phishing page.
 
 <div style="text-align: center;">
-  <img src="assets/images/3c.png" width="450">
+  <img src="assets/images/3c.png" width="740">
 </div>
 
 <div style="text-align: center;">
-  <img src="assets/images/4c.png" width="450">
+  <img src="assets/images/4c.png" width="585">
 </div>
 
 <div style="text-align: center;">
-  <img src="assets/images/9.png" width="450">
+  <img src="assets/images/9.png" width="370">
+  <p style="text-align: center; margin-top: -5px;">Evil Twin Rogue AP Created</p>
 </div>
 
 ## Detection Techniques
