@@ -1,4 +1,4 @@
-# The Evil Twin Attack
+# Evil Twin Deception
 
 ## Introduction
 
