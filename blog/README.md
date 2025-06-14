@@ -18,3 +18,4 @@
 * [Bypassing MAC and Open Authentication in Wireless Networks](./bypass-mac-and-open-auth)
 * [Securing Wireless Networks from DoS Vulnerabilities](./wireless-dos)
 * [Exploiting WPS Vulnerabilities with Reaver](./wps-reaver)
+* [The Evil Twin Deception](./evil-twin)
