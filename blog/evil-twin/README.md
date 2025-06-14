@@ -131,7 +131,7 @@ When executed correctly, the rogue AP will appear as "Bravo 6" in the victim's W
 
 <div style="text-align: center;">
   <img src="assets/images/9.png" width="370">
-  <p style="text-align: center; margin-top: -5px;">Evil Twin Rogue AP Created</p>
+  <p style="text-align: center; margin-top: -5px;">Evil Twin Rogue AP</p>
 </div>
 
 ## Detection Techniques
