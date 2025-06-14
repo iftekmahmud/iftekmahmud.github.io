@@ -94,10 +94,14 @@ This attack is particularly effective in public spaces like cafes, airports, or 
      <img src="assets/images/4a.png" width="550">
    </div>
 
+   <div style="text-align: center;">
+     <img src="assets/images/4b.png" width="650">
+   </div>
+
    Start `dnsmasq`:
 
    <div style="text-align: center;">
-     <img src="assets/images/4b.png" width="650">
+     <img src="assets/images/6.png" width="620">
    </div>
 
 5. **Optional: Deauthentication Attack**:
@@ -115,6 +119,7 @@ This attack is particularly effective in public spaces like cafes, airports, or 
    </div>
 
 7. **Optional: Phishing Portal**:
+
    Set up a fake captive portal using tools like `SET` (Social-Engineer Toolkit) to capture credentials.
 
 ### Example Output
