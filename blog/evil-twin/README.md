@@ -38,7 +38,7 @@ This attack is particularly effective in public spaces like cafes, airports, or 
 5. **Data Interception and Exploitation**:
    - The attacker uses packet-sniffing tools like `Wireshark` or `tcpdump` to capture unencrypted traffic.
    - They may deploy a man-in-the-middle (MITM) framework like `Bettercap` to intercept HTTPS traffic or redirect users to malicious sites.
-   - In advanced scenarios, attackers can serve malware or exploit vulnerabilities in the victim’s device.
+   - In advanced scenarios, attackers can serve malware or exploit vulnerabilities in the victim's device.
 
 ## Setting Up an Evil Twin Attack
 
@@ -66,7 +66,7 @@ This attack is particularly effective in public spaces like cafes, airports, or 
      <img src="assets/images/2.png" width="450">
    </div>
    
-   Identify the target network’s SSID, BSSID (MAC address), and channel.
+   Identify the target network's SSID, BSSID (MAC address), and channel.
 
 3. **Configure the Rogue AP**:
 
@@ -106,26 +106,44 @@ This attack is particularly effective in public spaces like cafes, airports, or 
      <img src="assets/images/7.png" width="450">
    </div>
 
-8. **Capture Traffic**:
+6. **Capture Traffic**:
+
    Use `Wireshark` to monitor traffic on the `wlan0` interface, filtering for HTTP or other protocols of interest.
 
-9. **Optional: Phishing Portal**:
+   <div style="text-align: center;">
+     <img src="assets/images/8.png" width="450">
+   </div>
+
+7. **Optional: Phishing Portal**:
    Set up a fake captive portal using tools like `SET` (Social-Engineer Toolkit) to capture credentials.
 
 ### Example Output
-When executed correctly, the rogue AP will appear as “TargetNetworkName” in the victim’s Wi-Fi list. Upon connection, the attacker can see all unencrypted traffic or redirect users to a phishing page.
+
+When executed correctly, the rogue AP will appear as "Bravo 6" in the victim's Wi-Fi list. Upon connection, the attacker can see all unencrypted traffic or redirect users to a phishing page.
+
+<div style="text-align: center;">
+  <img src="assets/images/3c.png" width="450">
+</div>
+
+<div style="text-align: center;">
+  <img src="assets/images/4c.png" width="450">
+</div>
+
+<div style="text-align: center;">
+  <img src="assets/images/9.png" width="450">
+</div>
 
 ## Detection Techniques
 
-Detecting an Evil Twin attack requires vigilance and technical tools. Here are methods for both end-users and network administrators:
-
 ### For End-Users
-- **Verify Network Details**: Check the AP’s MAC address or certificate (if using WPA2-Enterprise). A mismatch indicates a rogue AP.
+
+- **Verify Network Details**: Check the AP's MAC address or certificate (if using WPA2-Enterprise). A mismatch indicates a rogue AP.
 - **Avoid Open Networks**: Public Wi-Fi without encryption is a prime target. Use a VPN to encrypt traffic.
 - **Monitor Signal Strength**: Sudden changes in signal strength for a familiar network may indicate a rogue AP with a stronger signal.
 - **Check for Captive Portals**: Unexpected login pages on familiar networks are a red flag.
 
 ### For Network Administrators
+
 - **Wireless Intrusion Detection Systems (WIDS)**: Deploy tools like `Kismet` or `Snort` to detect rogue APs by monitoring for duplicate SSIDs or unauthorized MAC addresses.
 - **Monitor Deauthentication Packets**: Excessive deauth packets can indicate an attack. Use tools like `airmon-ng` to capture and analyze 802.11 frames.
 - **MAC Address Filtering**: Maintain a whitelist of authorized APs and alert on unrecognized BSSIDs.
@@ -136,20 +154,24 @@ Detecting an Evil Twin attack requires vigilance and technical tools. Here are m
 Preventing Evil Twin attacks requires a multi-layered approach:
 
 1. **User Education**:
+
    - Train users to avoid connecting to unfamiliar or open Wi-Fi networks.
    - Encourage the use of VPNs (e.g., NordVPN, ProtonVPN) to encrypt traffic.
 
 2. **Network Hardening**:
+
    - Use strong encryption (WPA3 or WPA2-Enterprise) to make it harder for attackers to mimic your network.
    - Disable SSID broadcasting for sensitive networks to reduce visibility.
    - Implement MAC address filtering and regularly update AP firmware.
 
 3. **Advanced Security Measures**:
+
    - Deploy WIDS/WIPS (Wireless Intrusion Prevention Systems) to automatically detect and block rogue APs.
    - Use network segmentation to limit the impact of a compromised AP.
    - Enable HTTPS everywhere and HSTS (HTTP Strict Transport Security) to protect web traffic.
 
 4. **For Public Wi-Fi Providers**:
+
    - Display clear signage with the official SSID and QR codes for secure connection.
    - Use unique, randomized SSIDs to make it harder for attackers to predict network names.
 
@@ -194,11 +216,3 @@ Evil Twin attacks have been documented in various high-profile incidents:
 - Attackers increasingly combine Evil Twin with social engineering, using fake captive portals to mimic legitimate login pages (e.g., Starbucks or airport Wi-Fi).
 
 The rise of IoT devices, which often lack robust security, further amplifies the risk, as these devices may automatically connect to rogue APs without user intervention.
-
-## Conclusion
-
-The Evil Twin attack remains a potent threat due to its reliance on user trust and the ubiquity of Wi-Fi. For beginners, understanding the attack’s mechanics and adopting basic precautions like VPNs can significantly reduce risk. Advanced practitioners should focus on deploying robust detection systems, hardening networks, and staying abreast of evolving attack techniques. By combining user education, technical defenses, and proactive monitoring, we can mitigate the impact of this deceptive attack vector.
-
-As security researchers, our role is to not only understand these threats but also to develop innovative solutions to protect users and networks. Stay vigilant, verify your connections, and always prioritize security in an increasingly connected world.
-
-</xaiArtifact>
