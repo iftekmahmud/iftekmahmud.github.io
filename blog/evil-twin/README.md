@@ -84,7 +84,7 @@ To set up a rogue access point that mimics a legitimate network (an Evil Twin), 
      <img src="assets/images/3b.png" width="630">
    </div>
 
-   This file tells hostapd how to set up and manage the rogue AP.
+   `hostapd.conf` file tells `hostapd` how to set up and manage the rogue AP.
 
    - `interface=wlan0`
    This line specifies which Wi-Fi interface on your computer will act as the rogue AP. In this case, `wlan0` is the name of your wireless network adapter (e.g., the Wi-Fi card). Think of it as choosing which "radio" your computer will use to broadcast the fake network. You need to ensure `wlan0` is available and not in use by another program.
@@ -129,6 +129,16 @@ To set up a rogue access point that mimics a legitimate network (an Evil Twin), 
    <div style="text-align: center;">
      <img src="assets/images/4b.png" width="650">
    </div>
+
+   `dnsmasq.conf` file configures `dnsmasq` to act as a DHCP server, assigning IP addresses to devices that connect to your rogue AP.
+
+   - `interface=wlan0`
+   Similar to the `hostapd.conf` setting, this tells dnsmasq to use `wlan0` to handle network traffic. It’s the same "radio" used by `hostapd`, ensuring the rogue AP and DHCP server work together.
+
+   - `dhcp-range=192.168.1.2,192.168.1.100,12h`
+   This defines the range of IP addresses `dnsmasq` will assign to connected devices.
+      - `192.168.1.2,192.168.1.100`: This sets the pool of IP addresses from 192.168.1.2 to 192.168.1.100. When a device connects, it will get an IP like 192.168.1.3, 192.168.1.4, and so on, up to 192.168.1.100.
+      - `12h`: This sets the lease time to 12 hours, meaning each IP assignment lasts for 12 hours before the device needs to request a new one. This keeps the network running smoothly for your simulation.
 
    Start `dnsmasq`:
 
