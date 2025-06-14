@@ -52,6 +52,8 @@ This attack is particularly effective in public spaces like cafes, airports, or 
 
 ### Execution
 
+To set up a rogue access point that mimics a legitimate network (an Evil Twin), you need to configure two key tools: `hostapd` (for creating the Wi-Fi access point) and `dnsmasq` (for assigning IP addresses to devices that connect).
+
 1. **Enable Monitor Mode**:
 
    <div style="text-align: center;">
@@ -70,15 +72,43 @@ This attack is particularly effective in public spaces like cafes, airports, or 
 
 3. **Configure the Rogue AP**:
 
-   Configure the `hostapd.conf` file:
+   Open the `hostapd.conf` file:
 
    <div style="text-align: center;">
      <img src="assets/images/3a.png" width="530">
    </div>
 
+   Add the following lines:
+   
    <div style="text-align: center;">
      <img src="assets/images/3b.png" width="630">
    </div>
+
+   This file tells hostapd how to set up and manage the rogue AP.
+
+   - `interface=wlan0`
+   This line specifies which Wi-Fi interface on your computer will act as the rogue AP. In this case, `wlan0` is the name of your wireless network adapter (e.g., the Wi-Fi card). Think of it as choosing which "radio" your computer will use to broadcast the fake network. You need to ensure `wlan0` is available and not in use by another program.
+
+   - `driver=nl80211`
+   This tells `hostapd` which driver to use to communicate with your Wi-Fi adapter. The `nl80211` driver is a common choice for modern Linux systems (like Kali Linux) because it works with most Wi-Fi chips that support access point mode. It’s like selecting the right software to talk to your hardware.
+
+   - `ssid=Bravo 6`
+   The SSID is the name of the Wi-Fi network that users will see (e.g., "Bravo 6"). Here, you should put the name of the legitimate network you’re mimicking. This is the key trick of an Evil Twin - making the rogue AP look familiar to trick users into connecting.
+
+   - `hw_mode=g`
+   This sets the wireless mode to "g," which operates in the 2.4 GHz frequency band using the 802.11g standard. This is an older but widely supported Wi-Fi mode, suitable for most devices. It’s like choosing the "language" your rogue AP will use to communicate with phones or laptops.
+
+   - `channel=6`
+   This assigns the rogue AP to channel 6 within the 2.4 GHz band. Wi-Fi channels are like specific lanes on a highway. Channel 6 (around 2.437 GHz) is one of many options (1 through 13) to avoid interference with other networks. You should match this to the channel of the target network for an effective Evil Twin, which you can find using `airodump-ng`.
+
+   - `macaddr_acl=0`
+   This disables MAC address filtering, meaning any device can connect to the rogue AP regardless of its hardware address (MAC address). Setting it to `0` turns off access control, making the network open to all. Perfect for an Evil Twin to attract unsuspecting users.
+
+   - `auth_algs=1`
+   This specifies the authentication algorithm. A value of `1` enables open system authentication, which means no password is required to connect. This is common for public Wi-Fi and makes your rogue AP easier to join, increasing its effectiveness as an Evil Twin.
+
+   - `ignore_broadcast_ssid=0`
+   This ensures the SSID (Bravo 6) is broadcasted, so it appears in the list of available Wi-Fi networks on users’ devices (like in your phone’s Wi-Fi settings). Setting it to `0` means the network is visible, which is necessary for an Evil Twin to lure users.
    
    Launch the rogue AP:
 
@@ -86,14 +116,16 @@ This attack is particularly effective in public spaces like cafes, airports, or 
      <img src="assets/images/5.png" width="530">
    </div>
 
-4. **Set Up DHCP and DNS**:
+5. **Set Up DHCP and DNS**:
 
-   Configure `dnsmasq.conf` to assign IP addresses to connected clients:
+   Open the `dnsmasq.conf` file to assign IP addresses to connected clients:
 
    <div style="text-align: center;">
      <img src="assets/images/4a.png" width="550">
    </div>
 
+   Add the following lines:
+   
    <div style="text-align: center;">
      <img src="assets/images/4b.png" width="650">
    </div>
@@ -104,13 +136,13 @@ This attack is particularly effective in public spaces like cafes, airports, or 
      <img src="assets/images/6.png" width="620">
    </div>
 
-5. **Optional: Deauthentication Attack**:
+7. **Optional: Deauthentication Attack**:
 
    <div style="text-align: center;">
      <img src="assets/images/7.png" width="570">
    </div>
 
-6. **Capture Traffic**:
+8. **Capture Traffic**:
 
    Use `Wireshark` to monitor traffic on the `wlan0` interface, filtering for HTTP or other protocols of interest.
 
@@ -118,13 +150,13 @@ This attack is particularly effective in public spaces like cafes, airports, or 
      <img src="assets/images/8.png" width="800">
    </div>
 
-7. **Optional: Phishing Portal**:
+9. **Optional: Phishing Portal**:
 
    Set up a fake captive portal using tools like `SET` (Social-Engineer Toolkit) to capture credentials.
 
-### Example Output
+### Output
 
-When executed correctly, the rogue AP will appear as "Bravo 6" in the victim's Wi-Fi list. Upon connection, the attacker can see all unencrypted traffic or redirect users to a phishing page.
+When executed correctly, the rogue AP will appear (in our example, it's "Bravo 6") in the victim's Wi-Fi list. Upon connection, the attacker can see all unencrypted traffic or redirect users to a phishing page.
 
 <div style="text-align: center;">
   <img src="assets/images/3c.png" width="610">
