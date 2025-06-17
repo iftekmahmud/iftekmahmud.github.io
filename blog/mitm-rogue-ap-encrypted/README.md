@@ -309,6 +309,7 @@ Creating an encrypted AP with `hostapd` on Kali Linux is a valuable skill for se
 
 Always use this knowledge responsibly in authorized environments.
 
-#### Icon Credits
+#### Credits
 
-- <a href="https://www.flaticon.com/free-icons/hack" title="hack icons">Hack icons created by Awicon - Flaticon</a>
+- <small><a href="https://www.flaticon.com/free-icons/hack" title="hack icons">Hack icons created by Awicon - Flaticon</a></small>
+- <span style="font-size: smaller;"><a href="https://www.flaticon.com/free-icons/hack" title="hack icons">Hack icons created by Awicon - Flaticon</a></span>
