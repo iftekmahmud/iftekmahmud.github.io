@@ -312,4 +312,3 @@ Always use this knowledge responsibly in authorized environments.
 #### Credits
 
 - <small><a href="https://www.flaticon.com/free-icons/hack" title="hack icons">Hack icons created by Awicon - Flaticon</a></small>
-- <span style="font-size: smaller;"><a href="https://www.flaticon.com/free-icons/hack" title="hack icons">Hack icons created by Awicon - Flaticon</a></span>
