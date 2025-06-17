@@ -3,7 +3,7 @@
 As a security researcher, I often explore wireless network vulnerabilities to understand how attackers exploit them and how we can defend against such threats. One powerful technique involves setting up a rogue access point (AP) to simulate man-in-the-middle (MITM) attacks. While tools like `airbase-ng` from the Aircrack-ng suite are excellent for creating unencrypted APs, modern devices, particularly those running Android 10 and above, reject open networks due to enhanced security features. This is where `hostapd` shines, offering the ability to create an encrypted AP with WPA2 or WPA3 protocols. In this blog, I'll provide a practical, hands-on guide to setting up an encrypted AP using `hostapd` on Kali Linux, tailored for security testing in controlled environments.
 
 <div style="text-align: center;">
-  <img src="assets/images/wifi-hacking.png" width="400">
+  <img src="assets/images/wifi-hacking.png" width="240">
 </div>
 
 **Disclaimer:** This guide is for educational purposes only. Creating and using rogue APs on networks or devices without explicit permission is illegal. Conduct all experiments in a lab environment with devices you own or have authorization to test.
