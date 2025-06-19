@@ -2,6 +2,10 @@
 
 Wireless networks are ubiquitous, and their security is a critical concern for organizations and individuals alike. One common security measure is hiding a Wi-Fi network's Service Set Identifier (SSID), which prevents the network name from appearing in standard scans. While this adds a layer of obscurity, it is not foolproof. Hidden SSIDs can still be detected using specialized tools and techniques, such as `mdk3` and `airodump-ng`. In this blog, we'll provide a detailed and practical guide for security researchers on detecting hidden SSIDs as part of a wireless network security audit.
 
+<div style="text-align: center;">
+  <img src="assets/images/aircrack-ng-logo.png" width="230">
+</div>
+
 **Disclaimer:** The techniques described here are for educational purposes and authorized security testing only. Unauthorized access or interference with wireless networks is illegal and unethical. Always obtain explicit permission from the network owner before conducting any security assessments.
 
 ## What is a Hidden SSID?
@@ -141,3 +145,11 @@ For advanced practitioners, consider the following to enhance your approach:
 - **Channel Hopping:** If the target network is on a different channel, ensure `airodump-ng` is locked to the correct channel using `--channel <number>`.
 - **False Positives:** Some access points may respond with incorrect or dummy SSIDs. Cross-verify findings with passive monitoring.
 - **Rate Limiting:** Some networks limit probe responses. Increase the probing rate with `mdk3`'s `-s <speed>` option, but be cautious to avoid denial-of-service conditions.
+
+## Author
+
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
