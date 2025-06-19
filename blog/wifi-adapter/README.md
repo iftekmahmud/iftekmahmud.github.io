@@ -157,4 +157,10 @@ With the adapter connected, you're ready to start wireless pentesting. Try captu
 
 **Note:** Always practice on networks you own or have explicit permission to test. Unauthorized pentesting is illegal and unethical. Set up a lab with a spare router to hone your skills safely.
 
-Keep learning, and happy hacking!
+## Author
+
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
