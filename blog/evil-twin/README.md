@@ -1,10 +1,12 @@
 # The Evil Twin Deception
 
-## Introduction
-
 As a security researcher, I have observed the increasing sophistication of wireless network attacks, with the **Evil Twin attack** standing out as a particularly insidious threat. This attack exploits the trust users place in familiar Wi-Fi networks, enabling attackers to intercept sensitive data or deploy malicious payloads. In this blog, we will cover the attack's mechanics, execution methods, detection techniques, and mitigation strategies, grounded in real-world scenarios and technical rigor.
 
-## What is an Evil Twin Attack?
+<div style="text-align: center;">
+  <img src="assets/images/aircrack-ng-logo.png" width="330">
+</div>
+
+## Evil Twin Attack Overview
 
 An Evil Twin attack involves an attacker creating a rogue Wi-Fi access point (AP) that mimics a legitimate network. By broadcasting a Service Set Identifier (SSID) identical to that of a trusted network, the attacker tricks users into connecting to the malicious AP. Once connected, the attacker can intercept sensitive data, such as login credentials, financial information, or session tokens, or even serve malicious content to compromise the victim's device.
 
@@ -40,7 +42,7 @@ This attack is particularly effective in public spaces like cafes, airports, or 
    - They may deploy a man-in-the-middle (MITM) framework like `Bettercap` to intercept HTTPS traffic or redirect users to malicious sites.
    - In advanced scenarios, attackers can serve malware or exploit vulnerabilities in the victim's device.
 
-## Setting Up an Evil Twin Attack
+## Setting Up Evil Twin Attack
 
 **Note**: Performing this attack without explicit permission is illegal and unethical. Always conduct such experiments in a lab environment with consent.
 
@@ -235,8 +237,17 @@ For security professionals, understanding the nuances of Evil Twin attacks opens
 ## Real-World Implications
 
 Evil Twin attacks have been documented in various high-profile incidents:
+
 - In 2017, researchers demonstrated Evil Twin attacks at DEF CON, compromising credentials in public Wi-Fi settings.
 - Corporate environments have been targeted to steal employee credentials, bypassing VPNs that fail to verify AP authenticity.
 - Attackers increasingly combine Evil Twin with social engineering, using fake captive portals to mimic legitimate login pages (e.g., Starbucks or airport Wi-Fi).
 
 The rise of IoT devices, which often lack robust security, further amplifies the risk, as these devices may automatically connect to rogue APs without user intervention.
+
+## Author
+
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
