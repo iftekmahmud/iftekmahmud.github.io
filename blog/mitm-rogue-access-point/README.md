@@ -8,7 +8,7 @@ Man-in-the-Middle (MITM) attacks are a significant threat in wireless networks, 
 
 **Disclaimer:** This guide is for educational purposes only. Performing MITM attacks on networks or devices without explicit permission is illegal. Always conduct security research in controlled and authorized environments.
 
-## What is a Rogue Access Point MITM Attack?
+## Rogue Access Point MITM Overview
 
 A rogue access point is a malicious Wi-Fi network set up by an attacker to mimic a legitimate AP. By enticing users to connect, the attacker can intercept traffic, modify data, or launch further attacks like phishing or session hijacking. This technique is particularly effective in public Wi-Fi environments, where users may not verify the authenticity of networks.
 
@@ -34,7 +34,7 @@ Before diving in, let's clarify some terms:
 - **Why Configure a Server?:** Configuring a DHCP server (via `dnsmasq`) ensures connected clients get IP settings, making the rogue AP functional and convincing.
 - **Configuration File:** A text file (e.g., `/etc/dnsmasq.conf`) that defines how `dnsmasq` assigns IPs and handles DNS requests.
 
-## Creating a Rogue AP for MITM
+## Creating Rogue AP for MITM
 
 ### 1. Set Up Your Wi-Fi Adapter in Monitor Mode
 
