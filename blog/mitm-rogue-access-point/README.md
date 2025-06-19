@@ -3,7 +3,7 @@
 Man-in-the-Middle (MITM) attacks are a significant threat in wireless networks, allowing attackers to intercept and manipulate communication between clients and access points (APs). One potent method involves creating a rogue access point, a malicious Wi-Fi network designed to lure unsuspecting users. In this blog, I'll provide a detailed, practical guide to understanding and executing a rogue AP-based MITM attack, aimed at both beginners and advanced security enthusiasts. We'll focus on using Kali Linux and tools like `airbase-ng` to demonstrate the attack, while emphasizing legal boundaries.
 
 <div style="text-align: center;">
-  <img src="assets/images/aircrack-ng-logo.png" alt="https://www.kali.org" width="400">
+  <img src="assets/images/aircrack-ng-logo.png" alt="https://www.kali.org" width="230">
 </div>
 
 **Disclaimer:** This guide is for educational purposes only. Performing MITM attacks on networks or devices without explicit permission is illegal. Always conduct security research in controlled and authorized environments.
@@ -319,8 +319,10 @@ To protect against rogue AP attacks:
 - **Enable WPA3:** Modern encryption protocols make rogue APs harder to exploit.
 - **Monitor Network Activity:** Use intrusion detection systems (e.g., Kismet) to spot unauthorized APs.
 
-## Conclusion
+## Author
 
-Rogue access point-based MITM attacks are a powerful demonstration of wireless network vulnerabilities. By setting up a rogue AP with tools like `airbase-ng`, security researchers can study how attackers intercept and manipulate traffic. However, this knowledge must be used responsibly. For beginners, mastering these steps builds a foundation in wireless security testing, while advanced users can explore related techniques like DNS spoofing or session hijacking to deepen their expertise.
+### Iftekhar Mahmud
 
-Stay curious, and keep securing the digital world.
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
