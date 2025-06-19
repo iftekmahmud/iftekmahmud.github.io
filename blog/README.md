@@ -1,4 +1,4 @@
-# INCIDENT ANALYSIS
+# Cyber Attacks Analysis
 
 * [Bangladesh Bank Heist](./bangladesh-bank-heist)
 
