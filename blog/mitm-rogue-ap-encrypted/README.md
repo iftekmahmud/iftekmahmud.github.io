@@ -303,8 +303,10 @@ To protect against encrypted rogue APs:
 - Verify SSIDs and avoid unfamiliar networks.
 - Monitor network activity with tools like Kismet.
 
-## Conclusion
+## Author
 
-Creating an encrypted AP with `hostapd` on Kali Linux is a valuable skill for security researchers studying wireless vulnerabilities. This setup enables realistic testing of modern devices, overcoming the limitations of unencrypted APs like those from `airbase-ng`. 
+### Iftekhar Mahmud
 
-Always use this knowledge responsibly in authorized environments.
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
