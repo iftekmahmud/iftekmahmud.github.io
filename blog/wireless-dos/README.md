@@ -1,5 +1,9 @@
 # Securing Wireless Networks from DoS Vulnerabilities
 
+<div style="text-align: center;">
+  <img src="assets/images/aircrack-ng-logo.png" width="230">
+</div>
+
 Wireless networks are all over the place, powering everything from home Wi-Fi to enterprise systems. However, their accessibility makes them prime targets for Denial-of-Service (DoS) attacks, which aim to disrupt network availability and performance. As a security researcher, I've seen how these attacks exploit vulnerabilities in wireless Access Points (APs) or client devices, causing crashes, unresponsiveness, or disconnection of legitimate users.
 
 ## What Are Wireless DoS Attacks?
@@ -144,4 +148,13 @@ Defending against wireless DoS attacks requires a multi-layered approach.
 
     - Reduce the AP's signal range to minimize exposure to external attackers.
     - Use directional antennas to focus coverage on intended areas.
-Disclaimer: The techniques described are for educational purposes only. Unauthorized attacks on networks are illegal and unethical. Always obtain explicit permission before conducting security tests.
+      
+**Disclaimer:** The techniques described are for educational purposes only. Unauthorized attacks on networks are illegal and unethical. Always obtain explicit permission before conducting security tests.
+
+## Author
+
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
