@@ -1,5 +1,9 @@
 # Metasploitable 2
 
+<div style="text-align: center;">
+  <img src="assets/images/metasploit-framework-logo.png" width="150">
+</div>
+
 Metasploitable 2, developed by Rapid7, is a deliberately vulnerable Ubuntu-based VM designed for security training. It hosts vulnerable services like Apache, Samba, and FTP, making it an ideal target for vulnerability scans.
 
 ## Installation
@@ -34,3 +38,11 @@ ping -c 3 <metasploitable-ip>
 </div>
 
 **Note:** Never expose Metasploitable 2 to the internet, as its vulnerabilities can be easily exploited.
+
+## Author
+
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
