@@ -1,5 +1,9 @@
 # Exploiting WPS with Reaver
 
+<div style="text-align: center;">
+  <img src="assets/images/aircrack-ng-logo.png" width="230">
+</div>
+
 As wireless networks remain a cornerstone of modern connectivity, their security is a critical concern for organizations and individuals alike. Advanced wireless attacks, particularly those targeting Wi-Fi Protected Setup (WPS) vulnerabilities using tools like Reaver, pose significant risks to network integrity. In this blog, we'll be providing a detailed and practical guide for security researchers, penetration testers, and network administrators, covering the technical execution of a Reaver-based attack, its implications, and robust defensive strategies. 
 
 ## Understanding WPS and Its Vulnerabilities
@@ -147,6 +151,10 @@ Network administrators must proactively secure their wireless networks to mitiga
 
 - **Replace Vulnerable Hardware:** If the router does not support disabling WPS or receiving firmware updates, consider upgrading to a modern, secure model.
 
-## Conclusion
+## Author
 
-In this test, the attack’s failure highlights the challenges posed by modern router defenses and environmental factors, yet it also demonstrates that success is achievable with the right conditions and configurations. To deepen your knowledge, experiment with Reaver in a controlled lab environment, explore other wireless attack tools (e.g., `Aircrack-ng`, `Bully`), and stay updated on emerging vulnerabilities. Wireless security is a dynamic field. Staying ahead requires continuous learning and vigilance.
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
