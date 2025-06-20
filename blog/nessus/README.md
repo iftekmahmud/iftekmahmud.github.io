@@ -1,5 +1,9 @@
 # Nessus for Advanced Penetration Testing
 
+<div style="text-align: center;">
+  <img src="assets/images/nessus_logo.png" width="400">
+</div>
+
 Vulnerability scanning is a cornerstone of penetration testing and cybersecurity assessments, enabling security professionals to identify weaknesses in systems before they can be exploited. Among the many tools available, **Nessus**, developed by Tenable, stands out as one of the most widely used vulnerability scanners, boasting over 67,000 CVEs and 168,000 plugins. This blog provides a detailed guide to using Nessus, from installation to advanced plugin configuration, tailored for both beginners and seasoned security researchers. 
 
 ## 1. Introduction to Nessus
@@ -479,7 +483,7 @@ rm /tmp/nessus.1747917619
 - **Validate the Exploit:** You can use Metasploit to confirm the vulnerability. Start Metasploit on Kali Linux, use the `exploit/multi/bash/shellshock` module, and target Metasploitable 2’s IP (`192.168.19.128`) with the default SSH credentials (`msfadmin:msfadmin`).
 - **Review Other Vulnerabilities:** Since Metasploitable 2 has many vulnerabilities, explore other plugins (e.g., for Samba or Apache) to broaden your scan results.
 
-## 9. Best Practices and Considerations
+## 9. Best Practices
 
 - **Minimize Noise:** Unauthenticated scans are noisy and may trigger intrusion detection systems. Authenticated scans create additional system logs. Metasploitable 2 is a lab environment, so this is not a concern, but be cautious in real-world scenarios.
 - **Optimize Scan Scope:** Use specific port ranges (e.g., `80,443`) and disable unnecessary features (e.g., Host Discovery) to reduce scan duration on Metasploitable 2.
@@ -489,15 +493,10 @@ rm /tmp/nessus.1747917619
 - **Consult Documentation:** Refer to Tenable’s documentation for advanced configuration and troubleshooting.
 - **Isolate the Environment:** Keep Metasploitable 2 in **Host-Only** or **NAT** mode to prevent accidental exposure.
 
-## 10. Conclusion
+## Author
 
-Nessus is a versatile and powerful tool for vulnerability scanning, suitable for both beginners and advanced security researchers. By using Metasploitable 2 as our lab environment, we’ve learned how to:
+### Iftekhar Mahmud
 
-- Install and configure Nessus on Kali Linux.
-- Set up Metasploitable 2 as a vulnerable target.
-- Understand Nessus’s core components, including policies, templates, and plugins.
-- Perform unauthenticated and authenticated scans.
-- Analyze results and generate reports.
-- Leverage dynamic plugin filters for targeted vulnerability detection, such as Shellshock (CVE-2014-6271).
-
-For beginners, start with the **Basic Network Scan** template to explore Metasploitable 2’s vulnerabilities. Advanced users can harness the **Advanced Dynamic Scan** and plugin filters to focus on specific CVEs. Experiment with different configurations to understand Nessus’s full potential in a safe lab environment.
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
