@@ -1,5 +1,9 @@
 # Bypassing MAC and Open Authentication in Wireless Networks
 
+<div style="text-align: center;">
+  <img src="assets/images/aircrack-ng-logo.png" width="230">
+</div>
+
 As wireless networks have become ubiquitous, securing them against unauthorized access remains a critical concern for network administrators. Two common security mechanisms, **MAC address authentication** and **open authentication**, are often employed to restrict access to wireless networks. However, these methods are far from infallible and can be bypassed using readily available tools and techniques. In this blog, I aim to provide a detailed and practical guide to understanding and demonstrating the vulnerabilities of MAC and open authentication for anyone seeking to deepen their knowledge of network vulnerabilities.
 
 ## Understanding MAC and Open Authentication
@@ -162,3 +166,11 @@ To protect networks from MAC spoofing and open authentication vulnerabilities, c
 - **Monitor Network Activity:** Deploy intrusion detection systems (IDS) to detect unusual activity, such as multiple devices using the same MAC address.
 - **Disable Unused Open Networks:** Ensure open networks are disabled or restricted to guest access with captive portals.
 - **Regular Security Audits:** Conduct penetration tests to identify and address vulnerabilities proactively.
+
+## Author
+
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
