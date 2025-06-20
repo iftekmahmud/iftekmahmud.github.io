@@ -1,5 +1,9 @@
 # Google Hacking Essentials
 
+<div style="text-align: center;">
+  <img src="assets/images/google-hack.png" width="280">
+</div>
+
 As a security researcher, one of the most powerful tools in your reconnaissance arsenal is the ability to leverage search engines to uncover sensitive information, misconfigurations, and potential vulnerabilities. Coined by Johnny Long in 2001, "Google Hacking" (also known as Google Dorking) involves crafting precise search queries using advanced operators to extract valuable data from public-facing systems. In this blog, we'll dive into Google Hacking and explore how to use search operators effectively, avoid common pitfalls, and apply these techniques during security assessments.
 
 ## What is Google Hacking?
@@ -156,8 +160,15 @@ Google Hacking is an essential skill for penetration testers, enabling the disco
 
 Start with basic operators, experiment with combinations, and explore tools like DorkSearch to enhance your workflow. With practice, Google Hacking can transform your reconnaissance phase into a goldmine of actionable intelligence.
 
-
-### Resources:
+## Resources
 
 - Google Hacking Database: https://www.exploit-db.com/google-hacking-database
 - Johnny Long’s Google Hacking for Penetration Testers
+
+## Author
+
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
