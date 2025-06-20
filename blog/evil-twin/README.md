@@ -3,7 +3,7 @@
 As a security researcher, I have observed the increasing sophistication of wireless network attacks, with the **Evil Twin attack** standing out as a particularly insidious threat. This attack exploits the trust users place in familiar Wi-Fi networks, enabling attackers to intercept sensitive data or deploy malicious payloads. In this blog, we will cover the attack's mechanics, execution methods, detection techniques, and mitigation strategies, grounded in real-world scenarios and technical rigor.
 
 <div style="text-align: center;">
-  <img src="assets/images/aircrack-ng-logo.png" width="330">
+  <img src="assets/images/aircrack-ng-logo.png" width="230">
 </div>
 
 ## Evil Twin Attack Overview
