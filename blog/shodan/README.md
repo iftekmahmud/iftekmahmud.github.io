@@ -1,8 +1,12 @@
 # Shodan OSINT Tactics
 
+<div style="text-align: center;">
+  <img src="assets/images/Shodan_logo.png" width="420">
+</div>
+
 As security researchers, we constantly seek tools that provide deep visibility into the attack surface of networks, devices, and services. Shodan, often dubbed "the search engine for hackers," is a powerful reconnaissance tool that indexes internet-connected devices, offering unparalleled insights into exposed systems. Unlike traditional search engines like Google, which focus on web content, Shodan scans ports and collects service banners to reveal metadata about devices, from webcams to industrial control systems (ICS). This guide provides a detailed, technical introduction to Shodan for beginner to intermediate security researchers, covering its functionality, search syntax, and practical use cases.
 
-## What is Shodan?
+## Overview
 
 <div style="text-align: center;">
   <img src="assets/images/shodan-dashboard.png" width="1000">
@@ -493,7 +497,7 @@ The metadata extracted from Shodan — IPs, ports, banners, locations, and scree
   
 ## Final Thoughts
 
-Shodan is a cornerstone tool for security researchers, offering unmatched visibility into internet-connected devices. By mastering its search syntax, leveraging its API, and applying its insights ethically, you can uncover vulnerabilities, enhance asset management, and bolster threat intelligence. Start with simple queries, experiment with filters, and integrate Shodan into your workflow alongside tools like Nmap and Metasploit. As you grow comfortable, explore advanced features like Shodan Monitor and CLI to automate and scale your research.
+Shodan is a cornerstone tool for security researchers, offering unmatched visibility into internet-connected devices. By mastering its search syntax, leveraging its API, and applying its insights, you can uncover vulnerabilities, enhance asset management, and bolster threat intelligence. Start with simple queries, experiment with filters, and integrate Shodan into your workflow alongside tools like Nmap and Metasploit. As you grow comfortable, explore advanced features like Shodan Monitor and CLI to automate and scale your research.
 
 Happy hunting, and stay vigilant.
 
@@ -501,3 +505,11 @@ Happy hunting, and stay vigilant.
 
 - Shodan Official Website: shodan.io
 - Awesome Shodan Queries: github.com/jakejarvis/awesome-shodan-queries
+
+## Author
+
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
