@@ -1,5 +1,9 @@
 # Mastering Website Security with HTTP Headers and SSL/TLS Analysis
 
+<div style="text-align: center;">
+  <img src="assets/images/security.png" width="120">
+</div>
+
 As security researchers, understanding a website's security posture is a critical step in assessing potential vulnerabilities during reconnaissance. Two key areas to evaluate are **HTTP security headers** and **SSL/TLS configurations**. These elements provide insights into an organization's server hardening practices and adherence to security best practices. In this blog post, we'll explore how to analyze these components using third-party tools like Security Headers and Qualys SSL Labs for seasoned researchers.
 
 ## Introduction to Website Security Analysis
@@ -110,10 +114,6 @@ For advanced researchers, dive into the Qualys report details:
 - **Regularly Update Configurations:** Use tools like Mozilla's SSL Configuration Generator to stay aligned with best practices.
 - **Monitor for Vulnerabilities:** Regularly scan with tools like Qualys SSL Labs to catch misconfigurations early.
 
-## Conclusion
-
-Analyzing HTTP security headers and SSL/TLS configurations is a powerful technique for assessing a website's security posture. Tools like Security Headers and Qualys SSL Labs provide actionable insights, from identifying missing defenses to flagging outdated protocols. For beginners, these tools offer an accessible entry point into reconnaissance. For advanced researchers, they provide a foundation for deeper investigation, informing targeted attack strategies or hardening recommendations.
-
 ### Resources:
 
 - Security Headers
@@ -121,3 +121,11 @@ Analyzing HTTP security headers and SSL/TLS configurations is a powerful techniq
 - OWASP Secure Headers Project
 - Mozilla SSL Configuration Generator
 - NIST SP 800-123: Guide to General Server Security
+
+## Author
+
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: https://iftekmahmud.github.io/blog/
+- LinkedIn: https://www.linkedin.com/in/iftekmahmud/
