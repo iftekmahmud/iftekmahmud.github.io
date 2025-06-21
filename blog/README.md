@@ -1,4 +1,4 @@
-* [Cyber Attacks Analysis][./cyber-attacks-analysis)
+* [Cyber Attacks Analysis](./cyber-attacks-analysis)
 * [OSINT (Open-Source Intelligence)](./osint)
 * [Web Security](./web-security)
 * [Building Labs](./building-labs)
