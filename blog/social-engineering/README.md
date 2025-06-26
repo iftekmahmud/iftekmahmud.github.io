@@ -2,6 +2,10 @@
 
 Social engineering exploits human trust to bypass technical security measures, often tricking users into revealing sensitive information like login credentials. A common technique is creating a fake login page that mimics a legitimate website, deceiving users into entering their usernames and passwords. The Social-Engineer Toolkit (SET) in Kali Linux simplifies this process, making it an accessible tool for security researchers to study phishing attacks in a controlled environment. In this blog, we'll be setting up a fake phishing login page using SET, focusing on general social engineering principles. For demonstration, we'll use a test login page (`http://testphp.vulnweb.com/login.php`) and a Parrot Linux virtual machine as the test device, with the setup validated using the wireless interface (`wlan0`) IP address, which was successfully accessed in testing.
 
+<div style="text-align: center;">
+  <img src="assets/images/set-logo.png" width="250">
+</div>
+
 **Disclaimer**: This tutorial is for educational purposes only. Creating and deploying phishing pages without explicit consent is illegal and unethical. Always conduct experiments in a controlled lab environment with devices you own or have permission to test.
 
 ## Overview
