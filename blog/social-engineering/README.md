@@ -89,7 +89,7 @@ SET needs the IP address of your Kali Linux machine to host the fake page:
 1. Find your IP address by running:
 
     <div style="text-align: center;">
-      <img src="assets/images/wlan0.png" width="450">
+      <img src="assets/images/8.png" width="450">
     </div>
 
    Look for the `inet` address (e.g., `192.168.0.104`) on your wireless interface (`wlan0`).
@@ -97,7 +97,7 @@ SET needs the IP address of your Kali Linux machine to host the fake page:
 2. Enter this IP (e.g., `192.168.0.104`) when SET prompts.
 
     <div style="text-align: center;">
-      <img src="assets/images/ip_set.png" width="450">
+      <img src="assets/images/9.png" width="450">
     </div>
 
     **Purpose**: Hosts the fake login page on your Kali machine's wireless interface, making it accessible to the Parrot Linux test device.
@@ -107,13 +107,13 @@ SET needs the IP address of your Kali Linux machine to host the fake page:
 SET's Site Cloner replicates a real website:
 
 <div style="text-align: center;">
-  <img src="assets/images/vulnhub_website_clone.png" width="450">
+  <img src="assets/images/10.png" width="450">
 </div>
 
 1. When prompted for the URL to clone, enter:
 
     <div style="text-align: center;">
-      <img src="assets/images/website_clone.png" width="450">
+      <img src="assets/images/11.png" width="450">
     </div>
 
    This is a test page designed for security practice.
@@ -137,7 +137,7 @@ Verify the setup using the Parrot Linux VM:
 1. On the Parrot Linux VM, open a browser and navigate to `http://192.168.0.104` (the `wlan0` IP address of your Kali machine).
 
     <div style="text-align: center;">
-      <img src="assets/images/website_cloned.png" width="450">
+      <img src="assets/images/12.png" width="450">
     </div>
 
 2. The fake login page (cloned from `http://testphp.vulnweb.com/login.php`) should load.
@@ -145,7 +145,7 @@ Verify the setup using the Parrot Linux VM:
 3. Enter fake credentials (e.g., username: `mike`, password: `12345`) to simulate a victim's interaction.
 
     <div style="text-align: center;">
-      <img src="assets/images/website_cloned.png" width="450">
+      <img src="assets/images/12.png" width="450">
     </div>
 
 4. Confirm the page loads correctly and accepts input, as validated in your successful test.
@@ -159,7 +159,7 @@ SET logs submitted credentials:
 In the Kali terminal running SET, watch for real-time output showing captured data.
 
 <div style="text-align: center;">
-  <img src="assets/images/cred_found.png" width="450">
+  <img src="assets/images/13.png" width="450">
 </div>
 
 ## Social Engineering Context
@@ -196,4 +196,3 @@ This setup demonstrates core social engineering principles:
 - Email: iftekmahmud@protonmail.com
 - Blog: [https://iftekmahmud.github.io/blog/](https://iftekmahmud.github.io/blog/)
 - LinkedIn: [https://www.linkedin.com/in/iftekmahmud/](https://www.linkedin.com/in/iftekmahmud/)
-
