@@ -48,7 +48,7 @@ SET is a command-line tool tailored for social engineering attacks. To begin:
       <img src="assets/images/2.png" width="520">
     </div>
 
-**Purpose**: Initializes SET to configure the phishing attack environment.
+    **Purpose**: Initializes SET to configure the phishing attack environment.
 
 ### 2. Select the Website Attack Vector
 
@@ -66,7 +66,7 @@ To focus on creating a fake webpage:
       <img src="assets/images/4.png" width="520">
     </div>
 
-**Purpose**: Narrows the attack scope to website-based phishing, ideal for fake login pages.
+    **Purpose**: Narrows the attack scope to website-based phishing, ideal for fake login pages.
 
 ### 3. Choose the Credential Harvester Method
 
@@ -84,7 +84,7 @@ To capture user credentials:
       <img src="assets/images/7.png" width="700">
     </div>
 
-**Purpose**: Configures SET to harvest credentials from a cloned webpage that mimics a legitimate site.
+    **Purpose**: Configures SET to harvest credentials from a cloned webpage that mimics a legitimate site.
 
 ### 4. Specify the Attacking Machine's IP Address
 
@@ -124,7 +124,7 @@ SET's Site Cloner replicates a real website:
 
 2. SET downloads the page and sets up a local copy on your Kali machine.
 
-**Purpose**: Creates a fake login page that looks identical to the target, configured to capture user inputs.
+    **Purpose**: Creates a fake login page that looks identical to the target, configured to capture user inputs.
 
 ### 6. Deliver the Fake Login Page
 
@@ -154,7 +154,7 @@ Verify the setup using the Parrot Linux VM:
 
 4. Confirm the page loads correctly and accepts input, as validated in your successful test.
 
-**Purpose**: Confirms the fake login page, hosted via the `wlan0` IP, functions as expected, capturing inputs from the Parrot Linux test device.
+    **Purpose**: Confirms the fake login page, hosted via the `wlan0` IP, functions as expected, capturing inputs from the Parrot Linux test device.
 
 ### 8. View Captured Credentials
 
