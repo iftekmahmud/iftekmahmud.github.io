@@ -1,4 +1,4 @@
-![website_clone](https://github.com/user-attachments/assets/a1353eac-14bc-416e-9375-7c9a35806a1b)# Crafting Fake Phishing Login Page with SET
+# Crafting Fake Phishing Login Page with SET
 
 Social engineering exploits human trust to bypass technical security measures, often tricking users into revealing sensitive information like login credentials. A common technique is creating a fake login page that mimics a legitimate website, deceiving users into entering their usernames and passwords. The Social-Engineer Toolkit (SET) in Kali Linux simplifies this process, making it an accessible tool for security researchers to study phishing attacks in a controlled environment. In this blog, we'll be setting up a fake phishing login page using SET, focusing on general social engineering principles. For demonstration, we'll use a test login page (`http://testphp.vulnweb.com/login.php`) and a Parrot Linux virtual machine as the test device, with the setup validated using the wireless interface (`wlan0`) IP address, which was successfully accessed in testing.
 
@@ -122,13 +122,11 @@ SET's Site Cloner replicates a real website:
 
 **Purpose**: Creates a fake login page that looks identical to the target, configured to capture user inputs.
 
-### Step 6: Deliver the Fake Login Page
+### 6. Deliver the Fake Login Page
 
 To test the phishing page, the Parrot Linux VM must access it. In a real-world phishing scenario, attackers might deliver the fake page via phishing emails or malicious links. For this lab:
 
-1. Simulate delivery by manually navigating to the fake page's URL (e.g., `http://192.168.0.104`) on the Parrot Linux VM. This mimics a user clicking a phishing link.
-
-2. Alternatively, send a mock phishing email to a test account on the Parrot VM (within your lab environment) containing the URL.
+Simulate delivery by manually navigating to the fake page's URL (e.g., `http://192.168.0.104`) on the Parrot Linux VM. This mimics a user clicking a phishing link.
 
 **Purpose**: Ensures the Parrot Linux VM reaches the fake login page, simulating a phishing attack delivery method.
 
@@ -158,13 +156,11 @@ Verify the setup using the Parrot Linux VM:
 
 SET logs submitted credentials:
 
-In the Kali terminal running SET, watch for real-time output showing captured data (e.g., `Username: testuser, Password: testpass`).
+In the Kali terminal running SET, watch for real-time output showing captured data.
 
 <div style="text-align: center;">
   <img src="assets/images/cred_found.png" width="450">
 </div>
-
-**Purpose**: Allows analysis of captured data, simulating how an attacker collects credentials.
 
 ## Social Engineering Context
 
@@ -193,17 +189,11 @@ This setup demonstrates core social engineering principles:
 - **Troubleshooting**: If the page doesn't load on the Parrot VM, verify network connectivity (e.g., ensure both VMs are on the same Wi-Fi network) or SET's configuration.
 - **Explore Delivery**: Experiment with mock phishing emails or other delivery methods in your lab to understand attack vectors.
 
-## Ethical and Security Considerations
+## Author
 
-As security researchers, ethical use is paramount. Deploying phishing pages without consent is illegal. Always:
+### Iftekhar Mahmud
 
-- Use controlled lab environments with your own devices, like the Kali and Parrot Linux VMs.
-- Avoid real-world targets or public networks.
-- Document tests and obtain consent for any authorized experiments.
-
-This exercise highlights the dangers of phishing and the need for user awareness, strong authentication, and secure browsing habits.
-
-## Conclusion
-
-Creating a fake phishing login page with SET on Kali Linux, tested with a Parrot Linux VM using the `wlan0` IP address, is a powerful way to study social engineering vulnerabilities. By cloning a test page like `http://testphp.vulnweb.com/login.php`, researchers can simulate phishing attacks, analyze user behavior, and understand delivery methods like malicious links. This knowledge is crucial for developing defenses, such as educating users to verify URLs, enabling two-factor authentication, and promoting cautious browsing. Continue experimenting in a lab with different cloned pages or delivery methods to deepen your understanding of cybersecurity threats and countermeasures.
+- Email: iftekmahmud@protonmail.com
+- Blog: [https://iftekmahmud.github.io/blog/](https://iftekmahmud.github.io/blog/)
+- LinkedIn: [https://www.linkedin.com/in/iftekmahmud/](https://www.linkedin.com/in/iftekmahmud/)
 
