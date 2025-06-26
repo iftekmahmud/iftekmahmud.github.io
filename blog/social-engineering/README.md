@@ -1,4 +1,4 @@
-# Crafting Fake Phishing Login Page with SET
+![website_clone](https://github.com/user-attachments/assets/a1353eac-14bc-416e-9375-7c9a35806a1b)# Crafting Fake Phishing Login Page with SET
 
 Social engineering exploits human trust to bypass technical security measures, often tricking users into revealing sensitive information like login credentials. A common technique is creating a fake login page that mimics a legitimate website, deceiving users into entering their usernames and passwords. The Social-Engineer Toolkit (SET) in Kali Linux simplifies this process, making it an accessible tool for security researchers to study phishing attacks in a controlled environment. In this blog, we'll be setting up a fake phishing login page using SET, focusing on general social engineering principles. For demonstration, we'll use a test login page (`http://testphp.vulnweb.com/login.php`) and a Parrot Linux virtual machine as the test device, with the setup validated using the wireless interface (`wlan0`) IP address, which was successfully accessed in testing.
 
@@ -64,7 +64,7 @@ To focus on creating a fake webpage:
 
 **Purpose**: Narrows the attack scope to website-based phishing, ideal for fake login pages.
 
-### Step 3: Choose the Credential Harvester Method
+### 3. Choose the Credential Harvester Method
 
 To capture user credentials:
 
@@ -82,28 +82,42 @@ To capture user credentials:
 
 **Purpose**: Configures SET to harvest credentials from a cloned webpage that mimics a legitimate site.
 
-### Step 4: Specify the Attacking Machine's IP Address
+### 4. Specify the Attacking Machine's IP Address
 
 SET needs the IP address of your Kali Linux machine to host the fake page:
 
 1. Find your IP address by running:
-   ```bash
-   ifconfig wlan0
-   ```
-   Look for the `inet` address (e.g., `192.168.1.10`) on your wireless interface (`wlan0`).
-2. Enter this IP (e.g., `192.168.1.10`) when SET prompts.
 
-**Purpose**: Hosts the fake login page on your Kali machine's wireless interface, making it accessible to the Parrot Linux test device.
+    <div style="text-align: center;">
+      <img src="assets/images/wlan0.png" width="450">
+    </div>
 
-### Step 5: Clone the Target Login Page
+   Look for the `inet` address (e.g., `192.168.0.104`) on your wireless interface (`wlan0`).
+
+2. Enter this IP (e.g., `192.168.0.104`) when SET prompts.
+
+    <div style="text-align: center;">
+      <img src="assets/images/ip_set.png" width="450">
+    </div>
+
+    **Purpose**: Hosts the fake login page on your Kali machine's wireless interface, making it accessible to the Parrot Linux test device.
+
+### 5. Clone the Target Login Page
 
 SET's Site Cloner replicates a real website:
 
+<div style="text-align: center;">
+  <img src="assets/images/vulnhub_website_clone.png" width="450">
+</div>
+
 1. When prompted for the URL to clone, enter:
-   ```
-   http://testphp.vulnweb.com/login.php
-   ```
+
+    <div style="text-align: center;">
+      <img src="assets/images/website_clone.png" width="450">
+    </div>
+
    This is a test page designed for security practice.
+
 2. SET downloads the page and sets up a local copy on your Kali machine.
 
 **Purpose**: Creates a fake login page that looks identical to the target, configured to capture user inputs.
@@ -112,31 +126,43 @@ SET's Site Cloner replicates a real website:
 
 To test the phishing page, the Parrot Linux VM must access it. In a real-world phishing scenario, attackers might deliver the fake page via phishing emails or malicious links. For this lab:
 
-1. Simulate delivery by manually navigating to the fake page's URL (e.g., `http://192.168.1.10`) on the Parrot Linux VM. This mimics a user clicking a phishing link.
+1. Simulate delivery by manually navigating to the fake page's URL (e.g., `http://192.168.0.104`) on the Parrot Linux VM. This mimics a user clicking a phishing link.
+
 2. Alternatively, send a mock phishing email to a test account on the Parrot VM (within your lab environment) containing the URL.
 
 **Purpose**: Ensures the Parrot Linux VM reaches the fake login page, simulating a phishing attack delivery method.
 
-### Step 7: Test the Fake Login Page
+### 7. Test the Fake Login Page
 
 Verify the setup using the Parrot Linux VM:
 
-1. On the Parrot Linux VM, open a browser and navigate to `http://192.168.1.10` (the `wlan0` IP address of your Kali machine).
+1. On the Parrot Linux VM, open a browser and navigate to `http://192.168.0.104` (the `wlan0` IP address of your Kali machine).
+
+    <div style="text-align: center;">
+      <img src="assets/images/website_cloned.png" width="450">
+    </div>
+
 2. The fake login page (cloned from `http://testphp.vulnweb.com/login.php`) should load.
-3. Enter fake credentials (e.g., username: `testuser`, password: `testpass`) to simulate a victim's interaction.
+
+3. Enter fake credentials (e.g., username: `mike`, password: `12345`) to simulate a victim's interaction.
+
+    <div style="text-align: center;">
+      <img src="assets/images/website_cloned.png" width="450">
+    </div>
+
 4. Confirm the page loads correctly and accepts input, as validated in your successful test.
 
 **Purpose**: Confirms the fake login page, hosted via the `wlan0` IP, functions as expected, capturing inputs from the Parrot Linux test device.
 
-### Step 8: View Captured Credentials
+### 8. View Captured Credentials
 
 SET logs submitted credentials:
 
-1. In the Kali terminal running SET, watch for real-time output showing captured data (e.g., `Username: testuser, Password: testpass`).
-2. Check the log file, typically in `/var/log/set/`:
-   ```bash
-   cat /var/log/set/*.log
-   ```
+In the Kali terminal running SET, watch for real-time output showing captured data (e.g., `Username: testuser, Password: testpass`).
+
+<div style="text-align: center;">
+  <img src="assets/images/cred_found.png" width="450">
+</div>
 
 **Purpose**: Allows analysis of captured data, simulating how an attacker collects credentials.
 
