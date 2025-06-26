@@ -15,7 +15,7 @@ Before starting, ensure the following are ready:
 - **Kali Linux Environment**: A fully updated Kali Linux system with SET installed. Install SET if needed:
 
   <div style="text-align: center;">
-    <img src="assets/images/1.png" width="450">
+    <img src="assets/images/1.png" width="540">
   </div>
 
 - **Controlled Lab Environment**: Use virtual machines, such as a Kali Linux VM for the attack and a Parrot Linux VM as the test device ("victim"), to avoid impacting real users.
@@ -41,7 +41,7 @@ SET is a command-line tool tailored for social engineering attacks. To begin:
 2. SET displays an interactive menu with numbered attack options.
 
     <div style="text-align: center;">
-      <img src="assets/images/2.png" width="450">
+      <img src="assets/images/2.png" width="520">
     </div>
 
 **Purpose**: Initializes SET to configure the phishing attack environment.
@@ -53,13 +53,13 @@ To focus on creating a fake webpage:
 1. Type `1` and press Enter to select **Social-Engineering Attacks**.
 
     <div style="text-align: center;">
-      <img src="assets/images/3.png" width="450">
+      <img src="assets/images/3.png" width="520">
     </div>
 
 2. Type `2` and press Enter to choose **Website Attack Vectors**. This focuses on web-based deception techniques.
 
     <div style="text-align: center;">
-      <img src="assets/images/4.png" width="450">
+      <img src="assets/images/4.png" width="520">
     </div>
 
 **Purpose**: Narrows the attack scope to website-based phishing, ideal for fake login pages.
@@ -71,13 +71,13 @@ To capture user credentials:
 1. Type `3` and press Enter to select **Credential Harvester Attack Method**.
 
     <div style="text-align: center;">
-      <img src="assets/images/6.png" width="450">
+      <img src="assets/images/6.png" width="900">
     </div>
 
 2. Type `2` and press Enter to choose **Site Cloner**. This clones a target website to create a convincing login page.
 
     <div style="text-align: center;">
-      <img src="assets/images/7.png" width="450">
+      <img src="assets/images/7.png" width="700">
     </div>
 
 **Purpose**: Configures SET to harvest credentials from a cloned webpage that mimics a legitimate site.
@@ -89,7 +89,7 @@ SET needs the IP address of your Kali Linux machine to host the fake page:
 1. Find your IP address by running:
 
     <div style="text-align: center;">
-      <img src="assets/images/8.png" width="450">
+      <img src="assets/images/8.png" width="600">
     </div>
 
    Look for the `inet` address (e.g., `192.168.0.104`) on your wireless interface (`wlan0`).
@@ -97,7 +97,7 @@ SET needs the IP address of your Kali Linux machine to host the fake page:
 2. Enter this IP (e.g., `192.168.0.104`) when SET prompts.
 
     <div style="text-align: center;">
-      <img src="assets/images/9.png" width="450">
+      <img src="assets/images/9.png" width="800">
     </div>
 
     **Purpose**: Hosts the fake login page on your Kali machine's wireless interface, making it accessible to the Parrot Linux test device.
@@ -107,13 +107,13 @@ SET needs the IP address of your Kali Linux machine to host the fake page:
 SET's Site Cloner replicates a real website:
 
 <div style="text-align: center;">
-  <img src="assets/images/10.png" width="450">
+  <img src="assets/images/10.png" width="700">
 </div>
 
 1. When prompted for the URL to clone, enter:
 
     <div style="text-align: center;">
-      <img src="assets/images/11.png" width="450">
+      <img src="assets/images/11.png" width="900">
     </div>
 
    This is a test page designed for security practice.
@@ -137,7 +137,7 @@ Verify the setup using the Parrot Linux VM:
 1. On the Parrot Linux VM, open a browser and navigate to `http://192.168.0.104` (the `wlan0` IP address of your Kali machine).
 
     <div style="text-align: center;">
-      <img src="assets/images/12.png" width="450">
+      <img src="assets/images/12.png" width="700">
     </div>
 
 2. The fake login page (cloned from `http://testphp.vulnweb.com/login.php`) should load.
@@ -145,7 +145,7 @@ Verify the setup using the Parrot Linux VM:
 3. Enter fake credentials (e.g., username: `mike`, password: `12345`) to simulate a victim's interaction.
 
     <div style="text-align: center;">
-      <img src="assets/images/12.png" width="450">
+      <img src="assets/images/13.png" width="700">
     </div>
 
 4. Confirm the page loads correctly and accepts input, as validated in your successful test.
@@ -159,7 +159,7 @@ SET logs submitted credentials:
 In the Kali terminal running SET, watch for real-time output showing captured data.
 
 <div style="text-align: center;">
-  <img src="assets/images/13.png" width="450">
+  <img src="assets/images/14.png" width="870">
 </div>
 
 ## Social Engineering Context
