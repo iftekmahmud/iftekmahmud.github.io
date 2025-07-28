@@ -1,5 +1,9 @@
 # Military Jamming Tactics
 
+<div style="text-align: center;">
+  <img src="assets/images/Radar-Jamming-Logo.png" width="450">
+</div>
+
 In modern warfare, controlling the electromagnetic spectrum (EMS) can be as decisive as any physical weapon. Military jamming is a key tactic in electronic warfare (EW), using radio frequency (RF) signals to disrupt enemy communications, radar, and navigation systems like GPS. As a security researcher, I've seen how jamming can shift the balance of power, from blinding enemy radar to grounding drones.
 
 ## Jamming Overview
@@ -111,10 +115,17 @@ Jamming's evolution is accelerating, driven by tech breakthroughs.
 
 - **AI-Driven Jamming:** Machine learning could analyze enemy signals in real-time, adapting jamming patterns instantly. Imagine a jammer that predicts frequency hops faster than a human can react.
 - **Autonomous Platforms:** Drones or robotic vehicles, like Ukraine's **Kvertus AD Berserk**, could carry jammers to the frontlines, self-adjusting to threats without risking operators.
+- **Multi-Domain Networks:** Jammers might link across air, land, sea, and space, creating a seamless EW grid. The U.S. DARPA's **CONCERTO** program hints at this integration.
 
 <div style="text-align: center;">
   <img src="assets/images/Kvertus_AD_Berserk.png" width="500">
   <p style="text-align: center; margin-top: -5px;">Kvertus_AD_Berserk</p>
 </div>
 
-- **Multi-Domain Networks:** Jammers might link across air, land, sea, and space, creating a seamless EW grid. The U.S. DARPA's **CONCERTO** program hints at this integration.
+## Author
+
+### Iftekhar Mahmud
+
+- Email: iftekmahmud@protonmail.com
+- Blog: [https://iftekmahmud.github.io/blog/](https://iftekmahmud.github.io/blog/)
+- LinkedIn: [https://www.linkedin.com/in/iftekmahmud/](https://www.linkedin.com/in/iftekmahmud/)
