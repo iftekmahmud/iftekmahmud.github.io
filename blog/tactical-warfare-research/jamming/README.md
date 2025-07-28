@@ -73,31 +73,9 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
   - **Details:** Noise jamming overwhelmed early-warning systems, while deception created false targets, confusing operators.
   - **Outcome:** Coalition air superiority was secured, with minimal losses to radar-guided threats.
 
-- **Syrian Civil War (2011–Present):**
-  - **Scenario:** Syrian forces use Russian-supplied jammers to block rebel drones.
-  - **Details:** Systems like the **R-330Zh** target drone control links (often 2.4 GHz), forcing crashes or aborts.
-  - **Outcome:** Rebels lose reconnaissance and strike capabilities, tilting urban battles toward government forces.
+## Defense Protocols
 
-### Projected Threat Simulations
-
-- **Naval Clash in the South China Sea:**
-  - **Setup:** A U.S. destroyer faces Chinese radar-guided missiles. It deploys the NGJ to jam missile seekers.
-  - **Action:** The NGJ's AESA beams noise across X-band frequencies, blinding the missiles' radar while deception mimics decoy ships.
-  - **Result:** Missiles miss their mark, giving the destroyer time to counterattack.
-
-- **Urban Siege in a Future Conflict:**
-  - **Setup:** Ground troops enter a contested city. They carry portable **CJB-100** GPS jammers to disrupt enemy drones.
-  - **Action:** The jammers block GPS signals within a 100-meter bubble, grounding enemy UAVs while friendly drones use encrypted backups.
-  - **Result:** Attackers gain a foothold, free from overhead threats.
-
-- **Cyber-EW Hybrid Attack:**
-  - **Setup:** A nation-state pairs GPS jamming with a cyber strike on a rival's command network.
-  - **Action:** Pole-21 jammers disrupt satellite navigation while hackers overload servers, amplifying chaos.
-  - **Result:** The enemy's response falters, unable to coordinate without GPS or digital comms.
-
-## Electronic Defense Protocols
-
-Jamming isn't unstoppable. Militaries deploy countermeasures to fight back, creating an ongoing EW arms race. Here's how they resist:
+Jamming isn't unstoppable. Militaries deploy countermeasures to fight back, creating an ongoing EW arms race.
 
 - **Frequency Hopping:** Radios and drones switch frequencies rapidly (e.g., 1,000 times per second) to dodge jammers. The U.S. **SINCGARS** radio uses this to stay connected.
 - **Encryption:** Scrambles signals so even if jammed, the content remains secure. It doesn't stop jamming but limits intelligence leaks.
@@ -105,14 +83,38 @@ Jamming isn't unstoppable. Militaries deploy countermeasures to fight back, crea
 - **Anti-Jam GPS:** Systems like **M-Code** (a new GPS signal) boost resilience with higher power and directional antennas.
 - **LPI Radar:** Low Probability of Intercept radar (e.g., on stealth aircraft) emits weak, hard-to-detect pulses, evading jammers.
 
+For captioning images:
+<div style="text-align: center;">
+  <img src="assets/images/SINGCARS.png" width="500">
+  <p style="text-align: center; margin-top: -5px;">SINGCARS</p>
+</div>
+
 In Ukraine, frequency hopping and inertial navigation have kept some drones aloft despite Russian jamming, though at reduced efficiency.
+
+### LPI Radar Defense Overview
+
+LPI radar is a special type of radar used mostly on stealth aircraft (like the F-35 or B-2) to detect enemies without being easily spotted. Normal radar sends out strong, obvious radio waves that bounce off objects and return, but LPI radar is sneaky — it sends out weak, tricky signals that are hard for enemies to notice or jam. It's like whispering instead of shouting, making it tough for jammers to find and block.
+
+- **Hard to Detect:** Because LPI radar uses weak pulses and spreads them out, jammers like the **AN/ALQ-99** struggle to find the signal to block. It's like trying to shout over a whisper you can't even hear—jammers waste energy on the wrong frequencies or timings.
+
+- **Confuses Jammers:** The random frequency hopping and timing throw off jammers. If a jammer tries to flood one channel with noise, the LPI radar has already switched to another. It's like playing hide-and-seek where the radar keeps changing hiding spots.
+
+- **Resists Fake Signals:** Jammers might send fake echoes to trick regular radar, but LPI radar's smart computer can ignore these by checking the pattern of real echoes. This makes deception jamming (like with Digital Radio Frequency Memory) less effective.
+
+- **Stealth Advantage:** Since LPI radar is on stealth aircraft with special shapes that reduce radar reflections, it's already hard to see. Adding LPI makes it doubly tough for enemies to detect or jam, giving the plane a big edge in combat.
+
+Imagine an F-35 stealth fighter flying over a battlefield. It uses LPI radar to spot enemy planes without being noticed. An enemy tries to jam it with an AN/ALQ-99 from a Growler, blasting noise on common radar frequencies. But the F-35's LPI radar sends weak pulses, hops between channels, and changes timing randomly. The jammer's noise misses the target, and the F-35 detects the enemy plane while staying hidden, ready to strike.
 
 ## Emerging Operational Capabilities
 
-Jamming's evolution is accelerating, driven by tech breakthroughs. Here's what's on the horizon:
+Jamming's evolution is accelerating, driven by tech breakthroughs.
 
 - **AI-Driven Jamming:** Machine learning could analyze enemy signals in real-time, adapting jamming patterns instantly. Imagine a jammer that predicts frequency hops faster than a human can react.
 - **Autonomous Platforms:** Drones or robotic vehicles, like Ukraine's **Kvertus AD Berserk**, could carry jammers to the frontlines, self-adjusting to threats without risking operators.
-- **Multi-Domain Networks:** Jammers might link across air, land, sea, and space, creating a seamless EW grid. The U.S. DARPA's **CONCERTO** program hints at this integration.
 
-Challenges loom, too. Russia's GPS jamming in the Baltic has disrupted civilian flights, sparking debates over collateral damage and international norms.
+<div style="text-align: center;">
+  <img src="assets/images/Kvertus_AD_Berserk.png" width="500">
+  <p style="text-align: center; margin-top: -5px;">Kvertus_AD_Berserk</p>
+</div>
+
+- **Multi-Domain Networks:** Jammers might link across air, land, sea, and space, creating a seamless EW grid. The U.S. DARPA's **CONCERTO** program hints at this integration.
