@@ -56,7 +56,7 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 
 <div style="text-align: center;">
   <img src="assets/images/Russian_Pole-21_RF_Jammer.jpg" width="540">
-  <p style="text-align: center; margin-top: -5px;">Russian_Pole-21_RF_Jammer</p>
+  <p style="text-align: center; margin-top: -5px;">Russian Pole-21 RF Jammer</p>
 </div>
 
 **Fielded Asset Illustration:** Russia's **Pole-21** integrates with cell towers to jam GPS and GLONASS over a 150 km radius. Portable units like the **CJB-100** can disrupt GPS within 100 meters, ideal for localized denial.
@@ -108,7 +108,7 @@ LPI radar is a special type of radar used mostly on stealth aircraft (like the F
 
 <div style="text-align: center;">
   <img src="assets/images/Lockheed_Martin_F-35.jpg" width="510">
-  <p style="text-align: center; margin-top: -5px;">Lockheed_Martin_F-35_Lightning_II</p>
+  <p style="text-align: center; margin-top: -5px;">Lockheed Martin F-35 Lightning II</p>
 </div>
 
 <div style="text-align: center;">
@@ -128,7 +128,7 @@ Jamming's evolution is accelerating, driven by tech breakthroughs.
 
 <div style="text-align: center;">
   <img src="assets/images/Kvertus_AD_Berserk.jpg" width="480">
-  <p style="text-align: center; margin-top: -5px;">Kvertus_AD_Berserk</p>
+  <p style="text-align: center; margin-top: -5px;">Kvertus AD Berserk</p>
 </div>
 
 ## Author
