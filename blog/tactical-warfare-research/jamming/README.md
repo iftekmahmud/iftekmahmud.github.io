@@ -56,7 +56,7 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 
 <div style="text-align: center;">
   <img src="assets/images/Russian_Pole-21_RF_Jammer.jpg" width="540">
-  <p style="text-align: center; margin-top: -5px;">EA-18G Growler With AN/ALQ-99 Jamming Sytem</p>
+  <p style="text-align: center; margin-top: -5px;">Russian_Pole-21_RF_Jammer</p>
 </div>
 
 **Fielded Asset Illustration:** Russia's **Pole-21** integrates with cell towers to jam GPS and GLONASS over a 150 km radius. Portable units like the **CJB-100** can disrupt GPS within 100 meters, ideal for localized denial.
@@ -105,6 +105,16 @@ LPI radar is a special type of radar used mostly on stealth aircraft (like the F
 - **Resists Fake Signals:** Jammers might send fake echoes to trick regular radar, but LPI radar's smart computer can ignore these by checking the pattern of real echoes. This makes deception jamming (like with Digital Radio Frequency Memory) less effective.
 
 - **Stealth Advantage:** Since LPI radar is on stealth aircraft with special shapes that reduce radar reflections, it's already hard to see. Adding LPI makes it doubly tough for enemies to detect or jam, giving the plane a big edge in combat.
+
+<div style="text-align: center;">
+  <img src="assets/images/Lockheed_Martin_F-35.jpg" width="510">
+  <p style="text-align: center; margin-top: -5px;">Lockheed_Martin_F-35_Lightning_II</p>
+</div>
+
+<div style="text-align: center;">
+  <img src="assets/images/Northrop_Grumman_B-2_Spirit_Stealth_Bomber.jpg" width="510">
+  <p style="text-align: center; margin-top: -5px;">Northrop Grumman B-2 Spirit Stealth Bomber</p>
+</div>
 
 Imagine an F-35 stealth fighter flying over a battlefield. It uses LPI radar to spot enemy planes without being noticed. An enemy tries to jam it with an AN/ALQ-99 from a Growler, blasting noise on common radar frequencies. But the F-35's LPI radar sends weak pulses, hops between channels, and changes timing randomly. The jammer's noise misses the target, and the F-35 detects the enemy plane while staying hidden, ready to strike.
 
