@@ -19,7 +19,7 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 **Operational Mechanism:** The jammer identifies the enemy's radio frequency (e.g., VHF or UHF bands) and floods it with noise or false signals. Noise jamming uses high-powered static to drown out transmissions, while deception might mimic commands to mislead. Simple jammers might broadcast continuously, while advanced ones, like Russia's **R-330Zh Zhitel**, target specific frequencies dynamically.
 
 <div style="text-align: center;">
-  <img src="assets/images/R-330Zh_Zhitel_jammer.png" width="370">
+  <img src="assets/images/R-330Zh_Zhitel_jammer.jpg" width="370">
   <p style="text-align: center; margin-top: -5px;">R-330Zh Zhitel</p>
 </div>
 
@@ -36,7 +36,7 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 - **Deception Jamming:** Sends fake echoes (via Digital Radio Frequency Memory, or DRFM) to create ghost targets or mask real ones. Modern DRFM systems can replicate a target's signature precisely.
 
 <div style="text-align: center;">
-  <img src="assets/images/ALQ-99.png" width="370">
+  <img src="assets/images/ALQ-99.jpg" width="370">
   <p style="text-align: center; margin-top: -5px;">EA-18G Growler With AN/ALQ-99 Jamming Sytem</p>
 </div>
 
@@ -48,7 +48,12 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 
 **Mission Capability:** GPS jamming targets the Global Positioning System, which guides everything from drones to missiles to troop movements. Disrupting it throws navigation into chaos.
 
-**Operational Mechanism:** GPS signals, broadcast from satellites 20,000 km away, are weak (about -160 dBW). A jammer—sometimes as small as a handheld device—emits a stronger local signal on the GPS L1 frequency (1575.42 MHz) to block them. Barrage jamming can hit multiple GPS bands (L1, L2, L5), while spot jamming focuses on one.
+**Operational Mechanism:** GPS signals, broadcast from satellites 20,000 km away, are weak (about -160 dBW). A jammer, sometimes as small as a handheld device, emits a stronger local signal on the GPS L1 frequency (1575.42 MHz) to block them. Barrage jamming can hit multiple GPS bands (L1, L2, L5), while spot jamming focuses on one.
+
+<div style="text-align: center;">
+  <img src="assets/images/Russian_Pole-21_RF_Jammer.jpg" width="370">
+  <p style="text-align: center; margin-top: -5px;">EA-18G Growler With AN/ALQ-99 Jamming Sytem</p>
+</div>
 
 **Fielded Asset Illustration:** Russia's **Pole-21** integrates with cell towers to jam GPS and GLONASS over a 150 km radius. Portable units like the **CJB-100** can disrupt GPS within 100 meters, ideal for localized denial.
 
