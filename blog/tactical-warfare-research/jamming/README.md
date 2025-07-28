@@ -1,7 +1,7 @@
 # Military Jamming Tactics
 
 <div style="text-align: center;">
-  <img src="assets/images/Radar-Jamming-Logo.png" width="450">
+  <img src="assets/images/Radar-Jamming-Logo.jpg" width="330">
 </div>
 
 In modern warfare, controlling the electromagnetic spectrum (EMS) can be as decisive as any physical weapon. Military jamming is a key tactic in electronic warfare (EW), using radio frequency (RF) signals to disrupt enemy communications, radar, and navigation systems like GPS. As a security researcher, I've seen how jamming can shift the balance of power, from blinding enemy radar to grounding drones.
@@ -23,7 +23,7 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 **Operational Mechanism:** The jammer identifies the enemy's radio frequency (e.g., VHF or UHF bands) and floods it with noise or false signals. Noise jamming uses high-powered static to drown out transmissions, while deception might mimic commands to mislead. Simple jammers might broadcast continuously, while advanced ones, like Russia's **R-330Zh Zhitel**, target specific frequencies dynamically.
 
 <div style="text-align: center;">
-  <img src="assets/images/R-330Zh_Zhitel_jammer.jpg" width="370">
+  <img src="assets/images/R-330Zh_Zhitel_jammer.jpg" width="570">
   <p style="text-align: center; margin-top: -5px;">R-330Zh Zhitel</p>
 </div>
 
@@ -40,7 +40,7 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 - **Deception Jamming:** Sends fake echoes (via Digital Radio Frequency Memory, or DRFM) to create ghost targets or mask real ones. Modern DRFM systems can replicate a target's signature precisely.
 
 <div style="text-align: center;">
-  <img src="assets/images/ALQ-99.jpg" width="370">
+  <img src="assets/images/ALQ-99.jpg" width="520">
   <p style="text-align: center; margin-top: -5px;">EA-18G Growler With AN/ALQ-99 Jamming Sytem</p>
 </div>
 
@@ -55,7 +55,7 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 **Operational Mechanism:** GPS signals, broadcast from satellites 20,000 km away, are weak (about -160 dBW). A jammer, sometimes as small as a handheld device, emits a stronger local signal on the GPS L1 frequency (1575.42 MHz) to block them. Barrage jamming can hit multiple GPS bands (L1, L2, L5), while spot jamming focuses on one.
 
 <div style="text-align: center;">
-  <img src="assets/images/Russian_Pole-21_RF_Jammer.jpg" width="370">
+  <img src="assets/images/Russian_Pole-21_RF_Jammer.jpg" width="540">
   <p style="text-align: center; margin-top: -5px;">EA-18G Growler With AN/ALQ-99 Jamming Sytem</p>
 </div>
 
@@ -86,10 +86,9 @@ Jamming isn't unstoppable. Militaries deploy countermeasures to fight back, crea
 - **Spread Spectrum:** Spreads signals across a wide band (e.g., Direct Sequence Spread Spectrum), diluting jammer effectiveness. GPS's military P(Y) code uses this.
 - **Anti-Jam GPS:** Systems like **M-Code** (a new GPS signal) boost resilience with higher power and directional antennas.
 - **LPI Radar:** Low Probability of Intercept radar (e.g., on stealth aircraft) emits weak, hard-to-detect pulses, evading jammers.
-
-For captioning images:
+- 
 <div style="text-align: center;">
-  <img src="assets/images/SINGCARS.png" width="500">
+  <img src="assets/images/SINGCARS.jpg" width="450">
   <p style="text-align: center; margin-top: -5px;">SINGCARS</p>
 </div>
 
@@ -118,7 +117,7 @@ Jamming's evolution is accelerating, driven by tech breakthroughs.
 - **Multi-Domain Networks:** Jammers might link across air, land, sea, and space, creating a seamless EW grid. The U.S. DARPA's **CONCERTO** program hints at this integration.
 
 <div style="text-align: center;">
-  <img src="assets/images/Kvertus_AD_Berserk.png" width="500">
+  <img src="assets/images/Kvertus_AD_Berserk.jpg" width="480">
   <p style="text-align: center; margin-top: -5px;">Kvertus_AD_Berserk</p>
 </div>
 
