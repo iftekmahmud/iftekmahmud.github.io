@@ -10,7 +10,7 @@ In modern warfare, controlling the electromagnetic spectrum (EMS) can be as deci
 
 Jamming is the act of deliberately interfering with an enemy's electronic systems by broadcasting RF signals that overpower or deceive their receivers. It's a non-lethal yet potent way to disrupt critical operations — think of it as shouting over a conversation to stop it from being heard, but with radio waves instead of sound. In today's tech-driven conflicts, where militaries rely on radios, radar, and GPS for coordination and precision, jamming is a game-changer. It can isolate troops, misdirect missiles, or hide forces from detection.
 
-The concept isn't new. During World War II, as radios became widespread, early jamming efforts targeted enemy communications. Since then, jamming has evolved into a sophisticated art, leveraging advanced equipment to tackle modern systems. Today, it's a cornerstone of electronic warfare, sitting alongside electronic protection (defending against jamming) and electronic support (gathering signal intelligence).
+The concept isn't new. During World War II, as radios became widespread, early jamming efforts targeted enemy communications. Since then, jamming has evolved into a sophisticated art, leveraging advanced equipment to tackle modern systems. Today, it's a cornerstone of EW, sitting alongside electronic protection (defending against jamming) and electronic support (gathering signal intelligence).
 
 ## Types of Jamming
 
@@ -68,14 +68,14 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 ### Documented Combat Instances
 
 - **Russia-Ukraine War (2022–Present):**
-  - **Scenario:** Russian forces deploy the **Krasukha-4**, a mobile EW system, near the frontlines. It jams Ukrainian radar and GPS, blinding air defenses and disrupting drone strikes.
-  - **Details:** The Krasukha-4's 300 km range targets S-band radar and satellite links. Ukraine reports losing 10,000 drones monthly, many to GPS jamming, forcing a shift to inertial navigation or visual piloting.
-  - **Outcome:** Russian jamming delays Ukrainian counterattacks, though Ukraine adapts with frequency-hopping radios.
+  - Russian forces deploy the **Krasukha-4**, a mobile EW system, near the frontlines. It jams Ukrainian radar and GPS, blinding air defenses and disrupting drone strikes.
+  - The Krasukha-4's 300 km range targets S-band radar and satellite links. Ukraine reports losing 10,000 drones monthly, many to GPS jamming, forcing a shift to inertial navigation or visual piloting.
+  - Russian jamming delays Ukrainian counterattacks, though Ukraine adapts with frequency-hopping radios.
 
 - **Gulf War (1991):**
-  - **Scenario:** U.S. EA-6B Prowlers equipped with AN/ALQ-99 systems fly ahead of strike groups, jamming Iraqi radar.
-  - **Details:** Noise jamming overwhelmed early-warning systems, while deception created false targets, confusing operators.
-  - **Outcome:** Coalition air superiority was secured, with minimal losses to radar-guided threats.
+  - U.S. EA-6B Prowlers equipped with AN/ALQ-99 systems fly ahead of strike groups, jamming Iraqi radar.
+  - Noise jamming overwhelmed early-warning systems, while deception created false targets, confusing operators.
+  - Coalition air superiority was secured, with minimal losses to radar-guided threats.
 
 ## Defense Protocols
 
@@ -86,7 +86,7 @@ Jamming isn't unstoppable. Militaries deploy countermeasures to fight back, crea
 - **Spread Spectrum:** Spreads signals across a wide band (e.g., Direct Sequence Spread Spectrum), diluting jammer effectiveness. GPS's military P(Y) code uses this.
 - **Anti-Jam GPS:** Systems like **M-Code** (a new GPS signal) boost resilience with higher power and directional antennas.
 - **LPI Radar:** Low Probability of Intercept radar (e.g., on stealth aircraft) emits weak, hard-to-detect pulses, evading jammers.
-- 
+
 <div style="text-align: center;">
   <img src="assets/images/SINGCARS.jpg" width="450">
   <p style="text-align: center; margin-top: -5px;">SINGCARS</p>
