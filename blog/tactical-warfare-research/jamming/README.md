@@ -1,6 +1,6 @@
 # Military Jamming Tactics
 
-In modern warfare, controlling the electromagnetic spectrum (EMS) can be as decisive as any physical weapon. Military jamming is a key tactic in electronic warfare (EW), using radio frequency (RF) signals to disrupt enemy communications, radar, and navigation systems like GPS. As a security researcher, I've seen how jamming can shift the balance of power, from blinding enemy radar to grounding drones.
+In modern warfare, controlling the electromagnetic spectrum can be as decisive as any physical weapon. Military jamming is a key tactic in electronic warfare, using radio frequency (RF) signals to disrupt enemy communications, radar, and navigation systems like GPS. As a security researcher, I've seen how jamming can shift the balance of power, from blinding enemy radar to grounding drones.
 
 ## Jamming Overview
 
@@ -34,6 +34,11 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 **Operational Mechanism:** There are two main approaches:
 - **Noise Jamming:** Overwhelms radar with a barrage of RF noise, obscuring real targets. Think of it as a fog machine for radar screens.
 - **Deception Jamming:** Sends fake echoes (via Digital Radio Frequency Memory, or DRFM) to create ghost targets or mask real ones. Modern DRFM systems can replicate a target's signature precisely.
+
+<div style="text-align: center;">
+  <img src="assets/images/ALQ-99.png" width="370">
+  <p style="text-align: center; margin-top: -5px;">EA-18G Growler With AN/ALQ-99 Jamming Sytem</p>
+</div>
 
 **Fielded Asset Illustration:** The U.S. **AN/ALQ-99**, flown on EA-18G Growler aircraft, jams radar across multiple frequencies. Its successor, the **Next Generation Jammer (NGJ)**, uses AESA technology for pinpoint accuracy against advanced air defenses.
 
