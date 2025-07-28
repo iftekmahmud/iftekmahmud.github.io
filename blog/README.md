@@ -3,3 +3,4 @@
 ## [Web Security](./web-security)
 ## [Building Labs](./building-labs)
 ## [Wireless Security](./wireless-security)
+## [Tactical Warfare Research](./tactical-warfare-research)
