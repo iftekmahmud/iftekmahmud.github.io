@@ -18,6 +18,11 @@ Jamming targets specific systems, and its methods vary accordingly. There are th
 
 **Operational Mechanism:** The jammer identifies the enemy's radio frequency (e.g., VHF or UHF bands) and floods it with noise or false signals. Noise jamming uses high-powered static to drown out transmissions, while deception might mimic commands to mislead. Simple jammers might broadcast continuously, while advanced ones, like Russia's **R-330Zh Zhitel**, target specific frequencies dynamically.
 
+<div style="text-align: center;">
+  <img src="assets/images/R-330Zh_Zhitel_jammer.png" width="370">
+  <p style="text-align: center; margin-top: -5px;">R-330Zh Zhitel</p>
+</div>
+
 **Fielded Asset Illustration:** The **R-330Zh Zhitel** can jam radio signals within a 20-30 km radius, targeting both ground and airborne communications. It's been spotted in Ukraine, disrupting tactical networks.
 
 **Operational Outcome:** In a ground battle, imagine an enemy unit unable to call for reinforcements because their radios only pick up static. That's radio jamming at work.
